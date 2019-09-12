@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { HttpClient }  from '@angular/common/http';
-import { AdminPage } from 'C:/Users/acer/Desktop/GymApp/GYM-APP/src/pages/admin/admin';
-import { EmployeePage } from 'C:/Users/acer/Desktop/GymApp/GYM-APP/src/pages/employee/employee';
-import { CustomerPage } from 'C:/Users/acer/Desktop/GymApp/GYM-APP/src/pages/customer/customer';
+import { AdminPage } from 'C:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/admin/admin';
+import { EmployeePage } from 'C:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/employee/employee';
+import { CustomerPage } from 'C:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/customer/customer';
 
 
 

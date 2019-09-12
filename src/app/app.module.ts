@@ -3,14 +3,15 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { CustomerPage } from '../pages/customer/customer';
-import { AdminPage } from '../pages/admin/admin';
+
 import { EmployeePage } from '../pages/employee/employee';
+import { AdminPage } from '../pages/admin/admin';
 
 
 

@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { AdminPage } from 'C:/Users/acer/Desktop/GymApp/GYM-APP/src/pages/admin/admin';
+import { AdminPage } from 'C:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/admin/admin';
 
 
 @Component({

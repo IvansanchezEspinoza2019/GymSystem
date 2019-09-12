@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { LoginPage } from 'C:/Users/acer/Desktop/GymApp/GYM-APP/src/pages/login/login'
+import { LoginPage } from 'C:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/login/login'
 
 
 @Component({
