@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
+import { AlertController,LoadingController } from 'ionic-angular';
 import { HttpClient }  from '@angular/common/http';
 import { AdminPage } from 'C:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/admin/admin';
 import { EmployeePage } from 'C:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/employee/employee';
@@ -21,8 +21,19 @@ export class LoginPage {
   custumer = CustomerPage;
   
   constructor(public navCtrl: NavController,
+    public loadingCtrl:LoadingController,
     private http: HttpClient,
     public alerta:AlertController, public navParams: NavParams) {
+  }
+
+
+
+  presentLoading() {
+    const loader = this.loadingCtrl.create({
+      content: "Please wait...",
+      duration: 1500
+    });
+    loader.present();
   }
 
   ionViewDidLoad() {
@@ -33,20 +44,6 @@ export class LoginPage {
   
   datos={}
   apiUrl="http://gymdb/"
-  var={}
-  getMenus(){
-    let funcion = { 
-      'funcion': 'getMenu'
-    } 
-    console.log(JSON.stringify(funcion));
-    this.http.post(this.apiUrl, JSON.stringify(funcion))
-    .subscribe(res=>{
-      console.log(res); 
-    }
-    );
-  }
-
-
   
 
 
@@ -73,14 +70,17 @@ export class LoginPage {
           console.log(res); // ya tiene los datos
           if(res['tipo']=="1"){
             console.log("Eres cliente");
+            this.presentLoading();
             this.navCtrl.push(this.custumer);
           }
           else if(res['tipo']=="2"){
             console.log("eres empleado");
+            this.presentLoading();
             this.navCtrl.push(this.employee);
           }
           else if(res['tipo']=="3"){
             console.log("eres administrativo");
+            this.presentLoading();
             this.navCtrl.push(this.admin);
           }
         } 

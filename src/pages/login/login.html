@@ -5,10 +5,11 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
-    <ion-title>login</ion-title>
-  </ion-navbar>
-</ion-header>
+    <ion-navbar color="primary">
+      <ion-title>Login</ion-title>
+
+    </ion-navbar>
+  </ion-header>
 
 <ion-content padding>
   <form name="cuenta">
@@ -26,7 +27,9 @@
     </ion-list>
       <ion-buttons>
         
-        <button ion-button color="blue" outline type="submit" (click) ="access()" size="large">Iniciar Sesión</button>
+        <button ion-button large color="blue"(click) ="access()" >
+                Iniciar Sesión
+            </button>
 
       </ion-buttons>
   </form>
