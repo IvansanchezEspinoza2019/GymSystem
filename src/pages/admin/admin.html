@@ -4,16 +4,95 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
+
 <ion-header>
-  <ion-navbar>
-    <ion-title>admin</ion-title>
+  <ion-navbar color=secondary>
+    <ion-title>GYM SYSTEM</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-    <ion-buttons>
-        <button ion-button color="danger" outline type="submit" (click) ="mostrar()">Acceder</button>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+    
+    <ion-col>
+      <ion-card color=primary>
+        <ion-card-content text-center>
+          Acceso<br>
+          <button ion-button round color=light clear>
+            <ion-icon name="hand"></ion-icon>
+          </button>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    
+    <ion-col>
+      <ion-card color=primary>
+        <ion-card-content text-center>
+          Pagos<br>
+          <button ion-button round color=light clear>
+            <ion-icon name="cash"></ion-icon>
+          </button>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  
+  </ion-row>
+</ion-grid>
 
-      </ion-buttons>
+<ion-grid>
+  <ion-row>
+      
+    <ion-col>
+      <ion-card color=primary>
+        <ion-card-header text-center>
+          Clientes <br>
+          <ion-icon name="contact" item-start></ion-icon>
+        </ion-card-header>
 
-</ion-content>
+        <ion-list>
+          <button ion-item>
+            <ion-icon name="add" item-start></ion-icon>
+              Nuevo
+          </button>
+        
+          <button ion-item>
+            <ion-icon name="create" item-start></ion-icon>
+            Editar
+          </button>
+        
+          <button ion-item>
+            <ion-icon name="power" item-start></ion-icon>
+             Borrar
+          </button>
+          </ion-list>
+      </ion-card>
+    </ion-col>
+              
+                
+    <ion-col>
+      <ion-card color=primary>
+        <ion-card-content text-center>
+          Tienda<br>
+          <ion-icon name="card"></ion-icon>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card color=danger>
+    <ion-card-content text-center>
+      Reportes<br>
+      <ion-icon name="clipboard"></ion-icon>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card color=primary>
+    <ion-card-content text-center>
+      Inventario<br>
+      <ion-icon name="attach"></ion-icon>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>         

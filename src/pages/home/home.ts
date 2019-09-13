@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { LoginPage } from 'C:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/login/login'
-
+import {LoginPage} from '../login/login'
+import { AdminPage } from '../admin/admin';
 
 @Component({
   selector: 'page-home',
@@ -12,6 +12,7 @@ export class HomePage {
 
 
   loginP = LoginPage;
+  admin = AdminPage;
   constructor(public navCtrl: NavController) {
 
   }

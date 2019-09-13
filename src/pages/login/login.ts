@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { HttpClient }  from '@angular/common/http';
-import { AdminPage } from 'C:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/admin/admin';
-import { EmployeePage } from 'C:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/employee/employee';
-import { CustomerPage } from 'C:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/customer/customer';
-
+import { AdminPage } from '../admin/admin';
+import { EmployeePage } from '../employee/employee';
+import { CustomerPage } from '../customer/customer';
 
 
 @IonicPage()
@@ -32,7 +31,7 @@ export class LoginPage {
   }
   
   datos={}
-  apiUrl="http://gymdb/"
+  apiUrl="http://gymdb:8080/"
   var={}
   getMenus(){
     let funcion = { 
@@ -45,9 +44,6 @@ export class LoginPage {
     }
     );
   }
-
-
-  
 
 
   // boton de acceder
