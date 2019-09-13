@@ -1,6 +1,10 @@
 webpackJsonp([2],{
 
+<<<<<<< HEAD
 /***/ 279:
+=======
+/***/ 278:
+>>>>>>> 8154672a902427d956ee3fe94b55879b7415992e
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22,7 +26,7 @@ var CustomerPageModule = /** @class */ (function () {
     function CustomerPageModule() {
     }
     CustomerPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_2__customer__["a" /* CustomerPage */],
             ],

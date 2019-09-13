@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import {LoginPage } from 'C:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/login/login';
 
 /**
  * Generated class for the CustomerPage page.
@@ -14,12 +15,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'customer.html',
 })
 export class CustomerPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  
+  login = LoginPage;
+  
+  constructor(public navCtrl: NavController, 
+    public menu:MenuController,
+    public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CustomerPage');
+  }
+  openMenu(){
+    this.menu.open();
+  }
+  logout(){
+    this.navCtrl.push(this.login);
+  }
+  
+  
+  closeMenu(){
+    this.menu.close();
   }
 
 }
