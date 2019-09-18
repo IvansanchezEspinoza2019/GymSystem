@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AlertController,LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, LoadingController , NavParams } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 import { HttpClient }  from '@angular/common/http';
 import { AdminPage } from '../admin/admin';
 import { EmployeePage } from '../employee/employee';
@@ -20,17 +20,14 @@ export class LoginPage {
   custumer = CustomerPage;
   
   constructor(public navCtrl: NavController,
-    public loadingCtrl:LoadingController,
     private http: HttpClient,
+    public loadigCtrl: LoadingController,
     public alerta:AlertController, public navParams: NavParams) {
   }
-
-
-
   presentLoading() {
-    const loader = this.loadingCtrl.create({
+    const loader = this.loadigCtrl.create({
       content: "Please wait...",
-      duration: 1500
+      duration: 500
     });
     loader.present();
   }
@@ -42,8 +39,7 @@ export class LoginPage {
   }
   
   datos={}
-<<<<<<< HEAD
-  apiUrl="http://gymdb:8080/"
+  apiUrl="http://gymdb/"
   var={}
   getMenus(){
     let funcion = { 
@@ -56,10 +52,6 @@ export class LoginPage {
     }
     );
   }
-=======
-  apiUrl="http://gymdb/"
-  
->>>>>>> 8154672a902427d956ee3fe94b55879b7415992e
 
 
   // boton de acceder
@@ -103,5 +95,3 @@ export class LoginPage {
     );
   }
 }
-
-

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient }  from '@angular/common/http';
-
+import { AddClientePage } from 'c:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/add-cliente/add-cliente';
+import { ListcustomersPage } from 'c:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/listcustomers/listcustomers';
 /**
  * Generated class for the AdminPage page.
  *
@@ -15,6 +16,11 @@ import { HttpClient }  from '@angular/common/http';
   templateUrl: 'admin.html',
 })
 export class AdminPage {
+  addCliente = AddClientePage;
+  listCustomers = ListcustomersPage;
+
+
+
 
   constructor(public navCtrl: NavController,
     private http: HttpClient,
@@ -26,6 +32,13 @@ export class AdminPage {
   }
 
   apiUrl = "http://gymdb/";
+  agregarCLiente(){
+    this.navCtrl.push(this.addCliente);
+
+
+
+
+  }
   mostrar(){
     let funcion = { 
       'funcion': 'mostrar'  
@@ -38,6 +51,9 @@ export class AdminPage {
     }
     );
 
+  }
+  allCustomers(){
+      this.navCtrl.push(this.listCustomers);
   }
 
 }

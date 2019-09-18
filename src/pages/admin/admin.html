@@ -1,6 +1,5 @@
 <!--
   Generated template for the AdminPage page.
-
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
@@ -42,7 +41,7 @@
 
 <ion-grid>
   <ion-row>
-      
+  
     <ion-col>
       <ion-card color=primary>
         <ion-card-header text-center>
@@ -51,7 +50,7 @@
         </ion-card-header>
 
         <ion-list>
-          <button ion-item>
+          <button ion-item (click)="agregarCLiente()">
             <ion-icon name="add" item-start></ion-icon>
               Nuevo
           </button>
@@ -64,6 +63,10 @@
           <button ion-item>
             <ion-icon name="power" item-start></ion-icon>
              Borrar
+          </button>
+          <button ion-item (click)= "allCustomers()">
+            <ion-icon name="list" item-start></ion-icon>
+             Lista
           </button>
           </ion-list>
       </ion-card>
@@ -95,4 +98,4 @@
     </ion-card-content>
   </ion-card>
 
-</ion-content>         
+</ion-content> 

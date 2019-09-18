@@ -12,6 +12,9 @@ import { CustomerPage } from '../pages/customer/customer';
 
 import { EmployeePage } from '../pages/employee/employee';
 import { AdminPage } from '../pages/admin/admin';
+import { AddClientePage } from 'c:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/add-cliente/add-cliente';
+import { ListcustomersPage } from 'c:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/listcustomers/listcustomers';
+import { InfoClientePage } from '../pages/info-cliente/info-cliente';
 
 
 
@@ -22,7 +25,11 @@ import { AdminPage } from '../pages/admin/admin';
     LoginPage,
     CustomerPage,
     AdminPage,
-    EmployeePage
+    EmployeePage,
+    AddClientePage,
+    InfoClientePage,
+    ListcustomersPage,
+    
   ],
   
   imports: [
@@ -37,7 +44,11 @@ import { AdminPage } from '../pages/admin/admin';
     LoginPage,
     CustomerPage,
     AdminPage,
-    EmployeePage
+    EmployeePage,
+    AddClientePage,
+    InfoClientePage,
+    ListcustomersPage,
+    
     
   ],
   providers: [

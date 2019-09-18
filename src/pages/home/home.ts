@@ -16,7 +16,14 @@ export class HomePage {
   constructor(public navCtrl: NavController) {
 
   }
+  datos={}
 
+   mayus(e) {
+    e.value = e.value.toUpperCase();
+  }
+  aceptar(){
+    console.log(JSON.stringify(this.datos));
+  }
   login(){
     console.log('contact');
     this.navCtrl.push(this.loginP)
