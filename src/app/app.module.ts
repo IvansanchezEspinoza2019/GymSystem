@@ -9,10 +9,9 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { CustomerPage } from '../pages/customer/customer';
-
 import { EmployeePage } from '../pages/employee/employee';
 import { AdminPage } from '../pages/admin/admin';
-
+import { PayPage} from '../pages/pay/pay';
 
 
 @NgModule({
@@ -22,7 +21,8 @@ import { AdminPage } from '../pages/admin/admin';
     LoginPage,
     CustomerPage,
     AdminPage,
-    EmployeePage
+    EmployeePage,
+    PayPage
   ],
   
   imports: [
@@ -37,7 +37,8 @@ import { AdminPage } from '../pages/admin/admin';
     LoginPage,
     CustomerPage,
     AdminPage,
-    EmployeePage
+    EmployeePage,
+    PayPage
     
   ],
   providers: [

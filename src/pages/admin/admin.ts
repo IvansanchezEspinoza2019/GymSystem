@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient }  from '@angular/common/http';
+import { PayPage } from '../pay/pay';
 
 /**
  * Generated class for the AdminPage page.
@@ -16,6 +17,7 @@ import { HttpClient }  from '@angular/common/http';
 })
 export class AdminPage {
 
+  pay = PayPage;
   constructor(public navCtrl: NavController,
     private http: HttpClient,
     public navParams: NavParams) {
@@ -25,7 +27,8 @@ export class AdminPage {
     console.log('ionViewDidLoad AdminPage');
   }
 
-  apiUrl = "http://gymdb/";
+  apiUrl = "http://gymdb:8080/";
+  
   mostrar(){
     let funcion = { 
       'funcion': 'mostrar'  
@@ -37,7 +40,10 @@ export class AdminPage {
       console.log(res);
     }
     );
-
   }
 
+  pagar(){
+    console.log('pay');
+    this.navCtrl.push(this.pay);
+  }
 }

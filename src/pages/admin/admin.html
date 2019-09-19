@@ -30,7 +30,7 @@
       <ion-card color=primary>
         <ion-card-content text-center>
           Pagos<br>
-          <button ion-button round color=light clear>
+          <button ion-button round color=light clear (click)='pagar()'>
             <ion-icon name="cash"></ion-icon>
           </button>
         </ion-card-content>
@@ -81,7 +81,7 @@
     </ion-row>
   </ion-grid>
 
-  <ion-card color=danger>
+  <ion-card color=primary>
     <ion-card-content text-center>
       Reportes<br>
       <ion-icon name="clipboard"></ion-icon>
@@ -95,4 +95,4 @@
     </ion-card-content>
   </ion-card>
 
-</ion-content>         
+</ion-content>          

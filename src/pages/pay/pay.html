@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-navbar color=secondary>
+    <ion-title>PAGOS</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-fab right bottom>
+  <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+  <ion-fab-list side="left">
+    <button ion-fab><ion-icon name="search"></ion-icon></button>
+    <button ion-fab><ion-icon name="create"></ion-icon></button>
+    <button ion-fab><ion-icon name="trash"></ion-icon></button>
+  </ion-fab-list>
+</ion-fab>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label inset> Usuario </ion-label>
+    <ion-input type="text" [(ngModel)]="datos.user" name ="nombre" required></ion-input>
+  </ion-item>
+
+  <br>
+  <div text-center>
+    <button ion-button round color=primary type="submit" (click) ="getUsuario()" size="large">Verificar Usuario</button>
+  </div>
+
+ 
+
+  <br>  
+  <ion-list no-lines>
+    <button ion-item *ngFor="let paquete of paquetes" (click)="selectPaquete(paquete)">
+      <strong>{{paquete.nombre}}</strong> <br> Precio: {{paquete.precio}}
+    </button>
+  </ion-list>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label inset color="primary">Usuario </ion-label>
+          <ion-input type="text" [(ngModel)]="pago.user" name ="usuario" required></ion-input>
+       </ion-item>
+      </ion-col>
+      <ion-col>
+          <ion-item>
+              <ion-label inset color="primary">Paquete </ion-label>
+              <ion-input id="pack" name ="pack" type="text" [(ngModel)]="pago.paquete" required ></ion-input>
+            </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item>
+            <ion-label color="primary">Modo de Pago</ion-label>
+            <ion-select [(ngModel)]="pago.modo" name ="modo" required>
+              <ion-option value="efectivo">Efectivo</ion-option>
+              <ion-option value="debito">Debito</ion-option>
+              <ion-option value="credito">Credito</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+    </ion-col>
+        <ion-col>
+            <ion-item>
+                <ion-label inset color="primary"> Monto </ion-label>
+                <ion-input type="text" [(ngModel)]="pago.monto" name ="monto" required></ion-input>
+              </ion-item>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+
+  <div text-center>
+    <br>
+    <ion-buttons>
+      <button ion-button round color=danger size="large">Pagar</button>
+    </ion-buttons>
+  </div>
+  
+
+</ion-content>

@@ -19,7 +19,7 @@ export class HomePage {
 
   login(){
     console.log('contact');
-    this.navCtrl.push(this.loginP)
+    this.navCtrl.push(this.admin)
     
   }
 

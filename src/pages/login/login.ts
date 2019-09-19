@@ -42,7 +42,6 @@ export class LoginPage {
   }
   
   datos={}
-<<<<<<< HEAD
   apiUrl="http://gymdb:8080/"
   var={}
   getMenus(){
@@ -56,10 +55,6 @@ export class LoginPage {
     }
     );
   }
-=======
-  apiUrl="http://gymdb/"
-  
->>>>>>> 8154672a902427d956ee3fe94b55879b7415992e
 
 
   // boton de acceder
