@@ -30577,15 +30577,3 @@ page-login .inicio {
 page-login .bienvenido {
   background-color: #c7d0d6;
 }
-
-page-add-cliente .text-input::-moz-placeholder {
-  color: #807f88;
-}
-
-page-add-cliente .text-input:-ms-input-placeholder {
-  color: #807f88;
-}
-
-page-add-cliente .text-input::-webkit-input-placeholder {
-  color: #807f88;
-}

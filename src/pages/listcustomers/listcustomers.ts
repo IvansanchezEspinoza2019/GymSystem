@@ -19,7 +19,7 @@ import { ActionSheetController } from 'ionic-angular';
 export class ListcustomersPage {
   //info = InfoClientePage;
 
-  apiUrl= "http://gymdb/";
+  apiUrl= "http://gymdb:8080/";
   clientes=[];
   items=[];
 

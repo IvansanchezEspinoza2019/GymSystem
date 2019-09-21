@@ -12,9 +12,12 @@ import { CustomerPage } from '../pages/customer/customer';
 
 import { EmployeePage } from '../pages/employee/employee';
 import { AdminPage } from '../pages/admin/admin';
-import { AddClientePage } from 'c:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/add-cliente/add-cliente';
-import { ListcustomersPage } from 'c:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/listcustomers/listcustomers';
+import { AddClientePage } from '../pages/add-cliente/add-cliente';
+import { ListcustomersPage } from '../pages/listcustomers/listcustomers';
 import { InfoClientePage } from '../pages/info-cliente/info-cliente';
+import { PayPage } from '../pages/pay/pay';
+import { ListPayPage } from '../pages/list-pay/list-pay';
+import { RecibePayPage } from '../pages/recibe-pay/recibe-pay';
 
 
 
@@ -29,6 +32,9 @@ import { InfoClientePage } from '../pages/info-cliente/info-cliente';
     AddClientePage,
     InfoClientePage,
     ListcustomersPage,
+    PayPage,
+    ListPayPage,
+    RecibePayPage,
     
   ],
   
@@ -48,8 +54,10 @@ import { InfoClientePage } from '../pages/info-cliente/info-cliente';
     AddClientePage,
     InfoClientePage,
     ListcustomersPage,
-    
-    
+    PayPage,
+    ListPayPage,
+    RecibePayPage
+
   ],
   providers: [
     StatusBar,

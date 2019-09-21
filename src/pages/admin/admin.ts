@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient }  from '@angular/common/http';
-import { AddClientePage } from 'c:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/add-cliente/add-cliente';
-import { ListcustomersPage } from 'c:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/listcustomers/listcustomers';
-/**
- * Generated class for the AdminPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AddClientePage } from '../add-cliente/add-cliente';
+import { ListcustomersPage } from '../listcustomers/listcustomers';
+import { PayPage } from '../pay/pay';
+import {ListPayPage} from '../list-pay/list-pay'
 
 @IonicPage()
 @Component({
@@ -18,7 +14,8 @@ import { ListcustomersPage } from 'c:/Users/acer/Desktop/GymSystem/GymSystem/src
 export class AdminPage {
   addCliente = AddClientePage;
   listCustomers = ListcustomersPage;
-
+  payPage = PayPage;
+  listPayPage = ListPayPage;
 
 
 
@@ -31,7 +28,7 @@ export class AdminPage {
     console.log('ionViewDidLoad AdminPage');
   }
 
-  apiUrl = "http://gymdb/";
+  apiUrl = "http://gymdb:8080/";
   agregarCLiente(){
     this.navCtrl.push(this.addCliente);
 
@@ -52,8 +49,17 @@ export class AdminPage {
     );
 
   }
+  
   allCustomers(){
       this.navCtrl.push(this.listCustomers);
+  }
+
+  pay(){
+    this.navCtrl.push(this.payPage);
+}
+
+  listPay(){
+    this.navCtrl.push(this.listPayPage);
   }
 
 }
