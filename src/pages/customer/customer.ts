@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
-import {LoginPage } from 'C:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/login/login';
+import {LoginPage } from '../login/login';
 
 /**
  * Generated class for the CustomerPage page.

@@ -61,7 +61,7 @@ export class AddClientePage {
     }
     
 
-  apiUrl = "http://gymdb/";
+  apiUrl = "http://gymdb:8080/";
   
 
   functionsetId():void{

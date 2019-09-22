@@ -39,7 +39,7 @@ export class LoginPage {
   }
   
   datos={}
-  apiUrl="http://gymdb/"
+  apiUrl="http://gymdb:8080/"
   var={}
   getMenus(){
     let funcion = { 
