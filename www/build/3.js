@@ -1,14 +1,14 @@
 webpackJsonp([3],{
 
-/***/ 284:
+/***/ 287:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InfoClientePageModule", function() { return InfoClientePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InfClientePageModule", function() { return InfClientePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__info_cliente__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inf_cliente__ = __webpack_require__(52);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var InfoClientePageModule = /** @class */ (function () {
-    function InfoClientePageModule() {
+var InfClientePageModule = /** @class */ (function () {
+    function InfClientePageModule() {
     }
-    InfoClientePageModule = __decorate([
+    InfClientePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__info_cliente__["a" /* InfoClientePage */],
+                __WEBPACK_IMPORTED_MODULE_2__inf_cliente__["a" /* InfClientePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__info_cliente__["a" /* InfoClientePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__inf_cliente__["a" /* InfClientePage */]),
             ],
+            exports: [
+                __WEBPACK_IMPORTED_MODULE_2__inf_cliente__["a" /* InfClientePage */]
+            ]
         })
-    ], InfoClientePageModule);
-    return InfoClientePageModule;
+    ], InfClientePageModule);
+    return InfClientePageModule;
 }());
 
-//# sourceMappingURL=info-cliente.module.js.map
+//# sourceMappingURL=inf-cliente.module.js.map
 
 /***/ })
 

@@ -1,0 +1,40 @@
+<!--
+  Generated template for the InfClientePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Informacion</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-label color="secondary" align="center"><b>PERFIL</b></ion-label>
+  <img src="http://gymdb/imgs/customers/{{ cliente.foto }}"  width="300" height="300">
+  <ion-card-content>
+    <img >
+    <ion-label *ngIf="cliente.activo=='1'" align="center" color="primary"><b>ESTATUS: </b> ACTIVO</ion-label>
+    <ion-label *ngIf="cliente.activo=='0'" align="center" color="danger"><b>ESTATUS: </b> INACTIVO</ion-label>
+    <p><b>NOMBRE: </b>  {{ cliente.Nombre }}</p>
+    <p><b>ID: </b> {{ cliente.id_cliente }}</p>
+    <p><b>GENERO: </b> {{ cliente.genero }}</p>
+    <p><b>TELEFONO: </b> {{ cliente.telefono }}</p>
+    <ion-label color="secondary"><b>FORMATO: </b> YYYY-MM-DD</ion-label>
+    <p><b>FECHA NACIMIENTO: </b> {{ cliente.fecha_nacimiento }}</p>
+    <p><b>FECHA INGRESO: </b> {{ cliente.fecha_ingreso }}</p>
+    
+    <ion-label align="center" color="secondary"><b>DIRECCION</b></ion-label>
+    <p><b>CALLE</b> {{ cliente.calle }}</p>
+    <p><b>NUMERO: </b> {{ cliente.numero_calle }}</p>
+    <p *ngIf="cliente.numero_interior!=''"><b>NUMERO INTERIOR </b> {{ cliente.numero_interior }}</p>
+    <p><b>COLONIA: </b> {{ cuenta.colonia }}</p>
+    <p><b>CP: </b> {{ cuenta.cp }}</p>
+
+    <ion-label align="center" color="secondary"><b>CUENTA</b></ion-label>
+    <p><b>USUARIO</b> {{ cuenta.user }}</p>
+
+  </ion-card-content>
+
+</ion-content>

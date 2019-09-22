@@ -13,14 +13,16 @@
      </ion-buttons>
   </ion-navbar>
 </ion-header>
-
 <ion-content>
-<ion-item>
-  <ion-label stack color = "primary">Nombre:</ion-label>
-  <ion-input type="text" onkeyup="mayus(this);"> </ion-input>
-</ion-item>
-  
-<button ion-button block type="submit" (click)="aceptar()">Guardar</button>
+  <form  method="post" enctype="multipart/form-data">
+    Select image to upload:
+    <input type="file" name="fileToUpload"  id="fileToUpload">
+    <ion-buttons>
+      <button (click)="sendData()"> aceptar</button>
+    </ion-buttons>
+    
+</form>
+
 
 </ion-content>
 

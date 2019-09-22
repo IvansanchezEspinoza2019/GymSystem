@@ -30560,6 +30560,19 @@ page-add-cliente .text-input::-webkit-input-placeholder {
   color: #807f88;
 }
 
+page-add-cliente img {
+  display: block;
+  margin: auto;
+}
+
+page-allcustomers .redtext {
+  color: darkred;
+}
+
+page-allcustomers .bluetext {
+  color: blue;
+}
+
 page-customer ion-title {
   position: absolute;
   top: 0;
@@ -30568,6 +30581,11 @@ page-customer ion-title {
   width: 100%;
   height: 100%;
   text-align: center;
+}
+
+page-inf-cliente img {
+  display: block;
+  margin: auto;
 }
 
 page-login .inicio {
@@ -30588,4 +30606,9 @@ page-add-cliente .text-input:-ms-input-placeholder {
 
 page-add-cliente .text-input::-webkit-input-placeholder {
   color: #807f88;
+}
+
+page-add-cliente img {
+  display: block;
+  margin: auto;
 }

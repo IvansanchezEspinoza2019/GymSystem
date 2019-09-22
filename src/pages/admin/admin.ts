@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient }  from '@angular/common/http';
 import { AddClientePage } from 'c:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/add-cliente/add-cliente';
-import { ListcustomersPage } from 'c:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/listcustomers/listcustomers';
+import { AllcustomersPage } from '../allcustomers/allcustomers';
 /**
  * Generated class for the AdminPage page.
  *
@@ -17,7 +17,7 @@ import { ListcustomersPage } from 'c:/Users/acer/Desktop/GymSystem/GymSystem/src
 })
 export class AdminPage {
   addCliente = AddClientePage;
-  listCustomers = ListcustomersPage;
+  listCustomers = AllcustomersPage;
 
 
 

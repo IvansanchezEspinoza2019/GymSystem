@@ -5,11 +5,11 @@ webpackJsonp([0],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListcustomersPageModule", function() { return ListcustomersPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddClientePageModule", function() { return AddClientePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__listcustomers__ = __webpack_require__(289);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__listcustomers___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__listcustomers__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_cliente__ = __webpack_require__(291);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_cliente___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__add_cliente__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19,30 +19,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ListcustomersPageModule = /** @class */ (function () {
-    function ListcustomersPageModule() {
+var AddClientePageModule = /** @class */ (function () {
+    function AddClientePageModule() {
     }
-    ListcustomersPageModule = __decorate([
+    AddClientePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__listcustomers__["ListcustomersPage"],
+                __WEBPACK_IMPORTED_MODULE_2__add_cliente__["AddClientePage"],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__listcustomers__["ListcustomersPage"]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__add_cliente__["AddClientePage"]),
             ],
         })
-    ], ListcustomersPageModule);
-    return ListcustomersPageModule;
+    ], AddClientePageModule);
+    return AddClientePageModule;
 }());
 
-//# sourceMappingURL=listcustomers.module.js.map
+//# sourceMappingURL=add-cliente.module.js.map
 
 /***/ }),
 
-/***/ 289:
+/***/ 291:
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'C:\\Users\\acer\\Desktop\\GymSystem\\GymSystem\\src\\pages\\listcustomers\\listcustomers.js'");
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'C:\\Users\\acer\\Desktop\\GymSystem\\GymSystem\\src\\pages\\add-cliente\\add-cliente.js'");
 
 /***/ })
 

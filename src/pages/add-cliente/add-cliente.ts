@@ -21,8 +21,13 @@ export class AddClientePage {
   @ViewChild('myForm') formValues;
   myForm: FormGroup;
   x =0;  // variable para el usuario
+  dir={
+    'dir': ''
+  };
+
   constructor(public navCtrl: NavController, 
     private http: HttpClient,
+    private http2: HttpClient,
     public loadigCtrl: LoadingController,
     public alert:AlertController,
     public cl: FormBuilder ,
@@ -32,18 +37,19 @@ export class AddClientePage {
         gender: ['', [Validators.required]],
         apellidoP:  ['', [Validators.required]],
         apellidoM:  ['', [Validators.required]],
-        telefono:  ['', [Validators.required]],
+        telefono:  ['', [Validators.required,Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
         fechanac:  ['', [Validators.required]],
-        foto:  ['', [Validators.required]],
+        foto:  ['stock.png', [Validators.required]],
         calle:  ['', [Validators.required]],
         numero:  ['', [Validators.required]],
         numeroint:  [''],
         colonia:  ['', [Validators.required]],
-        cp:  ['', [Validators.required]],
+        cp:  ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
         password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(15)]],
         reppass: ['',[Validators.required]],
         user: ['']
       });
+      this.dir['path']='stock.png';
     }
 
     presentLoading() {
@@ -81,7 +87,7 @@ export class AddClientePage {
         apellidoM: '',
         telefono: '',
         fechanac: '',
-        foto: '',
+        foto: 'stock.png',
         calle: '',
         numero: '',
         numeroint: '',
@@ -154,6 +160,7 @@ export class AddClientePage {
               success.present();
               this.myForm.reset();
               this.functionsetId();
+              this.dir['path']='stock.png';
             }
               //success.present();
               //t//his.myForm.reset(true);
@@ -170,4 +177,49 @@ export class AddClientePage {
         console.log(obj['fechanac']);
       }
   }
+  
+  // funcion que verifica la existencia de la imagen en el servidor
+  ver(){
+    
+    if(this.dir['dir']!=""){  //verifica si se ha ingresado una direccion
+      let funcion2 = { 
+        'funcion': 'existImg',  
+      };
+      // alerta de error de archivo
+      let error_file = this.alert.create({
+        title: 'ERROR',
+        message: 'EL ARCHIVO NO SE ENCUANTRA EN LA CARPETA DEL SERVIDOR',
+        buttons: ['ACEPTAR']
+        
+      });
+      
+      let cadena: string= this.dir['dir'];
+      let resultado: string="";
+  
+      // obtiene solo el path de la url adquirida
+      for(var i=12; i<cadena.length;i++){
+        resultado= resultado.concat(cadena[i]); // resultado contiene el path de la imagen
+      }
+      
+      funcion2['path']=resultado;
+      console.log(funcion2);
+
+      //manda la informacion al servidor para verificar la existencia de la imagen
+      this.http2.post(this.apiUrl, JSON.stringify(funcion2)) //envia los datos
+      .subscribe(res=>{
+        console.log(res);
+        if(res=="no existe"){  // si la imagen no se encuentra
+          error_file.present();
+        }
+        else if(res=="existe"){ // si se encuentra
+          this.dir['path']=resultado;  // le asigna el valor del path
+          this.myForm.controls['foto'].setValue(resultado); // asigna al campo 'foto' del form el nuevo path
+        }
+         }
+      );
+  
+      console.log(JSON.stringify(this.dir));  // muestra la direccion
+    }
+    
+   }
 }

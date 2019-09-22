@@ -1,0 +1,46 @@
+<!--
+  Generated template for the AllcustomersPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>Clientes</ion-title>
+      </ion-navbar>
+      
+  <ion-searchbar placeholder="buscar" (ionInput)="getItems($event)">
+
+  </ion-searchbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-item>
+  
+        <ion-select [(ngModel)]="filtro.val">
+            <ion-option value="0">Todos</ion-option>
+            <ion-option value="1">Activos</ion-option>
+            <ion-option value="2">Inactivos</ion-option>
+         </ion-select>
+    </ion-item>
+    <button ion-button icon-start (click)="verFiltro()">
+        <ion-icon name="search"></ion-icon>
+        Filtrar
+    </button>
+    
+
+     <ion-item *ngFor="let cliente of items" (click)="actionSheet(cliente)">
+          <ion-thumbnail item-start>
+            <img src="http://gymdb/imgs/customers/{{ cliente.foto }}">
+          </ion-thumbnail>
+          <h2><b>{{ cliente.Nombre }}</b></h2>
+          <p><b>ID: </b>{{ cliente.id_cliente }}</p>
+          
+          <p align="right" class="bluetext" *ngIf="cliente.activo=='1'" color="secondary">ACTIVO</p>
+          <p align="right" class="redtext" *ngIf="cliente.activo=='0'" color="danger">INACTIVO</p>
+
+        </ion-item>
+  
+</ion-content>
