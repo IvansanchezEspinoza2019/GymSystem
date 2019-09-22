@@ -18,6 +18,21 @@ import { ModifclientePage } from '../modifcliente/modifcliente';
 })
 
 export class AllcustomersPage {
+  //constructor
+  constructor(public navCtrl: NavController,
+    private http:HttpClient,
+    public actionsheet: ActionSheetController,
+    public alert: AlertController,
+    public loading: LoadingController,
+    public navParams: NavParams) {
+      this.filtro.val="1";      //inicializa el filtro
+      this.filtro_aux="1";      //no servira para comprobar si hay un cambio de filtro
+      this.actualizar();    // funcion que obtiene los datos de la base de datos
+      
+    }
+
+
+
     infocliente = InfClientePage;  // pagina para detalles del cliente
     modif = ModifclientePage;   // pagina para modificar
     apiUrl= "http://gymdb/";      //direccion del servidor
@@ -31,8 +46,9 @@ export class AllcustomersPage {
 
     filtro_aux="";
     funcion={
-      "funcion": "getAllCustomers"
+      "funcion": "getAllCustomers"      //funcoin 
     }
+
     // obtiene los datos de las llaves foraneas, y el nombre por sepa
     getElements(cliente){
       this.datos_extra={
@@ -57,7 +73,6 @@ export class AllcustomersPage {
         console.log(error);
       }
       );
-  
     }
 
     // obtiene los registros de la base de datos
@@ -66,9 +81,8 @@ export class AllcustomersPage {
       .subscribe(res=>{
         //console.log(res);
         this.clientes = res['clientes'];
-        
-        
-        this.items=this.clientes;  // inicializa la lista auxiliar
+        //this.items=this.clientes;  // inicializa la lista auxiliar
+        this.initializeItems();   // lla,a a la funcion de inicializar, para que muestre segun el filtro
         
         console.log(JSON.stringify(this.clientes));
 
@@ -76,19 +90,7 @@ export class AllcustomersPage {
         console.log(JSON.stringify(error))
       });
     }
-
-
-    //constructor
-    constructor(public navCtrl: NavController,
-      private http:HttpClient,
-      public actionsheet: ActionSheetController,
-      public alert: AlertController,
-      public loading: LoadingController,
-      public navParams: NavParams) {
-        this.actualizar();    // funcion que obtiene los datos de la base de datos
-        this.filtro.val="0";      //inicializa el filtro
-        this.filtro_aux="0";      //no servira para comprobar si hay un cambio de filtro
-      }
+    
 
       //alertas
       success = this.alert.create({
@@ -103,7 +105,8 @@ export class AllcustomersPage {
         buttons: ['ACEPTAR']
         
       });
-      // barra de loading
+
+      // alerta de carga
     presentLoading() {
     const loader = this.loading.create({
       content: "Please wait...",
@@ -133,11 +136,10 @@ export class AllcustomersPage {
         console.log(JSON.stringify(JSON.stringify(cliente.Nombre)));
         return  cliente.activo=='1';
       });
-
       console.log(JSON.stringify(this.items));
     }
 
-    inicializarInactivos(){     //inicializa la lista auxiliar con los clientes que estan inaactivos
+    inicializarInactivos(){     //inicializa la lista auxiliar con los clientes que estan inactivos
       this.items = this.clientes.filter(cliente => {
         console.log(JSON.stringify(JSON.stringify(cliente.Nombre)));
         return  cliente.activo=='0';
@@ -154,13 +156,108 @@ export class AllcustomersPage {
       if(val!=''){
          val = ev.target.value.toUpperCase();
       }
-
       this.items = this.items.filter(cliente => {
           console.log(JSON.stringify(JSON.stringify(cliente.Nombre)));
           return  cliente.Nombre.includes(val);
         });
       
       console.log(JSON.stringify(this.clientes));
+    }
+
+    // funcion de modificar cliente
+    modificar(cliente){
+      cliente['colonia_str']=this.datos_extra['colonia'];
+      cliente['cp_str']=this.datos_extra['cp'];
+      cliente['user']=this.datos_extra['user'];
+      cliente['password']=this.datos_extra['password'];
+      cliente['nombre']=this.datos_extra['nombre'];
+      cliente['apellido_p']=this.datos_extra['apellido_p'];
+      cliente['apellido_m']=this.datos_extra['apellido_m'];
+      console.log(JSON.stringify(cliente));
+      
+      this.navCtrl.push(this.modif, {cliente : cliente}); // envia los datos para modificarse
+      //this.actualizar();
+    }
+
+    // funcion de eliminar cliente
+    eliminar(cliente){
+      let elim = this.alert.create({
+        title: 'ADVERTENCIA',
+        message: '¿SEGURO QUE DESEA ELIMINARLO?',
+        buttons: [
+          {
+            text: 'Cancelar',
+            role: 'cancel',
+            handler: data=>{
+              console.log("Operacion cancelada");
+            }
+          },
+          {
+            text: 'Aceptar',
+            role: 'aceptar',
+            handler: data=>{
+              console.log("eliminado");
+              cliente['funcion']="eliminarCliente";
+              this.http.post(this.apiUrl,JSON.stringify(cliente))
+              .subscribe(res =>{
+                console.log(res);
+                if(res=="exito"){
+                    //this.success.present();
+                    this.actualizar(); // actualiza los datos
+                }
+                else{
+                    this.op_cancel.present();
+                }
+              },error=>{
+                console.log(error);
+              });
+
+            }
+          }
+        ]
+      });
+      elim.present();
+    }
+
+    // activa un cliente que ha sido eliminado
+    activarCliente(cliente){
+      let act = this.alert.create({
+        title: 'ADVERTENCIA',
+        message: '¿ACTIVAR CLIENTE?',
+        buttons: [
+          {
+            text: 'Cancelar',
+            role: 'cancel',
+            handler: data=>{
+              console.log("Operacion cancelada");
+            }
+          },
+          {
+            text: 'Aceptar',
+            role: 'aceptar',      // si esta desactivado, lo activara
+            handler: data=>{
+              console.log("activado");
+              cliente['funcion']="activarCliente";
+              this.http.post(this.apiUrl,JSON.stringify(cliente))
+              .subscribe(res =>{
+                console.log(res);
+                if(res=="exito"){
+                    //this.success.present();
+                    this.actualizar();
+                    //this.presentLoading();
+                }
+                else{
+                    this.op_cancel.present();
+                }
+              },error=>{
+                console.log(error);
+              });
+
+            }
+          }
+        ]
+      });
+      act.present();
     }
 
     // muestra un menu para clientes activos
@@ -181,64 +278,15 @@ export class AllcustomersPage {
             role: 'detalles',
             handler: () => {
               console.log('modificar clicked');
-              cliente['colonia_str']=this.datos_extra['colonia'];
-              cliente['cp_str']=this.datos_extra['cp'];
-              cliente['user']=this.datos_extra['user'];
-              cliente['password']=this.datos_extra['password'];
-              cliente['nombre']=this.datos_extra['nombre'];
-              cliente['apellido_p']=this.datos_extra['apellido_p'];
-              cliente['apellido_m']=this.datos_extra['apellido_m'];
-              console.log(JSON.stringify(cliente));
-              
-              this.navCtrl.push(this.modif, {cliente : cliente}); // envia los datos para modificarse
+              this.modificar(cliente);    // llama a la funcion de modificar
             }
           },
           {
             text: 'Eliminar',
             role: 'eliminar',
             handler: () => {
-
               console.log('Eliminar clicked');
-              let elim = this.alert.create({
-                title: 'ADVERTENCIA',
-                message: '¿SEGURO QUE DESEA ELIMINARLO?',
-                buttons: [
-                  {
-                    text: 'Cancelar',
-                    role: 'cancel',
-                    handler: data=>{
-                      console.log("Operacion cancelada");
-                    }
-                  },
-                  {
-                    text: 'Aceptar',
-                    role: 'aceptar',
-                    handler: data=>{
-                      console.log("eliminado");
-                      cliente['funcion']="eliminarCliente";
-                      this.http.post(this.apiUrl,JSON.stringify(cliente))
-                      .subscribe(res =>{
-                        console.log(res);
-                        if(res=="exito"){
-                            //this.success.present();
-                            this.actualizar();
-                            this.filtro.val="0";      //inicializa el filtro
-                            this.filtro_aux="0";      //no servira para comprobar si hay un cambio de filtro
-
-                        }
-                        else{
-                            //this.op_cancel.present();
-                        }
-                      },error=>{
-                        console.log(error);
-                      });
-
-                    }
-                  }
-                ]
-              });
-              elim.present();
-
+              this.eliminar(cliente);
             }
           },{
             text: 'Cancel',
@@ -251,6 +299,7 @@ export class AllcustomersPage {
       });
      action.present();
     }
+
     // muestra un menu para clientes inactivos
     presentActionSheetInact(cliente) {
       const action = this.actionsheet.create({
@@ -269,47 +318,8 @@ export class AllcustomersPage {
             role: 'activar',
             handler: () => {
               console.log('activar clicked');
-              let act = this.alert.create({
-                title: 'ADVERTENCIA',
-                message: '¿ACTIVAR CLIENTE?',
-                buttons: [
-                  {
-                    text: 'Cancelar',
-                    role: 'cancel',
-                    handler: data=>{
-                      console.log("Operacion cancelada");
-                    }
-                  },
-                  {
-                    text: 'Aceptar',
-                    role: 'aceptar',      // si esta desactivado, lo activara
-                    handler: data=>{
-                      console.log("activado");
-                      cliente['funcion']="activarCliente";
-                      this.http.post(this.apiUrl,JSON.stringify(cliente))
-                      .subscribe(res =>{
-                        console.log(res);
-                        if(res=="exito"){
-                            //this.success.present();
-                            this.actualizar();
-                            this.filtro.val="0";      //inicializa el filtro
-                            this.filtro_aux="0";      //no servira para comprobar si hay un cambio de filtro
-
-
-                            //this.presentLoading();
-                        }
-                        else{
-                            //this.op_cancel.present();
-                        }
-                      },error=>{
-                        console.log(error);
-                      });
-
-                    }
-                  }
-                ]
-              });
-              act.present();
+              this.activarCliente(cliente);
+              
             }
           },
           {
@@ -323,6 +333,7 @@ export class AllcustomersPage {
       });
      action.present();
     }
+
     // menu desplegable
     actionSheet(cliente){
       console.log("action sheet");
@@ -342,7 +353,7 @@ export class AllcustomersPage {
       if(this.filtro.val==this.filtro_aux){
           console.log("NO hay cambio");
       }else{
-        this.presentLoading();
+          this.presentLoading();
           this.filtro_aux=this.filtro.val;
           console.log("SI hay cambio");
           this.initializeItems();     // funcion que inicializa la lista auxiliar segun el caso

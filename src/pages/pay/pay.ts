@@ -11,7 +11,7 @@ import { ActionSheetController } from 'ionic-angular';
 })
 export class PayPage {
 
-  apiUrl= "http://gymdb:8080/";
+  apiUrl= "http://gymdb/";
   clientes=[];
   items=[];
   paquetes:any;

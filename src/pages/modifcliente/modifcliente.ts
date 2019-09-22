@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { HttpClient }  from '@angular/common/http';
-
+import { AllcustomersPage } from '../allcustomers/allcustomers';
 
 /**
  * Generated class for the ModifclientePage page.
@@ -17,7 +17,7 @@ import { HttpClient }  from '@angular/common/http';
   templateUrl: 'modifcliente.html',
 })
 export class ModifclientePage {
-
+  all= AllcustomersPage;
   myForm: FormGroup;
   apiUrl="http://gymdb/";
   x =0;  // variable para el usuario
@@ -25,7 +25,7 @@ export class ModifclientePage {
     'dir': ''
   };
   cliente={};
-  comp={};
+  comprobar={};
 
   funcion={
     "funcion": "getNombre"
@@ -56,110 +56,121 @@ export class ModifclientePage {
         reppass: [this.cliente['password'],[Validators.required]],
         user: [this.cliente['user'],[Validators.required]]
       });
-      this.comp=JSON.stringify(this.myForm.value);
+      
       console.log("log");
       this.dir['path']=this.cliente['foto'];        // direccion path stock
+
+      this.comprobar={    ///  se utiliza para comprobar y ver si hubo cambio en los datos
+        "nombre": this.cliente['nombre'],
+        "gender": this.cliente['genero'],
+        "apellidoP":this.cliente['apellido_p'],
+        "apellidoM": this.cliente['apellido_m'],
+        "telefono": this.cliente['telefono'],
+        "fechanac": this.cliente['fecha_nacimiento'],
+        "foto": this.cliente['foto'],
+        "calle": this.cliente['calle'],
+        "numero": this.cliente['numero_calle'],
+        "numeroint": this.cliente['numero_interior'],
+        "colonia": this.cliente['colonia_str'],
+        "cp":this.cliente['cp_str'],
+        "password": this.cliente['password'],
+        "reppass": this.cliente['password'],
+        "user": this.cliente['user']
+      }
     }
     
-  
+    
   saveData(){
-
-    /*
-      Falta terminar
-    */
-    let comprobar={    ///  se utiliza para comprobar y ver si hubo cambio en los datos
-      "nombre": this.cliente['nombre'],
-      "gender": this.cliente['genero'],
-      "apellidoP":this.cliente['apellido_p'],
-      "apellidoM": this.cliente['apellido_m'],
-      "telefono": this.cliente['telefono'],
-      "fechanac": this.cliente['fecha_nacimiento'],
-      "foto": this.cliente['foto'],
-      "calle": this.cliente['calle'],
-      "numero": this.cliente['numero_calle'],
-      "numeroint": this.cliente['numero_interior'],
-      "colonia": this.cliente['colonia_str'],
-      "cp":this.cliente['cp_str'],
-      "password": this.cliente['password'],
-      "reppass": this.cliente['password'],
-      "user": this.cliente['user']
-
-    }
-    let repetido = this.alert.create({
+    let form_invalido = this.alert.create({
       title: 'OPERACION CANCELADA',
-      message: 'lOS DATOS SON IGUALES!',
+      message: 'YA SE ENVIARON LOS DATOS MODIFICADOS!',
       buttons: ['ACEPTAR']
       
     });
 
-    if(JSON.stringify(comprobar) != JSON.stringify(this.myForm.value)){
-      console.log("son desiguales");
-      //alertas
-    let miAlerta = this.alert.create({
-      title: 'OPERACION CANCELADA',
-      message: 'LA CONTRASEÑA NO COINCIDE!',
-      buttons: ['ACEPTAR']
-      
-    });
-    let idRep = this.alert.create({
-      title: 'OPERACION CANCELADA',
-      message: 'YA EXISTE ESE USUARIO!',    
-      buttons: ['ACEPTAR']
-      
-    });
-    let success = this.alert.create({
-      title: 'OPERACION EXITOSA',
-      message: 'AGREGADO CORRECTAMENTE',
-      buttons: ['ACEPTAR']
-      
-    });
-    
-    //alert(JSON.stringify(this.myForm.value));
-
-      var obj = JSON.parse(JSON.stringify(this.myForm.value));
-      obj['funcion']='actualizarCliente';
-     // this.cleanForm();
-      
-      
-      for (var i in obj) {
-        if(i=="password" || i=="reppass" || i=="funcion" || i=="foto" || i=="user"){
-          
-        }
-        else{
-          obj[i]=obj[i].toUpperCase(); // convierte los datos a mayúscula
-          
-        }
-      }
-      if(obj['password'] == obj['reppass']){  //verifica las contraseñas
-        
-        this.http.post(this.apiUrl, JSON.stringify(obj)) //envia los datos
-        .subscribe(res=>{
-          if(res=="id_rep"){ //si el usuario es repetido muestra  un mensaje de error
-              idRep.present();
-          }
-          else if(res=="exito"){ //si la operacion fue exitosa
-            if(this.myForm.valid){
-              console.log("form enviado");
-              success.present();
-              this.myForm.reset();
-              this.dir['path']='stock.png';
-            }
-              //success.present();
-              //t//his.myForm.reset(true);
-             // this.myForm.controls.reset;
-              //this.functionsetId();  
-          }
-         console.log(res);
-           }
-        );
-      }
-      else{ //si las contraseñas no coinciden aborta la operacion
-        console.log(JSON.stringify(obj));
-        miAlerta.present();
-      }
+    if(this.cliente['id_cliente']==''){
+      form_invalido.present();
     }
     else{
-      repetido.present();
+      let repetido = this.alert.create({
+        title: 'OPERACION CANCELADA',
+        message: 'lOS DATOS SON IGUALES!',
+        buttons: ['ACEPTAR']
+        
+      });
+  
+  
+      if(JSON.stringify(this.comprobar) != JSON.stringify(this.myForm.value)){  // compara si se hizo algun cambio
+        console.log("son desiguales");
+        //alertas
+      let miAlerta = this.alert.create({
+        title: 'OPERACION CANCELADA',
+        message: 'LA CONTRASEÑA NO COINCIDE!',
+        buttons: ['ACEPTAR']
+        
+      });
+      let idRep = this.alert.create({
+        title: 'OPERACION CANCELADA',
+        message: 'YA EXISTE ESE USUARIO!',    
+        buttons: ['ACEPTAR']
+        
+      });
+      let success = this.alert.create({
+        title: 'OPERACION EXITOSA',
+        message: 'AGREGADO CORRECTAMENTE',
+        buttons: ['ACEPTAR']
+        
+      });
+      
+      //alert(JSON.stringify(this.myForm.value));
+  
+        var obj = JSON.parse(JSON.stringify(this.myForm.value));
+        obj['funcion']='actualizarCliente';
+        obj['id_access']=this.cliente['id_access'];
+        obj['id_cliente']=this.cliente['id_cliente'];
+       // this.cleanForm();
+        
+        
+        for (var i in obj) {
+          if(i=="password" || i=="reppass" || i=="funcion" || i=="foto" || i=="user" || i=="id_access"){
+            
+          }
+          else{
+            obj[i]=obj[i].toUpperCase(); // convierte los datos a mayúscula
+            
+          }
+        }
+        if(obj['password'] == obj['reppass']){  //verifica las contraseñas
+          console.log(JSON.stringify(obj));
+          this.http.post(this.apiUrl, JSON.stringify(obj)) //envia los datos
+          .subscribe(res=>{
+            if(res=="id_rep"){ //si el usuario es repetido muestra  un mensaje de error
+                idRep.present();
+            }
+            else if(res=="exito"){ //si la operacion fue exitosa
+              if(this.myForm.valid){
+                console.log("form enviado");
+                success.present();
+                this.myForm.reset();
+                this.dir['path']='stock.png';
+                this.cliente['id']='';
+                this.navCtrl.push(this.all);
+              }
+            }
+           console.log(res);
+             }, error=>{
+               console.log(error);
+             }
+          );
+        }
+        else{ //si las contraseñas no coinciden aborta la operacion
+          console.log(JSON.stringify(obj));
+          miAlerta.present();
+        }
+      }
+      else{
+        repetido.present();
+      }
     }
     
   }

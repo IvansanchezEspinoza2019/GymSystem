@@ -12,21 +12,18 @@ import { CustomerPage } from '../pages/customer/customer';
 
 import { EmployeePage } from '../pages/employee/employee';
 import { AdminPage } from '../pages/admin/admin';
-<<<<<<< HEAD
 import { AddClientePage } from 'c:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/add-cliente/add-cliente';
 import { InfClientePage } from '../pages/inf-cliente/inf-cliente';
 import { AllcustomersPage } from '../pages/allcustomers/allcustomers';
 import { ModifclientePage } from '../pages/modifcliente/modifcliente';
 
 
-=======
-import { AddClientePage } from '../pages/add-cliente/add-cliente';
-import { ListcustomersPage } from '../pages/listcustomers/listcustomers';
-import { InfoClientePage } from '../pages/info-cliente/info-cliente';
+//import { AddClientePage } from '../pages/add-cliente/add-cliente';
+//import { ListcustomersPage } from '../pages/listcustomers/listcustomers';
+//import { InfoClientePage } from '../pages/info-cliente/info-cliente';
 import { PayPage } from '../pages/pay/pay';
 import { ListPayPage } from '../pages/list-pay/list-pay';
 import { RecibePayPage } from '../pages/recibe-pay/recibe-pay';
->>>>>>> 5f62258fca5f8c7dcb9f5d968b5ebc9f58e95091
 
 
 
@@ -39,18 +36,12 @@ import { RecibePayPage } from '../pages/recibe-pay/recibe-pay';
     AdminPage,
     EmployeePage,
     AddClientePage,
-<<<<<<< HEAD
     InfClientePage,
     AllcustomersPage,
-    ModifclientePage
-=======
-    InfoClientePage,
-    ListcustomersPage,
+    ModifclientePage,
     PayPage,
     ListPayPage,
-    RecibePayPage,
-    
->>>>>>> 5f62258fca5f8c7dcb9f5d968b5ebc9f58e95091
+    RecibePayPage
   ],
   
   imports: [
@@ -67,18 +58,12 @@ import { RecibePayPage } from '../pages/recibe-pay/recibe-pay';
     AdminPage,
     EmployeePage,
     AddClientePage,
-<<<<<<< HEAD
     InfClientePage,
     AllcustomersPage,
-    ModifclientePage
-=======
-    InfoClientePage,
-    ListcustomersPage,
+    ModifclientePage,
     PayPage,
     ListPayPage,
     RecibePayPage
-
->>>>>>> 5f62258fca5f8c7dcb9f5d968b5ebc9f58e95091
   ],
   providers: [
     StatusBar,
