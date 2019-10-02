@@ -3,7 +3,6 @@ import { IonicPage, NavController, LoadingController , NavParams } from 'ionic-a
 import { AlertController } from 'ionic-angular';
 import { HttpClient }  from '@angular/common/http';
 import { AdminPage } from '../admin/admin';
-import { EmployeePage } from '../employee/employee';
 import { CustomerPage } from '../customer/customer';
 
 
@@ -16,7 +15,6 @@ import { CustomerPage } from '../customer/customer';
 
 export class LoginPage {
   admin = AdminPage;
-  employee = EmployeePage;
   custumer = CustomerPage;
   
   constructor(public navCtrl: NavController,
@@ -82,8 +80,7 @@ export class LoginPage {
           }
           else if(res['tipo']=="2"){
             console.log("eres empleado");
-            this.presentLoading();
-            this.navCtrl.push(this.employee);
+            
           }
           else if(res['tipo']=="3"){
             console.log("eres administrativo");

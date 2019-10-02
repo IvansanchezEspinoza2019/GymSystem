@@ -1,15 +1,41 @@
-<!--
-  Generated template for the RecibePayPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-  <ion-navbar>
-    <ion-title>Recibo de Pago</ion-title>
+  <ion-navbar color="secondary">
+    <ion-title>Recibo de pago</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <ion-label color="primary" align="center"><b>GYM SYSTEM</b></ion-label>    <br>  
+    </ion-card-header>
+    <ion-card-content>
+        <div text-right> <strong >RECIBO: </strong> {{pago.id_pago}} </div> <br>
+        <div text-right> <strong >FECHA: </strong> {{pago.fecha_pago}} </div>
+        <br>
+        <ion-label color="primary" align="left">CLIENTE</ion-label>  
+        <div text-left> <strong >ID: </strong> {{pago.id_cliente}} </div><br>
+        <div text-left> <strong >NOMBRE: </strong> {{info_cliente.nombre }} {{info_cliente.apellido_p }} 
+          {{info_cliente.apellido_m }}</div><br>
+          <div text-left> <strong >TELEFONO: </strong> {{info_cliente.telefono}}</div>
+        <br>
+        <div text-left> <strong >CALLE: </strong> {{info_cliente.calle}}</div><br>
+        <div text-left> <strong >NUMERO: </strong> {{info_cliente.numero_calle}}</div><br>
+        <div text-left> <strong >NUMERO INTERIOR: </strong> {{info_cliente.numero_interior}}</div><br>
+        <div text-left> <strong >COLONIA: </strong> {{cuenta.colonia}}</div><br>
+        <div text-left> <strong >CP: </strong> {{cuenta.cp}}</div><br>
+        <br>
+        <ion-label color="primary" align="left">PAGO</ion-label> 
+        <div text-left> <strong >CONCEPTO: </strong> {{info_paquete.nombre}} </div><br>
+        <div text-left> <strong >DESCRIPCION: </strong> {{info_paquete.descripcion}} </div>
+        <ion-label color="danger" align="left"> <strong >VENCIMIENTO: </strong> {{pago.fecha_vencimiento}} </ion-label><br>
+        <br><br>
+        <ion-label color="primary" align="right">RESUMEN</ion-label> 
+        <div text-right> <strong >TOTAL A PAGAR: </strong> ${{info_paquete.precio}}.00 </div>
+        <ion-label color="danger" align="right">{{nota.info}}</ion-label> 
+        <div text-right> <strong >MONTO PAGADO: </strong> ${{pago.monto}}.00 </div><br>
+        
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

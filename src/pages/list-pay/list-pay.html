@@ -1,20 +1,22 @@
 <ion-header>
   <ion-navbar color="secondary">
-    <ion-title>Buscar Pago</ion-title>
+    <ion-title>Buscar pago</ion-title>
   </ion-navbar>
-  <ion-searchbar placeholder="Buscar pago por id de usuario" (ionInput)="getItems($event)">
+  <ion-searchbar placeholder="Buscar pago por id de pago" (ionInput)="getItems($event)">
 
   </ion-searchbar>
 </ion-header>
 
 <ion-content padding>
 
-<ion-card *ngFor="let pagos of items" (click)="actionSheet()">
-  <ion-card-header><b>{{ pagos.fecha_pago }}</b>
+<ion-card *ngFor="let pagos of items" (click)="actionSheet(pagos)">
+  <ion-card-header color="primary"> 
+    <b>{{ pagos.fecha_pago }}</b>
   </ion-card-header>
         
   <ion-card-content>
-      {{pagos.id_cliente }}
+      ID {{pagos.id_pago}} <br>
+      Cliente: {{pagos.id_cliente }} <br>
   </ion-card-content>
 </ion-card>
   

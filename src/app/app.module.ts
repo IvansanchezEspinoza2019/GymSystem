@@ -10,7 +10,6 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { CustomerPage } from '../pages/customer/customer';
 
-import { EmployeePage } from '../pages/employee/employee';
 import { AdminPage } from '../pages/admin/admin';
 import { AddClientePage } from 'c:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/add-cliente/add-cliente';
 import { InfClientePage } from '../pages/inf-cliente/inf-cliente';
@@ -24,6 +23,15 @@ import { ModifclientePage } from '../pages/modifcliente/modifcliente';
 import { PayPage } from '../pages/pay/pay';
 import { ListPayPage } from '../pages/list-pay/list-pay';
 import { RecibePayPage } from '../pages/recibe-pay/recibe-pay';
+import { AddAparatosPage } from '../pages/add-aparatos/add-aparatos';
+import { AllaparatosPage } from '../pages/allaparatos/allaparatos';
+import { ModifaparatoPage } from '../pages/modifaparato/modifaparato';
+import { AddEmpleadoPage } from '../pages/add-empleado/add-empleado';
+import { PackDetailsPage } from '../pages/pack-details/pack-details';
+import { PackPage } from '../pages/pack/pack';
+import { ListPackPage } from '../pages/list-pack/list-pack';
+import { ModifyPackPage } from '../pages/modify-pack/modify-pack';
+import { ModifyPayPage } from '../pages/modify-pay/modify-pay';
 
 
 
@@ -34,14 +42,24 @@ import { RecibePayPage } from '../pages/recibe-pay/recibe-pay';
     LoginPage,
     CustomerPage,
     AdminPage,
-    EmployeePage,
     AddClientePage,
     InfClientePage,
     AllcustomersPage,
     ModifclientePage,
     PayPage,
     ListPayPage,
-    RecibePayPage
+    RecibePayPage,
+    AddAparatosPage,
+    AllaparatosPage,
+    ModifaparatoPage,
+    AddEmpleadoPage,
+    PackDetailsPage,
+    PackPage,
+    ListPackPage,
+    ModifyPackPage,
+    ModifyPayPage
+    
+
   ],
   
   imports: [
@@ -56,14 +74,22 @@ import { RecibePayPage } from '../pages/recibe-pay/recibe-pay';
     LoginPage,
     CustomerPage,
     AdminPage,
-    EmployeePage,
     AddClientePage,
     InfClientePage,
     AllcustomersPage,
     ModifclientePage,
     PayPage,
     ListPayPage,
-    RecibePayPage
+    RecibePayPage,
+    AddAparatosPage,
+    AllaparatosPage,
+    ModifaparatoPage,
+    AddEmpleadoPage,
+    PackDetailsPage,
+    PackPage,
+    ListPackPage,
+    ModifyPackPage,
+    ModifyPayPage
   ],
   providers: [
     StatusBar,

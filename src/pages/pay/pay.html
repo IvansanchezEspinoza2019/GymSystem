@@ -49,6 +49,7 @@
               </ion-item>
               <ion-item *ngIf="myForm.get('id_usuario').errors && myForm.get('id_usuario').dirty">
                 <p color="danger" ion-text *ngIf="myForm.get('id_usuario').hasError('required')">Field is required</p>
+                <p color="danger" ion-text *ngIf="myForm.get('id_usuario').hasError('pattern')">Just Numbers</p>
               </ion-item>
 
               <ion-item>
@@ -77,6 +78,7 @@
               </ion-item>
               <ion-item *ngIf="myForm.get('monto').errors && myForm.get('monto').dirty">
                   <p color="danger" ion-text *ngIf="myForm.get('monto').hasError('required')">Field is required</p>
+                  <p color="danger" ion-text *ngIf="myForm.get('monto').hasError('pattern')">Just Numbers</p>
               </ion-item>
 
           </ion-list>

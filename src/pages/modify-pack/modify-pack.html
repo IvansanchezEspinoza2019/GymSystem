@@ -1,0 +1,63 @@
+
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>Modificar</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-card>
+    
+        <div text-center>
+          <br>
+          <strong>EDITAR PAQUETE</strong>
+        </div>
+    
+        <form [formGroup]="myForm"  (ngSubmit)="edit()" novalidate>
+          <ion-list>
+    
+            <ion-item>
+              <ion-label stack color = "primary">Nombre: </ion-label>
+              <ion-input id="nombre" name="nombre" formControlName="nombre" type="text"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="myForm.get('nombre').errors && myForm.get('nombre').dirty">
+              <p color="danger" ion-text *ngIf="myForm.get('nombre').hasError('required')">Field is required</p>
+            </ion-item>
+    
+            <ion-item>
+              <ion-label stack color = "primary">Descripcion: </ion-label>
+              <ion-input id="descripcion" name="descripcion" formControlName="descripcion" type="text"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="myForm.get('descripcion').errors && myForm.get('descripcion').dirty">
+              <p color="danger" ion-text *ngIf="myForm.get('descripcion').hasError('required')">Field is required</p>
+            </ion-item>
+    
+            <ion-item>
+              <ion-label stack color = "primary">Precio: </ion-label>
+              <ion-input id="precio" name="precio" formControlName="precio" type="text"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="myForm.get('precio').errors && myForm.get('precio').dirty">
+              <p color="danger" ion-text *ngIf="myForm.get('precio').hasError('required')">Field is required</p>
+              <p color="danger" ion-text *ngIf="myForm.get('precio').hasError('pattern')">Just Numbers</p>
+            </ion-item>
+    
+            <ion-item>
+              <ion-label stack color = "primary">Duracion: </ion-label>
+              <ion-input id="duracion" name="duracion" formControlName="duracion" type="text"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="myForm.get('duracion').errors && myForm.get('duracion').dirty">
+              <p color="danger" ion-text *ngIf="myForm.get('duracion').hasError('required')">Field is required</p>
+              <p color="danger" ion-text *ngIf="myForm.get('duracion').hasError('pattern')">Just Numbers</p>
+            </ion-item>
+          </ion-list>
+    
+          <div padding text-center>
+          <button ion-button outline type="submit" [disabled]="myForm.invalid">Agregar</button>
+          </div>
+    
+        </form>
+        
+      </ion-card>
+
+</ion-content>

@@ -61,7 +61,7 @@ export class AddClientePage {
     }
     
 
-  apiUrl = "http://gymdb:8080/";
+  apiUrl = "http://gymdb:/";
   
 
   functionsetId():void{
@@ -100,6 +100,8 @@ export class AddClientePage {
       //document.getElementsByTagName('input')[12].disabled=true;
       //document.getElementsByTagName('input')[12].setAttribute('value',this.x.toString());
       //console.log("fin de documento")
+    }, error=>{
+      console.log(error);
     });
   }
 

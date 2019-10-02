@@ -1,0 +1,92 @@
+<ion-header>
+
+  <ion-navbar color= "secondary">
+    <ion-title>Modificar</ion-title>
+  </ion-navbar>
+
+  <ion-searchbar placeholder="Ingresa nombre de usuario para consultar id" (ionInput)="getItems($event)">
+  </ion-searchbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <div text-center>
+    <button ion-button outline (click)="cleanItems()">
+      <ion-icon name="arrow-up"></ion-icon>
+    </button>
+  </div>
+
+  <ion-card *ngFor="let cliente of items" color="primary">
+    <ion-card-content>
+      <b>{{ cliente.Nombre }}</b> <br> {{ cliente.id_cliente }}
+    </ion-card-content>
+  
+  </ion-card>
+
+  <ion-card *ngFor="let pack of paquetes" (click)="actionSheet()">
+    <ion-card-header><b>{{ pack.nombre }}</b>
+    </ion-card-header>
+          
+    <ion-card-content color="primary">
+      ${{pack.precio}}.00 <br>
+      <ion-label stack color="dark"> <strong>Clave: </strong>{{pack.id}}  </ion-label>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+
+    <div text-center>
+      <br>
+      <strong >FICHA DE PAGO</strong>
+    </div>
+
+      <form [formGroup]="myForm"  (ngSubmit)="pagar()" novalidate>
+          <ion-list>
+
+              <ion-item>
+                <ion-label stack color = "primary">Username: </ion-label>
+                <ion-input id="id_usuario" name="id_usuario" formControlName="id_usuario" type="text"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="myForm.get('id_usuario').errors && myForm.get('id_usuario').dirty">
+                <p color="danger" ion-text *ngIf="myForm.get('id_usuario').hasError('required')">Field is required</p>
+              </ion-item>
+
+              <ion-item>
+                <ion-label stack color = "primary">Clave de paquete: </ion-label>
+                <ion-input id="paquete" name="paquete" formControlName="paquete" type="text"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="myForm.get('paquete').errors && myForm.get('paquete').dirty">
+                <p color="danger" ion-text *ngIf="myForm.get('paquete').hasError('required')">Field is required</p>
+              </ion-item>
+
+              <ion-item>
+                <ion-label stack color = "primary">Modo de Pago </ion-label>
+                <ion-select id="modo" name="modo" formControlName="modo" type="modo">
+                  <ion-option value="EFECTIVO">Efectivo</ion-option>
+                  <ion-option value="DEBITO">Debito</ion-option>
+                  <ion-option value="CREDITO">Credito</ion-option>
+                </ion-select>
+              </ion-item>
+              <ion-item *ngIf="myForm.get('modo').errors && myForm.get('modo').dirty">
+                <p color="danger" ion-text *ngIf="myForm.get('modo').hasError('required')">Field is required</p>
+              </ion-item>
+
+              <ion-item>
+                  <ion-label stack color = "primary">Monto: </ion-label>
+                  <ion-input id="monto" name="monto" formControlName="monto" type="text"></ion-input>
+              </ion-item>
+              <ion-item *ngIf="myForm.get('monto').errors && myForm.get('monto').dirty">
+                  <p color="danger" ion-text *ngIf="myForm.get('monto').hasError('required')">Field is required</p>
+              </ion-item>
+
+          </ion-list>
+
+          <div padding text-center>
+            <button ion-button outline type="submit" [disabled]="myForm.invalid">MODIFICAR</button>
+          </div>
+
+      </form>
+
+  </ion-card>
+</ion-content>

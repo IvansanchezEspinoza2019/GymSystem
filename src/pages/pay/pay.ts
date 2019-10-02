@@ -19,7 +19,7 @@ export class PayPage {
   funcion={
     "funcion": "getAllCustomers"
   }
-
+  
   @ViewChild('myForm') formValues;
   myForm: FormGroup;
 
@@ -43,10 +43,10 @@ export class PayPage {
       });
 
       this.myForm = this.cl.group({
-        id_usuario: ['', [Validators.required]],
+        id_usuario: ['', [Validators.required, , Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
         paquete: ['', [Validators.required]],
         modo:  ['', [Validators.required]],
-        monto:  ['', [Validators.required]]
+        monto:  ['', [Validators.required, , Validators.pattern(/^-?(0|[1-9]\d*)?$/)]]
       });
 
     }
@@ -101,6 +101,12 @@ export class PayPage {
       buttons: ['Ok']     
     });
 
+    let paqueteInactivoAlerta = this.alert.create({
+      title: 'Paquete no disponible',
+      message: 'Verifica situacion del paquete',
+      buttons: ['Ok']     
+    });
+
     let clienteAlerta = this.alert.create({
       title: 'Cliente invalido',
       message: 'Escribe id de un cliente valido',
@@ -116,12 +122,25 @@ export class PayPage {
       var obj = JSON.parse(JSON.stringify(this.myForm.value));
       obj['funcion']='addPago';
 
+      for (var i in obj) {
+        if(i=="funcion"){
+          
+        }
+        else{
+          obj[i]=obj[i].toUpperCase(); 
+        }
+      }
+
       console.log(obj);
         
       this.http.post(this.apiUrl, JSON.stringify(obj)) 
       .subscribe(res=>{
         if(res=="Paquete Invalido"){ 
           paqueteAlerta.present();
+        }
+
+        if(res=="Paquete Inactivo"){ 
+          paqueteInactivoAlerta.present();
         }
 
         if(res=="Cliente Invalido"){ 

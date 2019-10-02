@@ -60,6 +60,7 @@
           Clientes <br>
           <ion-icon name="contact" item-start></ion-icon>
         </ion-card-header>
+        
 
         <ion-list>
           <button ion-item (click)="agregarCLiente()">
@@ -94,10 +95,56 @@
   </ion-card>
 
   <ion-card color=primary>
+    <ion-card-header text-center>
+      Paquetes <br>
+      <ion-icon name="keypad"></ion-icon>
+    </ion-card-header>
+
+    <ion-list>
+      <button ion-item (click)="pack()">
+        <ion-icon name="add" item-start></ion-icon>
+        Nuevo
+      </button>
+
+      <button ion-item (click)= "listPack()">
+      <ion-icon name="list" item-start></ion-icon>
+           Lista
+      </button>
+    
+    </ion-list>
+  </ion-card>
+
+  <ion-card color=primary>
     <ion-card-content text-center>
       Inventario<br>
       <ion-icon name="attach"></ion-icon>
     </ion-card-content>
+    <ion-list>
+      <button ion-item (click)="agregarAparato()">
+        <ion-icon name="add" item-start></ion-icon>
+          Nuevo
+      </button>
+      <button ion-item (click)= "allAparatos()">
+        <ion-icon name="list" item-start></ion-icon>
+         Lista
+      </button>
+      </ion-list>
   </ion-card>
+  <ion-card color=danger>
+      <ion-card-content text-center>
+        Empleados<br>
+        <ion-icon name="clipboard"></ion-icon>
+      </ion-card-content>
+      <ion-list>
+          <button ion-item (click)="agregarEmpleado()">
+            <ion-icon name="add" item-start></ion-icon>
+              Nuevo
+          </button>
+          <button ion-item (click)= "allAparatos()">
+            <ion-icon name="list" item-start></ion-icon>
+             Lista
+          </button>
+          </ion-list>
+    </ion-card>
 
 </ion-content> 

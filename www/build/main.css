@@ -30565,6 +30565,18 @@ page-add-cliente img {
   margin: auto;
 }
 
+page-allaparatos .redtext {
+  color: darkred;
+}
+
+page-allaparatos .bluetext {
+  color: blue;
+}
+
+page-allaparatos .greentext {
+  color: green;
+}
+
 page-allcustomers .redtext {
   color: darkred;
 }
