@@ -21,22 +21,25 @@ export class AddEmpleadoPage {
   hideCuenta=true;
 
 
-  myForm: FormGroup;
+  myForm: FormGroup;    // instancia de formgroup
   
-  dir={           
+  dir={       // guarda la direccion de la imagen de perfil     
     'dir': ''
   };
   puestos=[]        // ccontiene los puestos disponibles
-  dato={    
+
+  dato={        // es la opcion 'OTRO' en case de que no elija las otras opciones
     'id': '0',
     'puesto': 'OTRO'
   };
-  cuenta={
+
+  cuenta={      // controla si el empleado que se va a agreagar tendrá permisos de administrador   '1'=SI, '0'=NO
     'val': '0'
   }
 
-  apiUrl = "http://gymdb:/";   // servidor
+  apiUrl = "http://gymdb:/";   // servidor local
 
+  // constructor
   constructor(public navCtrl: NavController,  
     private http: HttpClient,
     public loadigCtrl: LoadingController,
@@ -44,12 +47,12 @@ export class AddEmpleadoPage {
     public cl: FormBuilder ,
     public navParams: NavParams) {
 
-      this.myForm = this.cl.group({     // inicializa el form
+      this.myForm = this.cl.group({     // inicializa el formulario
         nombre: ['', [Validators.required]],
         gender: ['', [Validators.required]],
         apellidoP:  ['', [Validators.required]],
         apellidoM:  ['', [Validators.required]],
-        telefono:  ['', [Validators.required,Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+        telefono:  ['', [Validators.required,Validators.pattern(/^-?(0|[1-9]\d*)?$/)]], // expresion regular
         puesto: ['',[Validators.required]],
         otro: [''],
         sueldo: [''],
@@ -59,29 +62,36 @@ export class AddEmpleadoPage {
         numero:  ['', [Validators.required]],
         numeroint:  [''],
         colonia:  ['', [Validators.required]],
-        cp:  ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+        cp:  ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]], // expresion regular
         admin: ['0'],
-        user: ['',[Validators.pattern(/^[a-z0-9_-]{4,15}$/)]],
-        password: ['', [Validators.pattern(/^[a-z0-9_-]{8,15}$/)]],
+        user: ['',[Validators.required,Validators.minLength(4),Validators.maxLength(15)]], // expresion regular
+        password: ['', [Validators.required,Validators.minLength(7),Validators.maxLength(15)]], // expresion regular
         reppass: ['',[Validators.required]],
         
       });
       this.dir['path']='stock.png';  // path por default de las imagenes
-      this.obtenerPuestos();  // lama a la funcio de obtener puestos
+      this.obtenerPuestos();  // llama a la funcio de obtener puestos
+      this.setDefaultValue('111111111');  // pone un valor aleatorio a la cuenta, podría ser cualquiera 
 
+  }
+
+  // pone un valor a la cuenta del empleado, mas que nada para que cumpla con el requisito minimo de caracteres
+  setDefaultValue(val: string){
+    this.myForm.controls['user'].setValue(val);     // pone un valor por defecto
+      this.myForm.controls['password'].setValue(val);
+      this.myForm.controls['reppass'].setValue(val);
   }
 
   // funcion que valida si hay o no hay puestos 
   validar(){
     if(this.puestos.length>1){
-     // console.log(this.datos.length);
         this.hidePuesto=false;
         this.hideOtro=true;
      }
      else{
        this.hideOtro=false;
        this.hidePuesto=true;
-       this.myForm.controls['puesto'].setValue('0');
+       this.myForm.controls['puesto'].setValue('0');  // la opcion '0'= OTRO, ya que no hay mas opciones
      }
     }
 
@@ -119,7 +129,7 @@ export class AddEmpleadoPage {
     loader.present();
   }
 
-  // funcion que controla las opciones del puesto
+  // funcion que controla las opciones del puesto, se le envia un evento
   onChange(ev: any){
     console.log(ev);
     if(ev==0){  // si se eligio la opcion 'OTRO'
@@ -130,45 +140,42 @@ export class AddEmpleadoPage {
     }
   }
 
-  // controla el ion-list segun si el empleado va a ser administrador o no, si es administrador necesitará crearse una cuenta de usuario admin
+  // controla el ion-list segun si el empleado va a ser administrador o no, 
+  //si es administrador necesitará crearse una cuenta de usuario administrador, recibe un evento de parametro
   cuentaChange(ev: any){
     console.log(ev);
     if(ev==1){
-      this.myForm.controls['user'].setValue('');    // inicializa la cuenta
-      this.myForm.controls['password'].setValue('');
-      this.myForm.controls['reppass'].setValue('');
-      this.cuenta['val']='1';
+      this.setDefaultValue(''); // llama a la funcion que inicializa la cuenta 
+      this.cuenta['val']='1'; // 'SI'= si es administrador
     }
     else{
-      this.cuenta['val']='0';
-      this.myForm.controls['user'].setValue('11111');     // pone un valor por defecto
-      this.myForm.controls['password'].setValue('111111111');
-      this.myForm.controls['reppass'].setValue('1111111111');
+      this.cuenta['val']='0'; // '0'=NO  es admministrador
+      this.setDefaultValue("111111111"); // llama a la funcion que inicializa la cuenta 
     }
   }
 
   // funcion que verifica varios campos antes de enviar el formulario
-  savaData(){
+  saveData(){
     let miAlerta = this.alert.create({
       title: 'OPERACION CANCELADA',
-      message: 'LA INFORMACION DE PUESTO DETRABAJO ESTA INCOMPLETA!',
+      message: 'LA INFORMACION DE PUESTO ESTA INCOMPLETA!',
       buttons: ['ACEPTAR']
       
     });
-    if(this.hideOtro==false){   // si agreaga una nueva categoria
-        if(this.myForm.controls['otro'].value=='' || this.myForm.controls['sueldo'].value==''){  // si ese campo esta vacio
+    if(this.hideOtro==false){   // si agrega un puesto nuevo
+        if(this.myForm.controls['otro'].value=='' || this.myForm.controls['sueldo'].value==''){  // si ese campo esta vacio muestra una alerta
           miAlerta.present();
-          return;
+          return;  // retorna
         }
         else{
           this.enviarForm();  //envia formulario
-          return;
+          return; //retorna
         }
       }
       this.enviarForm(); // envia formulario
   }
 
-// evia el formulario
+// envia el formulario
 enviarForm(){
   let miAlerta = this.alert.create({
     title: 'OPERACION CANCELADA',
@@ -189,15 +196,14 @@ enviarForm(){
     
   });
   
-  //alert(JSON.stringify(this.myForm.value));
 
-    var obj = JSON.parse(JSON.stringify(this.myForm.value));
-    obj['funcion']='LALAIO';
-   // this.cleanForm();
+    var obj = JSON.parse(JSON.stringify(this.myForm.value));   // obtiene los datos del form
+    obj['funcion']='addEmpleado';          
+   
     
     
     for (var i in obj) {
-      if(i=="password" || i=="reppass" || i=="funcion" || i=="foto" || i=="user"){
+      if(i=="password" || i=="reppass" || i=="funcion" || i=="foto" || i=="user" || i=="sueldo"){
         
       }
       else{
@@ -205,11 +211,13 @@ enviarForm(){
         
       }
     }
+
     if(obj['password'] == obj['reppass']){  //verifica las contraseñas
-      
+      console.log("Form antes de enviar: ");
+      console.log(JSON.stringify(obj));
       this.http.post(this.apiUrl, JSON.stringify(obj)) //envia los datos
       .subscribe(res=>{
-        if(res=="id_rep"){ //si el usuario es repetido muestra  un mensaje de error
+        if(res=="id_rep"){ //si el usuario es repetido muestra un mensaje de error
             idRep.present();
         }
         else if(res=="exito"){ //si la operacion fue exitosa
@@ -217,23 +225,24 @@ enviarForm(){
             console.log("form enviado");
             success.present();
             this.myForm.reset();
+            this.obtenerPuestos();
             
-            this.dir['path']='stock.png';
+            this.dir['path']='stock.png';   // inicializa la imagen de perfil
           }
         }
        console.log(res);
+         }, error=>{
+           console.log(error);   // muestra mensaje de error
          }
       );
     }
     else{ //si las contraseñas no coinciden aborta la operacion
-      console.log(JSON.stringify(obj));
       miAlerta.present();
-      console.log(obj['fechanac']);
     }
 }
 
 
-// funcion que verifica la existencia de la imagen en el servidor
+// funcion que verifica la existencia de la imagen de perfil en el servidor
 ver(){
     
   if(this.dir['dir']!=""){  //verifica si se ha ingresado una direccion
@@ -272,9 +281,8 @@ ver(){
       }
        }
     );
-
     console.log(JSON.stringify(this.dir));  // muestra la direccion
   }
-  
  }
+
 }

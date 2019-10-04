@@ -82,7 +82,7 @@
 
 
                     <ion-item [hidden]="hidePuesto">
-                        <ion-label color="primary" icon-start><ion-icon name="information"></ion-icon>Nombre Puesto:  </ion-label>
+                        <ion-label color="primary" icon-start><ion-icon name="list"></ion-icon>Puesto:  </ion-label>
                         <ion-select  id="puesto" name="puesto" formControlName="puesto" (ionChange)="onChange($event)">
                             <div *ngFor="let tupla of puestos">
                                 <ion-option value="{{tupla.id}}">{{tupla.puesto}}
@@ -95,7 +95,7 @@
                    </ion-item>
                     <ion-list [hidden]="hideOtro">
                       <ion-item>
-                          <ion-label stack color = "primary" icon-start><ion-icon name="pricetag"></ion-icon>Puesto:</ion-label>
+                          <ion-label stack color = "primary" icon-start><ion-icon name="information-circle"></ion-icon>Puesto:</ion-label>
                         <ion-input id="otro" type="text" formControlName="otro"  name ="otro"></ion-input>
                       </ion-item>
                         <ion-item>
@@ -162,17 +162,21 @@
                                      <ion-label stack color = "primary" icon-start><ion-icon name="log-in"></ion-icon> Username:</ion-label>
                                    <ion-input id="usercliente" name="usercliente" formControlName="user" type="text" ></ion-input>
                                  </ion-item>
-                                 <ion-item *ngIf="myForm.get('user').errors && myForm.get('user').dirty">
-                                    <p color="danger" ion-text *ngIf="myForm.get('user').hasError('pattern')">Elegir entre 4 y 15 caracteres</p>
-                                  </ion-item>
+                                 <ion-item *ngIf="myForm.get('password').errors && myForm.get('user').dirty">
+                                  <p color="danger" ion-text *ngIf="myForm.get('user').hasError('required')">Field is required</p>
+                                  <p color="danger" ion-text *ngIf="myForm.get('user').hasError('minlength')">Min of 4 characters</p>
+                                  <p color="danger" ion-text *ngIf="myForm.get('user').hasError('maxlength')">Max of 15 characters</p>
+                                </ion-item>
                                   <ion-item class="inputPass">
                                      <ion-label stack color = "primary"  icon-start>
                                          <ion-icon name="lock"></ion-icon> Contraseña:</ion-label>
                                      <ion-input id="password" name ="password" formControlName="password" type="password"></ion-input>
                                    </ion-item>
                                    <ion-item *ngIf="myForm.get('password').errors && myForm.get('password').dirty">
-                                     <p color="danger" ion-text *ngIf="myForm.get('password').hasError('pattern')">Elegir entre 8 y 15 caracteres</p>
-                                   </ion-item>
+                                    <p color="danger" ion-text *ngIf="myForm.get('password').hasError('required')">Field is required</p>
+                                    <p color="danger" ion-text *ngIf="myForm.get('password').hasError('minlength')">Min of 7 characters</p>
+                                    <p color="danger" ion-text *ngIf="myForm.get('password').hasError('maxlength')">Max of 15 characters</p>
+                                  </ion-item>
                                    <ion-item class="inputPass">
                                        <ion-label stack color = "primary"  icon-start>
                                            <ion-icon name="lock"></ion-icon>
