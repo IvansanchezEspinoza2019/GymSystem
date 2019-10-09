@@ -1,0 +1,45 @@
+<!--
+  Generated template for the AllEmployeesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+      <ion-title>Empleados</ion-title>
+    </ion-navbar>
+    
+<ion-searchbar placeholder="buscar" (ionInput)="getItems($event)">
+
+</ion-searchbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+
+      <ion-select [(ngModel)]="filtro.val">
+          <ion-option value="0">Todos</ion-option>
+          <ion-option value="1">Activos</ion-option>
+          <ion-option value="2">Inactivos</ion-option>
+       </ion-select>
+  </ion-item>
+  <button ion-button icon-start (click)="verFiltro()">
+      <ion-icon name="search"></ion-icon>
+      Filtrar
+  </button>
+  
+
+   <ion-item *ngFor="let empleado of items" (click)="actionSheet(empleado)">
+        <ion-thumbnail item-start>
+          <img src="http://gymdb/imgs/employees/{{ empleado.foto }}">
+        </ion-thumbnail>
+        <h2><b>{{ empleado.Nombre }}</b></h2>
+        <p><b>ID: </b>{{ empleado.id_empleado }}</p>
+        
+        <p align="right" class="bluetext" *ngIf="empleado.activo=='1'" color="secondary">ACTIVO</p>
+        <p align="right" class="redtext" *ngIf="empleado.activo=='0'" color="danger">INACTIVO</p>
+
+      </ion-item>
+
+</ion-content>

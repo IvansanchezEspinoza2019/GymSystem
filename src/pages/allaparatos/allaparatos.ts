@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient }  from '@angular/common/http';
 import { ActionSheetController, LoadingController, AlertController} from 'ionic-angular';
 import { ModifaparatoPage } from '../modifaparato/modifaparato';
+
 /**
  * Generated class for the AllaparatosPage page.
  *

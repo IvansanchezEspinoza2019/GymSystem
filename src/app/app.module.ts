@@ -32,6 +32,11 @@ import { PackPage } from '../pages/pack/pack';
 import { ListPackPage } from '../pages/list-pack/list-pack';
 import { ModifyPackPage } from '../pages/modify-pack/modify-pack';
 import { ModifyPayPage } from '../pages/modify-pay/modify-pay';
+import { AllEmployeesPage } from '../pages/all-employees/all-employees';
+import { InfoEmpleadoPage } from '../pages/info-empleado/info-empleado';
+import { ModifEmpleadoPage } from '../pages/modif-empleado/modif-empleado';
+import { AsistenciaListPage } from '../pages/asistencia-list/asistencia-list';
+import { AsistenciaPage } from '../pages/asistencia/asistencia';
 
 
 
@@ -57,9 +62,12 @@ import { ModifyPayPage } from '../pages/modify-pay/modify-pay';
     PackPage,
     ListPackPage,
     ModifyPackPage,
-    ModifyPayPage
-    
-
+    ModifyPayPage,
+    AllEmployeesPage,
+    InfoEmpleadoPage,
+    ModifEmpleadoPage,
+    AsistenciaListPage,
+    AsistenciaPage
   ],
   
   imports: [
@@ -89,7 +97,12 @@ import { ModifyPayPage } from '../pages/modify-pay/modify-pay';
     PackPage,
     ListPackPage,
     ModifyPackPage,
-    ModifyPayPage
+    ModifyPayPage,
+    AllEmployeesPage,
+    InfoEmpleadoPage,
+    ModifEmpleadoPage,
+    AsistenciaListPage,
+    AsistenciaPage
   ],
   providers: [
     StatusBar,

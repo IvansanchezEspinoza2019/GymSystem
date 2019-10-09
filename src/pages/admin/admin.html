@@ -16,9 +16,9 @@
     
     <ion-col>
       <ion-card color=primary>
-        <ion-card-content text-center>
-          Acceso<br>
-          <button ion-button round color=light clear>
+        <ion-card-content text-center >
+          Asistencia<br>
+          <button ion-button round color=light clear (click)="asisten()">
             <ion-icon name="hand"></ion-icon>
           </button>
         </ion-card-content>
@@ -140,7 +140,7 @@
             <ion-icon name="add" item-start></ion-icon>
               Nuevo
           </button>
-          <button ion-item (click)= "allAparatos()">
+          <button ion-item (click)= "allEmpleados()">
             <ion-icon name="list" item-start></ion-icon>
              Lista
           </button>

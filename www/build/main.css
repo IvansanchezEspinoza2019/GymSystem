@@ -30565,6 +30565,14 @@ page-add-cliente img {
   margin: auto;
 }
 
+page-all-employees .redtext {
+  color: darkred;
+}
+
+page-all-employees .bluetext {
+  color: blue;
+}
+
 page-allaparatos .redtext {
   color: darkred;
 }
@@ -30596,6 +30604,11 @@ page-customer ion-title {
 }
 
 page-inf-cliente img {
+  display: block;
+  margin: auto;
+}
+
+page-info-empleado img {
   display: block;
   margin: auto;
 }

@@ -1,0 +1,24 @@
+
+<ion-header>
+    <ion-navbar color="secondary">
+      <ion-title>Asistencia de hoy</ion-title>
+    </ion-navbar>
+    <ion-searchbar placeholder="Buscar cliente por nombre" (ionInput)="getItems($event)">
+  
+    </ion-searchbar>
+  </ion-header>
+  
+  <ion-content padding>
+
+      <ion-card *ngFor="let asistencias of items">
+          <ion-card-header color="primary"> 
+            <b>{{ asistencias.name }}</b>
+          </ion-card-header>
+                
+          <ion-card-content>
+              <strong>Vencimiento:</strong> {{asistencias.fecha_vencimiento}} <br>
+          </ion-card-content>
+        </ion-card>
+    
+  </ion-content>
+  

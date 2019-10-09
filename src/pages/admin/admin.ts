@@ -18,8 +18,9 @@ import { PayPage } from '../pay/pay';
 import {ListPayPage} from '../list-pay/list-pay'
 import { PackPage } from '../pack/pack';
 import { ListPackPage } from '../list-pack/list-pack';
-
-
+import { AllEmployeesPage } from '../all-employees/all-employees';
+import { AsistenciaPage } from '../asistencia/asistencia';
+import { AsistenciaListPage } from '../asistencia-list/asistencia-list';
 
 
 @IonicPage()
@@ -47,6 +48,11 @@ export class AdminPage {
 
   //empleados
   addEmp = AddEmpleadoPage;
+  all_empleados = AllEmployeesPage;
+
+  //asistencia
+  asist =AsistenciaPage;
+
 
 
 
@@ -99,6 +105,9 @@ export class AdminPage {
   agregarEmpleado(){
     this.navCtrl.push(this.addEmp);
   }
+  allEmpleados(){
+    this.navCtrl.push(this.all_empleados);
+  }
 
   pack(){
     this.navCtrl.push(this.paquete);
@@ -106,5 +115,8 @@ export class AdminPage {
 
   listPack(){
     this.navCtrl.push(this.list_pack);
+  }
+  asisten(){
+    this.navCtrl.push(this.asist);
   }
 }

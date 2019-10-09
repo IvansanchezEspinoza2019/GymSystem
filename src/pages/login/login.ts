@@ -79,13 +79,9 @@ export class LoginPage {
             this.navCtrl.push(this.custumer);
           }
           else if(res['tipo']=="2"){
-            console.log("eres empleado");
-            
-          }
-          else if(res['tipo']=="3"){
-            console.log("eres administrativo");
             this.presentLoading();
             this.navCtrl.push(this.admin);
+            
           }
         } 
     }

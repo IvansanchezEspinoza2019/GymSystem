@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-navbar color=secondary>
+    <ion-title>Asistencia</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="inicio">
+    <ion-fab right edge>
+        <button ion-fab mini color="primary"><ion-icon name="arrow-dropleft"></ion-icon></button>
+        <ion-fab-list side="left">
+          <button ion-fab (click)="list()"><ion-icon name="calendar"></ion-icon></button>
+        </ion-fab-list>
+    </ion-fab>
+
+  <ion-grid>
+    <ion-row>
+
+      <ion-col>
+      </ion-col>
+      <ion-col>
+        <ion-card text-center class="bienvenido">
+        
+          <ion-card-content>
+          <h2><strong>Gym Company</strong></h2>
+          <br>
+          <ion-icon name="person"></ion-icon>
+          <br><br>
+          
+          <form name="cuenta">
+              
+              <ion-list>
+                <ion-item >
+                  <ion-label stacked>Usuario</ion-label>
+                  <ion-input type="text" [(ngModel)]="datos.id" name ="id" required></ion-input>
+                </ion-item>
+                    
+              </ion-list><br>
+
+              <ion-buttons>
+                  <button ion-button round color=primary type="submit" (click) ="asist()" size="large">Acceder</button>
+              </ion-buttons>
+
+            </form>      
+            
+        </ion-card-content>
+
+        </ion-card>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+
+      <ion-col>
+      </ion-col>
+      <ion-col>
+        <ion-card text-center class="bienvenido">
+        
+          <ion-card-content>
+          <h2><strong>Cliente</strong></h2>
+          <br>
+          
+          <form name="cliente">
+              
+              <ion-list>
+                <ion-item >
+                  <ion-label stacked>Usuario</ion-label>
+                  <ion-input type="text" [(ngModel)]="datos.usuario" name ="nombre" required></ion-input>
+                </ion-item>
+                <ion-item >
+                  <ion-label stacked>Status</ion-label>
+                  <ion-input type="text" [(ngModel)]="datos.activo" name ="activo" required></ion-input>
+                </ion-item>
+                <ion-item >
+                  <ion-label stacked>Vencimiento</ion-label>
+                  <ion-input type="text" [(ngModel)]="datos.vencimiento" name ="vencimiento" required></ion-input>
+                </ion-item>
+                    
+              </ion-list><br>
+
+            </form>      
+            
+        </ion-card-content>
+
+        </ion-card>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-content>

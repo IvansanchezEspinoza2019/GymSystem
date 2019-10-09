@@ -1,14 +1,14 @@
 webpackJsonp([17],{
 
-/***/ 295:
+/***/ 303:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddEmpleadoPageModule", function() { return AddEmpleadoPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AsistenciaListPageModule", function() { return AsistenciaListPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_empleado__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__asistencia_list__ = __webpack_require__(115);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AddEmpleadoPageModule = /** @class */ (function () {
-    function AddEmpleadoPageModule() {
+var AsistenciaListPageModule = /** @class */ (function () {
+    function AsistenciaListPageModule() {
     }
-    AddEmpleadoPageModule = __decorate([
+    AsistenciaListPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__add_empleado__["a" /* AddEmpleadoPage */],
+                __WEBPACK_IMPORTED_MODULE_2__asistencia_list__["a" /* AsistenciaListPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__add_empleado__["a" /* AddEmpleadoPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__asistencia_list__["a" /* AsistenciaListPage */]),
             ],
         })
-    ], AddEmpleadoPageModule);
-    return AddEmpleadoPageModule;
+    ], AsistenciaListPageModule);
+    return AsistenciaListPageModule;
 }());
 
-//# sourceMappingURL=add-empleado.module.js.map
+//# sourceMappingURL=asistencia-list.module.js.map
 
 /***/ })
 
