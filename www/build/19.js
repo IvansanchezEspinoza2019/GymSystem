@@ -1,14 +1,14 @@
 webpackJsonp([19],{
 
-/***/ 301:
+/***/ 323:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AllaparatosPageModule", function() { return AllaparatosPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomerPayPageModule", function() { return CustomerPayPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__allaparatos__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customer_pay__ = __webpack_require__(129);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AllaparatosPageModule = /** @class */ (function () {
-    function AllaparatosPageModule() {
+var CustomerPayPageModule = /** @class */ (function () {
+    function CustomerPayPageModule() {
     }
-    AllaparatosPageModule = __decorate([
+    CustomerPayPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__allaparatos__["a" /* AllaparatosPage */],
+                __WEBPACK_IMPORTED_MODULE_2__customer_pay__["a" /* CustomerPayPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__allaparatos__["a" /* AllaparatosPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__customer_pay__["a" /* CustomerPayPage */]),
             ],
         })
-    ], AllaparatosPageModule);
-    return AllaparatosPageModule;
+    ], CustomerPayPageModule);
+    return CustomerPayPageModule;
 }());
 
-//# sourceMappingURL=allaparatos.module.js.map
+//# sourceMappingURL=customer-pay.module.js.map
 
 /***/ })
 

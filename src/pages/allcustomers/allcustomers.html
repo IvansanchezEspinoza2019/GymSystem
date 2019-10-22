@@ -17,19 +17,33 @@
 
 
 <ion-content padding>
-    <ion-item>
-  
-        <ion-select [(ngModel)]="filtro.val">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-select [(ngModel)]="filtro.val">
             <ion-option value="0">Todos</ion-option>
             <ion-option value="1">Activos</ion-option>
             <ion-option value="2">Inactivos</ion-option>
-         </ion-select>
-    </ion-item>
-    <button ion-button icon-start (click)="verFiltro()">
-        <ion-icon name="search"></ion-icon>
-        Filtrar
-    </button>
-    
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+
+      </ion-col>
+      <ion-col>
+
+      </ion-col>
+      <ion-col>
+        <div text-right>
+          <button ion-button outline icon-start (click)="verFiltro()">
+            <ion-icon name="search"> </ion-icon> Filtrar </button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+      
 
      <ion-item *ngFor="let cliente of items" (click)="actionSheet(cliente)">
           <ion-thumbnail item-start>

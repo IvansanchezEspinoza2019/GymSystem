@@ -25,9 +25,10 @@ export class AllEmployeesPage {
     private http:HttpClient,
     public actionsheet: ActionSheetController,
     public alert: AlertController,
-    public loading: LoadingController,) {
+    public loading: LoadingController) {
+      //modificaciones
       this.filtro.val="1";      //inicializa el filtro
-      this.filtro_aux="1";      //no servira para comprobar si hay un cambio de filtro
+      this.filtro_aux="1";     //no servira para comprobar si hay un cambio de filtro
       this.actualizar();    // funcion que obtiene los datos de la base de datos
   }
   apiUrl= "http://gymdb/";      //direccion del servidor

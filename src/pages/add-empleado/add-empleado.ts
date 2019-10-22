@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController,LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient }  from '@angular/common/http';
+
 /**
  * Generated class for the AddEmpleadoPage page.
  *

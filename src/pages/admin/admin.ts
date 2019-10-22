@@ -14,14 +14,14 @@ import { AddEmpleadoPage } from '../add-empleado/add-empleado';
  */
 //import { AddClientePage } from '../add-cliente/add-cliente';
 //import { ListcustomersPage } from '../listcustomers/listcustomers';
-import { PayPage } from '../pay/pay';
+//import { PayPage } from '../pay/pay';
 import {ListPayPage} from '../list-pay/list-pay'
 import { PackPage } from '../pack/pack';
 import { ListPackPage } from '../list-pack/list-pack';
 import { AllEmployeesPage } from '../all-employees/all-employees';
 import { AsistenciaPage } from '../asistencia/asistencia';
-import { AsistenciaListPage } from '../asistencia-list/asistencia-list';
-
+import { PayPage } from '../pay/pay';
+import { ReportesPage } from '../reportes/reportes';
 
 @IonicPage()
 @Component({
@@ -53,12 +53,18 @@ export class AdminPage {
   //asistencia
   asist =AsistenciaPage;
 
+  // reportes
+  reportes = ReportesPage;
 
 
+  admin= {};
 
   constructor(public navCtrl: NavController,
     private http: HttpClient,
     public navParams: NavParams) {
+      this.admin = this.navParams.get('admin');
+      console.log("registro");
+      console.log(this.admin);
   }
 
   ionViewDidLoad() {
@@ -95,11 +101,11 @@ export class AdminPage {
   }
   
   agregarAparato(){
-    this.navCtrl.push(this.aparatos);
+    this.navCtrl.push(this.aparatos, { id: this.admin['id_empleado']});
   }
 
   allAparatos(){
-    this.navCtrl.push(this.allaparatos);
+    this.navCtrl.push(this.allaparatos,  { id: this.admin['id_empleado'], filtro: '1'});
   }
 
   agregarEmpleado(){
@@ -118,5 +124,8 @@ export class AdminPage {
   }
   asisten(){
     this.navCtrl.push(this.asist);
+  }
+  reportes_pag(){
+    this.navCtrl.push(this.reportes);
   }
 }

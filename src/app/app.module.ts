@@ -20,7 +20,7 @@ import { ModifclientePage } from '../pages/modifcliente/modifcliente';
 //import { AddClientePage } from '../pages/add-cliente/add-cliente';
 //import { ListcustomersPage } from '../pages/listcustomers/listcustomers';
 //import { InfoClientePage } from '../pages/info-cliente/info-cliente';
-import { PayPage } from '../pages/pay/pay';
+//import { PayPage } from '../pages/pay/pay';
 import { ListPayPage } from '../pages/list-pay/list-pay';
 import { RecibePayPage } from '../pages/recibe-pay/recibe-pay';
 import { AddAparatosPage } from '../pages/add-aparatos/add-aparatos';
@@ -37,6 +37,16 @@ import { InfoEmpleadoPage } from '../pages/info-empleado/info-empleado';
 import { ModifEmpleadoPage } from '../pages/modif-empleado/modif-empleado';
 import { AsistenciaListPage } from '../pages/asistencia-list/asistencia-list';
 import { AsistenciaPage } from '../pages/asistencia/asistencia';
+import { PayPage } from '../pages/pay/pay';
+import { HistorialAparatosPage } from '../pages/historial-aparatos/historial-aparatos';
+import { File } from '@ionic-native/file/ngx';
+import { ReportesPage } from '../pages/reportes/reportes';
+import { CustomerPayPage } from '../pages/customer-pay/customer-pay';
+import { CustomerAsistPage } from '../pages/customer-asist/customer-asist';
+import { CustomerRecibePage } from '../pages/customer-recibe/customer-recibe';
+import { Asist_15Page } from '../pages/asist-15/asist-15';
+import { Asist_7Page } from '../pages/asist-7/asist-7';
+import { Asist_30Page } from '../pages/asist-30/asist-30';
 
 
 
@@ -67,13 +77,24 @@ import { AsistenciaPage } from '../pages/asistencia/asistencia';
     InfoEmpleadoPage,
     ModifEmpleadoPage,
     AsistenciaListPage,
-    AsistenciaPage
+    AsistenciaPage,
+    HistorialAparatosPage,
+    ReportesPage,
+    CustomerPayPage,
+    CustomerAsistPage,
+    CustomerRecibePage,
+    Asist_15Page,
+    Asist_7Page,
+    Asist_30Page
+    
   ],
   
   imports: [
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -102,12 +123,23 @@ import { AsistenciaPage } from '../pages/asistencia/asistencia';
     InfoEmpleadoPage,
     ModifEmpleadoPage,
     AsistenciaListPage,
-    AsistenciaPage
+    AsistenciaPage,
+    HistorialAparatosPage,
+    ReportesPage,
+    CustomerPayPage,
+    CustomerAsistPage,
+    CustomerRecibePage,
+    Asist_15Page,
+    Asist_7Page,
+    Asist_30Page
+    
+  
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    File
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

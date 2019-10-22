@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar color="primary">
+        <ion-title>Pago</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-label color="secondary" align="center"><b>RECIBO DE PAGO</b></ion-label>    <br>  
+    </ion-card-header>
+      <ion-card-content>
+        
+        <div text-right> <strong >PAGO </strong> {{pago.id_pago}} </div>
+        <div text-right> <strong >FECHA: </strong> {{pago.fecha_pago}} </div> 
+        <div text-right> <strong >FECHA DE VENCIMIENTO: </strong> {{pago.fecha_vencimiento}} </div> 
+          
+        <br>
+
+        <ion-label color="secondary" align="left"><b>CLIENTE</b></ion-label> <br>
+        
+        <div text-left> <strong >ID: </strong> {{cliente.id_cliente}} </div>
+        <div text-left> <strong >NOMBRE: </strong> {{cliente.name}} </div> 
+        <div text-left> <strong >FECHA DE INGRESO: </strong> {{cliente.fecha_ingreso}} </div> 
+        
+        <br>
+        
+        <ion-label color="secondary" align="left"><b>CONTACTO</b></ion-label> <br>
+
+        <div text-left> <strong >TELEFONO: </strong> {{cliente.telefono}} </div> 
+
+        <br>
+
+        <ion-label color="secondary" align="left"><b>DOMICILIO</b></ion-label> <br>
+
+        <div text-left> <strong >CALLE: </strong> {{cliente.calle}} </div> 
+        <div text-left> <strong >NUMERO: </strong> {{cliente.numero_calle}} </div>  
+        <div text-left> <strong >NUMERO INTERIOR: </strong> {{cliente.numero_interior}} </div>  
+        <div text-left> <strong >COLONIA: </strong> {{cliente.nombre}} </div> 
+        <div text-left> <strong >CP: </strong> {{cliente.codigo}} </div>
+
+        <br>
+
+        <ion-label color="secondary" align="right"><b>PAGO</b></ion-label> <br>
+
+        <div text-right> <strong >PAQUETE: </strong> {{pago.nombre}} </div> 
+        <div text-right> <strong >DESCRIPCION: </strong> {{pago.descripcion}} </div> 
+        <ion-label color="danger" align="right">{{nota.info}}</ion-label> 
+        <div text-right> <strong >PRECIO: </strong> {{pago.precio}} </div>  
+        <div text-right> <strong >MODO DE PAGO: </strong> {{pago.modo}} </div>
+        <div text-right> <strong >MONTO PAGADO: </strong> {{pago.monto}} </div> 
+        
+
+        
+
+      </ion-card-content>
+      </ion-card>
+
+</ion-content>

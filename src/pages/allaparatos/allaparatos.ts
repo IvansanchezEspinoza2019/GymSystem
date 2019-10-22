@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient }  from '@angular/common/http';
 import { ActionSheetController, LoadingController, AlertController} from 'ionic-angular';
 import { ModifaparatoPage } from '../modifaparato/modifaparato';
+import { HistorialAparatosPage } from '../historial-aparatos/historial-aparatos';
 
 /**
  * Generated class for the AllaparatosPage page.
@@ -16,17 +17,21 @@ import { ModifaparatoPage } from '../modifaparato/modifaparato';
   selector: 'page-allaparatos',
   templateUrl: 'allaparatos.html',
 })
+
 export class AllaparatosPage {
 
+  historial = HistorialAparatosPage;
+  id_empleado ={};
   constructor(public navCtrl: NavController, 
     private http:HttpClient,
     public action: ActionSheetController,
     public loading: LoadingController, 
     public alert: AlertController,
     public navParams: NavParams) {
-      this.filtro.val="1";      //inicializa el filtro
-      this.filtro_aux="1";      //no servira para comprobar si hay un cambio de filtro
+      this.filtro.val=this.navParams.get('filtro');      //inicializa el filtro
+      this.filtro_aux=this.navParams.get('filtro');      //no servira para comprobar si hay un cambio de filtro
       this.actualizar();    // funcion que obtiene los datos de la base de datos
+      this.id_empleado = this.navParams.get('id');
       
   }
   apiUrl= "http://gymdb/";      //direccion del servidor
@@ -44,6 +49,9 @@ export class AllaparatosPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AllaparatosPage');
+  }
+  _historial(){
+    this.navCtrl.push(this.historial);
   }
 
 // obtiene los registros de la base de datos
@@ -168,7 +176,8 @@ loader.present();
           handler: () => {
             console.log('modificar clicked');
             //
-            this.navCtrl.push(this.modificar, {aparato: aparato});
+            aparato['filtro']=this.filtro.val;
+            this.navCtrl.push(this.modificar, {aparato: aparato, id: this.id_empleado});
           }
         },
         {

@@ -18,6 +18,8 @@ import { AllaparatosPage } from '../allaparatos/allaparatos';
 export class ModifaparatoPage {
   myForm: FormGroup;
 
+  id_admin={};
+  
 
   back= AllaparatosPage;  // pagina de aparatos
   aparato={}   // almacena registro que se envia por parametro
@@ -25,22 +27,23 @@ export class ModifaparatoPage {
   hideCategoria=true;   //variables que sirven para controlar partes del form
   hideOtro=true;
 
-  apiUrl="http://gymdb/";
-  dat={
+  apiUrl="http://gymdb/"; // server
+  dat={   // es una opcion del ion-select
     'id': '0',
     'nombre': 'OTRO'
   };
-  comp={} /// sservira para comprobar si se ha hecho algun cambio 
+  comp={} /// servira para comprobar si se ha hecho algun cambio 
 
   constructor(public navCtrl: NavController, 
     private cl: FormBuilder,
     private http: HttpClient,
     public alert: AlertController,
     public navParams: NavParams) {
+      this.id_admin = this.navParams.get('id');   // obtiene el id del empleado que opera en este momento
 
       this.aparato=this.navParams.get('aparato');  // obtiene el registro enviado
-     
-      //console.log(this.aparato);
+     console.log("id aADMOININIINI");
+      console.log(this.id_admin);
       this.myForm = this.cl.group({       // llena el formulario
         categoria: [this.aparato['nombre'], [Validators.required]],
         otro: [''],
@@ -102,7 +105,7 @@ export class ModifaparatoPage {
     }
   }
 
-  // funcion de gyardar
+  // funcion de guardar
   saveData(){
     let miAlerta = this.alert.create({
       title: 'OPERACION CANCELADA',
@@ -116,10 +119,7 @@ export class ModifaparatoPage {
       buttons: ['ACEPTAR']
       
     });
-    //console.log("1");
-    //console.log(JSON.stringify(this.comp));
-    //console.log("2");
-   // console.log(JSON.stringify(this.myForm.value))
+    
     if(JSON.stringify(this.comp) == JSON.stringify(this.myForm.value)){ // comprueba si se modificó algún dato
       alerta.present();
     }
@@ -142,25 +142,28 @@ export class ModifaparatoPage {
   enviarForm(){
     let success = this.alert.create({
       title: 'OPERACION EXITOSA',
-      message: 'AGREGADO CORRECTAMENTE',
+      message: 'OPERACION REALIZADA CON EXITO',
       buttons: ['ACEPTAR']
       
     });
-
-
-
-      var mayus = this.myForm.controls['otro'].value;
-      if(mayus!=null){
-        mayus = mayus.toUpperCase();
-        this.myForm.controls['otro'].setValue(mayus);   // covierte a mayuscula la categoria
-      }
+    var mayus = this.myForm.controls['otro'].value;
+    if(mayus!=null){
+      mayus = mayus.toUpperCase();
+      this.myForm.controls['otro'].setValue(mayus);   // covierte a mayuscula la categoria
+    }
+    var desc = this.myForm.controls['descripcion'].value;
+    if(desc!=null){
+      desc = desc.toUpperCase();
+      this.myForm.controls['descripcion'].setValue(desc);   // covierte a mayuscula la categoria
+    }
      
-    
-    
     console.log((this.myForm.value));
     var obj = JSON.parse(JSON.stringify(this.myForm.value));
+
     obj['funcion']='modifAparato';  //funcion de modificar 
-    obj['id']=this.aparato['id'];   // agrega el id del registro
+    obj['id']=this.aparato['id'];   // agrega el id del aparato
+    obj['id_admin']=this.id_admin;  // administrador que realiza la operacion
+    obj['accion']='2';    // '2'= modificar
     console.log(obj);
 
     this.http.post(this.apiUrl,JSON.stringify(obj))
@@ -168,7 +171,7 @@ export class ModifaparatoPage {
       console.log(res);
       if(res=="exito"){
         success.present();
-        this.navCtrl.push(this.back);  // regresa a la pagina anterior
+        this.navCtrl.push(this.back, {id: obj['id_admin'], filtro: this.aparato['filtro']});  // regresa a la pagina anterior, le envia el id del admin como parametro
       
       }
     }, error=>{

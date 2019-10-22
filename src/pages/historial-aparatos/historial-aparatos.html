@@ -1,0 +1,25 @@
+<!--
+  Generated template for the HistorialAparatosPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar  color="primary">
+    <ion-title>Historial Modificaciones</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item *ngFor="let registro of historial">
+      
+    <p><b>ID Admin: </b>  {{ registro.id_admin }}</p>
+    <p><b>Nombre Empleado: </b> {{ registro.Nombre }}</p>
+    <p><b>ID Aparato: </b> {{ registro.id_aparato }}</p>
+    <p><b>Categoria: </b> {{ registro.nombre }}</p>
+    <p><b>Fecha (año/mes/dia): </b> {{ registro.fecha }}</p>
+    <p *ngIf="registro.accion=='1'"><b>Accion: </b> AGREGAR</p>
+    <p *ngIf="registro.accion=='2'"><b>Accion: </b> MODIFICAR</p>
+  </ion-item>
+
+</ion-content>

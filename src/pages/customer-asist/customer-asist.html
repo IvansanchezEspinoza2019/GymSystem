@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>Record de Asistencias </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card color = "primary" (click)="reportSemana()">
+    <ion-card-header>
+      <b> 7 dias </b>
+    </ion-card-header>
+    <ion-card-content>
+      Asistencias de la ultima semana
+    </ion-card-content>
+  </ion-card>
+
+    <ion-card color = "primary" (click)="reportSemanas()">
+      <ion-card-header>
+        <b> 15 dias</b>
+      </ion-card-header>
+      <ion-card-content>
+        Asistencias de la ultimas 2 semana
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card color = "primary" (click)="reportMes()">
+      <ion-card-header>
+        <b>30 dias</b>
+      </ion-card-header>
+      <ion-card-content>
+        Asistencias del ultimo mes
+      </ion-card-content>
+    </ion-card>
+
+</ion-content>

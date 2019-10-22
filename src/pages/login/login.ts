@@ -61,6 +61,11 @@ export class LoginPage {
     });
     this.datos['funcion']='login'; //funcion logearse
 
+    let Inactivo = this.alerta.create({
+      title: 'Cuenta Inactiva',
+      message: 'Acceso denegado, consulta tu situación con la administración',
+      buttons: ['Ok']
+    });
     
     console.log(JSON.stringify(this.datos));
     this.http.post(this.apiUrl, JSON.stringify(this.datos))
@@ -75,12 +80,19 @@ export class LoginPage {
           console.log(res); // ya tiene los datos
           if(res['tipo']=="1"){
             console.log("Eres cliente");
-            this.presentLoading();
-            this.navCtrl.push(this.custumer);
+            if(res['activo']=="1"){
+              this.presentLoading();
+              this.navCtrl.push(this.custumer, {cliente: res});
+            }else{
+              Inactivo.present();
+            }
+            
           }
           else if(res['tipo']=="2"){
-            this.presentLoading();
-            this.navCtrl.push(this.admin);
+            if(res['activo']=="1"){
+              this.presentLoading();
+              this.navCtrl.push(this.admin, { admin: res} );
+            }
             
           }
         } 

@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { HttpClient }  from '@angular/common/http';
-import { PayPage } from '../pay/pay';
+
 
 /**
  * Generated class for the AddClientePage page.
@@ -21,7 +21,7 @@ export class AddClientePage {
   @ViewChild('myForm') formValues;
   myForm: FormGroup;
 //pagos
-  //pay = PayPage;
+ 
   x =0;  // variable para el usuario
   dir={
     'dir': ''

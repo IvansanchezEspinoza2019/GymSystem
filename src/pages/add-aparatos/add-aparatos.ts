@@ -26,7 +26,7 @@ export class AddAparatosPage {
     'id': '0',
     'nombre': 'OTRO'
   };
-
+  id_admin = {};
   constructor(public navCtrl: NavController, 
     public cl: FormBuilder,
     private http: HttpClient,
@@ -39,7 +39,10 @@ export class AddAparatosPage {
       estado:  ['', [Validators.required]],
     });
     this.obtenerCat();  //obtiene categorias
+    this.id_admin = this.navParams.get('id');
 
+    console.log("ID EMPLEADO");
+    console.log(this.id_admin);
     }
 
     validar(){
@@ -67,6 +70,24 @@ export class AddAparatosPage {
         console.log(this.datos.length);
         this.validar();
         console.log(JSON.stringify(this.datos));
+
+    }, error=>{
+      console.log(error);
+    });
+  }
+
+  actualizar_admin_aparato(id_aparato: any){
+    let funcion={
+      'funcion': 'updateAdminAparato',
+      'accion': '1'
+    }
+    funcion['id_aparato']=id_aparato;
+    funcion['id_admin']=this.id_admin;
+    console.log("Funcion");
+    console.log(JSON.stringify(funcion));
+    this.http.post(this.apiUrl,JSON.stringify(funcion))
+    .subscribe(res=>{
+      console.log(res);
 
     }, error=>{
       console.log(error);
@@ -119,9 +140,14 @@ export class AddAparatosPage {
 
 
       var mayus = this.myForm.controls['otro'].value;
+      var desc = this.myForm.controls['descripcion'].value;
       if(mayus!=null){
         mayus = mayus.toUpperCase();
         this.myForm.controls['otro'].setValue(mayus);   // covierte a mayuscula la categoria
+      }
+      if(desc!=null){
+        desc = desc.toUpperCase();
+        this.myForm.controls['descripcion'].setValue(desc);   // covierte a mayuscula la categoria
       }
      
     
@@ -129,15 +155,19 @@ export class AddAparatosPage {
     console.log((this.myForm.value));
     var obj = JSON.parse(JSON.stringify(this.myForm.value));
     obj['funcion']='addMaquina';
+    obj['id_admin']=this.id_admin;
+    obj['accion']='1';    //'1' es la accion de agregar
 
     console.log(obj);
 
     this.http.post(this.apiUrl,JSON.stringify(obj))
     .subscribe(res=>{
+      console.log("res del server");
       console.log(res);
       if(res=="exito"){
         success.present();
         this.reiniciarForm();
+        //this.actualizar_admin_aparato(res['id_aparato']);
       }
 
     }, error=>{

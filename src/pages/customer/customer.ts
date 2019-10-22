@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
-import {LoginPage } from '../login/login';
-
-/**
- * Generated class for the CustomerPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage, NavController, NavParams} from 'ionic-angular';
+import { CustomerPayPage } from '../customer-pay/customer-pay';
+import { CustomerAsistPage } from '../customer-asist/customer-asist'
 
 @IonicPage()
 @Component({
@@ -16,26 +10,32 @@ import {LoginPage } from '../login/login';
 })
 export class CustomerPage {
   
-  login = LoginPage;
+pay = CustomerPayPage;
+asist = CustomerAsistPage;
+
+cliente = {}
   
   constructor(public navCtrl: NavController, 
-    public menu:MenuController,
     public navParams: NavParams) {
+     
+      this.cliente = this.navParams.get('cliente');
+      console.log(this.cliente);
+
+      
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CustomerPage');
   }
-  openMenu(){
-    this.menu.open();
+  
+  pagos(){
+    this.navCtrl.push(this.pay, {cliente : this.cliente});
   }
-  logout(){
-    this.navCtrl.push(this.login);
+
+  asistencias(){
+    this.navCtrl.push(this.asist, {cliente : this.cliente});
   }
   
-  
-  closeMenu(){
-    this.menu.close();
-  }
 
 }

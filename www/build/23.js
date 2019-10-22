@@ -1,14 +1,14 @@
 webpackJsonp([23],{
 
-/***/ 298:
+/***/ 322:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddAparatosPageModule", function() { return AddAparatosPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Asist_7PageModule", function() { return Asist_7PageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_aparatos__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__asist_7__ = __webpack_require__(127);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AddAparatosPageModule = /** @class */ (function () {
-    function AddAparatosPageModule() {
+var Asist_7PageModule = /** @class */ (function () {
+    function Asist_7PageModule() {
     }
-    AddAparatosPageModule = __decorate([
+    Asist_7PageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__add_aparatos__["a" /* AddAparatosPage */],
+                __WEBPACK_IMPORTED_MODULE_2__asist_7__["a" /* Asist_7Page */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__add_aparatos__["a" /* AddAparatosPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__asist_7__["a" /* Asist_7Page */]),
             ],
         })
-    ], AddAparatosPageModule);
-    return AddAparatosPageModule;
+    ], Asist_7PageModule);
+    return Asist_7PageModule;
 }());
 
-//# sourceMappingURL=add-aparatos.module.js.map
+//# sourceMappingURL=asist-7.module.js.map
 
 /***/ })
 

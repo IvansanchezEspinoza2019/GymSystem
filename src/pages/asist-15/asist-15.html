@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar color = "secondary">
+    <ion-title>Ultima Semana</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-card *ngFor="let asist of asistencia">
+      <ion-card-header color="primary"> 
+        <b>{{ asist.fecha }}</b>
+      </ion-card-header>
+    </ion-card>
+
+</ion-content>
