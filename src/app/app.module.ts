@@ -47,6 +47,9 @@ import { CustomerRecibePage } from '../pages/customer-recibe/customer-recibe';
 import { Asist_15Page } from '../pages/asist-15/asist-15';
 import { Asist_7Page } from '../pages/asist-7/asist-7';
 import { Asist_30Page } from '../pages/asist-30/asist-30';
+import { AddProductoPage } from '../pages/add-producto/add-producto';
+import { ModifProductPage } from '../pages/modif-product/modif-product';
+import { AllProductsPage } from '../pages/all-products/all-products';
 
 
 
@@ -85,7 +88,10 @@ import { Asist_30Page } from '../pages/asist-30/asist-30';
     CustomerRecibePage,
     Asist_15Page,
     Asist_7Page,
-    Asist_30Page
+    Asist_30Page,
+    AddProductoPage,
+    ModifProductPage,
+    AllProductsPage
     
   ],
   
@@ -131,9 +137,10 @@ import { Asist_30Page } from '../pages/asist-30/asist-30';
     CustomerRecibePage,
     Asist_15Page,
     Asist_7Page,
-    Asist_30Page
-    
-  
+    Asist_30Page,
+    AddProductoPage,
+    ModifProductPage,
+    AllProductsPage
   ],
   providers: [
     StatusBar,

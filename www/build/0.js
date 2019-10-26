@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 313:
+/***/ 316:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddClientePageModule", function() { return AddClientePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_cliente__ = __webpack_require__(344);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_cliente__ = __webpack_require__(350);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_cliente___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__add_cliente__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -39,7 +39,7 @@ var AddClientePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 344:
+/***/ 350:
 /***/ (function(module, exports) {
 
 throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'C:\\Users\\acer\\Desktop\\GymSystem\\GymSystem\\src\\pages\\add-cliente\\add-cliente.js'");

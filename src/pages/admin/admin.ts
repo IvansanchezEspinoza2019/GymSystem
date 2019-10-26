@@ -22,6 +22,9 @@ import { AllEmployeesPage } from '../all-employees/all-employees';
 import { AsistenciaPage } from '../asistencia/asistencia';
 import { PayPage } from '../pay/pay';
 import { ReportesPage } from '../reportes/reportes';
+import { AddProductoPage } from '../add-producto/add-producto';
+import { ModifProductPage} from '../modif-product/modif-product';
+import {AllProductsPage } from '../all-products/all-products';
 
 @IonicPage()
 @Component({
@@ -55,6 +58,11 @@ export class AdminPage {
 
   // reportes
   reportes = ReportesPage;
+
+  //tienda
+  add_product = AddProductoPage;
+  modif_producto = ModifProductPage;
+  all_products= AllProductsPage;
 
 
   admin= {};
@@ -128,4 +136,14 @@ export class AdminPage {
   reportes_pag(){
     this.navCtrl.push(this.reportes);
   }
+  agregarProducto(){
+    this.navCtrl.push(this.add_product);
+  }
+  mmodificarProducto(){
+    this.navCtrl.push(this.modif_producto);
+  }
+  allProducts(){
+    this.navCtrl.push(this.all_products);
+  }
+
 }

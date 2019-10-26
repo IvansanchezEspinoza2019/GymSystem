@@ -1,14 +1,14 @@
-webpackJsonp([32],{
+webpackJsonp([35],{
 
-/***/ 109:
+/***/ 111:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddAparatosPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(5);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -188,558 +188,15 @@ var AddAparatosPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 110:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InfClientePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(6);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-/**
- * Generated class for the InfClientePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var InfClientePage = /** @class */ (function () {
-    function InfClientePage(navCtrl, http, navParams) {
-        var _this = this;
-        this.navCtrl = navCtrl;
-        this.http = http;
-        this.navParams = navParams;
-        this.cliente = {};
-        this.cuenta = {};
-        this.apiUrl = "http://gymdb/";
-        this.cliente = this.navParams.get('cliente');
-        this.cuenta = {
-            'id_access': this.cliente['id_access'],
-            'id_col': this.cliente['id_colonia'],
-            'id_cp': this.cliente['id_cp'],
-            'funcion': 'getForeignData'
-        };
-        console.log('cliente');
-        this.http.post(this.apiUrl, JSON.stringify(this.cuenta))
-            .subscribe(function (res) {
-            console.log(res);
-            _this.cuenta['user'] = res[0]['user'];
-            _this.cuenta['colonia'] = res[1]['user'];
-            _this.cuenta['cp'] = res[2]['user'];
-            // console.log(JSON.stringify(this.cuenta));
-        }, function (error) {
-            console.log(error);
-        });
-    }
-    InfClientePage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad InfClientePage');
-    };
-    InfClientePage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-inf-cliente',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\inf-cliente\inf-cliente.html"*/'<!--\n  Generated template for the InfClientePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Informacion</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <ion-label color="secondary" align="center"><b>PERFIL</b></ion-label>\n  <img src="http://gymdb/imgs/customers/{{ cliente.foto }}"  width="300" height="300">\n  <ion-card-content>\n    <img >\n    <ion-label *ngIf="cliente.activo==\'1\'" align="center" color="primary"><b>ESTATUS: </b> ACTIVO</ion-label>\n    <ion-label *ngIf="cliente.activo==\'0\'" align="center" color="danger"><b>ESTATUS: </b> INACTIVO</ion-label>\n    <p><b>NOMBRE: </b>  {{ cliente.Nombre }}</p>\n    <p><b>ID: </b> {{ cliente.id_cliente }}</p>\n    <p><b>GENERO: </b> {{ cliente.genero }}</p>\n    <p><b>TELEFONO: </b> {{ cliente.telefono }}</p>\n    <ion-label color="secondary"><b>FORMATO: </b> YYYY-MM-DD</ion-label>\n    <p><b>FECHA NACIMIENTO: </b> {{ cliente.fecha_nacimiento }}</p>\n    <p><b>FECHA INGRESO: </b> {{ cliente.fecha_ingreso }}</p>\n    \n    <ion-label align="center" color="secondary"><b>DIRECCION</b></ion-label>\n    <p><b>CALLE</b> {{ cliente.calle }}</p>\n    <p><b>NUMERO: </b> {{ cliente.numero_calle }}</p>\n    <p *ngIf="cliente.numero_interior!=\'\'"><b>NUMERO INTERIOR </b> {{ cliente.numero_interior }}</p>\n    <p><b>COLONIA: </b> {{ cuenta.colonia }}</p>\n    <p><b>CP: </b> {{ cuenta.cp }}</p>\n\n    <ion-label align="center" color="secondary"><b>CUENTA</b></ion-label>\n    <p><b>USUARIO</b> {{ cuenta.user }}</p>\n\n  </ion-card-content>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\inf-cliente\inf-cliente.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
-    ], InfClientePage);
-    return InfClientePage;
-}());
-
-//# sourceMappingURL=inf-cliente.js.map
-
-/***/ }),
-
-/***/ 111:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModifclientePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__allcustomers_allcustomers__ = __webpack_require__(53);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-/**
- * Generated class for the ModifclientePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var ModifclientePage = /** @class */ (function () {
-    function ModifclientePage(navCtrl, http, loadigCtrl, alert, cl, navParams) {
-        this.navCtrl = navCtrl;
-        this.http = http;
-        this.loadigCtrl = loadigCtrl;
-        this.alert = alert;
-        this.cl = cl;
-        this.navParams = navParams;
-        this.all = __WEBPACK_IMPORTED_MODULE_4__allcustomers_allcustomers__["a" /* AllcustomersPage */];
-        this.apiUrl = "http://gymdb/";
-        this.x = 0; // variable para el usuario
-        this.dir = {
-            'dir': ''
-        };
-        this.cliente = {};
-        this.comprobar = {};
-        this.funcion = {
-            "funcion": "getNombre"
-        };
-        this.cliente = this.navParams.get('cliente'); // obtenemos el parametro que le enviamos
-        console.log(JSON.stringify(this.cliente));
-        this.myForm = this.cl.group({
-            nombre: [this.cliente['nombre'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
-            gender: [this.cliente['genero'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
-            apellidoP: [this.cliente['apellido_p'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
-            apellidoM: [this.cliente['apellido_m'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
-            telefono: [this.cliente['telefono'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern(/^-?(0|[1-9]\d*)?$/)]],
-            fechanac: [this.cliente['fecha_nacimiento'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
-            foto: [this.cliente['foto'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
-            calle: [this.cliente['calle'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
-            numero: [this.cliente['numero_calle'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
-            numeroint: [this.cliente['numero_interior']],
-            colonia: [this.cliente['colonia_str'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
-            cp: [this.cliente['cp_str'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern(/^-?(0|[1-9]\d*)?$/)]],
-            password: [this.cliente['password'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].minLength(5), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].maxLength(15)]],
-            reppass: [this.cliente['password'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
-            user: [this.cliente['user'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]]
-        });
-        console.log("log");
-        this.dir['path'] = this.cliente['foto']; // direccion path stock
-        this.comprobar = {
-            "nombre": this.cliente['nombre'],
-            "gender": this.cliente['genero'],
-            "apellidoP": this.cliente['apellido_p'],
-            "apellidoM": this.cliente['apellido_m'],
-            "telefono": this.cliente['telefono'],
-            "fechanac": this.cliente['fecha_nacimiento'],
-            "foto": this.cliente['foto'],
-            "calle": this.cliente['calle'],
-            "numero": this.cliente['numero_calle'],
-            "numeroint": this.cliente['numero_interior'],
-            "colonia": this.cliente['colonia_str'],
-            "cp": this.cliente['cp_str'],
-            "password": this.cliente['password'],
-            "reppass": this.cliente['password'],
-            "user": this.cliente['user']
-        };
-    }
-    ModifclientePage.prototype.saveData = function () {
-        var _this = this;
-        var form_invalido = this.alert.create({
-            title: 'OPERACION CANCELADA',
-            message: 'YA SE ENVIARON LOS DATOS MODIFICADOS!',
-            buttons: ['ACEPTAR']
-        });
-        if (this.cliente['id_cliente'] == '') {
-            form_invalido.present();
-        }
-        else {
-            var repetido = this.alert.create({
-                title: 'OPERACION CANCELADA',
-                message: 'lOS DATOS SON IGUALES!',
-                buttons: ['ACEPTAR']
-            });
-            if (JSON.stringify(this.comprobar) != JSON.stringify(this.myForm.value)) {
-                console.log("son desiguales");
-                //alertas
-                var miAlerta = this.alert.create({
-                    title: 'OPERACION CANCELADA',
-                    message: 'LA CONTRASEÑA NO COINCIDE!',
-                    buttons: ['ACEPTAR']
-                });
-                var idRep_1 = this.alert.create({
-                    title: 'OPERACION CANCELADA',
-                    message: 'YA EXISTE ESE USUARIO!',
-                    buttons: ['ACEPTAR']
-                });
-                var success_1 = this.alert.create({
-                    title: 'OPERACION EXITOSA',
-                    message: 'AGREGADO CORRECTAMENTE',
-                    buttons: ['ACEPTAR']
-                });
-                //alert(JSON.stringify(this.myForm.value));
-                var obj = JSON.parse(JSON.stringify(this.myForm.value));
-                obj['funcion'] = 'actualizarCliente';
-                obj['id_access'] = this.cliente['id_access'];
-                obj['id_cliente'] = this.cliente['id_cliente'];
-                // this.cleanForm();
-                for (var i in obj) {
-                    if (i == "password" || i == "reppass" || i == "funcion" || i == "foto" || i == "user" || i == "id_access") {
-                    }
-                    else {
-                        obj[i] = obj[i].toUpperCase(); // convierte los datos a mayúscula
-                    }
-                }
-                if (obj['password'] == obj['reppass']) {
-                    console.log(JSON.stringify(obj));
-                    this.http.post(this.apiUrl, JSON.stringify(obj)) //envia los datos
-                        .subscribe(function (res) {
-                        if (res == "id_rep") {
-                            idRep_1.present();
-                        }
-                        else if (res == "exito") {
-                            if (_this.myForm.valid) {
-                                console.log("form enviado");
-                                success_1.present();
-                                _this.myForm.reset();
-                                _this.dir['path'] = 'stock.png';
-                                _this.cliente['id'] = '';
-                                _this.navCtrl.push(_this.all);
-                            }
-                        }
-                        console.log(res);
-                    }, function (error) {
-                        console.log(error);
-                    });
-                }
-                else {
-                    console.log(JSON.stringify(obj));
-                    miAlerta.present();
-                }
-            }
-            else {
-                repetido.present();
-            }
-        }
-    };
-    // funcion que verifica la existencia de la imagen en el servidor
-    ModifclientePage.prototype.ver = function () {
-        var _this = this;
-        if (this.dir['dir'] != "") {
-            var funcion2 = {
-                'funcion': 'existImg',
-            };
-            // alerta de error de archivo
-            var error_file_1 = this.alert.create({
-                title: 'ERROR',
-                message: 'EL ARCHIVO NO SE ENCUANTRA EN LA CARPETA DEL SERVIDOR',
-                buttons: ['ACEPTAR']
-            });
-            var cadena = this.dir['dir'];
-            var resultado_1 = "";
-            // obtiene solo el path de la url adquirida
-            for (var i = 12; i < cadena.length; i++) {
-                resultado_1 = resultado_1.concat(cadena[i]); // resultado contiene el path de la imagen
-            }
-            funcion2['path'] = resultado_1;
-            console.log(funcion2);
-            //manda la informacion al servidor para verificar la existencia de la imagen
-            this.http.post(this.apiUrl, JSON.stringify(funcion2)) //envia los datos
-                .subscribe(function (res) {
-                console.log(res);
-                if (res == "no existe") {
-                    error_file_1.present();
-                }
-                else if (res == "existe") {
-                    _this.dir['path'] = resultado_1; // le asigna el valor del path
-                    _this.myForm.controls['foto'].setValue(resultado_1); // asigna al campo 'foto' del form el nuevo path
-                }
-            });
-            console.log(JSON.stringify(this.dir)); // muestra la direccion
-        }
-    };
-    ModifclientePage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-modifcliente',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\modifcliente\modifcliente.html"*/'<!--\n  Generated template for the ModifclientePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar color="danger">\n      <ion-title>Modificar</ion-title>\n    </ion-navbar>\n  </ion-header>\n  \n  \n  \n  \n  <ion-content padding class="inicio">\n  \n      <ion-label color="secondary" align="center"><b>PERFIL</b></ion-label>\n        <img src="http://gymdb/imgs/customers/{{ dir.path }}" width="300" height="300" alt="Imagen de Perfil">\n      \n      <ion-label color="primary"><b>SELECCIONE IMAGEN:</b> </ion-label>\n      <form  method="post" enctype="multipart/form-data">   \n      <input type="file" name="fileToUpload"  id="fileToUpload"  [(ngModel)]="dir.dir">\n      <button ion-button icon-start (click)="ver()">\n          <ion-icon name="camera"></ion-icon>\n          Añadir\n      </button>\n      </form>\n  \n  \n    <ion-grid>\n      <ion-row>\n          \n        <ion-col>\n          <ion-card text-center classss="Datos">\n          \n            <ion-card-content>\n            <h2><strong >DATOS</strong></h2>\n            <br>\n            <br><br>\n            \n            <form [formGroup]="myForm"  (ngSubmit)="saveData()" novalidate>\n                <ion-list>\n                    <ion-item>\n                        <ion-label stack color = "primary" icon-start><ion-icon name="person"></ion-icon>Nombre:</ion-label>\n                        <ion-input id="nombre" name="nombre" formControlName="nombre" type="text"></ion-input>\n                      </ion-item>\n                      <ion-item *ngIf="myForm.get(\'nombre\').errors && myForm.get(\'nombre\').dirty">\n                        <p color="danger" ion-text *ngIf="myForm.get(\'nombre\').hasError(\'required\')">Field is required</p>\n                      </ion-item>\n                  <ion-item>\n                      <ion-label stack color = "primary" icon-start><ion-icon name="person"></ion-icon>Apellido Paterno:</ion-label>\n                    <ion-input id="apellidoP" name ="apellidoP" type="text" formControlName="apellidoP"  name ="apellidoP"></ion-input>\n                  </ion-item>\n                  <ion-item *ngIf="myForm.get(\'apellidoP\').errors && myForm.get(\'apellidoP\').dirty">\n                      <p color="danger" ion-text *ngIf="myForm.get(\'apellidoP\').hasError(\'required\')">Field is required</p>\n                    </ion-item>\n                  <ion-item>\n                      <ion-label stack color = "primary" icon-start><ion-icon name="person"></ion-icon>Apellido Materno:</ion-label>\n                    <ion-input id="apellidoM" name ="apellidoM" type="text" formControlName="apellidoM" name ="apellidoM"></ion-input>\n                  </ion-item>\n                  <ion-item *ngIf="myForm.get(\'apellidoM\').errors && myForm.get(\'apellidoM\').dirty">\n                      <p color="danger" ion-text *ngIf="myForm.get(\'apellidoM\').hasError(\'required\')">Field is required</p>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label color = "primary" icon-start><ion-icon name="person"></ion-icon>Genero:</ion-label>\n                        <ion-select id="gender" name ="gender" formControlName="gender">\n                        <ion-option value="F">Mujer</ion-option>\n                          <ion-option value="M">Hombre</ion-option>\n                        </ion-select>\n                      </ion-item>\n                      <ion-item *ngIf="myForm.get(\'gender\').errors && myForm.get(\'gender\').dirty">\n                          <p color="danger" ion-text *ngIf="myForm.get(\'gender\').hasError(\'required\')">Field is required</p>\n                        </ion-item>\n                  <ion-item>\n                      <ion-label stack color = "primary"  icon-start><ion-icon name="call"></ion-icon>Telefono:</ion-label>\n                      <ion-input id="telefono" name ="telefono" type="tel" formControlName="telefono"  name ="telefono"></ion-input>\n                  </ion-item>\n                  <ion-item *ngIf="myForm.get(\'telefono\').errors && myForm.get(\'telefono\').dirty">\n                      <p color="danger" ion-text *ngIf="myForm.get(\'telefono\').hasError(\'required\')">Field is required</p>\n                      <p color="danger" ion-text *ngIf="myForm.get(\'telefono\').hasError(\'pattern\')">Just Numbers</p>\n                    </ion-item>\n                  \n                     <ion-label color="secondary" icon-start><ion-icon name="calendar"></ion-icon>FECHA DE NACIMIENTO</ion-label>\n                     <ion-item>\n                        <ion-label >MM DD YY</ion-label>\n                        <ion-datetime id="fechanac" name ="fechanac" formControlName="fechanac" display-format="MM DD YY" placeholder="Select Date" ></ion-datetime>\n                      </ion-item>\n                      <ion-item *ngIf="myForm.get(\'fechanac\').errors && myForm.get(\'fechanac\').dirty">\n                          <p color="danger" ion-text *ngIf="myForm.get(\'fechanac\').hasError(\'required\')">Field is required</p>\n                        </ion-item>\n  \n                     <ion-label color="secondary" icon-start><ion-icon name="pin"></ion-icon>DIRECCION</ion-label>\n                     <ion-item>\n                        <ion-label stack color = "primary" >Nombre Calle:</ion-label>\n                        <ion-input id="calle" name ="calle" formControlName="calle" type="text"></ion-input>\n                    </ion-item>\n                      <ion-item *ngIf="myForm.get(\'calle\').errors && myForm.get(\'calle\').dirty">\n                        <p color="danger" ion-text *ngIf="myForm.get(\'calle\').hasError(\'required\')">Field is required</p>\n                       </ion-item> \n                       <ion-item>\n                          <ion-label stack color = "primary">Numero Exterior:</ion-label>\n                          <ion-input id="numero" name ="numero" formControlName="numero" type="text"></ion-input>\n                      </ion-item>\n                        <ion-item *ngIf="myForm.get(\'numero\').errors && myForm.get(\'numero\').dirty">\n                          <p color="danger" ion-text *ngIf="myForm.get(\'numero\').hasError(\'required\')">Field is required</p>\n                         </ion-item> \n                         <ion-item>\n                            <ion-label stack color = "primary" >Numero Interior:</ion-label>\n                            <ion-input id="numeroint" name ="numeroint" formControlName="numeroint" type="text"></ion-input>\n                         </ion-item>\n                           <ion-item>\n                              <ion-label stack color = "primary" >Colonia:</ion-label>\n                              <ion-input id="colonia" name ="colonia" formControlName="colonia" type="text"></ion-input>\n                          </ion-item>\n                            <ion-item *ngIf="myForm.get(\'colonia\').errors && myForm.get(\'colonia\').dirty">\n                              <p color="danger" ion-text *ngIf="myForm.get(\'colonia\').hasError(\'required\')">Field is required</p>\n                             </ion-item>\n                             <ion-item>\n                                <ion-label stack color = "primary" >CP:</ion-label>\n                                <ion-input  id="cp" name="cp" formControlName="cp" type="text"></ion-input>\n                            </ion-item>\n                              <ion-item *ngIf="myForm.get(\'cp\').errors && myForm.get(\'cp\').dirty">\n                                <p color="danger" ion-text *ngIf="myForm.get(\'cp\').hasError(\'required\')">Field is required</p>\n                                <p color="danger" ion-text *ngIf="myForm.get(\'cp\').hasError(\'pattern\')">Just Numbers</p>\n                               </ion-item> \n                               <ion-label color="secondary">CUENTA</ion-label>\n                               <ion-item >\n                                  <ion-label stack color = "primary" icon-start><ion-icon name="log-in"></ion-icon> Username:</ion-label>\n                                <ion-input id="usercliente" name="usercliente" formControlName="user" type="text" ></ion-input>\n                              </ion-item>\n                              <ion-item *ngIf="myForm.get(\'user\').errors && myForm.get(\'user\').dirty">\n                                  <p color="danger" ion-text *ngIf="myForm.get(\'user\').hasError(\'required\')">Field is required</p>\n                                 </ion-item> \n                               <ion-item class="inputPass">\n                                  <ion-label stack color = "primary"  icon-start>\n                                      <ion-icon name="lock"></ion-icon> Contraseña:</ion-label>\n                                  <ion-input id="password" name ="password" formControlName="password" type="password"></ion-input>\n                                </ion-item>\n                                  \n                                <ion-item *ngIf="myForm.get(\'password\').errors && myForm.get(\'password\').dirty">\n                                  <p color="danger" ion-text *ngIf="myForm.get(\'password\').hasError(\'required\')">Field is required</p>\n                                  <p color="danger" ion-text *ngIf="myForm.get(\'password\').hasError(\'minlength\')">Min of 5 characters</p>\n                                  <p color="danger" ion-text *ngIf="myForm.get(\'password\').hasError(\'maxlength\')">Max of 15 characters</p>\n                                </ion-item>\n                                <ion-item class="inputPass">\n                                    <ion-label stack color = "primary"  icon-start>\n                                        <ion-icon name="lock"></ion-icon>\n                                        Repita Contraseña:</ion-label>\n                                    <ion-input id="rep" name= "rep" formControlName="reppass"  type="password"></ion-input>\n                                  </ion-item>\n                                  <ion-item *ngIf="myForm.get(\'reppass\').errors && myForm.get(\'reppass\').dirty">\n                                    <p color="danger" ion-text *ngIf="myForm.get(\'reppass\').hasError(\'required\')">Field is required</p>\n                                  </ion-item>\n                                  \n                </ion-list><br>\n                <div padding>\n                    <button ion-button icon-start block type="submit" [disabled]="myForm.invalid">\n                        <ion-icon name="construct">   </ion-icon>\n                            MODIFICAR\n                    </button>\n  \n  \n                  </div>\n              </form> \n          </ion-card-content>\n        </ion-card>\n      </ion-col>\n      \n    </ion-row>\n    </ion-grid>\n  \n  </ion-content>\n  '/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\modifcliente\modifcliente.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavParams */]])
-    ], ModifclientePage);
-    return ModifclientePage;
-}());
-
-//# sourceMappingURL=modifcliente.js.map
-
-/***/ }),
-
 /***/ 112:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModifaparatoPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__allaparatos_allaparatos__ = __webpack_require__(54);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-/**
- * Generated class for the ModifaparatoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var ModifaparatoPage = /** @class */ (function () {
-    function ModifaparatoPage(navCtrl, cl, http, alert, navParams) {
-        this.navCtrl = navCtrl;
-        this.cl = cl;
-        this.http = http;
-        this.alert = alert;
-        this.navParams = navParams;
-        this.id_admin = {};
-        this.back = __WEBPACK_IMPORTED_MODULE_4__allaparatos_allaparatos__["a" /* AllaparatosPage */]; // pagina de aparatos
-        this.aparato = {}; // almacena registro que se envia por parametro
-        this.datos = []; //almacena las categorias dispoibles
-        this.hideCategoria = true; //variables que sirven para controlar partes del form
-        this.hideOtro = true;
-        this.apiUrl = "http://gymdb/"; // server
-        this.dat = {
-            'id': '0',
-            'nombre': 'OTRO'
-        };
-        this.comp = {}; /// servira para comprobar si se ha hecho algun cambio 
-        this.id_admin = this.navParams.get('id'); // obtiene el id del empleado que opera en este momento
-        this.aparato = this.navParams.get('aparato'); // obtiene el registro enviado
-        console.log("id aADMOININIINI");
-        console.log(this.id_admin);
-        this.myForm = this.cl.group({
-            categoria: [this.aparato['nombre'], [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]],
-            otro: [''],
-            descripcion: [this.aparato['descripcion'], [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]],
-            estado: [this.aparato['estado'], [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]],
-        });
-        this.obtenerCat(); // obtiene categorias de aparatos
-        this.comp = {
-            'categoria': this.aparato['id_categoria'],
-            'otro': '',
-            'descripcion': this.aparato['descripcion'],
-            'estado': this.aparato['estado']
-        };
-    }
-    ModifaparatoPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ModifaparatoPage');
-    };
-    ModifaparatoPage.prototype.validar = function () {
-        if (this.datos.length > 1) {
-            // console.log(this.datos.length);
-            this.hideCategoria = false;
-            this.hideOtro = true;
-        }
-        else {
-            this.hideOtro = false;
-            this.hideCategoria = true;
-            this.myForm.controls['categoria'].setValue('0');
-        }
-    };
-    ModifaparatoPage.prototype.obtenerCat = function () {
-        var _this = this;
-        var funcion = {
-            'funcion': 'getCategoria'
-        };
-        this.http.post(this.apiUrl, JSON.stringify(funcion))
-            .subscribe(function (res) {
-            console.log(res);
-            _this.datos = res['categoria'];
-            _this.datos.push(_this.dat);
-            //console.log(this.datos.length);
-            _this.validar();
-            _this.myForm.controls['categoria'].setValue(_this.aparato['id_categoria']);
-            console.log(JSON.stringify(_this.datos));
-        }, function (error) {
-            console.log(error);
-        });
-    };
-    // funcion que siempre que haya un cambio en el form hace un cambio
-    ModifaparatoPage.prototype.onChange = function (ev) {
-        console.log(ev);
-        if (ev == 0) {
-            this.hideOtro = false; // hace vicible un input
-        }
-        else {
-            this.hideOtro = true; // lo esconde
-        }
-    };
-    // funcion de guardar
-    ModifaparatoPage.prototype.saveData = function () {
-        var miAlerta = this.alert.create({
-            title: 'OPERACION CANCELADA',
-            message: 'CAMPO CATEGORIA VACIO!',
-            buttons: ['ACEPTAR']
-        });
-        var alerta = this.alert.create({
-            title: 'OPERACION CANCELADA',
-            message: 'NO SE HA MODIFICADO NADA!',
-            buttons: ['ACEPTAR']
-        });
-        if (JSON.stringify(this.comp) == JSON.stringify(this.myForm.value)) {
-            alerta.present();
-        }
-        else {
-            if (this.hideOtro == false) {
-                if (this.myForm.controls['otro'].value == '') {
-                    miAlerta.present();
-                    return;
-                }
-                else {
-                    this.enviarForm(); //envia formulario
-                    return;
-                }
-            }
-            this.enviarForm(); // envia formulario*/
-        }
-    };
-    ModifaparatoPage.prototype.enviarForm = function () {
-        var _this = this;
-        var success = this.alert.create({
-            title: 'OPERACION EXITOSA',
-            message: 'OPERACION REALIZADA CON EXITO',
-            buttons: ['ACEPTAR']
-        });
-        var mayus = this.myForm.controls['otro'].value;
-        if (mayus != null) {
-            mayus = mayus.toUpperCase();
-            this.myForm.controls['otro'].setValue(mayus); // covierte a mayuscula la categoria
-        }
-        var desc = this.myForm.controls['descripcion'].value;
-        if (desc != null) {
-            desc = desc.toUpperCase();
-            this.myForm.controls['descripcion'].setValue(desc); // covierte a mayuscula la categoria
-        }
-        console.log((this.myForm.value));
-        var obj = JSON.parse(JSON.stringify(this.myForm.value));
-        obj['funcion'] = 'modifAparato'; //funcion de modificar 
-        obj['id'] = this.aparato['id']; // agrega el id del aparato
-        obj['id_admin'] = this.id_admin; // administrador que realiza la operacion
-        obj['accion'] = '2'; // '2'= modificar
-        console.log(obj);
-        this.http.post(this.apiUrl, JSON.stringify(obj))
-            .subscribe(function (res) {
-            console.log(res);
-            if (res == "exito") {
-                success.present();
-                _this.navCtrl.push(_this.back, { id: obj['id_admin'], filtro: _this.aparato['filtro'] }); // regresa a la pagina anterior, le envia el id del admin como parametro
-            }
-        }, function (error) {
-            console.log(error);
-        });
-    };
-    ModifaparatoPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-modifaparato',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\modifaparato\modifaparato.html"*/'<!--\n  Generated template for the ModifaparatoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="danger">\n    <ion-title>Modificar Aparato</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <ion-card text-center classss="Datos">\n        \n          <ion-card-content>\n          <h2><strong >Registro</strong></h2>\n          <br>\n          <br><br>\n          \n          <form [formGroup]="myForm"  (ngSubmit)="saveData()" novalidate>\n              <ion-list>\n                  <ion-item [hidden]="hideCategoria">\n                      <ion-label color="primary" icon-start><ion-icon name="pricetag"></ion-icon>Categoria:  </ion-label>\n                      <ion-select  id="categoria" name="categoria" formControlName="categoria" (ionChange)="onChange($event)">\n                        <div *ngFor="let tupla of datos">\n                          <ion-option value="{{tupla.id}}">{{tupla.nombre}}\n                          </ion-option>\n                        </div>\n                      </ion-select>\n                </ion-item>\n                <ion-item *ngIf="myForm.get(\'categoria\').errors && myForm.get(\'categoria\').dirty">\n                    <p color="danger" ion-text *ngIf="myForm.get(\'categoria\').hasError(\'required\')">Field is required</p>\n                 </ion-item>\n                 <ion-item [hidden]="hideOtro">\n                  <ion-label stack color = "primary" icon-start><ion-icon name="pricetag"></ion-icon>Categoria:</ion-label>\n                  <ion-input id="otro" type="text" formControlName="otro"  name ="otro"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label stack color = "primary" icon-start><ion-icon name="information-circle"></ion-icon>Descripcion:</ion-label>\n                  <ion-input id="descripcion" type="text" formControlName="descripcion"  name ="descripcion"></ion-input>\n                </ion-item>\n                <ion-item *ngIf="myForm.get(\'descripcion\').errors && myForm.get(\'descripcion\').dirty">\n                    <p color="danger" ion-text *ngIf="myForm.get(\'descripcion\').hasError(\'required\')">Field is required</p>\n                  </ion-item>\n                  <ion-item>\n                      <ion-label color="primary" icon-start><ion-icon name="git-pull-request"></ion-icon>Estado:  </ion-label>\n                      <ion-select id="estado" name="estado" formControlName="estado" >\n                          <ion-option value="1">En Funcionamiento</ion-option >\n                            <ion-option value="2">En Mantenimiento</ion-option >\n                              <ion-option value="3">Fuera de Servicio</ion-option >\n                      </ion-select>\n                </ion-item>\n                <ion-item *ngIf="myForm.get(\'estado\').errors && myForm.get(\'estado\').dirty">\n                    <p color="danger" ion-text *ngIf="myForm.get(\'estado\').hasError(\'required\')">Field is required</p>\n                  </ion-item>\n                                \n              </ion-list><br>\n              <div padding>\n                  <button ion-button icon-start block type="submit" [disabled]="myForm.invalid">\n                      <ion-icon name="archive">   </ion-icon>\n                          Guardar\n                  </button>\n                </div>\n            </form> \n\n        </ion-card-content>\n\n      </ion-card>\n    </ion-col>\n    \n  </ion-row>\n  </ion-grid>\n  \n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\modifaparato\modifaparato.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
-    ], ModifaparatoPage);
-    return ModifaparatoPage;
-}());
-
-//# sourceMappingURL=modifaparato.js.map
-
-/***/ }),
-
-/***/ 113:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HistorialAparatosPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(6);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-/**
- * Generated class for the HistorialAparatosPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var HistorialAparatosPage = /** @class */ (function () {
-    function HistorialAparatosPage(navCtrl, http, navParams) {
-        this.navCtrl = navCtrl;
-        this.http = http;
-        this.navParams = navParams;
-        this.apiUrl = "http://gymdb/";
-        this.historial = []; // lista que contendrá todo el historial de modificaciones de aparatos 
-        this.getHistorial(); // obtiene todos los registros de la base de datos
-    }
-    HistorialAparatosPage.prototype.getHistorial = function () {
-        var _this = this;
-        var funcion = {
-            'funcion': 'getHistorial'
-        };
-        this.http.post(this.apiUrl, JSON.stringify(funcion))
-            .subscribe(function (res) { console.log(res); _this.historial = res['historial']; console.log(_this.historial); }, function (error) { console.log(error); });
-    };
-    HistorialAparatosPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad HistorialAparatosPage');
-    };
-    HistorialAparatosPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-historial-aparatos',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\historial-aparatos\historial-aparatos.html"*/'<!--\n  Generated template for the HistorialAparatosPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar  color="primary">\n    <ion-title>Historial Modificaciones</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-item *ngFor="let registro of historial">\n      \n    <p><b>ID Admin: </b>  {{ registro.id_admin }}</p>\n    <p><b>Nombre Empleado: </b> {{ registro.Nombre }}</p>\n    <p><b>ID Aparato: </b> {{ registro.id_aparato }}</p>\n    <p><b>Categoria: </b> {{ registro.nombre }}</p>\n    <p><b>Fecha (año/mes/dia): </b> {{ registro.fecha }}</p>\n    <p *ngIf="registro.accion==\'1\'"><b>Accion: </b> AGREGAR</p>\n    <p *ngIf="registro.accion==\'2\'"><b>Accion: </b> MODIFICAR</p>\n  </ion-item>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\historial-aparatos\historial-aparatos.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
-    ], HistorialAparatosPage);
-    return HistorialAparatosPage;
-}());
-
-//# sourceMappingURL=historial-aparatos.js.map
-
-/***/ }),
-
-/***/ 114:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddEmpleadoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(5);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1004,14 +461,15 @@ var AddEmpleadoPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 115:
+/***/ 113:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecibePayPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddProductoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(5);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1024,596 +482,161 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var RecibePayPage = /** @class */ (function () {
-    function RecibePayPage(navCtrl, http, navParams) {
-        var _this = this;
+
+/**
+ * Generated class for the AddProductoPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var AddProductoPage = /** @class */ (function () {
+    function AddProductoPage(navCtrl, navParams, alert, http, cl) {
         this.navCtrl = navCtrl;
-        this.http = http;
         this.navParams = navParams;
-        this.pago = {};
-        this.info_paquete = {};
-        this.info_cliente = {};
-        this.cuenta = {};
-        this.nota = {};
-        this.apiUrl = "http://gymdb/";
-        this.pago = this.navParams.get('pago');
-        this.info_paquete = {
-            'id_paquete': this.pago['id_paquete'],
-            'funcion': 'getRecibe'
+        this.alert = alert;
+        this.http = http;
+        this.cl = cl;
+        this.hideProducto = false;
+        this.hideOtro = false;
+        this.apiUrl = "http://gymdb/"; // servidor
+        this.dat = {
+            'id': '0',
+            'nombre': 'OTRO'
         };
-        this.info_cliente = {
-            'id_cliente': this.pago['id_cliente'],
-            'funcion': 'getClientePay'
-        };
-        if (this.pago['monto'] == '0') {
-            this.nota['info'] = "PAGO ELIMINADO";
+        this.productos = [];
+        this.crearForm();
+        this.obtenerProducts();
+    }
+    // crea el form
+    AddProductoPage.prototype.crearForm = function () {
+        this.myForm = this.cl.group({
+            producto: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]],
+            nuevo_producto: [''],
+            descripcion: [''],
+            precio_entrada: [''],
+            precio_salida: [''],
+            cantidad: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]],
+            proveedor: [''],
+        });
+    };
+    AddProductoPage.prototype.validar = function () {
+        if (this.productos.length > 1) {
+            this.hideProducto = false;
+            this.hideOtro = true;
         }
         else {
-            this.nota['info'] = " ";
+            this.hideOtro = false;
+            this.hideProducto = true;
+            this.myForm.controls['producto'].setValue('0');
         }
-        //Informacion del paquete
-        this.http.post(this.apiUrl, JSON.stringify(this.info_paquete))
-            .subscribe(function (res) {
-            console.log(res);
-            _this.info_paquete['nombre'] = res[0]['nombre'];
-            _this.info_paquete['descripcion'] = res[0]['descripcion'];
-            _this.info_paquete['precio'] = res[0]['precio'];
-        }, function (error) {
-            console.log(error);
-        });
-        //Informacion del cliente
-        this.http.post(this.apiUrl, JSON.stringify(this.info_cliente))
-            .subscribe(function (res) {
-            console.log(res);
-            _this.info_cliente['nombre'] = res[0]['nombre'];
-            _this.info_cliente['apellido_p'] = res[0]['apellido_p'];
-            _this.info_cliente['apellido_m'] = res[0]['apellido_m'];
-            _this.info_cliente['id_cp'] = res[0]['id_cp'];
-            _this.info_cliente['id_colonia'] = res[0]['id_colonia'];
-            _this.info_cliente['calle'] = res[0]['calle'];
-            _this.info_cliente['numero_calle'] = res[0]['numero_calle'];
-            _this.info_cliente['numero_interior'] = res[0]['numero_interior'];
-            _this.info_cliente['telefono'] = res[0]['telefono'];
-            _this.cuenta = {
-                'id_access': _this.pago['id_cliente'],
-                'id_col': _this.info_cliente['id_cp'],
-                'id_cp': _this.info_cliente['id_colonia'],
-                'funcion': 'getForeignData'
-            };
-            //Informacion contenida en otras tablas
-            _this.http.post(_this.apiUrl, JSON.stringify(_this.cuenta))
-                .subscribe(function (res) {
-                console.log(res);
-                _this.cuenta['user'] = res[0]['user'];
-                _this.cuenta['colonia'] = res[1]['user'];
-                _this.cuenta['cp'] = res[2]['user'];
-            }, function (error) {
-                console.log(error);
-            });
-        }, function (error) {
-            console.log(error);
-        });
-    }
-    RecibePayPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad RecibePayPage');
     };
-    RecibePayPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-recibe-pay',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\recibe-pay\recibe-pay.html"*/'<ion-header>\n\n  <ion-navbar color="secondary">\n\n    <ion-title>Recibo de pago</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <ion-card>\n\n    <ion-card-header>\n\n      <ion-label color="primary" align="center"><b>GYM SYSTEM</b></ion-label>    <br>  \n\n    </ion-card-header>\n\n    <ion-card-content>\n\n        <div text-right> <strong >RECIBO: </strong> {{pago.id_pago}} </div> <br>\n\n        <div text-right> <strong >FECHA: </strong> {{pago.fecha_pago}} </div>\n\n        <br>\n\n        <ion-label color="primary" align="left">CLIENTE</ion-label>  \n\n        <div text-left> <strong >ID: </strong> {{pago.id_cliente}} </div><br>\n\n        <div text-left> <strong >NOMBRE: </strong> {{info_cliente.nombre }} {{info_cliente.apellido_p }} \n\n          {{info_cliente.apellido_m }}</div><br>\n\n          <div text-left> <strong >TELEFONO: </strong> {{info_cliente.telefono}}</div>\n\n        <br>\n\n        <div text-left> <strong >CALLE: </strong> {{info_cliente.calle}}</div><br>\n\n        <div text-left> <strong >NUMERO: </strong> {{info_cliente.numero_calle}}</div><br>\n\n        <div text-left> <strong >NUMERO INTERIOR: </strong> {{info_cliente.numero_interior}}</div><br>\n\n        <div text-left> <strong >COLONIA: </strong> {{cuenta.colonia}}</div><br>\n\n        <div text-left> <strong >CP: </strong> {{cuenta.cp}}</div><br>\n\n        <br>\n\n        <ion-label color="primary" align="left">PAGO</ion-label> \n\n        <div text-left> <strong >CONCEPTO: </strong> {{info_paquete.nombre}} </div><br>\n\n        <div text-left> <strong >DESCRIPCION: </strong> {{info_paquete.descripcion}} </div>\n\n        <ion-label color="danger" align="left"> <strong >VENCIMIENTO: </strong> {{pago.fecha_vencimiento}} </ion-label><br>\n\n        <br><br>\n\n        <ion-label color="primary" align="right">RESUMEN</ion-label> \n\n        <div text-right> <strong >TOTAL A PAGAR: </strong> ${{info_paquete.precio}}.00 </div>\n\n        <ion-label color="danger" align="right">{{nota.info}}</ion-label> \n\n        <div text-right> <strong >MONTO PAGADO: </strong> ${{pago.monto}}.00 </div><br>\n\n        \n\n    </ion-card-content>\n\n  </ion-card>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\recibe-pay\recibe-pay.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
-    ], RecibePayPage);
-    return RecibePayPage;
-}());
-
-//# sourceMappingURL=recibe-pay.js.map
-
-/***/ }),
-
-/***/ 116:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModifyPayPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__list_pay_list_pay__ = __webpack_require__(55);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var ModifyPayPage = /** @class */ (function () {
-    function ModifyPayPage(navCtrl, http, actionsheet, alert, cl, navParams) {
-        var _this = this;
-        this.navCtrl = navCtrl;
-        this.http = http;
-        this.actionsheet = actionsheet;
-        this.alert = alert;
-        this.cl = cl;
-        this.navParams = navParams;
-        this.apiUrl = "http://gymdb/";
-        this.clientes = [];
-        this.items = [];
-        this.pago = {};
-        this.comprobar = {};
-        this.nombre = '';
-        this.list = __WEBPACK_IMPORTED_MODULE_4__list_pay_list_pay__["a" /* ListPayPage */];
-        this.funcion = {
-            "funcion": "getAllCustomers"
-        };
-        this.http.post(this.apiUrl, JSON.stringify(this.funcion))
-            .subscribe(function (res) {
-            console.log(res);
-            _this.clientes = res['clientes'];
-            _this.paquete();
-            console.log(JSON.stringify(_this.clientes));
-        }, function (error) {
-            console.log(JSON.stringify(error));
-        });
-        this.pago = this.navParams.get('pago');
-        console.log(this.pago);
-        this.paqueteNombre();
-        this.myForm = this.cl.group({
-            id_usuario: [this.pago['id_cliente'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
-            paquete: [this.pago['id_paquete'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
-            modo: [this.pago['modo'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
-            monto: [this.pago['monto'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]]
-        });
-        this.comprobar = {
-            "id_usuario": this.pago['id_cliente'],
-            "paquete": this.pago['id_paquete'],
-            "modo": this.pago['modo'],
-            "monto": this.pago['monto']
-        };
-    }
-    ModifyPayPage.prototype.initializeItems = function () {
-        this.items = this.clientes;
-    };
-    ModifyPayPage.prototype.paquete = function () {
+    AddProductoPage.prototype.obtenerProducts = function () {
         var _this = this;
         var funcion = {
-            "funcion": "getPaquete"
+            'funcion': 'getProductosProveedores'
         };
         this.http.post(this.apiUrl, JSON.stringify(funcion))
-            .subscribe(function (res) {
-            console.log(res);
-            _this.paquetes = res;
-            console.log(JSON.stringify(_this.paquetes));
-        }, function (error) {
-            console.log(JSON.stringify(error));
-        });
+            .subscribe(function (res) { console.log(res); _this.productos = res['productos']; _this.productos.push({ 'id': '0', 'nombre': 'OTRO' }); _this.validar(); }, function (error) { console.log(error); });
     };
-    ModifyPayPage.prototype.paqueteNombre = function () {
-        var _this = this;
-        var funcion = {
-            "funcion": "paqueteNombre",
-            "id_paquete": this.pago['id_paquete']
-        };
-        this.http.post(this.apiUrl, JSON.stringify(funcion))
-            .subscribe(function (res) {
-            console.log(res);
-            _this.nombre = res[0]["nombre"];
-            console.log(JSON.stringify(_this.nombre));
-        }, function (error) {
-            console.log(JSON.stringify(error));
-        });
-    };
-    ModifyPayPage.prototype.cleanItems = function () {
-        this.items = [];
-    };
-    ModifyPayPage.prototype.getItems = function (ev) {
-        this.initializeItems();
-        console.log(ev.target.value);
-        var val = ev.target.value.toUpperCase();
-        this.items = this.items.filter(function (cliente) {
-            console.log(JSON.stringify(JSON.stringify(cliente.Nombre)));
-            return cliente.Nombre.includes(val);
-        });
-        console.log(JSON.stringify(this.clientes));
-    };
-    ModifyPayPage.prototype.pagar = function () {
-        var _this = this;
-        if (JSON.stringify(this.comprobar) != JSON.stringify(this.myForm.value)) {
-            var paqueteAlerta_1 = this.alert.create({
-                title: 'Paquete invalido',
-                message: 'Escribe el nombre correcto del paquete',
-                buttons: ['Ok']
-            });
-            var paqueteInactivoAlerta_1 = this.alert.create({
-                title: 'Paquete no disponible',
-                message: 'Verifica situacion del paquete',
-                buttons: ['Ok']
-            });
-            var clienteAlerta_1 = this.alert.create({
-                title: 'Cliente invalido',
-                message: 'Escribe id de un cliente valido',
-                buttons: ['Ok']
-            });
-            var clienteInactivoAlerta_1 = this.alert.create({
-                title: 'Cliente inactivo',
-                message: 'Verifica situacion del cliente',
-                buttons: ['Ok']
-            });
-            var pagoAlerta_1 = this.alert.create({
-                title: 'Cambio existoso',
-                message: 'Ya puedes consultar tu recibo modificado',
-                buttons: ['Ok']
-            });
-            var obj = JSON.parse(JSON.stringify(this.myForm.value));
-            obj['funcion'] = 'addCambioPago';
-            obj['id'] = this.pago['id_pago'];
-            console.log(obj);
-            this.http.post(this.apiUrl, JSON.stringify(obj))
-                .subscribe(function (res) {
-                if (res == "Paquete Invalido") {
-                    paqueteAlerta_1.present();
-                }
-                if (res == "Paquete Inactivo") {
-                    paqueteInactivoAlerta_1.present();
-                }
-                if (res == "Cliente Invalido") {
-                    clienteAlerta_1.present();
-                }
-                if (res == "Cliente Inactivo") {
-                    clienteInactivoAlerta_1.present();
-                }
-                else if (res == "Pago exitoso") {
-                    pagoAlerta_1.present();
-                    if (_this.myForm.valid) {
-                        console.log("form enviado");
-                        _this.myForm.reset();
-                        _this.navCtrl.push(_this.list);
-                    }
-                }
-                console.log(res);
-            });
+    AddProductoPage.prototype.onChange = function (ev) {
+        console.log(ev);
+        if (ev == 0) {
+            this.hideOtro = false; // hace vicible un input
         }
         else {
-            var noCambiosAlerta = this.alert.create({
-                title: 'No se han realizado cambios',
-                message: 'Informacion igual',
-                buttons: ['Ok']
-            });
-            noCambiosAlerta.present();
+            this.hideOtro = true; // lo esconde
         }
     };
-    ModifyPayPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ModifyPayPage');
+    AddProductoPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad AddProductoPage');
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('myForm'),
-        __metadata("design:type", Object)
-    ], ModifyPayPage.prototype, "formValues", void 0);
-    ModifyPayPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-modify-pay',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\modify-pay\modify-pay.html"*/'<ion-header>\n\n  <ion-navbar color= "secondary">\n    <ion-title>Modificar</ion-title>\n  </ion-navbar>\n\n  <ion-searchbar placeholder="Ingresa nombre de usuario para consultar id" (ionInput)="getItems($event)">\n  </ion-searchbar>\n\n</ion-header>\n\n<ion-content padding>\n\n  <div text-center>\n    <button ion-button outline (click)="cleanItems()">\n      <ion-icon name="arrow-up"></ion-icon>\n    </button>\n  </div>\n\n  <ion-card *ngFor="let cliente of items" color="primary">\n    <ion-card-content>\n      <b>{{ cliente.Nombre }}</b> <br> {{ cliente.id_cliente }}\n    </ion-card-content>\n  \n  </ion-card>\n\n  <ion-card *ngFor="let pack of paquetes" (click)="actionSheet()">\n    <ion-card-header><b>{{ pack.nombre }}</b>\n    </ion-card-header>\n          \n    <ion-card-content color="primary">\n      ${{pack.precio}}.00 <br>\n      <ion-label stack color="dark"> <strong>Clave: </strong>{{pack.id}}  </ion-label>\n    </ion-card-content>\n  </ion-card>\n\n  <ion-card>\n\n    <div text-center>\n      <br>\n      <strong >FICHA DE PAGO</strong>\n    </div>\n\n      <form [formGroup]="myForm"  (ngSubmit)="pagar()" novalidate>\n          <ion-list>\n\n              <ion-item>\n                <ion-label stack color = "primary">Username: </ion-label>\n                <ion-input id="id_usuario" name="id_usuario" formControlName="id_usuario" type="text"></ion-input>\n              </ion-item>\n              <ion-item *ngIf="myForm.get(\'id_usuario\').errors && myForm.get(\'id_usuario\').dirty">\n                <p color="danger" ion-text *ngIf="myForm.get(\'id_usuario\').hasError(\'required\')">Field is required</p>\n              </ion-item>\n\n              <ion-item>\n                <ion-label stack color = "primary">Clave de paquete: </ion-label>\n                <ion-input id="paquete" name="paquete" formControlName="paquete" type="text"></ion-input>\n              </ion-item>\n              <ion-item *ngIf="myForm.get(\'paquete\').errors && myForm.get(\'paquete\').dirty">\n                <p color="danger" ion-text *ngIf="myForm.get(\'paquete\').hasError(\'required\')">Field is required</p>\n              </ion-item>\n\n              <ion-item>\n                <ion-label stack color = "primary">Modo de Pago </ion-label>\n                <ion-select id="modo" name="modo" formControlName="modo" type="modo">\n                  <ion-option value="EFECTIVO">Efectivo</ion-option>\n                  <ion-option value="DEBITO">Debito</ion-option>\n                  <ion-option value="CREDITO">Credito</ion-option>\n                </ion-select>\n              </ion-item>\n              <ion-item *ngIf="myForm.get(\'modo\').errors && myForm.get(\'modo\').dirty">\n                <p color="danger" ion-text *ngIf="myForm.get(\'modo\').hasError(\'required\')">Field is required</p>\n              </ion-item>\n\n              <ion-item>\n                  <ion-label stack color = "primary">Monto: </ion-label>\n                  <ion-input id="monto" name="monto" formControlName="monto" type="text"></ion-input>\n              </ion-item>\n              <ion-item *ngIf="myForm.get(\'monto\').errors && myForm.get(\'monto\').dirty">\n                  <p color="danger" ion-text *ngIf="myForm.get(\'monto\').hasError(\'required\')">Field is required</p>\n              </ion-item>\n\n          </ion-list>\n\n          <div padding text-center>\n            <button ion-button outline type="submit" [disabled]="myForm.invalid">MODIFICAR</button>\n          </div>\n\n      </form>\n\n  </ion-card>\n</ion-content>'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\modify-pay\modify-pay.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* ActionSheetController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavParams */]])
-    ], ModifyPayPage);
-    return ModifyPayPage;
-}());
-
-//# sourceMappingURL=modify-pay.js.map
-
-/***/ }),
-
-/***/ 117:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PackPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(6);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var PackPage = /** @class */ (function () {
-    function PackPage(navCtrl, http, actionsheet, alert, cl, navParams) {
-        this.navCtrl = navCtrl;
-        this.http = http;
-        this.actionsheet = actionsheet;
-        this.alert = alert;
-        this.cl = cl;
-        this.navParams = navParams;
-        this.apiUrl = "http://gymdb/";
-        this.myForm = this.cl.group({
-            nombre: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
-            descripcion: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
-            precio: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern(/^-?(0|[1-9]\d*)?$/)]],
-            duracion: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern(/^-?(0|[1-9]\d*)?$/)]]
+    AddProductoPage.prototype.saveData = function () {
+        var miAlerta = this.alert.create({
+            title: 'OPERACION CANCELADA',
+            message: 'FALTAN DATOS!',
+            buttons: ['ACEPTAR']
         });
-    }
-    PackPage.prototype.pack = function () {
-        var _this = this;
-        var paqueteDuracion = this.alert.create({
-            title: 'Duracion de paquete invalida',
-            message: 'La duracion maxima es de 365 dias',
-            buttons: ['Ok']
-        });
-        var paqueteNombre = this.alert.create({
-            title: 'Nombre de paquete invalido',
-            message: 'Puede que el nombre de paquete sea repetido',
-            buttons: ['Ok']
-        });
-        var paqueteAgregado = this.alert.create({
-            title: 'Exito',
-            message: 'Paquete agregado correctamente',
-            buttons: ['Ok']
-        });
-        var obj = JSON.parse(JSON.stringify(this.myForm.value));
-        obj['funcion'] = 'addPaquete';
-        for (var i in obj) {
-            if (i == "duracion" || i == "precio" || i == "funcion") {
+        if (this.hideOtro == false) {
+            if (this.myForm.controls['nuevo_producto'].value == ''
+                || this.myForm.controls['descripcion'].value == ''
+                || this.myForm.controls['precio_entrada'].value == ''
+                || this.myForm.controls['precio_salida'].value == ''
+                || this.myForm.controls['proveedor'].value == '') {
+                miAlerta.present();
+                return;
             }
             else {
-                obj[i] = obj[i].toUpperCase();
+                this.enviarForm(); //envia formulario
+                return;
             }
         }
+        this.enviarForm(); // envia formulario
+    };
+    AddProductoPage.prototype.enviarForm = function () {
+        var _this = this;
+        var success = this.alert.create({
+            title: 'OPERACION EXITOSA',
+            message: 'AGREGADO CORRECTAMENTE',
+            buttons: ['ACEPTAR']
+        });
+        var product_rep = this.alert.create({
+            title: 'OPERACION CANCELADA',
+            message: 'PRODUCTO REPETIDO',
+            buttons: ['ACEPTAR']
+        });
+        var mayus = this.myForm.controls['nuevo_producto'].value;
+        var desc = this.myForm.controls['descripcion'].value;
+        var prov = this.myForm.controls['proveedor'].value;
+        if (mayus != null) {
+            mayus = mayus.toUpperCase();
+            this.myForm.controls['nuevo_producto'].setValue(mayus); // covierte a mayuscula la categoria
+        }
+        if (desc != null) {
+            desc = desc.toUpperCase();
+            this.myForm.controls['descripcion'].setValue(desc);
+        }
+        if (prov != null) {
+            prov = prov.toUpperCase();
+            this.myForm.controls['proveedor'].setValue(prov);
+        }
+        console.log((this.myForm.value));
+        var obj = JSON.parse(JSON.stringify(this.myForm.value));
+        obj['funcion'] = 'addProducto';
         console.log(obj);
         this.http.post(this.apiUrl, JSON.stringify(obj))
             .subscribe(function (res) {
-            if (res == "Duracion Invalida") {
-                paqueteDuracion.present();
-            }
-            if (res == "Nombre Invalido") {
-                paqueteNombre.present();
-            }
-            else if (res == "Paquete Exitoso") {
-                paqueteAgregado.present();
-                if (_this.myForm.valid) {
-                    console.log("form enviado");
-                    _this.myForm.reset();
-                }
-            }
+            console.log("res del server");
             console.log(res);
-        });
-    };
-    PackPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad PackPage');
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('myForm'),
-        __metadata("design:type", Object)
-    ], PackPage.prototype, "formValues", void 0);
-    PackPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-pack',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\pack\pack.html"*/'<ion-header>\n  <ion-navbar color="secondary">\n    <ion-title>Paquetes</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-card>\n    \n    <div text-center>\n      <br>\n      <strong>AGREGAR PAQUETE</strong>\n    </div>\n\n    <form [formGroup]="myForm"  (ngSubmit)="pack()" novalidate>\n      <ion-list>\n\n        <ion-item>\n          <ion-label stack color = "primary">Nombre: </ion-label>\n          <ion-input id="nombre" name="nombre" formControlName="nombre" type="text"></ion-input>\n        </ion-item>\n        <ion-item *ngIf="myForm.get(\'nombre\').errors && myForm.get(\'nombre\').dirty">\n          <p color="danger" ion-text *ngIf="myForm.get(\'nombre\').hasError(\'required\')">Field is required</p>\n        </ion-item>\n\n        <ion-item>\n          <ion-label stack color = "primary">Descripcion: </ion-label>\n          <ion-input id="descripcion" name="descripcion" formControlName="descripcion" type="text"></ion-input>\n        </ion-item>\n        <ion-item *ngIf="myForm.get(\'descripcion\').errors && myForm.get(\'descripcion\').dirty">\n          <p color="danger" ion-text *ngIf="myForm.get(\'descripcion\').hasError(\'required\')">Field is required</p>\n        </ion-item>\n\n        <ion-item>\n          <ion-label stack color = "primary">Precio: </ion-label>\n          <ion-input id="precio" name="precio" formControlName="precio" type="text"></ion-input>\n        </ion-item>\n        <ion-item *ngIf="myForm.get(\'precio\').errors && myForm.get(\'precio\').dirty">\n          <p color="danger" ion-text *ngIf="myForm.get(\'precio\').hasError(\'required\')">Field is required</p>\n          <p color="danger" ion-text *ngIf="myForm.get(\'precio\').hasError(\'pattern\')">Just Numbers</p>\n        </ion-item>\n\n        <ion-item>\n          <ion-label stack color = "primary">Duracion: </ion-label>\n          <ion-input id="duracion" name="duracion" formControlName="duracion" type="text"></ion-input>\n        </ion-item>\n        <ion-item *ngIf="myForm.get(\'duracion\').errors && myForm.get(\'duracion\').dirty">\n          <p color="danger" ion-text *ngIf="myForm.get(\'duracion\').hasError(\'required\')">Field is required</p>\n          <p color="danger" ion-text *ngIf="myForm.get(\'duracion\').hasError(\'pattern\')">Just Numbers</p>\n        </ion-item>\n      </ion-list>\n\n      <div padding text-center>\n      <button ion-button outline type="submit" [disabled]="myForm.invalid">Agregar</button>\n      </div>\n\n    </form>\n    \n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\pack\pack.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* ActionSheetController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavParams */]])
-    ], PackPage);
-    return PackPage;
-}());
-
-//# sourceMappingURL=pack.js.map
-
-/***/ }),
-
-/***/ 118:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PackDetailsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(6);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var PackDetailsPage = /** @class */ (function () {
-    function PackDetailsPage(navCtrl, http, navParams) {
-        this.navCtrl = navCtrl;
-        this.http = http;
-        this.navParams = navParams;
-        this.pack = {};
-        this.status = {};
-        this.pack = this.navParams.get('pack');
-        if (this.pack['activo'] == '1') {
-            this.status['inf'] = "ACTIVO";
-        }
-        else {
-            this.status['inf'] = "INACTIVO";
-        }
-    }
-    PackDetailsPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad PackDetailsPage');
-    };
-    PackDetailsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-pack-details',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\pack-details\pack-details.html"*/'<ion-header>\n  <ion-navbar color="secondary">\n    <ion-title>Detalles</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-card>\n    <ion-card-header>\n        <ion-label color="primary" align="center"><b>{{pack.nombre}}</b></ion-label>    <br>  \n    </ion-card-header>\n    <ion-card-content>\n        <div text-left> <strong >ID: </strong> {{pack.id}}</div><br><br>\n        <div text-left> <strong >STATUS: </strong> {{status.inf}} </div><br>\n        <div text-left> <strong >DESCRIPCION: </strong> {{pack.descripcion}}</div><br>\n        <div text-left> <strong >DIAS DE DURACION: </strong> {{pack.duracion}}</div><br>\n        <div text-left> <strong >PRECIO: </strong> {{pack.precio}}</div><br>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\pack-details\pack-details.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
-    ], PackDetailsPage);
-    return PackDetailsPage;
-}());
-
-//# sourceMappingURL=pack-details.js.map
-
-/***/ }),
-
-/***/ 119:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModifyPackPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__list_pack_list_pack__ = __webpack_require__(56);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var ModifyPackPage = /** @class */ (function () {
-    function ModifyPackPage(navCtrl, http, actionsheet, alert, cl, navParams) {
-        this.navCtrl = navCtrl;
-        this.http = http;
-        this.actionsheet = actionsheet;
-        this.alert = alert;
-        this.cl = cl;
-        this.navParams = navParams;
-        this.apiUrl = "http://gymdb/";
-        this.pack = {};
-        this.comprobar = {};
-        this.list = __WEBPACK_IMPORTED_MODULE_4__list_pack_list_pack__["a" /* ListPackPage */];
-        this.pack = this.navParams.get('pack');
-        console.log(this.pack);
-        this.myForm = this.cl.group({
-            nombre: [this.pack['nombre'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
-            descripcion: [this.pack['descripcion'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
-            precio: [this.pack['precio'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern(/^-?(0|[1-9]\d*)?$/)]],
-            duracion: [this.pack['duracion'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern(/^-?(0|[1-9]\d*)?$/)]]
-        });
-        this.comprobar = {
-            "nombre": this.pack['nombre'],
-            "descripcion": this.pack['descripcion'],
-            "precio": this.pack['precio'],
-            "duracion": this.pack['duracion']
-        };
-    }
-    ModifyPackPage.prototype.edit = function () {
-        var _this = this;
-        if (JSON.stringify(this.comprobar) != JSON.stringify(this.myForm.value)) {
-            var paqueteDuracion_1 = this.alert.create({
-                title: 'Duracion de paquete invalida',
-                message: 'La duracion maxima es de 365 dias',
-                buttons: ['Ok']
-            });
-            var paqueteNombre_1 = this.alert.create({
-                title: 'Nombre de paquete invalido',
-                message: 'Puede que el nombre de paquete sea repetido',
-                buttons: ['Ok']
-            });
-            var paqueteEditado_1 = this.alert.create({
-                title: 'Exito',
-                message: 'Paquete editado correctamente',
-                buttons: ['Ok']
-            });
-            var obj = JSON.parse(JSON.stringify(this.myForm.value));
-            obj['funcion'] = 'addCambioPack';
-            obj['id'] = this.pack['id'];
-            for (var i in obj) {
-                if (i == "duracion" || i == "precio" || i == "funcion") {
-                }
-                else {
-                    obj[i] = obj[i].toUpperCase();
-                }
+            if (res == "exito") {
+                success.present();
+                _this.reiniciarForm();
+                //this.actualizar_admin_aparato(res['id_aparato']);
             }
-            console.log(obj);
-            this.http.post(this.apiUrl, JSON.stringify(obj))
-                .subscribe(function (res) {
-                if (res == "Duracion Invalida") {
-                    paqueteDuracion_1.present();
-                }
-                if (res == "Nombre Invalido") {
-                    paqueteNombre_1.present();
-                }
-                else if (res == "Paquete Exitoso") {
-                    paqueteEditado_1.present();
-                    if (_this.myForm.valid) {
-                        console.log("form enviado");
-                        _this.myForm.reset();
-                        _this.navCtrl.push(_this.list);
-                    }
-                }
-                console.log(res);
-            });
-        }
-        else {
-            var noCambiosAlerta = this.alert.create({
-                title: 'No se han realizado cambios',
-                message: 'Información igual',
-                buttons: ['Ok']
-            });
-            noCambiosAlerta.present();
-        }
+            else if (res == "product_rep") {
+                product_rep.present();
+            }
+        }, function (error) {
+            console.log(error);
+        });
     };
-    ModifyPackPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ModifyPackPage');
+    AddProductoPage.prototype.reiniciarForm = function () {
+        this.myForm.reset();
+        this.obtenerProducts();
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('myForm'),
-        __metadata("design:type", Object)
-    ], ModifyPackPage.prototype, "formValues", void 0);
-    ModifyPackPage = __decorate([
+    AddProductoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-modify-pack',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\modify-pack\modify-pack.html"*/'\n<ion-header>\n  <ion-navbar color="danger">\n    <ion-title>Modificar</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n    <ion-card>\n    \n        <div text-center>\n          <br>\n          <strong>EDITAR PAQUETE</strong>\n        </div>\n    \n        <form [formGroup]="myForm"  (ngSubmit)="edit()" novalidate>\n          <ion-list>\n    \n            <ion-item>\n              <ion-label stack color = "primary">Nombre: </ion-label>\n              <ion-input id="nombre" name="nombre" formControlName="nombre" type="text"></ion-input>\n            </ion-item>\n            <ion-item *ngIf="myForm.get(\'nombre\').errors && myForm.get(\'nombre\').dirty">\n              <p color="danger" ion-text *ngIf="myForm.get(\'nombre\').hasError(\'required\')">Field is required</p>\n            </ion-item>\n    \n            <ion-item>\n              <ion-label stack color = "primary">Descripcion: </ion-label>\n              <ion-input id="descripcion" name="descripcion" formControlName="descripcion" type="text"></ion-input>\n            </ion-item>\n            <ion-item *ngIf="myForm.get(\'descripcion\').errors && myForm.get(\'descripcion\').dirty">\n              <p color="danger" ion-text *ngIf="myForm.get(\'descripcion\').hasError(\'required\')">Field is required</p>\n            </ion-item>\n    \n            <ion-item>\n              <ion-label stack color = "primary">Precio: </ion-label>\n              <ion-input id="precio" name="precio" formControlName="precio" type="text"></ion-input>\n            </ion-item>\n            <ion-item *ngIf="myForm.get(\'precio\').errors && myForm.get(\'precio\').dirty">\n              <p color="danger" ion-text *ngIf="myForm.get(\'precio\').hasError(\'required\')">Field is required</p>\n              <p color="danger" ion-text *ngIf="myForm.get(\'precio\').hasError(\'pattern\')">Just Numbers</p>\n            </ion-item>\n    \n            <ion-item>\n              <ion-label stack color = "primary">Duracion: </ion-label>\n              <ion-input id="duracion" name="duracion" formControlName="duracion" type="text"></ion-input>\n            </ion-item>\n            <ion-item *ngIf="myForm.get(\'duracion\').errors && myForm.get(\'duracion\').dirty">\n              <p color="danger" ion-text *ngIf="myForm.get(\'duracion\').hasError(\'required\')">Field is required</p>\n              <p color="danger" ion-text *ngIf="myForm.get(\'duracion\').hasError(\'pattern\')">Just Numbers</p>\n            </ion-item>\n          </ion-list>\n    \n          <div padding text-center>\n          <button ion-button outline type="submit" [disabled]="myForm.invalid">Agregar</button>\n          </div>\n    \n        </form>\n        \n      </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\modify-pack\modify-pack.html"*/,
+            selector: 'page-add-producto',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\add-producto\add-producto.html"*/'<!--\n  Generated template for the AddProductoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="secondary">\n    <ion-title>Agregar Producto</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <ion-card text-center classss="Datos">\n        \n          <ion-card-content>\n          <h2><strong >Registro</strong></h2>\n          <br>\n          <br><br>\n          \n          <form [formGroup]="myForm"  (ngSubmit)="saveData()" novalidate>\n              <ion-list>\n                  <ion-item [hidden]="hideProducto">\n                      <ion-label color="primary" icon-start><ion-icon name="add-circle"></ion-icon>Producto:  </ion-label>\n                      <ion-select  id="producto" name="producto" formControlName="producto" (ionChange)="onChange($event)">\n                        <div *ngFor="let tupla of productos">\n                          <ion-option value="{{tupla.id}}">{{tupla.nombre}}\n                          </ion-option>\n                        </div>\n                      </ion-select>\n                </ion-item>\n                <ion-item *ngIf="myForm.get(\'producto\').errors && myForm.get(\'producto\').dirty">\n                    <p color="danger" ion-text *ngIf="myForm.get(\'producto\').hasError(\'required\')">Field is required</p>\n                 </ion-item>\n                 <ion-div [hidden]="hideOtro">\n                  <ion-item >\n                    <ion-label stack color = "primary" icon-start><ion-icon name="add-circle"></ion-icon>Nombre:</ion-label>\n                    <ion-input id="otro" type="text" formControlName="nuevo_producto"  name ="otro"></ion-input>\n                  </ion-item>\n                  <ion-item>\n                    <ion-label stack color = "primary" icon-start><ion-icon name="information-circle"></ion-icon>Descripcion:</ion-label>\n                    <ion-input id="descripcion" type="text" formControlName="descripcion"  name ="descripcion"></ion-input>\n                  </ion-item>\n                  \n                  <ion-item>\n                      <ion-label stack color = "primary" icon-start><ion-icon name="pricetag"></ion-icon>Precio Entrada:</ion-label>\n                    <ion-input id="precio_entrada" type="number" formControlName="precio_entrada"  name ="precio_entrada"></ion-input>\n                  </ion-item>\n                  <ion-item>\n                    <ion-label stack color = "primary" icon-start><ion-icon name="pricetag"></ion-icon>Precio de Venta:</ion-label>\n                  <ion-input id="precio_salida" type="number" formControlName="precio_salida"  name ="precio_salida"></ion-input>\n                </ion-item>\n          \n                    <ion-item>\n                      <ion-label stack color = "primary" icon-start><ion-icon name="information-circle"></ion-icon>Proveedor:</ion-label>\n                    <ion-input id="roveedor" type="text" formControlName="proveedor"  name ="proveedor"></ion-input>\n                    </ion-item>\n                 </ion-div>\n  \n                    <ion-item>\n                      <ion-label stack color = "primary" icon-start><ion-icon name="information-circle"></ion-icon>Cantidad:</ion-label>\n                    <ion-input id="cantidad" type="number" formControlName="cantidad"  name ="cantidad"></ion-input>\n                  </ion-item>\n                    <ion-item *ngIf="myForm.get(\'cantidad\').errors && myForm.get(\'cantidad\').dirty">\n                        <p color="danger" ion-text *ngIf="myForm.get(\'cantidad\').hasError(\'required\')">Field is required</p>\n                      </ion-item>\n                \n                                \n              </ion-list><br>\n              <div padding>\n                  <button ion-button icon-start block type="submit" [disabled]="myForm.invalid">\n                      <ion-icon name="archive"> </ion-icon>\n                          Guardar\n                  </button>\n                </div>\n            </form> \n\n        </ion-card-content>\n\n      </ion-card>\n    </ion-col>\n    \n  </ion-row>\n  </ion-grid>\n  \n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\add-producto\add-producto.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* ActionSheetController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavParams */]])
-    ], ModifyPackPage);
-    return ModifyPackPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]])
+    ], AddProductoPage);
+    return AddProductoPage;
 }());
 
-//# sourceMappingURL=modify-pack.js.map
+//# sourceMappingURL=add-producto.js.map
 
 /***/ }),
 
-/***/ 120:
+/***/ 114:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1661,16 +684,16 @@ var InfoEmpleadoPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 121:
+/***/ 115:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModifEmpleadoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__all_employees_all_employees__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__all_employees_all_employees__ = __webpack_require__(52);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2013,15 +1036,1167 @@ var ModifEmpleadoPage = /** @class */ (function () {
 
 /***/ }),
 
+/***/ 116:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InfClientePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(5);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the InfClientePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var InfClientePage = /** @class */ (function () {
+    function InfClientePage(navCtrl, http, navParams) {
+        var _this = this;
+        this.navCtrl = navCtrl;
+        this.http = http;
+        this.navParams = navParams;
+        this.cliente = {};
+        this.cuenta = {};
+        this.apiUrl = "http://gymdb/";
+        this.cliente = this.navParams.get('cliente');
+        this.cuenta = {
+            'id_access': this.cliente['id_access'],
+            'id_col': this.cliente['id_colonia'],
+            'id_cp': this.cliente['id_cp'],
+            'funcion': 'getForeignData'
+        };
+        console.log('cliente');
+        this.http.post(this.apiUrl, JSON.stringify(this.cuenta))
+            .subscribe(function (res) {
+            console.log(res);
+            _this.cuenta['user'] = res[0]['user'];
+            _this.cuenta['colonia'] = res[1]['user'];
+            _this.cuenta['cp'] = res[2]['user'];
+            // console.log(JSON.stringify(this.cuenta));
+        }, function (error) {
+            console.log(error);
+        });
+    }
+    InfClientePage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad InfClientePage');
+    };
+    InfClientePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-inf-cliente',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\inf-cliente\inf-cliente.html"*/'<!--\n  Generated template for the InfClientePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Informacion</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <ion-label color="secondary" align="center"><b>PERFIL</b></ion-label>\n  <img src="http://gymdb/imgs/customers/{{ cliente.foto }}"  width="300" height="300">\n  <ion-card-content>\n    <img >\n    <ion-label *ngIf="cliente.activo==\'1\'" align="center" color="primary"><b>ESTATUS: </b> ACTIVO</ion-label>\n    <ion-label *ngIf="cliente.activo==\'0\'" align="center" color="danger"><b>ESTATUS: </b> INACTIVO</ion-label>\n    <p><b>NOMBRE: </b>  {{ cliente.Nombre }}</p>\n    <p><b>ID: </b> {{ cliente.id_cliente }}</p>\n    <p><b>GENERO: </b> {{ cliente.genero }}</p>\n    <p><b>TELEFONO: </b> {{ cliente.telefono }}</p>\n    <ion-label color="secondary"><b>FORMATO: </b> YYYY-MM-DD</ion-label>\n    <p><b>FECHA NACIMIENTO: </b> {{ cliente.fecha_nacimiento }}</p>\n    <p><b>FECHA INGRESO: </b> {{ cliente.fecha_ingreso }}</p>\n    \n    <ion-label align="center" color="secondary"><b>DIRECCION</b></ion-label>\n    <p><b>CALLE</b> {{ cliente.calle }}</p>\n    <p><b>NUMERO: </b> {{ cliente.numero_calle }}</p>\n    <p *ngIf="cliente.numero_interior!=\'\'"><b>NUMERO INTERIOR </b> {{ cliente.numero_interior }}</p>\n    <p><b>COLONIA: </b> {{ cuenta.colonia }}</p>\n    <p><b>CP: </b> {{ cuenta.cp }}</p>\n\n    <ion-label align="center" color="secondary"><b>CUENTA</b></ion-label>\n    <p><b>USUARIO</b> {{ cuenta.user }}</p>\n\n  </ion-card-content>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\inf-cliente\inf-cliente.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
+    ], InfClientePage);
+    return InfClientePage;
+}());
+
+//# sourceMappingURL=inf-cliente.js.map
+
+/***/ }),
+
+/***/ 117:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModifclientePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__allcustomers_allcustomers__ = __webpack_require__(54);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+/**
+ * Generated class for the ModifclientePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ModifclientePage = /** @class */ (function () {
+    function ModifclientePage(navCtrl, http, loadigCtrl, alert, cl, navParams) {
+        this.navCtrl = navCtrl;
+        this.http = http;
+        this.loadigCtrl = loadigCtrl;
+        this.alert = alert;
+        this.cl = cl;
+        this.navParams = navParams;
+        this.all = __WEBPACK_IMPORTED_MODULE_4__allcustomers_allcustomers__["a" /* AllcustomersPage */];
+        this.apiUrl = "http://gymdb/";
+        this.x = 0; // variable para el usuario
+        this.dir = {
+            'dir': ''
+        };
+        this.cliente = {};
+        this.comprobar = {};
+        this.funcion = {
+            "funcion": "getNombre"
+        };
+        this.cliente = this.navParams.get('cliente'); // obtenemos el parametro que le enviamos
+        console.log(JSON.stringify(this.cliente));
+        this.myForm = this.cl.group({
+            nombre: [this.cliente['nombre'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
+            gender: [this.cliente['genero'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
+            apellidoP: [this.cliente['apellido_p'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
+            apellidoM: [this.cliente['apellido_m'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
+            telefono: [this.cliente['telefono'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern(/^-?(0|[1-9]\d*)?$/)]],
+            fechanac: [this.cliente['fecha_nacimiento'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
+            foto: [this.cliente['foto'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
+            calle: [this.cliente['calle'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
+            numero: [this.cliente['numero_calle'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
+            numeroint: [this.cliente['numero_interior']],
+            colonia: [this.cliente['colonia_str'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
+            cp: [this.cliente['cp_str'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern(/^-?(0|[1-9]\d*)?$/)]],
+            password: [this.cliente['password'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].minLength(5), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].maxLength(15)]],
+            reppass: [this.cliente['password'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
+            user: [this.cliente['user'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]]
+        });
+        console.log("log");
+        this.dir['path'] = this.cliente['foto']; // direccion path stock
+        this.comprobar = {
+            "nombre": this.cliente['nombre'],
+            "gender": this.cliente['genero'],
+            "apellidoP": this.cliente['apellido_p'],
+            "apellidoM": this.cliente['apellido_m'],
+            "telefono": this.cliente['telefono'],
+            "fechanac": this.cliente['fecha_nacimiento'],
+            "foto": this.cliente['foto'],
+            "calle": this.cliente['calle'],
+            "numero": this.cliente['numero_calle'],
+            "numeroint": this.cliente['numero_interior'],
+            "colonia": this.cliente['colonia_str'],
+            "cp": this.cliente['cp_str'],
+            "password": this.cliente['password'],
+            "reppass": this.cliente['password'],
+            "user": this.cliente['user']
+        };
+    }
+    ModifclientePage.prototype.saveData = function () {
+        var _this = this;
+        var form_invalido = this.alert.create({
+            title: 'OPERACION CANCELADA',
+            message: 'YA SE ENVIARON LOS DATOS MODIFICADOS!',
+            buttons: ['ACEPTAR']
+        });
+        if (this.cliente['id_cliente'] == '') {
+            form_invalido.present();
+        }
+        else {
+            var repetido = this.alert.create({
+                title: 'OPERACION CANCELADA',
+                message: 'lOS DATOS SON IGUALES!',
+                buttons: ['ACEPTAR']
+            });
+            if (JSON.stringify(this.comprobar) != JSON.stringify(this.myForm.value)) {
+                console.log("son desiguales");
+                //alertas
+                var miAlerta = this.alert.create({
+                    title: 'OPERACION CANCELADA',
+                    message: 'LA CONTRASEÑA NO COINCIDE!',
+                    buttons: ['ACEPTAR']
+                });
+                var idRep_1 = this.alert.create({
+                    title: 'OPERACION CANCELADA',
+                    message: 'YA EXISTE ESE USUARIO!',
+                    buttons: ['ACEPTAR']
+                });
+                var success_1 = this.alert.create({
+                    title: 'OPERACION EXITOSA',
+                    message: 'AGREGADO CORRECTAMENTE',
+                    buttons: ['ACEPTAR']
+                });
+                //alert(JSON.stringify(this.myForm.value));
+                var obj = JSON.parse(JSON.stringify(this.myForm.value));
+                obj['funcion'] = 'actualizarCliente';
+                obj['id_access'] = this.cliente['id_access'];
+                obj['id_cliente'] = this.cliente['id_cliente'];
+                // this.cleanForm();
+                for (var i in obj) {
+                    if (i == "password" || i == "reppass" || i == "funcion" || i == "foto" || i == "user" || i == "id_access") {
+                    }
+                    else {
+                        obj[i] = obj[i].toUpperCase(); // convierte los datos a mayúscula
+                    }
+                }
+                if (obj['password'] == obj['reppass']) {
+                    console.log(JSON.stringify(obj));
+                    this.http.post(this.apiUrl, JSON.stringify(obj)) //envia los datos
+                        .subscribe(function (res) {
+                        if (res == "id_rep") {
+                            idRep_1.present();
+                        }
+                        else if (res == "exito") {
+                            if (_this.myForm.valid) {
+                                console.log("form enviado");
+                                success_1.present();
+                                _this.myForm.reset();
+                                _this.dir['path'] = 'stock.png';
+                                _this.cliente['id'] = '';
+                                _this.navCtrl.push(_this.all);
+                            }
+                        }
+                        console.log(res);
+                    }, function (error) {
+                        console.log(error);
+                    });
+                }
+                else {
+                    console.log(JSON.stringify(obj));
+                    miAlerta.present();
+                }
+            }
+            else {
+                repetido.present();
+            }
+        }
+    };
+    // funcion que verifica la existencia de la imagen en el servidor
+    ModifclientePage.prototype.ver = function () {
+        var _this = this;
+        if (this.dir['dir'] != "") {
+            var funcion2 = {
+                'funcion': 'existImg',
+            };
+            // alerta de error de archivo
+            var error_file_1 = this.alert.create({
+                title: 'ERROR',
+                message: 'EL ARCHIVO NO SE ENCUANTRA EN LA CARPETA DEL SERVIDOR',
+                buttons: ['ACEPTAR']
+            });
+            var cadena = this.dir['dir'];
+            var resultado_1 = "";
+            // obtiene solo el path de la url adquirida
+            for (var i = 12; i < cadena.length; i++) {
+                resultado_1 = resultado_1.concat(cadena[i]); // resultado contiene el path de la imagen
+            }
+            funcion2['path'] = resultado_1;
+            console.log(funcion2);
+            //manda la informacion al servidor para verificar la existencia de la imagen
+            this.http.post(this.apiUrl, JSON.stringify(funcion2)) //envia los datos
+                .subscribe(function (res) {
+                console.log(res);
+                if (res == "no existe") {
+                    error_file_1.present();
+                }
+                else if (res == "existe") {
+                    _this.dir['path'] = resultado_1; // le asigna el valor del path
+                    _this.myForm.controls['foto'].setValue(resultado_1); // asigna al campo 'foto' del form el nuevo path
+                }
+            });
+            console.log(JSON.stringify(this.dir)); // muestra la direccion
+        }
+    };
+    ModifclientePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-modifcliente',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\modifcliente\modifcliente.html"*/'<!--\n  Generated template for the ModifclientePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar color="danger">\n      <ion-title>Modificar</ion-title>\n    </ion-navbar>\n  </ion-header>\n  \n  \n  \n  \n  <ion-content padding class="inicio">\n  \n      <ion-label color="secondary" align="center"><b>PERFIL</b></ion-label>\n        <img src="http://gymdb/imgs/customers/{{ dir.path }}" width="300" height="300" alt="Imagen de Perfil">\n      \n      <ion-label color="primary"><b>SELECCIONE IMAGEN:</b> </ion-label>\n      <form  method="post" enctype="multipart/form-data">   \n      <input type="file" name="fileToUpload"  id="fileToUpload"  [(ngModel)]="dir.dir">\n      <button ion-button icon-start (click)="ver()">\n          <ion-icon name="camera"></ion-icon>\n          Añadir\n      </button>\n      </form>\n  \n  \n    <ion-grid>\n      <ion-row>\n          \n        <ion-col>\n          <ion-card text-center classss="Datos">\n          \n            <ion-card-content>\n            <h2><strong >DATOS</strong></h2>\n            <br>\n            <br><br>\n            \n            <form [formGroup]="myForm"  (ngSubmit)="saveData()" novalidate>\n                <ion-list>\n                    <ion-item>\n                        <ion-label stack color = "primary" icon-start><ion-icon name="person"></ion-icon>Nombre:</ion-label>\n                        <ion-input id="nombre" name="nombre" formControlName="nombre" type="text"></ion-input>\n                      </ion-item>\n                      <ion-item *ngIf="myForm.get(\'nombre\').errors && myForm.get(\'nombre\').dirty">\n                        <p color="danger" ion-text *ngIf="myForm.get(\'nombre\').hasError(\'required\')">Field is required</p>\n                      </ion-item>\n                  <ion-item>\n                      <ion-label stack color = "primary" icon-start><ion-icon name="person"></ion-icon>Apellido Paterno:</ion-label>\n                    <ion-input id="apellidoP" name ="apellidoP" type="text" formControlName="apellidoP"  name ="apellidoP"></ion-input>\n                  </ion-item>\n                  <ion-item *ngIf="myForm.get(\'apellidoP\').errors && myForm.get(\'apellidoP\').dirty">\n                      <p color="danger" ion-text *ngIf="myForm.get(\'apellidoP\').hasError(\'required\')">Field is required</p>\n                    </ion-item>\n                  <ion-item>\n                      <ion-label stack color = "primary" icon-start><ion-icon name="person"></ion-icon>Apellido Materno:</ion-label>\n                    <ion-input id="apellidoM" name ="apellidoM" type="text" formControlName="apellidoM" name ="apellidoM"></ion-input>\n                  </ion-item>\n                  <ion-item *ngIf="myForm.get(\'apellidoM\').errors && myForm.get(\'apellidoM\').dirty">\n                      <p color="danger" ion-text *ngIf="myForm.get(\'apellidoM\').hasError(\'required\')">Field is required</p>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label color = "primary" icon-start><ion-icon name="person"></ion-icon>Genero:</ion-label>\n                        <ion-select id="gender" name ="gender" formControlName="gender">\n                        <ion-option value="F">Mujer</ion-option>\n                          <ion-option value="M">Hombre</ion-option>\n                        </ion-select>\n                      </ion-item>\n                      <ion-item *ngIf="myForm.get(\'gender\').errors && myForm.get(\'gender\').dirty">\n                          <p color="danger" ion-text *ngIf="myForm.get(\'gender\').hasError(\'required\')">Field is required</p>\n                        </ion-item>\n                  <ion-item>\n                      <ion-label stack color = "primary"  icon-start><ion-icon name="call"></ion-icon>Telefono:</ion-label>\n                      <ion-input id="telefono" name ="telefono" type="tel" formControlName="telefono"  name ="telefono"></ion-input>\n                  </ion-item>\n                  <ion-item *ngIf="myForm.get(\'telefono\').errors && myForm.get(\'telefono\').dirty">\n                      <p color="danger" ion-text *ngIf="myForm.get(\'telefono\').hasError(\'required\')">Field is required</p>\n                      <p color="danger" ion-text *ngIf="myForm.get(\'telefono\').hasError(\'pattern\')">Just Numbers</p>\n                    </ion-item>\n                  \n                     <ion-label color="secondary" icon-start><ion-icon name="calendar"></ion-icon>FECHA DE NACIMIENTO</ion-label>\n                     <ion-item>\n                        <ion-label >MM DD YY</ion-label>\n                        <ion-datetime id="fechanac" name ="fechanac" formControlName="fechanac" display-format="MM DD YY" placeholder="Select Date" ></ion-datetime>\n                      </ion-item>\n                      <ion-item *ngIf="myForm.get(\'fechanac\').errors && myForm.get(\'fechanac\').dirty">\n                          <p color="danger" ion-text *ngIf="myForm.get(\'fechanac\').hasError(\'required\')">Field is required</p>\n                        </ion-item>\n  \n                     <ion-label color="secondary" icon-start><ion-icon name="pin"></ion-icon>DIRECCION</ion-label>\n                     <ion-item>\n                        <ion-label stack color = "primary" >Nombre Calle:</ion-label>\n                        <ion-input id="calle" name ="calle" formControlName="calle" type="text"></ion-input>\n                    </ion-item>\n                      <ion-item *ngIf="myForm.get(\'calle\').errors && myForm.get(\'calle\').dirty">\n                        <p color="danger" ion-text *ngIf="myForm.get(\'calle\').hasError(\'required\')">Field is required</p>\n                       </ion-item> \n                       <ion-item>\n                          <ion-label stack color = "primary">Numero Exterior:</ion-label>\n                          <ion-input id="numero" name ="numero" formControlName="numero" type="text"></ion-input>\n                      </ion-item>\n                        <ion-item *ngIf="myForm.get(\'numero\').errors && myForm.get(\'numero\').dirty">\n                          <p color="danger" ion-text *ngIf="myForm.get(\'numero\').hasError(\'required\')">Field is required</p>\n                         </ion-item> \n                         <ion-item>\n                            <ion-label stack color = "primary" >Numero Interior:</ion-label>\n                            <ion-input id="numeroint" name ="numeroint" formControlName="numeroint" type="text"></ion-input>\n                         </ion-item>\n                           <ion-item>\n                              <ion-label stack color = "primary" >Colonia:</ion-label>\n                              <ion-input id="colonia" name ="colonia" formControlName="colonia" type="text"></ion-input>\n                          </ion-item>\n                            <ion-item *ngIf="myForm.get(\'colonia\').errors && myForm.get(\'colonia\').dirty">\n                              <p color="danger" ion-text *ngIf="myForm.get(\'colonia\').hasError(\'required\')">Field is required</p>\n                             </ion-item>\n                             <ion-item>\n                                <ion-label stack color = "primary" >CP:</ion-label>\n                                <ion-input  id="cp" name="cp" formControlName="cp" type="text"></ion-input>\n                            </ion-item>\n                              <ion-item *ngIf="myForm.get(\'cp\').errors && myForm.get(\'cp\').dirty">\n                                <p color="danger" ion-text *ngIf="myForm.get(\'cp\').hasError(\'required\')">Field is required</p>\n                                <p color="danger" ion-text *ngIf="myForm.get(\'cp\').hasError(\'pattern\')">Just Numbers</p>\n                               </ion-item> \n                               <ion-label color="secondary">CUENTA</ion-label>\n                               <ion-item >\n                                  <ion-label stack color = "primary" icon-start><ion-icon name="log-in"></ion-icon> Username:</ion-label>\n                                <ion-input id="usercliente" name="usercliente" formControlName="user" type="text" ></ion-input>\n                              </ion-item>\n                              <ion-item *ngIf="myForm.get(\'user\').errors && myForm.get(\'user\').dirty">\n                                  <p color="danger" ion-text *ngIf="myForm.get(\'user\').hasError(\'required\')">Field is required</p>\n                                 </ion-item> \n                               <ion-item class="inputPass">\n                                  <ion-label stack color = "primary"  icon-start>\n                                      <ion-icon name="lock"></ion-icon> Contraseña:</ion-label>\n                                  <ion-input id="password" name ="password" formControlName="password" type="password"></ion-input>\n                                </ion-item>\n                                  \n                                <ion-item *ngIf="myForm.get(\'password\').errors && myForm.get(\'password\').dirty">\n                                  <p color="danger" ion-text *ngIf="myForm.get(\'password\').hasError(\'required\')">Field is required</p>\n                                  <p color="danger" ion-text *ngIf="myForm.get(\'password\').hasError(\'minlength\')">Min of 5 characters</p>\n                                  <p color="danger" ion-text *ngIf="myForm.get(\'password\').hasError(\'maxlength\')">Max of 15 characters</p>\n                                </ion-item>\n                                <ion-item class="inputPass">\n                                    <ion-label stack color = "primary"  icon-start>\n                                        <ion-icon name="lock"></ion-icon>\n                                        Repita Contraseña:</ion-label>\n                                    <ion-input id="rep" name= "rep" formControlName="reppass"  type="password"></ion-input>\n                                  </ion-item>\n                                  <ion-item *ngIf="myForm.get(\'reppass\').errors && myForm.get(\'reppass\').dirty">\n                                    <p color="danger" ion-text *ngIf="myForm.get(\'reppass\').hasError(\'required\')">Field is required</p>\n                                  </ion-item>\n                                  \n                </ion-list><br>\n                <div padding>\n                    <button ion-button icon-start block type="submit" [disabled]="myForm.invalid">\n                        <ion-icon name="construct">   </ion-icon>\n                            MODIFICAR\n                    </button>\n  \n  \n                  </div>\n              </form> \n          </ion-card-content>\n        </ion-card>\n      </ion-col>\n      \n    </ion-row>\n    </ion-grid>\n  \n  </ion-content>\n  '/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\modifcliente\modifcliente.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavParams */]])
+    ], ModifclientePage);
+    return ModifclientePage;
+}());
+
+//# sourceMappingURL=modifcliente.js.map
+
+/***/ }),
+
+/***/ 118:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModifaparatoPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__allaparatos_allaparatos__ = __webpack_require__(55);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+/**
+ * Generated class for the ModifaparatoPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ModifaparatoPage = /** @class */ (function () {
+    function ModifaparatoPage(navCtrl, cl, http, alert, navParams) {
+        this.navCtrl = navCtrl;
+        this.cl = cl;
+        this.http = http;
+        this.alert = alert;
+        this.navParams = navParams;
+        this.id_admin = {};
+        this.back = __WEBPACK_IMPORTED_MODULE_4__allaparatos_allaparatos__["a" /* AllaparatosPage */]; // pagina de aparatos
+        this.aparato = {}; // almacena registro que se envia por parametro
+        this.datos = []; //almacena las categorias dispoibles
+        this.hideCategoria = true; //variables que sirven para controlar partes del form
+        this.hideOtro = true;
+        this.apiUrl = "http://gymdb/"; // server
+        this.dat = {
+            'id': '0',
+            'nombre': 'OTRO'
+        };
+        this.comp = {}; /// servira para comprobar si se ha hecho algun cambio 
+        this.id_admin = this.navParams.get('id'); // obtiene el id del empleado que opera en este momento
+        this.aparato = this.navParams.get('aparato'); // obtiene el registro enviado
+        console.log("id aADMOININIINI");
+        console.log(this.id_admin);
+        this.myForm = this.cl.group({
+            categoria: [this.aparato['nombre'], [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]],
+            otro: [''],
+            descripcion: [this.aparato['descripcion'], [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]],
+            estado: [this.aparato['estado'], [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]],
+        });
+        this.obtenerCat(); // obtiene categorias de aparatos
+        this.comp = {
+            'categoria': this.aparato['id_categoria'],
+            'otro': '',
+            'descripcion': this.aparato['descripcion'],
+            'estado': this.aparato['estado']
+        };
+    }
+    ModifaparatoPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ModifaparatoPage');
+    };
+    ModifaparatoPage.prototype.validar = function () {
+        if (this.datos.length > 1) {
+            // console.log(this.datos.length);
+            this.hideCategoria = false;
+            this.hideOtro = true;
+        }
+        else {
+            this.hideOtro = false;
+            this.hideCategoria = true;
+            this.myForm.controls['categoria'].setValue('0');
+        }
+    };
+    ModifaparatoPage.prototype.obtenerCat = function () {
+        var _this = this;
+        var funcion = {
+            'funcion': 'getCategoria'
+        };
+        this.http.post(this.apiUrl, JSON.stringify(funcion))
+            .subscribe(function (res) {
+            console.log(res);
+            _this.datos = res['categoria'];
+            _this.datos.push(_this.dat);
+            //console.log(this.datos.length);
+            _this.validar();
+            _this.myForm.controls['categoria'].setValue(_this.aparato['id_categoria']);
+            console.log(JSON.stringify(_this.datos));
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    // funcion que siempre que haya un cambio en el form hace un cambio
+    ModifaparatoPage.prototype.onChange = function (ev) {
+        console.log(ev);
+        if (ev == 0) {
+            this.hideOtro = false; // hace vicible un input
+        }
+        else {
+            this.hideOtro = true; // lo esconde
+        }
+    };
+    // funcion de guardar
+    ModifaparatoPage.prototype.saveData = function () {
+        var miAlerta = this.alert.create({
+            title: 'OPERACION CANCELADA',
+            message: 'CAMPO CATEGORIA VACIO!',
+            buttons: ['ACEPTAR']
+        });
+        var alerta = this.alert.create({
+            title: 'OPERACION CANCELADA',
+            message: 'NO SE HA MODIFICADO NADA!',
+            buttons: ['ACEPTAR']
+        });
+        if (JSON.stringify(this.comp) == JSON.stringify(this.myForm.value)) {
+            alerta.present();
+        }
+        else {
+            if (this.hideOtro == false) {
+                if (this.myForm.controls['otro'].value == '') {
+                    miAlerta.present();
+                    return;
+                }
+                else {
+                    this.enviarForm(); //envia formulario
+                    return;
+                }
+            }
+            this.enviarForm(); // envia formulario*/
+        }
+    };
+    ModifaparatoPage.prototype.enviarForm = function () {
+        var _this = this;
+        var success = this.alert.create({
+            title: 'OPERACION EXITOSA',
+            message: 'OPERACION REALIZADA CON EXITO',
+            buttons: ['ACEPTAR']
+        });
+        var mayus = this.myForm.controls['otro'].value;
+        if (mayus != null) {
+            mayus = mayus.toUpperCase();
+            this.myForm.controls['otro'].setValue(mayus); // covierte a mayuscula la categoria
+        }
+        var desc = this.myForm.controls['descripcion'].value;
+        if (desc != null) {
+            desc = desc.toUpperCase();
+            this.myForm.controls['descripcion'].setValue(desc); // covierte a mayuscula la categoria
+        }
+        console.log((this.myForm.value));
+        var obj = JSON.parse(JSON.stringify(this.myForm.value));
+        obj['funcion'] = 'modifAparato'; //funcion de modificar 
+        obj['id'] = this.aparato['id']; // agrega el id del aparato
+        obj['id_admin'] = this.id_admin; // administrador que realiza la operacion
+        obj['accion'] = '2'; // '2'= modificar
+        console.log(obj);
+        this.http.post(this.apiUrl, JSON.stringify(obj))
+            .subscribe(function (res) {
+            console.log(res);
+            if (res == "exito") {
+                success.present();
+                _this.navCtrl.push(_this.back, { id: obj['id_admin'], filtro: _this.aparato['filtro'] }); // regresa a la pagina anterior, le envia el id del admin como parametro
+            }
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    ModifaparatoPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-modifaparato',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\modifaparato\modifaparato.html"*/'<!--\n  Generated template for the ModifaparatoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="danger">\n    <ion-title>Modificar Aparato</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <ion-card text-center classss="Datos">\n        \n          <ion-card-content>\n          <h2><strong >Registro</strong></h2>\n          <br>\n          <br><br>\n          \n          <form [formGroup]="myForm"  (ngSubmit)="saveData()" novalidate>\n              <ion-list>\n                  <ion-item [hidden]="hideCategoria">\n                      <ion-label color="primary" icon-start><ion-icon name="pricetag"></ion-icon>Categoria:  </ion-label>\n                      <ion-select  id="categoria" name="categoria" formControlName="categoria" (ionChange)="onChange($event)">\n                        <div *ngFor="let tupla of datos">\n                          <ion-option value="{{tupla.id}}">{{tupla.nombre}}\n                          </ion-option>\n                        </div>\n                      </ion-select>\n                </ion-item>\n                <ion-item *ngIf="myForm.get(\'categoria\').errors && myForm.get(\'categoria\').dirty">\n                    <p color="danger" ion-text *ngIf="myForm.get(\'categoria\').hasError(\'required\')">Field is required</p>\n                 </ion-item>\n                 <ion-item [hidden]="hideOtro">\n                  <ion-label stack color = "primary" icon-start><ion-icon name="pricetag"></ion-icon>Categoria:</ion-label>\n                  <ion-input id="otro" type="text" formControlName="otro"  name ="otro"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label stack color = "primary" icon-start><ion-icon name="information-circle"></ion-icon>Descripcion:</ion-label>\n                  <ion-input id="descripcion" type="text" formControlName="descripcion"  name ="descripcion"></ion-input>\n                </ion-item>\n                <ion-item *ngIf="myForm.get(\'descripcion\').errors && myForm.get(\'descripcion\').dirty">\n                    <p color="danger" ion-text *ngIf="myForm.get(\'descripcion\').hasError(\'required\')">Field is required</p>\n                  </ion-item>\n                  <ion-item>\n                      <ion-label color="primary" icon-start><ion-icon name="git-pull-request"></ion-icon>Estado:  </ion-label>\n                      <ion-select id="estado" name="estado" formControlName="estado" >\n                          <ion-option value="1">En Funcionamiento</ion-option >\n                            <ion-option value="2">En Mantenimiento</ion-option >\n                              <ion-option value="3">Fuera de Servicio</ion-option >\n                      </ion-select>\n                </ion-item>\n                <ion-item *ngIf="myForm.get(\'estado\').errors && myForm.get(\'estado\').dirty">\n                    <p color="danger" ion-text *ngIf="myForm.get(\'estado\').hasError(\'required\')">Field is required</p>\n                  </ion-item>\n                                \n              </ion-list><br>\n              <div padding>\n                  <button ion-button icon-start block type="submit" [disabled]="myForm.invalid">\n                      <ion-icon name="archive">   </ion-icon>\n                          Guardar\n                  </button>\n                </div>\n            </form> \n\n        </ion-card-content>\n\n      </ion-card>\n    </ion-col>\n    \n  </ion-row>\n  </ion-grid>\n  \n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\modifaparato\modifaparato.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
+    ], ModifaparatoPage);
+    return ModifaparatoPage;
+}());
+
+//# sourceMappingURL=modifaparato.js.map
+
+/***/ }),
+
+/***/ 119:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HistorialAparatosPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(5);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the HistorialAparatosPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var HistorialAparatosPage = /** @class */ (function () {
+    function HistorialAparatosPage(navCtrl, http, navParams) {
+        this.navCtrl = navCtrl;
+        this.http = http;
+        this.navParams = navParams;
+        this.apiUrl = "http://gymdb/";
+        this.historial = []; // lista que contendrá todo el historial de modificaciones de aparatos 
+        this.getHistorial(); // obtiene todos los registros de la base de datos
+    }
+    HistorialAparatosPage.prototype.getHistorial = function () {
+        var _this = this;
+        var funcion = {
+            'funcion': 'getHistorial'
+        };
+        this.http.post(this.apiUrl, JSON.stringify(funcion))
+            .subscribe(function (res) { console.log(res); _this.historial = res['historial']; console.log(_this.historial); }, function (error) { console.log(error); });
+    };
+    HistorialAparatosPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad HistorialAparatosPage');
+    };
+    HistorialAparatosPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-historial-aparatos',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\historial-aparatos\historial-aparatos.html"*/'<!--\n  Generated template for the HistorialAparatosPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar  color="primary">\n    <ion-title>Historial Modificaciones</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-item *ngFor="let registro of historial">\n      \n    <p><b>ID Admin: </b>  {{ registro.id_admin }}</p>\n    <p><b>Nombre Empleado: </b> {{ registro.Nombre }}</p>\n    <p><b>ID Aparato: </b> {{ registro.id_aparato }}</p>\n    <p><b>Categoria: </b> {{ registro.nombre }}</p>\n    <p><b>Fecha (año/mes/dia): </b> {{ registro.fecha }}</p>\n    <p *ngIf="registro.accion==\'1\'"><b>Accion: </b> AGREGAR</p>\n    <p *ngIf="registro.accion==\'2\'"><b>Accion: </b> MODIFICAR</p>\n  </ion-item>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\historial-aparatos\historial-aparatos.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
+    ], HistorialAparatosPage);
+    return HistorialAparatosPage;
+}());
+
+//# sourceMappingURL=historial-aparatos.js.map
+
+/***/ }),
+
+/***/ 120:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecibePayPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(5);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var RecibePayPage = /** @class */ (function () {
+    function RecibePayPage(navCtrl, http, navParams) {
+        var _this = this;
+        this.navCtrl = navCtrl;
+        this.http = http;
+        this.navParams = navParams;
+        this.pago = {};
+        this.info_paquete = {};
+        this.info_cliente = {};
+        this.cuenta = {};
+        this.nota = {};
+        this.apiUrl = "http://gymdb/";
+        this.pago = this.navParams.get('pago');
+        this.info_paquete = {
+            'id_paquete': this.pago['id_paquete'],
+            'funcion': 'getRecibe'
+        };
+        this.info_cliente = {
+            'id_cliente': this.pago['id_cliente'],
+            'funcion': 'getClientePay'
+        };
+        if (this.pago['monto'] == '0') {
+            this.nota['info'] = "PAGO ELIMINADO";
+        }
+        else {
+            this.nota['info'] = " ";
+        }
+        //Informacion del paquete
+        this.http.post(this.apiUrl, JSON.stringify(this.info_paquete))
+            .subscribe(function (res) {
+            console.log(res);
+            _this.info_paquete['nombre'] = res[0]['nombre'];
+            _this.info_paquete['descripcion'] = res[0]['descripcion'];
+            _this.info_paquete['precio'] = res[0]['precio'];
+        }, function (error) {
+            console.log(error);
+        });
+        //Informacion del cliente
+        this.http.post(this.apiUrl, JSON.stringify(this.info_cliente))
+            .subscribe(function (res) {
+            console.log(res);
+            _this.info_cliente['nombre'] = res[0]['nombre'];
+            _this.info_cliente['apellido_p'] = res[0]['apellido_p'];
+            _this.info_cliente['apellido_m'] = res[0]['apellido_m'];
+            _this.info_cliente['id_cp'] = res[0]['id_cp'];
+            _this.info_cliente['id_colonia'] = res[0]['id_colonia'];
+            _this.info_cliente['calle'] = res[0]['calle'];
+            _this.info_cliente['numero_calle'] = res[0]['numero_calle'];
+            _this.info_cliente['numero_interior'] = res[0]['numero_interior'];
+            _this.info_cliente['telefono'] = res[0]['telefono'];
+            _this.cuenta = {
+                'id_access': _this.pago['id_cliente'],
+                'id_col': _this.info_cliente['id_cp'],
+                'id_cp': _this.info_cliente['id_colonia'],
+                'funcion': 'getForeignData'
+            };
+            //Informacion contenida en otras tablas
+            _this.http.post(_this.apiUrl, JSON.stringify(_this.cuenta))
+                .subscribe(function (res) {
+                console.log(res);
+                _this.cuenta['user'] = res[0]['user'];
+                _this.cuenta['colonia'] = res[1]['user'];
+                _this.cuenta['cp'] = res[2]['user'];
+            }, function (error) {
+                console.log(error);
+            });
+        }, function (error) {
+            console.log(error);
+        });
+    }
+    RecibePayPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad RecibePayPage');
+    };
+    RecibePayPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-recibe-pay',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\recibe-pay\recibe-pay.html"*/'<ion-header>\n\n  <ion-navbar color="secondary">\n\n    <ion-title>Recibo de pago</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <ion-card>\n\n    <ion-card-header>\n\n      <ion-label color="primary" align="center"><b>GYM SYSTEM</b></ion-label>    <br>  \n\n    </ion-card-header>\n\n    <ion-card-content>\n\n        <div text-right> <strong >RECIBO: </strong> {{pago.id_pago}} </div> <br>\n\n        <div text-right> <strong >FECHA: </strong> {{pago.fecha_pago}} </div>\n\n        <br>\n\n        <ion-label color="primary" align="left">CLIENTE</ion-label>  \n\n        <div text-left> <strong >ID: </strong> {{pago.id_cliente}} </div><br>\n\n        <div text-left> <strong >NOMBRE: </strong> {{info_cliente.nombre }} {{info_cliente.apellido_p }} \n\n          {{info_cliente.apellido_m }}</div><br>\n\n          <div text-left> <strong >TELEFONO: </strong> {{info_cliente.telefono}}</div>\n\n        <br>\n\n        <div text-left> <strong >CALLE: </strong> {{info_cliente.calle}}</div><br>\n\n        <div text-left> <strong >NUMERO: </strong> {{info_cliente.numero_calle}}</div><br>\n\n        <div text-left> <strong >NUMERO INTERIOR: </strong> {{info_cliente.numero_interior}}</div><br>\n\n        <div text-left> <strong >COLONIA: </strong> {{cuenta.colonia}}</div><br>\n\n        <div text-left> <strong >CP: </strong> {{cuenta.cp}}</div><br>\n\n        <br>\n\n        <ion-label color="primary" align="left">PAGO</ion-label> \n\n        <div text-left> <strong >CONCEPTO: </strong> {{info_paquete.nombre}} </div><br>\n\n        <div text-left> <strong >DESCRIPCION: </strong> {{info_paquete.descripcion}} </div>\n\n        <ion-label color="danger" align="left"> <strong >VENCIMIENTO: </strong> {{pago.fecha_vencimiento}} </ion-label><br>\n\n        <br><br>\n\n        <ion-label color="primary" align="right">RESUMEN</ion-label> \n\n        <div text-right> <strong >TOTAL A PAGAR: </strong> ${{info_paquete.precio}}.00 </div>\n\n        <ion-label color="danger" align="right">{{nota.info}}</ion-label> \n\n        <div text-right> <strong >MONTO PAGADO: </strong> ${{pago.monto}}.00 </div><br>\n\n        \n\n    </ion-card-content>\n\n  </ion-card>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\recibe-pay\recibe-pay.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
+    ], RecibePayPage);
+    return RecibePayPage;
+}());
+
+//# sourceMappingURL=recibe-pay.js.map
+
+/***/ }),
+
+/***/ 121:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModifyPayPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__list_pay_list_pay__ = __webpack_require__(56);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var ModifyPayPage = /** @class */ (function () {
+    function ModifyPayPage(navCtrl, http, actionsheet, alert, cl, navParams) {
+        var _this = this;
+        this.navCtrl = navCtrl;
+        this.http = http;
+        this.actionsheet = actionsheet;
+        this.alert = alert;
+        this.cl = cl;
+        this.navParams = navParams;
+        this.apiUrl = "http://gymdb/";
+        this.clientes = [];
+        this.items = [];
+        this.pago = {};
+        this.comprobar = {};
+        this.nombre = '';
+        this.list = __WEBPACK_IMPORTED_MODULE_4__list_pay_list_pay__["a" /* ListPayPage */];
+        this.funcion = {
+            "funcion": "getAllCustomers"
+        };
+        this.http.post(this.apiUrl, JSON.stringify(this.funcion))
+            .subscribe(function (res) {
+            console.log(res);
+            _this.clientes = res['clientes'];
+            _this.paquete();
+            console.log(JSON.stringify(_this.clientes));
+        }, function (error) {
+            console.log(JSON.stringify(error));
+        });
+        this.pago = this.navParams.get('pago');
+        console.log(this.pago);
+        this.paqueteNombre();
+        this.myForm = this.cl.group({
+            id_usuario: [this.pago['id_cliente'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
+            paquete: [this.pago['id_paquete'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
+            modo: [this.pago['modo'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
+            monto: [this.pago['monto'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]]
+        });
+        this.comprobar = {
+            "id_usuario": this.pago['id_cliente'],
+            "paquete": this.pago['id_paquete'],
+            "modo": this.pago['modo'],
+            "monto": this.pago['monto']
+        };
+    }
+    ModifyPayPage.prototype.initializeItems = function () {
+        this.items = this.clientes;
+    };
+    ModifyPayPage.prototype.paquete = function () {
+        var _this = this;
+        var funcion = {
+            "funcion": "getPaquete"
+        };
+        this.http.post(this.apiUrl, JSON.stringify(funcion))
+            .subscribe(function (res) {
+            console.log(res);
+            _this.paquetes = res;
+            console.log(JSON.stringify(_this.paquetes));
+        }, function (error) {
+            console.log(JSON.stringify(error));
+        });
+    };
+    ModifyPayPage.prototype.paqueteNombre = function () {
+        var _this = this;
+        var funcion = {
+            "funcion": "paqueteNombre",
+            "id_paquete": this.pago['id_paquete']
+        };
+        this.http.post(this.apiUrl, JSON.stringify(funcion))
+            .subscribe(function (res) {
+            console.log(res);
+            _this.nombre = res[0]["nombre"];
+            console.log(JSON.stringify(_this.nombre));
+        }, function (error) {
+            console.log(JSON.stringify(error));
+        });
+    };
+    ModifyPayPage.prototype.cleanItems = function () {
+        this.items = [];
+    };
+    ModifyPayPage.prototype.getItems = function (ev) {
+        this.initializeItems();
+        console.log(ev.target.value);
+        var val = ev.target.value.toUpperCase();
+        this.items = this.items.filter(function (cliente) {
+            console.log(JSON.stringify(JSON.stringify(cliente.Nombre)));
+            return cliente.Nombre.includes(val);
+        });
+        console.log(JSON.stringify(this.clientes));
+    };
+    ModifyPayPage.prototype.pagar = function () {
+        var _this = this;
+        if (JSON.stringify(this.comprobar) != JSON.stringify(this.myForm.value)) {
+            var paqueteAlerta_1 = this.alert.create({
+                title: 'Paquete invalido',
+                message: 'Escribe el nombre correcto del paquete',
+                buttons: ['Ok']
+            });
+            var paqueteInactivoAlerta_1 = this.alert.create({
+                title: 'Paquete no disponible',
+                message: 'Verifica situacion del paquete',
+                buttons: ['Ok']
+            });
+            var clienteAlerta_1 = this.alert.create({
+                title: 'Cliente invalido',
+                message: 'Escribe id de un cliente valido',
+                buttons: ['Ok']
+            });
+            var clienteInactivoAlerta_1 = this.alert.create({
+                title: 'Cliente inactivo',
+                message: 'Verifica situacion del cliente',
+                buttons: ['Ok']
+            });
+            var pagoAlerta_1 = this.alert.create({
+                title: 'Cambio existoso',
+                message: 'Ya puedes consultar tu recibo modificado',
+                buttons: ['Ok']
+            });
+            var obj = JSON.parse(JSON.stringify(this.myForm.value));
+            obj['funcion'] = 'addCambioPago';
+            obj['id'] = this.pago['id_pago'];
+            console.log(obj);
+            this.http.post(this.apiUrl, JSON.stringify(obj))
+                .subscribe(function (res) {
+                if (res == "Paquete Invalido") {
+                    paqueteAlerta_1.present();
+                }
+                if (res == "Paquete Inactivo") {
+                    paqueteInactivoAlerta_1.present();
+                }
+                if (res == "Cliente Invalido") {
+                    clienteAlerta_1.present();
+                }
+                if (res == "Cliente Inactivo") {
+                    clienteInactivoAlerta_1.present();
+                }
+                else if (res == "Pago exitoso") {
+                    pagoAlerta_1.present();
+                    if (_this.myForm.valid) {
+                        console.log("form enviado");
+                        _this.myForm.reset();
+                        _this.navCtrl.push(_this.list);
+                    }
+                }
+                console.log(res);
+            });
+        }
+        else {
+            var noCambiosAlerta = this.alert.create({
+                title: 'No se han realizado cambios',
+                message: 'Informacion igual',
+                buttons: ['Ok']
+            });
+            noCambiosAlerta.present();
+        }
+    };
+    ModifyPayPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ModifyPayPage');
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('myForm'),
+        __metadata("design:type", Object)
+    ], ModifyPayPage.prototype, "formValues", void 0);
+    ModifyPayPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-modify-pay',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\modify-pay\modify-pay.html"*/'<ion-header>\n\n  <ion-navbar color= "secondary">\n    <ion-title>Modificar</ion-title>\n  </ion-navbar>\n\n  <ion-searchbar placeholder="Ingresa nombre de usuario para consultar id" (ionInput)="getItems($event)">\n  </ion-searchbar>\n\n</ion-header>\n\n<ion-content padding>\n\n  <div text-center>\n    <button ion-button outline (click)="cleanItems()">\n      <ion-icon name="arrow-up"></ion-icon>\n    </button>\n  </div>\n\n  <ion-card *ngFor="let cliente of items" color="primary">\n    <ion-card-content>\n      <b>{{ cliente.Nombre }}</b> <br> {{ cliente.id_cliente }}\n    </ion-card-content>\n  \n  </ion-card>\n\n  <ion-card *ngFor="let pack of paquetes" (click)="actionSheet()">\n    <ion-card-header><b>{{ pack.nombre }}</b>\n    </ion-card-header>\n          \n    <ion-card-content color="primary">\n      ${{pack.precio}}.00 <br>\n      <ion-label stack color="dark"> <strong>Clave: </strong>{{pack.id}}  </ion-label>\n    </ion-card-content>\n  </ion-card>\n\n  <ion-card>\n\n    <div text-center>\n      <br>\n      <strong >FICHA DE PAGO</strong>\n    </div>\n\n      <form [formGroup]="myForm"  (ngSubmit)="pagar()" novalidate>\n          <ion-list>\n\n              <ion-item>\n                <ion-label stack color = "primary">Username: </ion-label>\n                <ion-input id="id_usuario" name="id_usuario" formControlName="id_usuario" type="text"></ion-input>\n              </ion-item>\n              <ion-item *ngIf="myForm.get(\'id_usuario\').errors && myForm.get(\'id_usuario\').dirty">\n                <p color="danger" ion-text *ngIf="myForm.get(\'id_usuario\').hasError(\'required\')">Field is required</p>\n              </ion-item>\n\n              <ion-item>\n                <ion-label stack color = "primary">Clave de paquete: </ion-label>\n                <ion-input id="paquete" name="paquete" formControlName="paquete" type="text"></ion-input>\n              </ion-item>\n              <ion-item *ngIf="myForm.get(\'paquete\').errors && myForm.get(\'paquete\').dirty">\n                <p color="danger" ion-text *ngIf="myForm.get(\'paquete\').hasError(\'required\')">Field is required</p>\n              </ion-item>\n\n              <ion-item>\n                <ion-label stack color = "primary">Modo de Pago </ion-label>\n                <ion-select id="modo" name="modo" formControlName="modo" type="modo">\n                  <ion-option value="EFECTIVO">Efectivo</ion-option>\n                  <ion-option value="DEBITO">Debito</ion-option>\n                  <ion-option value="CREDITO">Credito</ion-option>\n                </ion-select>\n              </ion-item>\n              <ion-item *ngIf="myForm.get(\'modo\').errors && myForm.get(\'modo\').dirty">\n                <p color="danger" ion-text *ngIf="myForm.get(\'modo\').hasError(\'required\')">Field is required</p>\n              </ion-item>\n\n              <ion-item>\n                  <ion-label stack color = "primary">Monto: </ion-label>\n                  <ion-input id="monto" name="monto" formControlName="monto" type="text"></ion-input>\n              </ion-item>\n              <ion-item *ngIf="myForm.get(\'monto\').errors && myForm.get(\'monto\').dirty">\n                  <p color="danger" ion-text *ngIf="myForm.get(\'monto\').hasError(\'required\')">Field is required</p>\n              </ion-item>\n\n          </ion-list>\n\n          <div padding text-center>\n            <button ion-button outline type="submit" [disabled]="myForm.invalid">MODIFICAR</button>\n          </div>\n\n      </form>\n\n  </ion-card>\n</ion-content>'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\modify-pay\modify-pay.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* ActionSheetController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavParams */]])
+    ], ModifyPayPage);
+    return ModifyPayPage;
+}());
+
+//# sourceMappingURL=modify-pay.js.map
+
+/***/ }),
+
 /***/ 122:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PackPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(5);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var PackPage = /** @class */ (function () {
+    function PackPage(navCtrl, http, actionsheet, alert, cl, navParams) {
+        this.navCtrl = navCtrl;
+        this.http = http;
+        this.actionsheet = actionsheet;
+        this.alert = alert;
+        this.cl = cl;
+        this.navParams = navParams;
+        this.apiUrl = "http://gymdb/";
+        this.myForm = this.cl.group({
+            nombre: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
+            descripcion: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
+            precio: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern(/^-?(0|[1-9]\d*)?$/)]],
+            duracion: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern(/^-?(0|[1-9]\d*)?$/)]]
+        });
+    }
+    PackPage.prototype.pack = function () {
+        var _this = this;
+        var paqueteDuracion = this.alert.create({
+            title: 'Duracion de paquete invalida',
+            message: 'La duracion maxima es de 365 dias',
+            buttons: ['Ok']
+        });
+        var paqueteNombre = this.alert.create({
+            title: 'Nombre de paquete invalido',
+            message: 'Puede que el nombre de paquete sea repetido',
+            buttons: ['Ok']
+        });
+        var paqueteAgregado = this.alert.create({
+            title: 'Exito',
+            message: 'Paquete agregado correctamente',
+            buttons: ['Ok']
+        });
+        var obj = JSON.parse(JSON.stringify(this.myForm.value));
+        obj['funcion'] = 'addPaquete';
+        for (var i in obj) {
+            if (i == "duracion" || i == "precio" || i == "funcion") {
+            }
+            else {
+                obj[i] = obj[i].toUpperCase();
+            }
+        }
+        console.log(obj);
+        this.http.post(this.apiUrl, JSON.stringify(obj))
+            .subscribe(function (res) {
+            if (res == "Duracion Invalida") {
+                paqueteDuracion.present();
+            }
+            if (res == "Nombre Invalido") {
+                paqueteNombre.present();
+            }
+            else if (res == "Paquete Exitoso") {
+                paqueteAgregado.present();
+                if (_this.myForm.valid) {
+                    console.log("form enviado");
+                    _this.myForm.reset();
+                }
+            }
+            console.log(res);
+        });
+    };
+    PackPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad PackPage');
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('myForm'),
+        __metadata("design:type", Object)
+    ], PackPage.prototype, "formValues", void 0);
+    PackPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-pack',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\pack\pack.html"*/'<ion-header>\n  <ion-navbar color="secondary">\n    <ion-title>Paquetes</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-card>\n    \n    <div text-center>\n      <br>\n      <strong>AGREGAR PAQUETE</strong>\n    </div>\n\n    <form [formGroup]="myForm"  (ngSubmit)="pack()" novalidate>\n      <ion-list>\n\n        <ion-item>\n          <ion-label stack color = "primary">Nombre: </ion-label>\n          <ion-input id="nombre" name="nombre" formControlName="nombre" type="text"></ion-input>\n        </ion-item>\n        <ion-item *ngIf="myForm.get(\'nombre\').errors && myForm.get(\'nombre\').dirty">\n          <p color="danger" ion-text *ngIf="myForm.get(\'nombre\').hasError(\'required\')">Field is required</p>\n        </ion-item>\n\n        <ion-item>\n          <ion-label stack color = "primary">Descripcion: </ion-label>\n          <ion-input id="descripcion" name="descripcion" formControlName="descripcion" type="text"></ion-input>\n        </ion-item>\n        <ion-item *ngIf="myForm.get(\'descripcion\').errors && myForm.get(\'descripcion\').dirty">\n          <p color="danger" ion-text *ngIf="myForm.get(\'descripcion\').hasError(\'required\')">Field is required</p>\n        </ion-item>\n\n        <ion-item>\n          <ion-label stack color = "primary">Precio: </ion-label>\n          <ion-input id="precio" name="precio" formControlName="precio" type="text"></ion-input>\n        </ion-item>\n        <ion-item *ngIf="myForm.get(\'precio\').errors && myForm.get(\'precio\').dirty">\n          <p color="danger" ion-text *ngIf="myForm.get(\'precio\').hasError(\'required\')">Field is required</p>\n          <p color="danger" ion-text *ngIf="myForm.get(\'precio\').hasError(\'pattern\')">Just Numbers</p>\n        </ion-item>\n\n        <ion-item>\n          <ion-label stack color = "primary">Duracion: </ion-label>\n          <ion-input id="duracion" name="duracion" formControlName="duracion" type="text"></ion-input>\n        </ion-item>\n        <ion-item *ngIf="myForm.get(\'duracion\').errors && myForm.get(\'duracion\').dirty">\n          <p color="danger" ion-text *ngIf="myForm.get(\'duracion\').hasError(\'required\')">Field is required</p>\n          <p color="danger" ion-text *ngIf="myForm.get(\'duracion\').hasError(\'pattern\')">Just Numbers</p>\n        </ion-item>\n      </ion-list>\n\n      <div padding text-center>\n      <button ion-button outline type="submit" [disabled]="myForm.invalid">Agregar</button>\n      </div>\n\n    </form>\n    \n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\pack\pack.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* ActionSheetController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavParams */]])
+    ], PackPage);
+    return PackPage;
+}());
+
+//# sourceMappingURL=pack.js.map
+
+/***/ }),
+
+/***/ 123:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PackDetailsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(5);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var PackDetailsPage = /** @class */ (function () {
+    function PackDetailsPage(navCtrl, http, navParams) {
+        this.navCtrl = navCtrl;
+        this.http = http;
+        this.navParams = navParams;
+        this.pack = {};
+        this.status = {};
+        this.pack = this.navParams.get('pack');
+        if (this.pack['activo'] == '1') {
+            this.status['inf'] = "ACTIVO";
+        }
+        else {
+            this.status['inf'] = "INACTIVO";
+        }
+    }
+    PackDetailsPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad PackDetailsPage');
+    };
+    PackDetailsPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-pack-details',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\pack-details\pack-details.html"*/'<ion-header>\n  <ion-navbar color="secondary">\n    <ion-title>Detalles</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-card>\n    <ion-card-header>\n        <ion-label color="primary" align="center"><b>{{pack.nombre}}</b></ion-label>    <br>  \n    </ion-card-header>\n    <ion-card-content>\n        <div text-left> <strong >ID: </strong> {{pack.id}}</div><br><br>\n        <div text-left> <strong >STATUS: </strong> {{status.inf}} </div><br>\n        <div text-left> <strong >DESCRIPCION: </strong> {{pack.descripcion}}</div><br>\n        <div text-left> <strong >DIAS DE DURACION: </strong> {{pack.duracion}}</div><br>\n        <div text-left> <strong >PRECIO: </strong> {{pack.precio}}</div><br>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\pack-details\pack-details.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
+    ], PackDetailsPage);
+    return PackDetailsPage;
+}());
+
+//# sourceMappingURL=pack-details.js.map
+
+/***/ }),
+
+/***/ 124:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModifyPackPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__list_pack_list_pack__ = __webpack_require__(57);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var ModifyPackPage = /** @class */ (function () {
+    function ModifyPackPage(navCtrl, http, actionsheet, alert, cl, navParams) {
+        this.navCtrl = navCtrl;
+        this.http = http;
+        this.actionsheet = actionsheet;
+        this.alert = alert;
+        this.cl = cl;
+        this.navParams = navParams;
+        this.apiUrl = "http://gymdb/";
+        this.pack = {};
+        this.comprobar = {};
+        this.list = __WEBPACK_IMPORTED_MODULE_4__list_pack_list_pack__["a" /* ListPackPage */];
+        this.pack = this.navParams.get('pack');
+        console.log(this.pack);
+        this.myForm = this.cl.group({
+            nombre: [this.pack['nombre'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
+            descripcion: [this.pack['descripcion'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
+            precio: [this.pack['precio'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern(/^-?(0|[1-9]\d*)?$/)]],
+            duracion: [this.pack['duracion'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern(/^-?(0|[1-9]\d*)?$/)]]
+        });
+        this.comprobar = {
+            "nombre": this.pack['nombre'],
+            "descripcion": this.pack['descripcion'],
+            "precio": this.pack['precio'],
+            "duracion": this.pack['duracion']
+        };
+    }
+    ModifyPackPage.prototype.edit = function () {
+        var _this = this;
+        if (JSON.stringify(this.comprobar) != JSON.stringify(this.myForm.value)) {
+            var paqueteDuracion_1 = this.alert.create({
+                title: 'Duracion de paquete invalida',
+                message: 'La duracion maxima es de 365 dias',
+                buttons: ['Ok']
+            });
+            var paqueteNombre_1 = this.alert.create({
+                title: 'Nombre de paquete invalido',
+                message: 'Puede que el nombre de paquete sea repetido',
+                buttons: ['Ok']
+            });
+            var paqueteEditado_1 = this.alert.create({
+                title: 'Exito',
+                message: 'Paquete editado correctamente',
+                buttons: ['Ok']
+            });
+            var obj = JSON.parse(JSON.stringify(this.myForm.value));
+            obj['funcion'] = 'addCambioPack';
+            obj['id'] = this.pack['id'];
+            for (var i in obj) {
+                if (i == "duracion" || i == "precio" || i == "funcion") {
+                }
+                else {
+                    obj[i] = obj[i].toUpperCase();
+                }
+            }
+            console.log(obj);
+            this.http.post(this.apiUrl, JSON.stringify(obj))
+                .subscribe(function (res) {
+                if (res == "Duracion Invalida") {
+                    paqueteDuracion_1.present();
+                }
+                if (res == "Nombre Invalido") {
+                    paqueteNombre_1.present();
+                }
+                else if (res == "Paquete Exitoso") {
+                    paqueteEditado_1.present();
+                    if (_this.myForm.valid) {
+                        console.log("form enviado");
+                        _this.myForm.reset();
+                        _this.navCtrl.push(_this.list);
+                    }
+                }
+                console.log(res);
+            });
+        }
+        else {
+            var noCambiosAlerta = this.alert.create({
+                title: 'No se han realizado cambios',
+                message: 'Información igual',
+                buttons: ['Ok']
+            });
+            noCambiosAlerta.present();
+        }
+    };
+    ModifyPackPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ModifyPackPage');
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('myForm'),
+        __metadata("design:type", Object)
+    ], ModifyPackPage.prototype, "formValues", void 0);
+    ModifyPackPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-modify-pack',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\modify-pack\modify-pack.html"*/'\n<ion-header>\n  <ion-navbar color="danger">\n    <ion-title>Modificar</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n    <ion-card>\n    \n        <div text-center>\n          <br>\n          <strong>EDITAR PAQUETE</strong>\n        </div>\n    \n        <form [formGroup]="myForm"  (ngSubmit)="edit()" novalidate>\n          <ion-list>\n    \n            <ion-item>\n              <ion-label stack color = "primary">Nombre: </ion-label>\n              <ion-input id="nombre" name="nombre" formControlName="nombre" type="text"></ion-input>\n            </ion-item>\n            <ion-item *ngIf="myForm.get(\'nombre\').errors && myForm.get(\'nombre\').dirty">\n              <p color="danger" ion-text *ngIf="myForm.get(\'nombre\').hasError(\'required\')">Field is required</p>\n            </ion-item>\n    \n            <ion-item>\n              <ion-label stack color = "primary">Descripcion: </ion-label>\n              <ion-input id="descripcion" name="descripcion" formControlName="descripcion" type="text"></ion-input>\n            </ion-item>\n            <ion-item *ngIf="myForm.get(\'descripcion\').errors && myForm.get(\'descripcion\').dirty">\n              <p color="danger" ion-text *ngIf="myForm.get(\'descripcion\').hasError(\'required\')">Field is required</p>\n            </ion-item>\n    \n            <ion-item>\n              <ion-label stack color = "primary">Precio: </ion-label>\n              <ion-input id="precio" name="precio" formControlName="precio" type="text"></ion-input>\n            </ion-item>\n            <ion-item *ngIf="myForm.get(\'precio\').errors && myForm.get(\'precio\').dirty">\n              <p color="danger" ion-text *ngIf="myForm.get(\'precio\').hasError(\'required\')">Field is required</p>\n              <p color="danger" ion-text *ngIf="myForm.get(\'precio\').hasError(\'pattern\')">Just Numbers</p>\n            </ion-item>\n    \n            <ion-item>\n              <ion-label stack color = "primary">Duracion: </ion-label>\n              <ion-input id="duracion" name="duracion" formControlName="duracion" type="text"></ion-input>\n            </ion-item>\n            <ion-item *ngIf="myForm.get(\'duracion\').errors && myForm.get(\'duracion\').dirty">\n              <p color="danger" ion-text *ngIf="myForm.get(\'duracion\').hasError(\'required\')">Field is required</p>\n              <p color="danger" ion-text *ngIf="myForm.get(\'duracion\').hasError(\'pattern\')">Just Numbers</p>\n            </ion-item>\n          </ion-list>\n    \n          <div padding text-center>\n          <button ion-button outline type="submit" [disabled]="myForm.invalid">Agregar</button>\n          </div>\n    \n        </form>\n        \n      </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\modify-pack\modify-pack.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* ActionSheetController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavParams */]])
+    ], ModifyPackPage);
+    return ModifyPackPage;
+}());
+
+//# sourceMappingURL=modify-pack.js.map
+
+/***/ }),
+
+/***/ 125:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AsistenciaPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__asistencia_list_asistencia_list__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__asistencia_list_asistencia_list__ = __webpack_require__(126);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2127,14 +2302,14 @@ var AsistenciaPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 123:
+/***/ 126:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AsistenciaListPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(5);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2205,17 +2380,17 @@ var AsistenciaListPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 124:
+/***/ 127:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_pdfmake_build_pdfMake__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_pdfmake_build_pdfMake__ = __webpack_require__(190);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_pdfmake_build_pdfMake___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_pdfmake_build_pdfMake__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_pdfmake_build_vfs_fonts__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_pdfmake_build_vfs_fonts__ = __webpack_require__(191);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_pdfmake_build_vfs_fonts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_pdfmake_build_vfs_fonts__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2700,14 +2875,14 @@ var ReportesPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 125:
+/***/ 128:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Asist_15Page; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(5);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2762,136 +2937,14 @@ var Asist_15Page = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 126:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerAsistPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__asist_7_asist_7__ = __webpack_require__(127);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__asist_15_asist_15__ = __webpack_require__(125);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__asist_30_asist_30__ = __webpack_require__(128);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var CustomerAsistPage = /** @class */ (function () {
-    function CustomerAsistPage(navCtrl, navParams) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.cliente = {};
-        this.semana = __WEBPACK_IMPORTED_MODULE_2__asist_7_asist_7__["a" /* Asist_7Page */];
-        this.semanas = __WEBPACK_IMPORTED_MODULE_3__asist_15_asist_15__["a" /* Asist_15Page */];
-        this.mes = __WEBPACK_IMPORTED_MODULE_4__asist_30_asist_30__["a" /* Asist_30Page */];
-        this.cliente = this.navParams.get('cliente');
-        console.log(this.cliente);
-    }
-    CustomerAsistPage.prototype.reportSemana = function () {
-        this.navCtrl.push(this.semana, { cliente: this.cliente });
-    };
-    CustomerAsistPage.prototype.reportSemanas = function () {
-        this.navCtrl.push(this.semanas, { cliente: this.cliente });
-    };
-    CustomerAsistPage.prototype.reportMes = function () {
-        this.navCtrl.push(this.mes, { cliente: this.cliente });
-    };
-    CustomerAsistPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad CustomerAsistPage');
-    };
-    CustomerAsistPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-customer-asist',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\customer-asist\customer-asist.html"*/'<ion-header>\n  <ion-navbar color="secondary">\n    <ion-title>Record de Asistencias </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-card color = "primary" (click)="reportSemana()">\n    <ion-card-header>\n      <b> 7 dias </b>\n    </ion-card-header>\n    <ion-card-content>\n      Asistencias de la ultima semana\n    </ion-card-content>\n  </ion-card>\n\n    <ion-card color = "primary" (click)="reportSemanas()">\n      <ion-card-header>\n        <b> 15 dias</b>\n      </ion-card-header>\n      <ion-card-content>\n        Asistencias de la ultimas 2 semana\n      </ion-card-content>\n    </ion-card>\n\n    <ion-card color = "primary" (click)="reportMes()">\n      <ion-card-header>\n        <b>30 dias</b>\n      </ion-card-header>\n      <ion-card-content>\n        Asistencias del ultimo mes\n      </ion-card-content>\n    </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\customer-asist\customer-asist.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
-    ], CustomerAsistPage);
-    return CustomerAsistPage;
-}());
-
-//# sourceMappingURL=customer-asist.js.map
-
-/***/ }),
-
-/***/ 127:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Asist_7Page; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(6);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var Asist_7Page = /** @class */ (function () {
-    function Asist_7Page(navCtrl, http, navParams) {
-        var _this = this;
-        this.navCtrl = navCtrl;
-        this.http = http;
-        this.navParams = navParams;
-        this.apiUrl = "http://gymdb/";
-        this.cliente = {};
-        this.asistencia = [];
-        this.funcion = {};
-        this.cliente = this.navParams.get('cliente');
-        this.funcion = {
-            "funcion": "customerAsist7",
-            "id": this.cliente['id_cliente']
-        };
-        this.http.post(this.apiUrl, JSON.stringify(this.funcion))
-            .subscribe(function (res) {
-            console.log(res);
-            _this.asistencia = res['asistencia'];
-            console.log(JSON.stringify(_this.asistencia));
-        }, function (error) {
-            console.log(JSON.stringify(error));
-        });
-    }
-    Asist_7Page.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad Asist_7Page');
-    };
-    Asist_7Page = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-asist-7',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\asist-7\asist-7.html"*/'<ion-header>\n  <ion-navbar color = "secondary">\n    <ion-title>Ultima Semana</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n    <ion-card *ngFor="let asist of asistencia">\n        <ion-card-header color="primary"> \n          <b>{{ asist.fecha }}</b>\n        </ion-card-header>\n      </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\asist-7\asist-7.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
-    ], Asist_7Page);
-    return Asist_7Page;
-}());
-
-//# sourceMappingURL=asist-7.js.map
-
-/***/ }),
-
-/***/ 128:
+/***/ 129:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Asist_30Page; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(5);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2946,15 +2999,137 @@ var Asist_30Page = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 129:
+/***/ 130:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Asist_7Page; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(5);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var Asist_7Page = /** @class */ (function () {
+    function Asist_7Page(navCtrl, http, navParams) {
+        var _this = this;
+        this.navCtrl = navCtrl;
+        this.http = http;
+        this.navParams = navParams;
+        this.apiUrl = "http://gymdb/";
+        this.cliente = {};
+        this.asistencia = [];
+        this.funcion = {};
+        this.cliente = this.navParams.get('cliente');
+        this.funcion = {
+            "funcion": "customerAsist7",
+            "id": this.cliente['id_cliente']
+        };
+        this.http.post(this.apiUrl, JSON.stringify(this.funcion))
+            .subscribe(function (res) {
+            console.log(res);
+            _this.asistencia = res['asistencia'];
+            console.log(JSON.stringify(_this.asistencia));
+        }, function (error) {
+            console.log(JSON.stringify(error));
+        });
+    }
+    Asist_7Page.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad Asist_7Page');
+    };
+    Asist_7Page = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-asist-7',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\asist-7\asist-7.html"*/'<ion-header>\n  <ion-navbar color = "secondary">\n    <ion-title>Ultima Semana</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n    <ion-card *ngFor="let asist of asistencia">\n        <ion-card-header color="primary"> \n          <b>{{ asist.fecha }}</b>\n        </ion-card-header>\n      </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\asist-7\asist-7.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
+    ], Asist_7Page);
+    return Asist_7Page;
+}());
+
+//# sourceMappingURL=asist-7.js.map
+
+/***/ }),
+
+/***/ 131:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerAsistPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__asist_7_asist_7__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__asist_15_asist_15__ = __webpack_require__(128);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__asist_30_asist_30__ = __webpack_require__(129);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var CustomerAsistPage = /** @class */ (function () {
+    function CustomerAsistPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.cliente = {};
+        this.semana = __WEBPACK_IMPORTED_MODULE_2__asist_7_asist_7__["a" /* Asist_7Page */];
+        this.semanas = __WEBPACK_IMPORTED_MODULE_3__asist_15_asist_15__["a" /* Asist_15Page */];
+        this.mes = __WEBPACK_IMPORTED_MODULE_4__asist_30_asist_30__["a" /* Asist_30Page */];
+        this.cliente = this.navParams.get('cliente');
+        console.log(this.cliente);
+    }
+    CustomerAsistPage.prototype.reportSemana = function () {
+        this.navCtrl.push(this.semana, { cliente: this.cliente });
+    };
+    CustomerAsistPage.prototype.reportSemanas = function () {
+        this.navCtrl.push(this.semanas, { cliente: this.cliente });
+    };
+    CustomerAsistPage.prototype.reportMes = function () {
+        this.navCtrl.push(this.mes, { cliente: this.cliente });
+    };
+    CustomerAsistPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad CustomerAsistPage');
+    };
+    CustomerAsistPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-customer-asist',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\customer-asist\customer-asist.html"*/'<ion-header>\n  <ion-navbar color="secondary">\n    <ion-title>Record de Asistencias </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-card color = "primary" (click)="reportSemana()">\n    <ion-card-header>\n      <b> 7 dias </b>\n    </ion-card-header>\n    <ion-card-content>\n      Asistencias de la ultima semana\n    </ion-card-content>\n  </ion-card>\n\n    <ion-card color = "primary" (click)="reportSemanas()">\n      <ion-card-header>\n        <b> 15 dias</b>\n      </ion-card-header>\n      <ion-card-content>\n        Asistencias de la ultimas 2 semana\n      </ion-card-content>\n    </ion-card>\n\n    <ion-card color = "primary" (click)="reportMes()">\n      <ion-card-header>\n        <b>30 dias</b>\n      </ion-card-header>\n      <ion-card-content>\n        Asistencias del ultimo mes\n      </ion-card-content>\n    </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\customer-asist\customer-asist.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
+    ], CustomerAsistPage);
+    return CustomerAsistPage;
+}());
+
+//# sourceMappingURL=customer-asist.js.map
+
+/***/ }),
+
+/***/ 132:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerPayPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__customer_recibe_customer_recibe__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__customer_recibe_customer_recibe__ = __webpack_require__(133);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3031,7 +3206,7 @@ var CustomerPayPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 130:
+/***/ 133:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3083,15 +3258,15 @@ var CustomerRecibePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 131:
+/***/ 134:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customer_pay_customer_pay__ = __webpack_require__(129);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__customer_asist_customer_asist__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customer_pay_customer_pay__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__customer_asist_customer_asist__ = __webpack_require__(131);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3138,16 +3313,16 @@ var CustomerPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 132:
+/***/ 135:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__admin_admin__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__customer_customer__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__admin_admin__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__customer_customer__ = __webpack_require__(134);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3257,7 +3432,7 @@ var LoginPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 143:
+/***/ 146:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -3270,140 +3445,152 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 143;
+webpackEmptyAsyncContext.id = 146;
 
 /***/ }),
 
-/***/ 185:
+/***/ 188:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"../pages/add-aparatos/add-aparatos.module": [
-		312,
-		31
+		315,
+		34
 	],
 	"../pages/add-cliente/add-cliente.module": [
-		313,
+		316,
 		0
 	],
 	"../pages/add-empleado/add-empleado.module": [
-		334,
-		30
+		317,
+		33
+	],
+	"../pages/add-producto/add-producto.module": [
+		318,
+		32
 	],
 	"../pages/admin/admin.module": [
-		314,
-		29
+		320,
+		31
 	],
 	"../pages/all-employees/all-employees.module": [
-		315,
-		28
+		319,
+		30
+	],
+	"../pages/all-products/all-products.module": [
+		322,
+		29
 	],
 	"../pages/allaparatos/allaparatos.module": [
-		316,
-		27
+		321,
+		28
 	],
 	"../pages/allcustomers/allcustomers.module": [
-		317,
-		26
+		323,
+		27
 	],
 	"../pages/asist-15/asist-15.module": [
-		318,
-		25
+		324,
+		26
 	],
 	"../pages/asist-30/asist-30.module": [
-		324,
-		24
+		325,
+		25
 	],
 	"../pages/asist-7/asist-7.module": [
-		322,
-		23
+		326,
+		24
 	],
 	"../pages/asistencia-list/asistencia-list.module": [
-		319,
-		22
+		327,
+		23
 	],
 	"../pages/asistencia/asistencia.module": [
-		320,
-		21
+		328,
+		22
 	],
 	"../pages/customer-asist/customer-asist.module": [
-		321,
-		20
+		329,
+		21
 	],
 	"../pages/customer-pay/customer-pay.module": [
-		323,
-		19
+		330,
+		20
 	],
 	"../pages/customer-recibe/customer-recibe.module": [
-		325,
-		18
+		331,
+		19
 	],
 	"../pages/customer/customer.module": [
-		331,
-		17
+		332,
+		18
 	],
 	"../pages/historial-aparatos/historial-aparatos.module": [
-		326,
-		16
+		333,
+		17
 	],
 	"../pages/inf-cliente/inf-cliente.module": [
-		327,
-		15
+		334,
+		16
 	],
 	"../pages/info-empleado/info-empleado.module": [
-		328,
-		14
+		335,
+		15
 	],
 	"../pages/list-pack/list-pack.module": [
-		329,
-		13
+		336,
+		14
 	],
 	"../pages/list-pay/list-pay.module": [
-		330,
-		12
+		337,
+		13
 	],
 	"../pages/login/login.module": [
-		343,
-		11
+		338,
+		12
 	],
 	"../pages/modif-empleado/modif-empleado.module": [
-		332,
+		339,
+		11
+	],
+	"../pages/modif-product/modif-product.module": [
+		347,
 		10
 	],
 	"../pages/modifaparato/modifaparato.module": [
-		333,
+		340,
 		9
 	],
 	"../pages/modifcliente/modifcliente.module": [
-		335,
+		341,
 		8
 	],
 	"../pages/modify-pack/modify-pack.module": [
-		336,
+		342,
 		7
 	],
 	"../pages/modify-pay/modify-pay.module": [
-		338,
+		343,
 		6
 	],
 	"../pages/pack-details/pack-details.module": [
-		337,
+		344,
 		5
 	],
 	"../pages/pack/pack.module": [
-		339,
+		345,
 		4
 	],
 	"../pages/pay/pay.module": [
-		340,
+		346,
 		3
 	],
 	"../pages/recibe-pay/recibe-pay.module": [
-		341,
+		348,
 		2
 	],
 	"../pages/reportes/reportes.module": [
-		342,
+		349,
 		1
 	]
 };
@@ -3418,20 +3605,20 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 185;
+webpackAsyncContext.id = 188;
 module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 186:
+/***/ 189:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddClientePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(5);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3654,20 +3841,20 @@ var AddClientePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 231:
+/***/ 234:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_login__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__admin_admin__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_login__ = __webpack_require__(135);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__admin_admin__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pay_pay__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common_http__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_pdfmake_build_pdfMake__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_pdfmake_build_pdfMake__ = __webpack_require__(190);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_pdfmake_build_pdfMake___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_pdfmake_build_pdfMake__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_pdfmake_build_vfs_fonts__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_pdfmake_build_vfs_fonts__ = __webpack_require__(191);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_pdfmake_build_vfs_fonts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_pdfmake_build_vfs_fonts__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3720,13 +3907,13 @@ var HomePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 232:
+/***/ 235:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(233);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(253);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(256);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -3734,7 +3921,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 253:
+/***/ 256:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3742,44 +3929,47 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(228);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(230);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common_http__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(310);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(231);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_login_login__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_customer_customer__ = __webpack_require__(131);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_admin_admin__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_c_Users_acer_Desktop_GymSystem_GymSystem_src_pages_add_cliente_add_cliente__ = __webpack_require__(186);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_inf_cliente_inf_cliente__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_allcustomers_allcustomers__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_modifcliente_modifcliente__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_list_pay_list_pay__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_recibe_pay_recibe_pay__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_add_aparatos_add_aparatos__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_allaparatos_allaparatos__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_modifaparato_modifaparato__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_add_empleado_add_empleado__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_pack_details_pack_details__ = __webpack_require__(118);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_pack_pack__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_list_pack_list_pack__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_modify_pack_modify_pack__ = __webpack_require__(119);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_modify_pay_modify_pay__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_all_employees_all_employees__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_info_empleado_info_empleado__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pages_modif_empleado_modif_empleado__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pages_asistencia_list_asistencia_list__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pages_asistencia_asistencia__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(313);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_login_login__ = __webpack_require__(135);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_customer_customer__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_admin_admin__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_c_Users_acer_Desktop_GymSystem_GymSystem_src_pages_add_cliente_add_cliente__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_inf_cliente_inf_cliente__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_allcustomers_allcustomers__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_modifcliente_modifcliente__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_list_pay_list_pay__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_recibe_pay_recibe_pay__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_add_aparatos_add_aparatos__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_allaparatos_allaparatos__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_modifaparato_modifaparato__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_add_empleado_add_empleado__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_pack_details_pack_details__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_pack_pack__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_list_pack_list_pack__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_modify_pack_modify_pack__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_modify_pay_modify_pay__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_all_employees_all_employees__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_info_empleado_info_empleado__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pages_modif_empleado_modif_empleado__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pages_asistencia_list_asistencia_list__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pages_asistencia_asistencia__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pages_pay_pay__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__pages_historial_aparatos_historial_aparatos__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__ionic_native_file_ngx__ = __webpack_require__(311);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__pages_reportes_reportes__ = __webpack_require__(124);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__pages_customer_pay_customer_pay__ = __webpack_require__(129);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__pages_customer_asist_customer_asist__ = __webpack_require__(126);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__pages_customer_recibe_customer_recibe__ = __webpack_require__(130);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__pages_asist_15_asist_15__ = __webpack_require__(125);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__pages_asist_7_asist_7__ = __webpack_require__(127);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pages_asist_30_asist_30__ = __webpack_require__(128);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__pages_historial_aparatos_historial_aparatos__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__ionic_native_file_ngx__ = __webpack_require__(314);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__pages_reportes_reportes__ = __webpack_require__(127);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__pages_customer_pay_customer_pay__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__pages_customer_asist_customer_asist__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__pages_customer_recibe_customer_recibe__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__pages_asist_15_asist_15__ = __webpack_require__(128);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__pages_asist_7_asist_7__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pages_asist_30_asist_30__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__pages_add_producto_add_producto__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__pages_modif_product_modif_product__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__pages_all_products_all_products__ = __webpack_require__(60);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3805,6 +3995,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 //import { ListcustomersPage } from '../pages/listcustomers/listcustomers';
 //import { InfoClientePage } from '../pages/info-cliente/info-cliente';
 //import { PayPage } from '../pages/pay/pay';
+
+
+
 
 
 
@@ -3870,7 +4063,10 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_37__pages_customer_recibe_customer_recibe__["a" /* CustomerRecibePage */],
                 __WEBPACK_IMPORTED_MODULE_38__pages_asist_15_asist_15__["a" /* Asist_15Page */],
                 __WEBPACK_IMPORTED_MODULE_39__pages_asist_7_asist_7__["a" /* Asist_7Page */],
-                __WEBPACK_IMPORTED_MODULE_40__pages_asist_30_asist_30__["a" /* Asist_30Page */]
+                __WEBPACK_IMPORTED_MODULE_40__pages_asist_30_asist_30__["a" /* Asist_30Page */],
+                __WEBPACK_IMPORTED_MODULE_41__pages_add_producto_add_producto__["a" /* AddProductoPage */],
+                __WEBPACK_IMPORTED_MODULE_42__pages_modif_product_modif_product__["a" /* ModifProductPage */],
+                __WEBPACK_IMPORTED_MODULE_43__pages_all_products_all_products__["a" /* AllProductsPage */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -3879,36 +4075,39 @@ var AppModule = /** @class */ (function () {
                     links: [
                         { loadChildren: '../pages/add-aparatos/add-aparatos.module#AddAparatosPageModule', name: 'AddAparatosPage', segment: 'add-aparatos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/add-cliente/add-cliente.module#AddClientePageModule', name: 'AddClientePage', segment: 'add-cliente', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/admin/admin.module#AdminPageModule', name: 'AdminPage', segment: 'admin', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/add-empleado/add-empleado.module#AddEmpleadoPageModule', name: 'AddEmpleadoPage', segment: 'add-empleado', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/add-producto/add-producto.module#AddProductoPageModule', name: 'AddProductoPage', segment: 'add-producto', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/all-employees/all-employees.module#AllEmployeesPageModule', name: 'AllEmployeesPage', segment: 'all-employees', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/admin/admin.module#AdminPageModule', name: 'AdminPage', segment: 'admin', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/allaparatos/allaparatos.module#AllaparatosPageModule', name: 'AllaparatosPage', segment: 'allaparatos', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/all-products/all-products.module#AllProductsPageModule', name: 'AllProductsPage', segment: 'all-products', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/allcustomers/allcustomers.module#AllcustomersPageModule', name: 'AllcustomersPage', segment: 'allcustomers', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/asist-15/asist-15.module#Asist_15PageModule', name: 'Asist_15Page', segment: 'asist-15', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/asist-30/asist-30.module#Asist_30PageModule', name: 'Asist_30Page', segment: 'asist-30', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/asist-7/asist-7.module#Asist_7PageModule', name: 'Asist_7Page', segment: 'asist-7', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/asistencia-list/asistencia-list.module#AsistenciaListPageModule', name: 'AsistenciaListPage', segment: 'asistencia-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/asistencia/asistencia.module#AsistenciaPageModule', name: 'AsistenciaPage', segment: 'asistencia', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/customer-asist/customer-asist.module#CustomerAsistPageModule', name: 'CustomerAsistPage', segment: 'customer-asist', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/asist-7/asist-7.module#Asist_7PageModule', name: 'Asist_7Page', segment: 'asist-7', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/customer-pay/customer-pay.module#CustomerPayPageModule', name: 'CustomerPayPage', segment: 'customer-pay', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/asist-30/asist-30.module#Asist_30PageModule', name: 'Asist_30Page', segment: 'asist-30', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/customer-recibe/customer-recibe.module#CustomerRecibePageModule', name: 'CustomerRecibePage', segment: 'customer-recibe', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/customer/customer.module#CustomerPageModule', name: 'CustomerPage', segment: 'customer', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/historial-aparatos/historial-aparatos.module#HistorialAparatosPageModule', name: 'HistorialAparatosPage', segment: 'historial-aparatos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/inf-cliente/inf-cliente.module#InfClientePageModule', name: 'InfClientePage', segment: 'inf-cliente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/info-empleado/info-empleado.module#InfoEmpleadoPageModule', name: 'InfoEmpleadoPage', segment: 'info-empleado', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/list-pack/list-pack.module#ListPackPageModule', name: 'ListPackPage', segment: 'list-pack', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/list-pay/list-pay.module#ListPayPageModule', name: 'ListPayPage', segment: 'list-pay', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/customer/customer.module#CustomerPageModule', name: 'CustomerPage', segment: 'customer', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/modif-empleado/modif-empleado.module#ModifEmpleadoPageModule', name: 'ModifEmpleadoPage', segment: 'modif-empleado', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/modifaparato/modifaparato.module#ModifaparatoPageModule', name: 'ModifaparatoPage', segment: 'modifaparato', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/add-empleado/add-empleado.module#AddEmpleadoPageModule', name: 'AddEmpleadoPage', segment: 'add-empleado', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/modifcliente/modifcliente.module#ModifclientePageModule', name: 'ModifclientePage', segment: 'modifcliente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/modify-pack/modify-pack.module#ModifyPackPageModule', name: 'ModifyPackPage', segment: 'modify-pack', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/pack-details/pack-details.module#PackDetailsPageModule', name: 'PackDetailsPage', segment: 'pack-details', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/modify-pay/modify-pay.module#ModifyPayPageModule', name: 'ModifyPayPage', segment: 'modify-pay', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/pack-details/pack-details.module#PackDetailsPageModule', name: 'PackDetailsPage', segment: 'pack-details', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pack/pack.module#PackPageModule', name: 'PackPage', segment: 'pack', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pay/pay.module#PayPageModule', name: 'PayPage', segment: 'pay', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/modif-product/modif-product.module#ModifProductPageModule', name: 'ModifProductPage', segment: 'modif-product', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/recibe-pay/recibe-pay.module#RecibePayPageModule', name: 'RecibePayPage', segment: 'recibe-pay', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/reportes/reportes.module#ReportesPageModule', name: 'ReportesPage', segment: 'reportes', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/reportes/reportes.module#ReportesPageModule', name: 'ReportesPage', segment: 'reportes', priority: 'low', defaultHistory: [] }
                     ]
                 }),
             ],
@@ -3947,7 +4146,10 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_37__pages_customer_recibe_customer_recibe__["a" /* CustomerRecibePage */],
                 __WEBPACK_IMPORTED_MODULE_38__pages_asist_15_asist_15__["a" /* Asist_15Page */],
                 __WEBPACK_IMPORTED_MODULE_39__pages_asist_7_asist_7__["a" /* Asist_7Page */],
-                __WEBPACK_IMPORTED_MODULE_40__pages_asist_30_asist_30__["a" /* Asist_30Page */]
+                __WEBPACK_IMPORTED_MODULE_40__pages_asist_30_asist_30__["a" /* Asist_30Page */],
+                __WEBPACK_IMPORTED_MODULE_41__pages_add_producto_add_producto__["a" /* AddProductoPage */],
+                __WEBPACK_IMPORTED_MODULE_42__pages_modif_product_modif_product__["a" /* ModifProductPage */],
+                __WEBPACK_IMPORTED_MODULE_43__pages_all_products_all_products__["a" /* AllProductsPage */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */],
@@ -3965,16 +4167,16 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 310:
+/***/ 313:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(230);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(228);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(234);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4016,22 +4218,384 @@ var MyApp = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AllEmployeesPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__info_empleado_info_empleado__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modif_empleado_modif_empleado__ = __webpack_require__(115);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+/**
+ * Generated class for the AllEmployeesPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var AllEmployeesPage = /** @class */ (function () {
+    function AllEmployeesPage(navCtrl, navParams, http, actionsheet, alert, loading) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.http = http;
+        this.actionsheet = actionsheet;
+        this.alert = alert;
+        this.loading = loading;
+        // paginas
+        this.info_empleado = __WEBPACK_IMPORTED_MODULE_3__info_empleado_info_empleado__["a" /* InfoEmpleadoPage */];
+        this.modif = __WEBPACK_IMPORTED_MODULE_4__modif_empleado_modif_empleado__["a" /* ModifEmpleadoPage */];
+        this.apiUrl = "http://gymdb/"; //direccion del servidor
+        this.empleados = []; //lista de empleados
+        this.items = []; //lista auxiliar
+        this.datos_extra = {}; //se guardan los datos de las llaves foraneas, y el nombre por separado
+        this.filtro = {
+            val: null
+        };
+        this.filtro_aux = "";
+        this.funcion = {
+            "funcion": "getAllEmployees" //funcoin 
+        };
+        //alertas
+        this.success = this.alert.create({
+            title: 'OPERACION EXITOSA',
+            message: 'LA OPERACION SE REALIZO CON EXITO',
+            buttons: ['ACEPTAR']
+        });
+        this.op_cancel = this.alert.create({
+            title: 'ERROR',
+            message: 'HUBO PROBLEMAS AL REALIZAR LA OPERACION',
+            buttons: ['ACEPTAR']
+        });
+        //modificaciones
+        this.filtro.val = "1"; //inicializa el filtro
+        this.filtro_aux = "1"; //no servira para comprobar si hay un cambio de filtro
+        this.actualizar(); // funcion que obtiene los datos de la base de datos
+    }
+    AllEmployeesPage.prototype.presentLoading = function () {
+        var loader = this.loading.create({
+            content: "Please wait...",
+            duration: 100
+        });
+        loader.present();
+    };
+    AllEmployeesPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad AllEmployeesPage');
+    };
+    AllEmployeesPage.prototype.actualizar = function () {
+        var _this = this;
+        this.http.post(this.apiUrl, JSON.stringify(this.funcion))
+            .subscribe(function (res) {
+            //console.log(res);
+            _this.empleados = res['empleados'];
+            //this.items=this.clientes;  // inicializa la lista auxiliar
+            _this.initializeItems(); // llama a la funcion de inicializar, para que muestre segun el filtro
+            console.log(JSON.stringify(_this.empleados));
+        }, function (error) {
+            console.log(JSON.stringify(error));
+        });
+    };
+    AllEmployeesPage.prototype.initializeItems = function () {
+        if (this.filtro.val == "0") {
+            this.items = this.empleados;
+        }
+        else if (this.filtro.val == "1") {
+            this.inicializarActivos();
+        }
+        else if (this.filtro.val == "2") {
+            this.inicializarInactivos();
+        }
+    };
+    AllEmployeesPage.prototype.inicializarActivos = function () {
+        this.items = this.empleados.filter(function (empleado) {
+            console.log(JSON.stringify(JSON.stringify(empleado.Nombre)));
+            return empleado.activo == '1';
+        });
+        console.log(JSON.stringify(this.items));
+    };
+    AllEmployeesPage.prototype.inicializarInactivos = function () {
+        this.items = this.empleados.filter(function (empleado) {
+            console.log(JSON.stringify(JSON.stringify(empleado.Nombre)));
+            return empleado.activo == '0';
+        });
+        console.log(JSON.stringify(this.items));
+    };
+    // barra de busqueda
+    AllEmployeesPage.prototype.getItems = function (ev) {
+        this.initializeItems(); // inicializa la lista auxiliar segun  el caso de filtro
+        console.log(ev.target.value);
+        var val = ev.target.value;
+        if (val != '') {
+            val = ev.target.value.toUpperCase();
+        }
+        this.items = this.items.filter(function (empleado) {
+            console.log(JSON.stringify(JSON.stringify(empleado.Nombre)));
+            return empleado.Nombre.includes(val);
+        });
+        console.log(JSON.stringify(this.empleados));
+    };
+    AllEmployeesPage.prototype.verFiltro = function () {
+        if (this.filtro.val == this.filtro_aux) {
+            console.log("NO hay cambio");
+        }
+        else {
+            this.presentLoading();
+            this.filtro_aux = this.filtro.val;
+            console.log("SI hay cambio");
+            this.initializeItems(); // funcion que inicializa la lista auxiliar segun el caso
+        }
+    };
+    // obtiene los datos de las llaves foraneas, y el nombre por sepa
+    AllEmployeesPage.prototype.getElements = function (empleado) {
+        var _this = this;
+        this.datos_extra = {
+            'id_access': empleado['id_acceso'],
+            'funcion': 'getAccesoEmployee'
+        };
+        if (this.datos_extra['id_access']) {
+            this.http.post(this.apiUrl, JSON.stringify(this.datos_extra))
+                .subscribe(function (res) {
+                console.log(res);
+                _this.datos_extra['user'] = res['user'];
+                _this.datos_extra['password'] = res['password'];
+                console.log("Datos: ");
+                console.log(JSON.stringify(_this.datos_extra));
+            }, function (error) {
+                console.log(error);
+            });
+        }
+        else {
+            this.datos_extra['user'] = '0';
+            this.datos_extra['password'] = '0';
+        }
+    };
+    // funcion de modificar cliente
+    AllEmployeesPage.prototype.modificar = function (empleado) {
+        empleado['user'] = this.datos_extra['user'];
+        empleado['password'] = this.datos_extra['password'];
+        console.log(JSON.stringify(empleado));
+        this.navCtrl.push(this.modif, { empleado: empleado }); // envia los datos para modificarse
+        //this.actualizar();
+    };
+    // funcion de eliminar cliente
+    AllEmployeesPage.prototype.eliminar = function (empleado) {
+        var _this = this;
+        var elim = this.alert.create({
+            title: 'ADVERTENCIA',
+            message: '¿SEGURO QUE DESEA ELIMINARLO?',
+            buttons: [
+                {
+                    text: 'Cancelar',
+                    role: 'cancel',
+                    handler: function (data) {
+                        console.log("Operacion cancelada");
+                    }
+                },
+                {
+                    text: 'Aceptar',
+                    role: 'aceptar',
+                    handler: function (data) {
+                        console.log("eliminado");
+                        empleado['funcion'] = "eliminarEmpleado";
+                        _this.http.post(_this.apiUrl, JSON.stringify(empleado))
+                            .subscribe(function (res) {
+                            console.log(res);
+                            if (res == "exito") {
+                                //this.success.present();
+                                _this.actualizar(); // actualiza los datos
+                            }
+                            else {
+                                _this.op_cancel.present();
+                            }
+                        }, function (error) {
+                            console.log(error);
+                        });
+                    }
+                }
+            ]
+        });
+        elim.present();
+    };
+    // activa un cliente que ha sido eliminado
+    AllEmployeesPage.prototype.activarEmpleado = function (empleado) {
+        var _this = this;
+        var act = this.alert.create({
+            title: 'ADVERTENCIA',
+            message: '¿ACTIVAR EMPLEADO?',
+            buttons: [
+                {
+                    text: 'Cancelar',
+                    role: 'cancel',
+                    handler: function (data) {
+                        console.log("Operacion cancelada");
+                    }
+                },
+                {
+                    text: 'Aceptar',
+                    role: 'aceptar',
+                    handler: function (data) {
+                        console.log("activado");
+                        empleado['funcion'] = "activarEmpleado";
+                        _this.http.post(_this.apiUrl, JSON.stringify(empleado))
+                            .subscribe(function (res) {
+                            console.log(res);
+                            if (res == "exito") {
+                                //this.success.present();
+                                _this.actualizar();
+                                //this.presentLoading();
+                            }
+                            else {
+                                _this.op_cancel.present();
+                            }
+                        }, function (error) {
+                            console.log(error);
+                        });
+                    }
+                }
+            ]
+        });
+        act.present();
+    };
+    // muestra un menu para clientes inactivos
+    AllEmployeesPage.prototype.presentActionSheetInact = function (empleado) {
+        var _this = this;
+        var action = this.actionsheet.create({
+            title: 'Options',
+            buttons: [
+                {
+                    text: 'Detalles',
+                    role: 'detalles',
+                    handler: function () {
+                        console.log('Detalles clicked');
+                        empleado['user'] = _this.datos_extra['user'];
+                        empleado['password'] = _this.datos_extra['password'];
+                        _this.navCtrl.push(_this.info_empleado, { empleado: empleado });
+                    }
+                },
+                {
+                    text: 'Activar',
+                    role: 'activar',
+                    handler: function () {
+                        console.log('activar clicked');
+                        _this.activarEmpleado(empleado);
+                    }
+                },
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    handler: function () {
+                        console.log('Cancel clicked');
+                    }
+                }
+            ]
+        });
+        action.present();
+    }; // muestra un menu para clientes activos
+    AllEmployeesPage.prototype.presentActionSheetAct = function (empleado) {
+        var _this = this;
+        var action = this.actionsheet.create({
+            title: 'Options',
+            buttons: [
+                {
+                    text: 'Detalles',
+                    role: 'detalles',
+                    handler: function () {
+                        console.log('Detalles clicked');
+                        empleado['user'] = _this.datos_extra['user'];
+                        empleado['password'] = _this.datos_extra['password'];
+                        _this.navCtrl.push(_this.info_empleado, { empleado: empleado });
+                    }
+                },
+                {
+                    text: 'Modificar',
+                    role: 'detalles',
+                    handler: function () {
+                        console.log('modificar clicked');
+                        _this.modificar(empleado); // llama a la funcion de modificar
+                    }
+                },
+                {
+                    text: 'Eliminar',
+                    role: 'eliminar',
+                    handler: function () {
+                        console.log('Eliminar clicked');
+                        _this.eliminar(empleado);
+                    }
+                }, {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    handler: function () {
+                        console.log('Cancel clicked');
+                    }
+                }
+            ]
+        });
+        action.present();
+    };
+    // menu desplegable
+    AllEmployeesPage.prototype.actionSheet = function (empleado) {
+        console.log("action sheet");
+        this.getElements(empleado);
+        if (empleado.activo == '0') {
+            this.presentActionSheetInact(empleado);
+        }
+        else {
+            this.presentActionSheetAct(empleado);
+        }
+        //this.presentLoading();
+        //this.actualizar();   // actualiza los datos 
+    };
+    AllEmployeesPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-all-employees',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\all-employees\all-employees.html"*/'<!--\n  Generated template for the AllEmployeesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="primary">\n      <ion-title>Empleados</ion-title>\n    </ion-navbar>\n    \n<ion-searchbar placeholder="buscar" (ionInput)="getItems($event)">\n\n</ion-searchbar>\n</ion-header>\n\n\n<ion-content padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <ion-item>\n          <ion-select [(ngModel)]="filtro.val">\n            <ion-option value="0">Todos</ion-option>\n            <ion-option value="1">Activos</ion-option>\n            <ion-option value="2">Inactivos</ion-option>\n          </ion-select>\n        </ion-item>\n      </ion-col>\n      <ion-col>\n\n      </ion-col>\n      <ion-col>\n\n      </ion-col>\n      <ion-col>\n        <div text-right>\n          <button ion-button outline icon-start (click)="verFiltro()">\n            <ion-icon name="search"> </ion-icon> Filtrar </button>\n        </div>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n  \n\n   <ion-item *ngFor="let empleado of items" (click)="actionSheet(empleado)">\n        <ion-thumbnail item-start>\n          <img src="http://gymdb/imgs/employees/{{ empleado.foto }}">\n        </ion-thumbnail>\n        <h2><b>{{ empleado.Nombre }}</b></h2>\n        <p><b>ID: </b>{{ empleado.id_empleado }}</p>\n        \n        <p align="right" class="bluetext" *ngIf="empleado.activo==\'1\'" color="secondary">ACTIVO</p>\n        <p align="right" class="redtext" *ngIf="empleado.activo==\'0\'" color="danger">INACTIVO</p>\n\n      </ion-item>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\all-employees\all-employees.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* LoadingController */]])
+    ], AllEmployeesPage);
+    return AllEmployeesPage;
+}());
+
+//# sourceMappingURL=all-employees.js.map
+
+/***/ }),
+
+/***/ 53:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_c_Users_acer_Desktop_GymSystem_GymSystem_src_pages_add_cliente_add_cliente__ = __webpack_require__(186);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__allcustomers_allcustomers__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__add_aparatos_add_aparatos__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__allaparatos_allaparatos__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__add_empleado_add_empleado__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__list_pay_list_pay__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pack_pack__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__list_pack_list_pack__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__all_employees_all_employees__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__asistencia_asistencia__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_c_Users_acer_Desktop_GymSystem_GymSystem_src_pages_add_cliente_add_cliente__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__allcustomers_allcustomers__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__add_aparatos_add_aparatos__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__allaparatos_allaparatos__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__add_empleado_add_empleado__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__list_pay_list_pay__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pack_pack__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__list_pack_list_pack__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__all_employees_all_employees__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__asistencia_asistencia__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pay_pay__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__reportes_reportes__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__reportes_reportes__ = __webpack_require__(127);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__add_producto_add_producto__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__modif_product_modif_product__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__all_products_all_products__ = __webpack_require__(60);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4065,6 +4629,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
 var AdminPage = /** @class */ (function () {
     function AdminPage(navCtrl, http, navParams) {
         this.navCtrl = navCtrl;
@@ -4089,6 +4656,10 @@ var AdminPage = /** @class */ (function () {
         this.asist = __WEBPACK_IMPORTED_MODULE_12__asistencia_asistencia__["a" /* AsistenciaPage */];
         // reportes
         this.reportes = __WEBPACK_IMPORTED_MODULE_14__reportes_reportes__["a" /* ReportesPage */];
+        //tienda
+        this.add_product = __WEBPACK_IMPORTED_MODULE_15__add_producto_add_producto__["a" /* AddProductoPage */];
+        this.modif_producto = __WEBPACK_IMPORTED_MODULE_16__modif_product_modif_product__["a" /* ModifProductPage */];
+        this.all_products = __WEBPACK_IMPORTED_MODULE_17__all_products_all_products__["a" /* AllProductsPage */];
         this.admin = {};
         this.apiUrl = "http://gymdb/";
         this.admin = this.navParams.get('admin');
@@ -4144,9 +4715,18 @@ var AdminPage = /** @class */ (function () {
     AdminPage.prototype.reportes_pag = function () {
         this.navCtrl.push(this.reportes);
     };
+    AdminPage.prototype.agregarProducto = function () {
+        this.navCtrl.push(this.add_product);
+    };
+    AdminPage.prototype.mmodificarProducto = function () {
+        this.navCtrl.push(this.modif_producto);
+    };
+    AdminPage.prototype.allProducts = function () {
+        this.navCtrl.push(this.all_products);
+    };
     AdminPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-admin',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\admin\admin.html"*/'<!--\n\n  Generated template for the AdminPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n\n\n<ion-header>\n\n  <ion-navbar color=secondary>\n\n    <ion-title>GYM SYSTEM</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-grid>\n\n    <ion-row>\n\n    \n\n    <ion-col>\n\n      <ion-card color=primary>\n\n        <ion-card-content text-center >\n\n          Asistencia<br>\n\n          <button ion-button round color=light clear (click)="asisten()">\n\n            <ion-icon name="hand"></ion-icon>\n\n          </button>\n\n        </ion-card-content>\n\n      </ion-card>\n\n    </ion-col>\n\n    \n\n    <ion-col>\n\n\n\n      <ion-card color=primary>\n\n        <ion-card-header text-center>\n\n          Pagos <br>\n\n          <ion-icon name="cash"></ion-icon>\n\n        </ion-card-header>\n\n  \n\n        <ion-list>\n\n          <button ion-item (click)="pay()">\n\n            <ion-icon name="add" item-start></ion-icon>\n\n            Pagar\n\n          </button>\n\n    \n\n          <button ion-item (click)= "listPay()">\n\n          <ion-icon name="list" item-start></ion-icon>\n\n               Lista\n\n          </button>\n\n        \n\n        </ion-list>\n\n      </ion-card>\n\n    </ion-col>\n\n  \n\n  </ion-row>\n\n</ion-grid>\n\n\n\n<ion-grid>\n\n  <ion-row>\n\n  \n\n    <ion-col>\n\n      <ion-card color=primary>\n\n        <ion-card-header text-center>\n\n          Clientes <br>\n\n          <ion-icon name="contact" item-start></ion-icon>\n\n        </ion-card-header>\n\n        \n\n\n\n        <ion-list>\n\n          <button ion-item (click)="agregarCLiente()">\n\n            <ion-icon name="add" item-start></ion-icon>\n\n              Nuevo\n\n          </button>\n\n          <button ion-item (click)= "allCustomers()">\n\n            <ion-icon name="list" item-start></ion-icon>\n\n             Lista\n\n          </button>\n\n          </ion-list>\n\n      </ion-card>\n\n    </ion-col>\n\n              \n\n                \n\n    <ion-col>\n\n      <ion-card color=primary>\n\n        <ion-card-content text-center>\n\n          Tienda<br>\n\n          <ion-icon name="card"></ion-icon>\n\n        </ion-card-content>\n\n      </ion-card>\n\n    </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n\n\n  <ion-card color=danger>\n\n    <ion-card-content text-center>\n\n      Reportes<br>\n\n      <ion-icon name="clipboard"></ion-icon>\n\n    </ion-card-content>\n\n  </ion-card>\n\n  \n\n    <button ion-item (click)="reportes_pag()">\n\n      <ion-icon name="add" item-start></ion-icon>\n\n      Nuevo\n\n    </button>\n\n\n\n\n\n\n\n  <ion-card color=primary>\n\n    <ion-card-header text-center>\n\n      Paquetes <br>\n\n      <ion-icon name="keypad"></ion-icon>\n\n    </ion-card-header>\n\n\n\n    <ion-list>\n\n      <button ion-item (click)="pack()">\n\n        <ion-icon name="add" item-start></ion-icon>\n\n        Nuevo\n\n      </button>\n\n\n\n      <button ion-item (click)= "listPack()">\n\n      <ion-icon name="list" item-start></ion-icon>\n\n           Lista\n\n      </button>\n\n    \n\n    </ion-list>\n\n  </ion-card>\n\n\n\n  <ion-card color=primary>\n\n    <ion-card-content text-center>\n\n      Inventario<br>\n\n      <ion-icon name="attach"></ion-icon>\n\n    </ion-card-content>\n\n    <ion-list>\n\n      <button ion-item (click)="agregarAparato()">\n\n        <ion-icon name="add" item-start></ion-icon>\n\n          Nuevo\n\n      </button>\n\n      <button ion-item (click)= "allAparatos()">\n\n        <ion-icon name="list" item-start></ion-icon>\n\n         Lista\n\n      </button>\n\n      </ion-list>\n\n  </ion-card>\n\n  <ion-card color=danger>\n\n      <ion-card-content text-center>\n\n        Empleados<br>\n\n        <ion-icon name="clipboard"></ion-icon>\n\n      </ion-card-content>\n\n      <ion-list>\n\n          <button ion-item (click)="agregarEmpleado()">\n\n            <ion-icon name="add" item-start></ion-icon>\n\n              Nuevo\n\n          </button>\n\n          <button ion-item (click)= "allEmpleados()">\n\n            <ion-icon name="list" item-start></ion-icon>\n\n             Lista\n\n          </button>\n\n          </ion-list>\n\n    </ion-card>\n\n\n\n</ion-content> '/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\admin\admin.html"*/,
+            selector: 'page-admin',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\admin\admin.html"*/'<!--\n\n  Generated template for the AdminPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n\n\n<ion-header>\n\n  <ion-navbar color=secondary>\n\n    <ion-title>GYM SYSTEM</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-grid>\n\n    <ion-row>\n\n    \n\n    <ion-col>\n\n      <ion-card color=primary>\n\n        <ion-card-content text-center >\n\n          Asistencia<br>\n\n          <button ion-button round color=light clear (click)="asisten()">\n\n            <ion-icon name="hand"></ion-icon>\n\n          </button>\n\n        </ion-card-content>\n\n      </ion-card>\n\n    </ion-col>\n\n    \n\n    <ion-col>\n\n\n\n      <ion-card color=primary>\n\n        <ion-card-header text-center>\n\n          Pagos <br>\n\n          <ion-icon name="cash"></ion-icon>\n\n        </ion-card-header>\n\n  \n\n        <ion-list>\n\n          <button ion-item (click)="pay()">\n\n            <ion-icon name="add" item-start></ion-icon>\n\n            Pagar\n\n          </button>\n\n    \n\n          <button ion-item (click)= "listPay()">\n\n          <ion-icon name="list" item-start></ion-icon>\n\n               Lista\n\n          </button>\n\n        \n\n        </ion-list>\n\n      </ion-card>\n\n    </ion-col>\n\n  \n\n  </ion-row>\n\n</ion-grid>\n\n\n\n<ion-grid>\n\n  <ion-row>\n\n  \n\n    <ion-col>\n\n      <ion-card color=primary>\n\n        <ion-card-header text-center>\n\n          Clientes <br>\n\n          <ion-icon name="contact" item-start></ion-icon>\n\n        </ion-card-header>\n\n        \n\n\n\n        <ion-list>\n\n          <button ion-item (click)="agregarCLiente()">\n\n            <ion-icon name="add" item-start></ion-icon>\n\n              Nuevo\n\n          </button>\n\n          <button ion-item (click)= "allCustomers()">\n\n            <ion-icon name="list" item-start></ion-icon>\n\n             Lista\n\n          </button>\n\n          </ion-list>\n\n      </ion-card>\n\n    </ion-col>\n\n              \n\n                \n\n    <ion-col>\n\n      <ion-card color=primary>\n\n        <ion-card-content text-center>\n\n          Tienda<br>\n\n          <ion-icon name="card"></ion-icon>\n\n        </ion-card-content>\n\n      </ion-card>\n\n    </ion-col>\n\n    <ion-list>\n\n      <button ion-item (click)="agregarProducto()">\n\n        <ion-icon name="add" item-start></ion-icon>\n\n          Nuevo Producto\n\n      </button>\n\n      <button ion-item (click)="allProducts()">\n\n        <ion-icon name="list" item-start></ion-icon>\n\n         Lista\n\n      </button>\n\n      </ion-list>\n\n    </ion-row>\n\n  </ion-grid>\n\n\n\n  <ion-card color=danger>\n\n    <ion-card-content text-center>\n\n      Reportes<br>\n\n      <ion-icon name="clipboard"></ion-icon>\n\n    </ion-card-content>\n\n  </ion-card>\n\n  \n\n    <button ion-item (click)="reportes_pag()">\n\n      <ion-icon name="add" item-start></ion-icon>\n\n      Nuevo\n\n    </button>\n\n\n\n\n\n\n\n  <ion-card color=primary>\n\n    <ion-card-header text-center>\n\n      Paquetes <br>\n\n      <ion-icon name="keypad"></ion-icon>\n\n    </ion-card-header>\n\n\n\n    <ion-list>\n\n      <button ion-item (click)="pack()">\n\n        <ion-icon name="add" item-start></ion-icon>\n\n        Nuevo\n\n      </button>\n\n\n\n      <button ion-item (click)= "listPack()">\n\n      <ion-icon name="list" item-start></ion-icon>\n\n           Lista\n\n      </button>\n\n    \n\n    </ion-list>\n\n  </ion-card>\n\n\n\n  <ion-card color=primary>\n\n    <ion-card-content text-center>\n\n      Inventario<br>\n\n      <ion-icon name="attach"></ion-icon>\n\n    </ion-card-content>\n\n    <ion-list>\n\n      <button ion-item (click)="agregarAparato()">\n\n        <ion-icon name="add" item-start></ion-icon>\n\n          Nuevo\n\n      </button>\n\n      <button ion-item (click)= "allAparatos()">\n\n        <ion-icon name="list" item-start></ion-icon>\n\n         Lista\n\n      </button>\n\n      </ion-list>\n\n  </ion-card>\n\n  <ion-card color=danger>\n\n      <ion-card-content text-center>\n\n        Empleados<br>\n\n        <ion-icon name="clipboard"></ion-icon>\n\n      </ion-card-content>\n\n      <ion-list>\n\n          <button ion-item (click)="agregarEmpleado()">\n\n            <ion-icon name="add" item-start></ion-icon>\n\n              Nuevo\n\n          </button>\n\n          <button ion-item (click)= "allEmpleados()">\n\n            <ion-icon name="list" item-start></ion-icon>\n\n             Lista\n\n          </button>\n\n          </ion-list>\n\n    </ion-card>\n\n\n\n</ion-content> '/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\admin\admin.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
@@ -4159,16 +4739,16 @@ var AdminPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 53:
+/***/ 54:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AllcustomersPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inf_cliente_inf_cliente__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modifcliente_modifcliente__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inf_cliente_inf_cliente__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modifcliente_modifcliente__ = __webpack_require__(117);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4523,16 +5103,16 @@ var AllcustomersPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 54:
+/***/ 55:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AllaparatosPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modifaparato_modifaparato__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__historial_aparatos_historial_aparatos__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modifaparato_modifaparato__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__historial_aparatos_historial_aparatos__ = __webpack_require__(119);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4724,16 +5304,16 @@ var AllaparatosPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 55:
+/***/ 56:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListPayPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__recibe_pay_recibe_pay__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modify_pay_modify_pay__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__recibe_pay_recibe_pay__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modify_pay_modify_pay__ = __webpack_require__(121);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4904,16 +5484,16 @@ var ListPayPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 56:
+/***/ 57:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListPackPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pack_details_pack_details__ = __webpack_require__(118);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modify_pack_modify_pack__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pack_details_pack_details__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modify_pack_modify_pack__ = __webpack_require__(124);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5178,374 +5758,15 @@ var ListPackPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 57:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AllEmployeesPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__info_empleado_info_empleado__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modif_empleado_modif_empleado__ = __webpack_require__(121);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-/**
- * Generated class for the AllEmployeesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var AllEmployeesPage = /** @class */ (function () {
-    function AllEmployeesPage(navCtrl, navParams, http, actionsheet, alert, loading) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.http = http;
-        this.actionsheet = actionsheet;
-        this.alert = alert;
-        this.loading = loading;
-        // paginas
-        this.info_empleado = __WEBPACK_IMPORTED_MODULE_3__info_empleado_info_empleado__["a" /* InfoEmpleadoPage */];
-        this.modif = __WEBPACK_IMPORTED_MODULE_4__modif_empleado_modif_empleado__["a" /* ModifEmpleadoPage */];
-        this.apiUrl = "http://gymdb/"; //direccion del servidor
-        this.empleados = []; //lista de empleados
-        this.items = []; //lista auxiliar
-        this.datos_extra = {}; //se guardan los datos de las llaves foraneas, y el nombre por separado
-        this.filtro = {
-            val: null
-        };
-        this.filtro_aux = "";
-        this.funcion = {
-            "funcion": "getAllEmployees" //funcoin 
-        };
-        //alertas
-        this.success = this.alert.create({
-            title: 'OPERACION EXITOSA',
-            message: 'LA OPERACION SE REALIZO CON EXITO',
-            buttons: ['ACEPTAR']
-        });
-        this.op_cancel = this.alert.create({
-            title: 'ERROR',
-            message: 'HUBO PROBLEMAS AL REALIZAR LA OPERACION',
-            buttons: ['ACEPTAR']
-        });
-        //modificaciones
-        this.filtro.val = "1"; //inicializa el filtro
-        this.filtro_aux = "1"; //no servira para comprobar si hay un cambio de filtro
-        this.actualizar(); // funcion que obtiene los datos de la base de datos
-    }
-    AllEmployeesPage.prototype.presentLoading = function () {
-        var loader = this.loading.create({
-            content: "Please wait...",
-            duration: 100
-        });
-        loader.present();
-    };
-    AllEmployeesPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad AllEmployeesPage');
-    };
-    AllEmployeesPage.prototype.actualizar = function () {
-        var _this = this;
-        this.http.post(this.apiUrl, JSON.stringify(this.funcion))
-            .subscribe(function (res) {
-            //console.log(res);
-            _this.empleados = res['empleados'];
-            //this.items=this.clientes;  // inicializa la lista auxiliar
-            _this.initializeItems(); // llama a la funcion de inicializar, para que muestre segun el filtro
-            console.log(JSON.stringify(_this.empleados));
-        }, function (error) {
-            console.log(JSON.stringify(error));
-        });
-    };
-    AllEmployeesPage.prototype.initializeItems = function () {
-        if (this.filtro.val == "0") {
-            this.items = this.empleados;
-        }
-        else if (this.filtro.val == "1") {
-            this.inicializarActivos();
-        }
-        else if (this.filtro.val == "2") {
-            this.inicializarInactivos();
-        }
-    };
-    AllEmployeesPage.prototype.inicializarActivos = function () {
-        this.items = this.empleados.filter(function (empleado) {
-            console.log(JSON.stringify(JSON.stringify(empleado.Nombre)));
-            return empleado.activo == '1';
-        });
-        console.log(JSON.stringify(this.items));
-    };
-    AllEmployeesPage.prototype.inicializarInactivos = function () {
-        this.items = this.empleados.filter(function (empleado) {
-            console.log(JSON.stringify(JSON.stringify(empleado.Nombre)));
-            return empleado.activo == '0';
-        });
-        console.log(JSON.stringify(this.items));
-    };
-    // barra de busqueda
-    AllEmployeesPage.prototype.getItems = function (ev) {
-        this.initializeItems(); // inicializa la lista auxiliar segun  el caso de filtro
-        console.log(ev.target.value);
-        var val = ev.target.value;
-        if (val != '') {
-            val = ev.target.value.toUpperCase();
-        }
-        this.items = this.items.filter(function (empleado) {
-            console.log(JSON.stringify(JSON.stringify(empleado.Nombre)));
-            return empleado.Nombre.includes(val);
-        });
-        console.log(JSON.stringify(this.empleados));
-    };
-    AllEmployeesPage.prototype.verFiltro = function () {
-        if (this.filtro.val == this.filtro_aux) {
-            console.log("NO hay cambio");
-        }
-        else {
-            this.presentLoading();
-            this.filtro_aux = this.filtro.val;
-            console.log("SI hay cambio");
-            this.initializeItems(); // funcion que inicializa la lista auxiliar segun el caso
-        }
-    };
-    // obtiene los datos de las llaves foraneas, y el nombre por sepa
-    AllEmployeesPage.prototype.getElements = function (empleado) {
-        var _this = this;
-        this.datos_extra = {
-            'id_access': empleado['id_acceso'],
-            'funcion': 'getAccesoEmployee'
-        };
-        if (this.datos_extra['id_access']) {
-            this.http.post(this.apiUrl, JSON.stringify(this.datos_extra))
-                .subscribe(function (res) {
-                console.log(res);
-                _this.datos_extra['user'] = res['user'];
-                _this.datos_extra['password'] = res['password'];
-                console.log("Datos: ");
-                console.log(JSON.stringify(_this.datos_extra));
-            }, function (error) {
-                console.log(error);
-            });
-        }
-        else {
-            this.datos_extra['user'] = '0';
-            this.datos_extra['password'] = '0';
-        }
-    };
-    // funcion de modificar cliente
-    AllEmployeesPage.prototype.modificar = function (empleado) {
-        empleado['user'] = this.datos_extra['user'];
-        empleado['password'] = this.datos_extra['password'];
-        console.log(JSON.stringify(empleado));
-        this.navCtrl.push(this.modif, { empleado: empleado }); // envia los datos para modificarse
-        //this.actualizar();
-    };
-    // funcion de eliminar cliente
-    AllEmployeesPage.prototype.eliminar = function (empleado) {
-        var _this = this;
-        var elim = this.alert.create({
-            title: 'ADVERTENCIA',
-            message: '¿SEGURO QUE DESEA ELIMINARLO?',
-            buttons: [
-                {
-                    text: 'Cancelar',
-                    role: 'cancel',
-                    handler: function (data) {
-                        console.log("Operacion cancelada");
-                    }
-                },
-                {
-                    text: 'Aceptar',
-                    role: 'aceptar',
-                    handler: function (data) {
-                        console.log("eliminado");
-                        empleado['funcion'] = "eliminarEmpleado";
-                        _this.http.post(_this.apiUrl, JSON.stringify(empleado))
-                            .subscribe(function (res) {
-                            console.log(res);
-                            if (res == "exito") {
-                                //this.success.present();
-                                _this.actualizar(); // actualiza los datos
-                            }
-                            else {
-                                _this.op_cancel.present();
-                            }
-                        }, function (error) {
-                            console.log(error);
-                        });
-                    }
-                }
-            ]
-        });
-        elim.present();
-    };
-    // activa un cliente que ha sido eliminado
-    AllEmployeesPage.prototype.activarEmpleado = function (empleado) {
-        var _this = this;
-        var act = this.alert.create({
-            title: 'ADVERTENCIA',
-            message: '¿ACTIVAR EMPLEADO?',
-            buttons: [
-                {
-                    text: 'Cancelar',
-                    role: 'cancel',
-                    handler: function (data) {
-                        console.log("Operacion cancelada");
-                    }
-                },
-                {
-                    text: 'Aceptar',
-                    role: 'aceptar',
-                    handler: function (data) {
-                        console.log("activado");
-                        empleado['funcion'] = "activarEmpleado";
-                        _this.http.post(_this.apiUrl, JSON.stringify(empleado))
-                            .subscribe(function (res) {
-                            console.log(res);
-                            if (res == "exito") {
-                                //this.success.present();
-                                _this.actualizar();
-                                //this.presentLoading();
-                            }
-                            else {
-                                _this.op_cancel.present();
-                            }
-                        }, function (error) {
-                            console.log(error);
-                        });
-                    }
-                }
-            ]
-        });
-        act.present();
-    };
-    // muestra un menu para clientes inactivos
-    AllEmployeesPage.prototype.presentActionSheetInact = function (empleado) {
-        var _this = this;
-        var action = this.actionsheet.create({
-            title: 'Options',
-            buttons: [
-                {
-                    text: 'Detalles',
-                    role: 'detalles',
-                    handler: function () {
-                        console.log('Detalles clicked');
-                        empleado['user'] = _this.datos_extra['user'];
-                        empleado['password'] = _this.datos_extra['password'];
-                        _this.navCtrl.push(_this.info_empleado, { empleado: empleado });
-                    }
-                },
-                {
-                    text: 'Activar',
-                    role: 'activar',
-                    handler: function () {
-                        console.log('activar clicked');
-                        _this.activarEmpleado(empleado);
-                    }
-                },
-                {
-                    text: 'Cancel',
-                    role: 'cancel',
-                    handler: function () {
-                        console.log('Cancel clicked');
-                    }
-                }
-            ]
-        });
-        action.present();
-    }; // muestra un menu para clientes activos
-    AllEmployeesPage.prototype.presentActionSheetAct = function (empleado) {
-        var _this = this;
-        var action = this.actionsheet.create({
-            title: 'Options',
-            buttons: [
-                {
-                    text: 'Detalles',
-                    role: 'detalles',
-                    handler: function () {
-                        console.log('Detalles clicked');
-                        empleado['user'] = _this.datos_extra['user'];
-                        empleado['password'] = _this.datos_extra['password'];
-                        _this.navCtrl.push(_this.info_empleado, { empleado: empleado });
-                    }
-                },
-                {
-                    text: 'Modificar',
-                    role: 'detalles',
-                    handler: function () {
-                        console.log('modificar clicked');
-                        _this.modificar(empleado); // llama a la funcion de modificar
-                    }
-                },
-                {
-                    text: 'Eliminar',
-                    role: 'eliminar',
-                    handler: function () {
-                        console.log('Eliminar clicked');
-                        _this.eliminar(empleado);
-                    }
-                }, {
-                    text: 'Cancel',
-                    role: 'cancel',
-                    handler: function () {
-                        console.log('Cancel clicked');
-                    }
-                }
-            ]
-        });
-        action.present();
-    };
-    // menu desplegable
-    AllEmployeesPage.prototype.actionSheet = function (empleado) {
-        console.log("action sheet");
-        this.getElements(empleado);
-        if (empleado.activo == '0') {
-            this.presentActionSheetInact(empleado);
-        }
-        else {
-            this.presentActionSheetAct(empleado);
-        }
-        //this.presentLoading();
-        //this.actualizar();   // actualiza los datos 
-    };
-    AllEmployeesPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-all-employees',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\all-employees\all-employees.html"*/'<!--\n  Generated template for the AllEmployeesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="primary">\n      <ion-title>Empleados</ion-title>\n    </ion-navbar>\n    \n<ion-searchbar placeholder="buscar" (ionInput)="getItems($event)">\n\n</ion-searchbar>\n</ion-header>\n\n\n<ion-content padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <ion-item>\n          <ion-select [(ngModel)]="filtro.val">\n            <ion-option value="0">Todos</ion-option>\n            <ion-option value="1">Activos</ion-option>\n            <ion-option value="2">Inactivos</ion-option>\n          </ion-select>\n        </ion-item>\n      </ion-col>\n      <ion-col>\n\n      </ion-col>\n      <ion-col>\n\n      </ion-col>\n      <ion-col>\n        <div text-right>\n          <button ion-button outline icon-start (click)="verFiltro()">\n            <ion-icon name="search"> </ion-icon> Filtrar </button>\n        </div>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n  \n\n   <ion-item *ngFor="let empleado of items" (click)="actionSheet(empleado)">\n        <ion-thumbnail item-start>\n          <img src="http://gymdb/imgs/employees/{{ empleado.foto }}">\n        </ion-thumbnail>\n        <h2><b>{{ empleado.Nombre }}</b></h2>\n        <p><b>ID: </b>{{ empleado.id_empleado }}</p>\n        \n        <p align="right" class="bluetext" *ngIf="empleado.activo==\'1\'" color="secondary">ACTIVO</p>\n        <p align="right" class="redtext" *ngIf="empleado.activo==\'0\'" color="danger">INACTIVO</p>\n\n      </ion-item>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\all-employees\all-employees.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* LoadingController */]])
-    ], AllEmployeesPage);
-    return AllEmployeesPage;
-}());
-
-//# sourceMappingURL=all-employees.js.map
-
-/***/ }),
-
 /***/ 58:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PayPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(5);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5697,7 +5918,202 @@ var PayPage = /** @class */ (function () {
 
 //# sourceMappingURL=pay.js.map
 
+/***/ }),
+
+/***/ 59:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModifProductPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__all_products_all_products__ = __webpack_require__(60);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+/**
+ * Generated class for the ModifProductPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ModifProductPage = /** @class */ (function () {
+    function ModifProductPage(navCtrl, navParams, alert, http, cl) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.alert = alert;
+        this.http = http;
+        this.cl = cl;
+        //pagina de productos
+        this.all = __WEBPACK_IMPORTED_MODULE_4__all_products_all_products__["a" /* AllProductsPage */];
+        this.producto = {}; // el producto se envía por parámetro
+        this.comp = {}; // es una copia del registro original
+        this.apiUrl = "http://gymdb/"; // servidor
+        this.producto = this.navParams.get('producto');
+        this.crearForm();
+        this.crearCopia();
+    }
+    // crea el form
+    ModifProductPage.prototype.crearForm = function () {
+        this.myForm = this.cl.group({
+            producto: [this.producto['id_producto']],
+            nuevo_producto: [this.producto['nombre'], [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]],
+            descripcion: [this.producto['descripcion'], [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]],
+            precio_entrada: [this.producto['precio_entrada'], [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]],
+            precio_salida: [this.producto['precio_salida'], [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]],
+            cantidad: [this.producto['cantidad'], [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]],
+            proveedor: [this.producto['proveedor'], [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]],
+        });
+    };
+    // sirve para en un futuro compararlo con los nuevos datos
+    ModifProductPage.prototype.crearCopia = function () {
+        this.comp = {
+            'producto': this.producto['id_producto'],
+            'nuevo_producto': this.producto['nombre'],
+            'descripcion': this.producto['descripcion'],
+            'precio_entrada': this.producto['precio_entrada'],
+            'precio_salida': this.producto['precio_salida'],
+            'cantidad': this.producto['cantidad'],
+            'proveedor': this.producto['proveedor']
+        };
+    };
+    ModifProductPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ModifProductPage');
+    };
+    ModifProductPage.prototype.saveData = function () {
+        var _this = this;
+        var error = this.alert.create({
+            title: 'OPERACION CANCELADA',
+            message: 'NO SE HAN CAMBIADO DATOS',
+            buttons: ['ACEPTAR']
+        });
+        if (JSON.stringify(this.myForm.value) != JSON.stringify(this.comp)) {
+            var success_1 = this.alert.create({
+                title: 'OPERACION EXITOSA',
+                message: 'MODIFICADO CORRECTAMENTE',
+                buttons: ['ACEPTAR']
+            });
+            var product_rep_1 = this.alert.create({
+                title: 'OPERACION CANCELADA',
+                message: 'YA EXISTE PRODUCTO CON ESE NOMBRE',
+                buttons: ['ACEPTAR']
+            });
+            var mayus = this.myForm.controls['nuevo_producto'].value;
+            var desc = this.myForm.controls['descripcion'].value;
+            var prov = this.myForm.controls['proveedor'].value;
+            if (mayus != null) {
+                mayus = mayus.toUpperCase();
+                this.myForm.controls['nuevo_producto'].setValue(mayus); // covierte a mayuscula la categoria
+            }
+            if (desc != null) {
+                desc = desc.toUpperCase();
+                this.myForm.controls['descripcion'].setValue(desc);
+            }
+            if (prov != null) {
+                prov = prov.toUpperCase();
+                this.myForm.controls['proveedor'].setValue(prov);
+            }
+            console.log((this.myForm.value));
+            var obj = JSON.parse(JSON.stringify(this.myForm.value));
+            obj['funcion'] = 'modifProducto';
+            console.log(obj);
+            this.http.post(this.apiUrl, JSON.stringify(obj))
+                .subscribe(function (res) {
+                console.log("res del server");
+                console.log(res);
+                if (res == "exito") {
+                    success_1.present();
+                    _this.navCtrl.push(_this.all);
+                }
+                else if (res == "product_rep") {
+                    product_rep_1.present();
+                }
+            }, function (error) {
+                console.log(error);
+            });
+        }
+        else {
+            error.present();
+        }
+    };
+    ModifProductPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-modif-product',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\modif-product\modif-product.html"*/'<!--\n  Generated template for the AddProductoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="danger">\n    <ion-title>Modificar Producto</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <ion-card text-center classss="Datos">\n        \n          <ion-card-content>\n          <h2><strong >Modificar</strong></h2>\n          <br>\n          <br><br>\n          \n          <form [formGroup]="myForm"  (ngSubmit)="saveData()" novalidate>\n              <ion-list>\n                \n                 <ion-div>\n                  <ion-item >\n                    <ion-label stack color = "primary" icon-start><ion-icon name="add-circle"></ion-icon>Nombre Producto:</ion-label>\n                    <ion-input id="otro" type="text" formControlName="nuevo_producto"  name ="otro"></ion-input>\n                  </ion-item>\n                  <ion-item *ngIf="myForm.get(\'nuevo_producto\').errors && myForm.get(\'nuevo_producto\').dirty">\n                    <p color="danger" ion-text *ngIf="myForm.get(\'nuevo_producto\').hasError(\'required\')">Field is required</p>\n                 </ion-item>\n                  <ion-item>\n                    <ion-label stack color = "primary" icon-start><ion-icon name="information-circle"></ion-icon>Descripcion:</ion-label>\n                    <ion-input id="descripcion" type="text" formControlName="descripcion"  name ="descripcion"></ion-input>\n                  </ion-item>\n                  <ion-item *ngIf="myForm.get(\'descripcion\').errors && myForm.get(\'descripcion\').dirty">\n                    <p color="danger" ion-text *ngIf="myForm.get(\'descripcion\').hasError(\'required\')">Field is required</p>\n                 </ion-item>\n              \n                  <ion-item>\n                      <ion-label stack color = "primary" icon-start><ion-icon name="pricetag"></ion-icon>Precio Entrada:</ion-label>\n                    <ion-input id="precio_entrada" type="number" formControlName="precio_entrada"  name ="precio_entrada"></ion-input>\n                  </ion-item>\n                  <ion-item *ngIf="myForm.get(\'precio_entrada\').errors && myForm.get(\'precio_entrada\').dirty">\n                    <p color="danger" ion-text *ngIf="myForm.get(\'precio_entrada\').hasError(\'required\')">Field is required</p>\n                 </ion-item>\n              \n                  <ion-item>\n                    <ion-label stack color = "primary" icon-start><ion-icon name="pricetag"></ion-icon>Precio de Venta:</ion-label>\n                  <ion-input id="precio_salida" type="number" formControlName="precio_salida"  name ="precio_salida"></ion-input>\n                </ion-item>\n                <ion-item *ngIf="myForm.get(\'precio_salida\').errors && myForm.get(\'precio_salida\').dirty">\n                  <p color="danger" ion-text *ngIf="myForm.get(\'precio_salida\').hasError(\'required\')">Field is required</p>\n               </ion-item>\n                    <ion-item>\n                      <ion-label stack color = "primary" icon-start><ion-icon name="information-circle"></ion-icon>Proveedor:</ion-label>\n                    <ion-input id="roveedor" type="text" formControlName="proveedor"  name ="proveedor"></ion-input>\n                    </ion-item>\n                 </ion-div>\n                 <ion-item *ngIf="myForm.get(\'proveedor\').errors && myForm.get(\'proveedor\').dirty">\n                  <p color="danger" ion-text *ngIf="myForm.get(\'proveedor\').hasError(\'required\')">Field is required</p>\n               </ion-item>\n                <ion-item>\n                      <ion-label stack color = "primary" icon-start><ion-icon name="information-circle"></ion-icon>Cantidad:</ion-label>\n                 <ion-input id="cantidad" type="number" formControlName="cantidad"  name ="cantidad"></ion-input>\n                  </ion-item>\n                    <ion-item *ngIf="myForm.get(\'cantidad\').errors && myForm.get(\'cantidad\').dirty">\n                        <p color="danger" ion-text *ngIf="myForm.get(\'cantidad\').hasError(\'required\')">Field is required</p>\n                  </ion-item>\n                \n                                \n              </ion-list><br>\n              <div padding>\n                  <button ion-button icon-start block type="submit" [disabled]="myForm.invalid">\n                      <ion-icon name="archive"> </ion-icon>\n                          Guardar\n                  </button>\n                </div>\n            </form> \n\n        </ion-card-content>\n\n      </ion-card>\n    </ion-col>\n    \n  </ion-row>\n  </ion-grid>\n  \n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\modif-product\modif-product.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]])
+    ], ModifProductPage);
+    return ModifProductPage;
+}());
+
+//# sourceMappingURL=modif-product.js.map
+
+/***/ }),
+
+/***/ 60:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AllProductsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modif_product_modif_product__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(5);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+/**
+ * Generated class for the AllProductsPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var AllProductsPage = /** @class */ (function () {
+    function AllProductsPage(navCtrl, http, navParams) {
+        this.navCtrl = navCtrl;
+        this.http = http;
+        this.navParams = navParams;
+        //modificar producto
+        this.modif_product = __WEBPACK_IMPORTED_MODULE_2__modif_product_modif_product__["a" /* ModifProductPage */];
+        this.apiUrl = "http://gymdb/"; // servidor
+    }
+    AllProductsPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad AllProductsPage');
+    };
+    AllProductsPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-all-products',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\all-products\all-products.html"*/'<!--\n  Generated template for the AllProductsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>allProducts</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\all-products\all-products.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
+    ], AllProductsPage);
+    return AllProductsPage;
+}());
+
+//# sourceMappingURL=all-products.js.map
+
 /***/ })
 
-},[232]);
+},[235]);
 //# sourceMappingURL=main.js.map
