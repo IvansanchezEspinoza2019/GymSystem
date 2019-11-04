@@ -65,8 +65,8 @@ crearCopia(){
   saveData(){
     let error = this.alert.create({
       title: 'OPERACION CANCELADA',
-      message: 'NO SE HAN CAMBIADO DATOS',
-      buttons: ['ACEPTAR']
+      message: 'No se han modificado datos!!',
+      buttons: ['Aceptar']
       
     });
 
@@ -74,14 +74,14 @@ crearCopia(){
     if(JSON.stringify(this.myForm.value) != JSON.stringify(this.comp)){
     let success = this.alert.create({
       title: 'OPERACION EXITOSA',
-      message: 'MODIFICADO CORRECTAMENTE',
-      buttons: ['ACEPTAR']
+      message: 'Agregado correctamente!!',
+      buttons: ['Aceptar']
       
     });
     let product_rep = this.alert.create({
       title: 'OPERACION CANCELADA',
-      message: 'YA EXISTE PRODUCTO CON ESE NOMBRE',
-      buttons: ['ACEPTAR']
+      message: 'Ya existen productos con ese nombre!!',
+      buttons: ['Aceptar']
       
     });
 
@@ -91,7 +91,7 @@ crearCopia(){
 
       if(mayus!=null){
         mayus = mayus.toUpperCase();
-        this.myForm.controls['nuevo_producto'].setValue(mayus);   // covierte a mayuscula la categoria
+        this.myForm.controls['nuevo_producto'].setValue(mayus);   // covierte a mayuscula el producto
       }
       if(desc!=null){
         desc = desc.toUpperCase();

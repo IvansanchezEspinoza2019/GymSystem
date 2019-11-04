@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color = "secondary">
+  <ion-navbar color = "primary">
     <ion-title>Paquetes</ion-title>
   </ion-navbar>
   <ion-searchbar placeholder="Buscar paquete por nombre" (ionInput)="getItems($event)">
@@ -45,8 +45,8 @@
     </ion-card-header>
               
     <ion-card-content>
-      ID {{pack.id}} <br>
-      Descripcion: {{pack.descripcion}} <br>
+      <strong>ID:</strong> {{pack.id}} <br>
+      <strong>DESCRIPCIÓN:</strong>  {{pack.descripcion}} <br>
     </ion-card-content>
   </ion-card>
 

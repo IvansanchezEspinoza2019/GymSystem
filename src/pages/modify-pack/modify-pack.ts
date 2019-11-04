@@ -54,21 +54,21 @@ export class ModifyPackPage {
     if(JSON.stringify(this.comprobar) != JSON.stringify(this.myForm.value))
     {
       let paqueteDuracion = this.alert.create({
-        title: 'Duracion de paquete invalida',
+        title: 'DURACION INVALIDA',
         message: 'La duracion maxima es de 365 dias',
         buttons: ['Ok']     
       });
   
       let paqueteNombre = this.alert.create({
-        title: 'Nombre de paquete invalido',
+        title: 'PAQUETE INVALIDO',
         message: 'Puede que el nombre de paquete sea repetido',
-        buttons: ['Ok']     
+        buttons: ['OK']     
       });
   
       let paqueteEditado = this.alert.create({
-        title: 'Exito',
+        title: 'EXITO',
         message: 'Paquete editado correctamente',
-        buttons: ['Ok']     
+        buttons: ['OK']     
       });
 
       var obj = JSON.parse(JSON.stringify(this.myForm.value));
@@ -115,9 +115,9 @@ export class ModifyPackPage {
     else{
 
       let noCambiosAlerta = this.alert.create({
-        title: 'No se han realizado cambios',
-        message: 'Información igual',
-        buttons: ['Ok']     
+        title: 'PAQUETE SIN CAMBIOS',
+        message: 'No se han realizado cambios',
+        buttons: ['OK']     
       });
       
       noCambiosAlerta.present();

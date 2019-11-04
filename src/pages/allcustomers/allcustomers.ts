@@ -95,14 +95,15 @@ export class AllcustomersPage {
       //alertas
       success = this.alert.create({
         title: 'OPERACION EXITOSA',
-        message: 'LA OPERACION SE REALIZO CON EXITO',
-        buttons: ['ACEPTAR']
+        message: 'La operación se realizó con éxito!!',
+       buttons: ['Aceptar']
+    
         
       });
       op_cancel = this.alert.create({
         title: 'ERROR',
-        message: 'HUBO PROBLEMAS AL REALIZAR LA OPERACION',
-        buttons: ['ACEPTAR']
+        message: 'Hubo problemas al realizar la operación!!',
+        buttons: ['Aceptar']
         
       });
 
@@ -183,7 +184,7 @@ export class AllcustomersPage {
     eliminar(cliente){
       let elim = this.alert.create({
         title: 'ADVERTENCIA',
-        message: '¿SEGURO QUE DESEA ELIMINARLO?',
+        message: '¿Seguro que desea eliminarlo?',
         buttons: [
           {
             text: 'Cancelar',
@@ -223,7 +224,7 @@ export class AllcustomersPage {
     activarCliente(cliente){
       let act = this.alert.create({
         title: 'ADVERTENCIA',
-        message: '¿ACTIVAR CLIENTE?',
+        message: '¿Activar cliente?',
         buttons: [
           {
             text: 'Cancelar',

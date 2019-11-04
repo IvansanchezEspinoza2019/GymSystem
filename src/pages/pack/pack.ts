@@ -37,21 +37,21 @@ export class PackPage {
   pack(){
 
     let paqueteDuracion = this.alert.create({
-      title: 'Duracion de paquete invalida',
+      title: 'DURACION INVALIDA',
       message: 'La duracion maxima es de 365 dias',
-      buttons: ['Ok']     
+      buttons: ['OK']     
     });
 
     let paqueteNombre = this.alert.create({
-      title: 'Nombre de paquete invalido',
+      title: 'PAQUETE INVALIDO',
       message: 'Puede que el nombre de paquete sea repetido',
-      buttons: ['Ok']     
+      buttons: ['OK']     
     });
 
     let paqueteAgregado = this.alert.create({
-      title: 'Exito',
+      title: 'EXITO',
       message: 'Paquete agregado correctamente',
-      buttons: ['Ok']     
+      buttons: ['OK']     
     });
 
     var obj = JSON.parse(JSON.stringify(this.myForm.value));

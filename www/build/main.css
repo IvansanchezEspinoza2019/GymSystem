@@ -30573,6 +30573,10 @@ page-all-employees .bluetext {
   color: blue;
 }
 
+page-all-employees .colorh2 {
+  color: #4670e6;
+}
+
 page-allaparatos .redtext {
   color: darkred;
 }
@@ -30585,12 +30589,20 @@ page-allaparatos .greentext {
   color: green;
 }
 
+page-allaparatos .colorh2 {
+  color: #4670e6;
+}
+
 page-allcustomers .redtext {
   color: darkred;
 }
 
 page-allcustomers .bluetext {
   color: blue;
+}
+
+page-allcustomers .colorh2 {
+  color: #4670e6;
 }
 
 page-inf-cliente img {
@@ -30611,19 +30623,6 @@ page-login .bienvenido {
   background-color: #c7d0d6;
 }
 
-page-add-cliente .text-input::-moz-placeholder {
-  color: #807f88;
-}
-
-page-add-cliente .text-input:-ms-input-placeholder {
-  color: #807f88;
-}
-
-page-add-cliente .text-input::-webkit-input-placeholder {
-  color: #807f88;
-}
-
-page-add-cliente img {
-  display: block;
-  margin: auto;
+page-venta .master {
+  background-color: #e9e9e9;
 }

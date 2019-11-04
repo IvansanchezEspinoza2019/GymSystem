@@ -16,43 +16,51 @@
 
 
 <ion-content padding>
-      
-    
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-select [(ngModel)]="filtro.val">
-            <ion-option value="1">En  Funcionamieto</ion-option>
-            <ion-option value="2">En Mantenimiento</ion-option>
-            <ion-option value="3">Fuera de Servicio</ion-option>
-          </ion-select>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-
-      </ion-col>
-      <ion-col>
-
-      </ion-col>
-      <ion-col>
+    <ion-col>
         <div text-right>
-          <button ion-button outline icon-start (click)="verFiltro()">
-            <ion-icon name="search"> </ion-icon> Filtrar </button>
+          <button ion-button outline icon-start (click)="_historial()">
+            <ion-icon name="clipboard"> </ion-icon> Historial </button>
         </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+      </ion-col> 
+  <ion-card>
+      
+      <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-select [(ngModel)]="filtro.val">
+                  <ion-option value="1">En  Funcionamieto</ion-option>
+                  <ion-option value="2">En Mantenimiento</ion-option>
+                  <ion-option value="3">Fuera de Servicio</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+      
+            </ion-col>
+            <ion-col>
+      
+            </ion-col>
+            <ion-col>
+              <div text-right>
+                <button ion-button outline icon-start (click)="verFiltro()">
+                  <ion-icon name="search"> </ion-icon> Filtrar </button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+  </ion-card>
+ 
   
   
 
    <ion-item *ngFor="let aparato of items" (click)="actionSheet(aparato)">
-     <h2><b> {{ aparato.nombre }}</b></h2>
+     <h2 class="colorh2" ><b> {{ aparato.nombre }}</b></h2>
         <p align="right" class="bluetext" *ngIf="aparato.estado=='1'" color="secondary">EN FUNCIONAMIENTO</p>
         <p align="right" class="greentext" *ngIf="aparato.estado=='2'" color="gray">EN MANTENIMIENTO</p>
         <p align="right" class="redtext" *ngIf="aparato.estado=='3'" color="danger">FUERA DE SERVICIO</p>
-        <p align="left"><b>ID: </b> {{ aparato.id}}</p>
-        <p align="left"><b>DESCRIPCION: </b> {{ aparato.descripcion }}</p>
+        <p align="left"><strong>ID: </strong> {{ aparato.id}}</p>
+        <p align="left"><strong>DESCRIPCION: </strong> {{ aparato.descripcion }}</p>
 
       </ion-item>
 

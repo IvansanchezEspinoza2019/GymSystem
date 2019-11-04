@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-navbar color="secondary">
-    <ion-title>Buscar pago</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Pagos</ion-title>
   </ion-navbar>
   <ion-searchbar placeholder="Buscar pago por id de pago" (ionInput)="getItems($event)">
 
@@ -15,8 +15,8 @@
   </ion-card-header>
         
   <ion-card-content>
-      ID {{pagos.id_pago}} <br>
-      Cliente: {{pagos.id_cliente }} <br>
+      <strong>ID:</strong> {{pagos.id_pago}} <br>
+      <strong>ID CLIENTE:</strong> {{pagos.id_cliente }} <br>
   </ion-card-content>
 </ion-card>
   

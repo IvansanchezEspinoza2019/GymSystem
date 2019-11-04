@@ -109,14 +109,14 @@ export class ModifaparatoPage {
   saveData(){
     let miAlerta = this.alert.create({
       title: 'OPERACION CANCELADA',
-      message: 'CAMPO CATEGORIA VACIO!',
-      buttons: ['ACEPTAR']
+      message: 'Campo categoria vacio!!',
+      buttons: ['Aceptar']
       
     });
     let alerta = this.alert.create({
       title: 'OPERACION CANCELADA',
-      message: 'NO SE HA MODIFICADO NADA!',
-      buttons: ['ACEPTAR']
+      message: 'No se han modificado los datos!!',
+      buttons: ['Aceptar']
       
     });
     
@@ -142,8 +142,8 @@ export class ModifaparatoPage {
   enviarForm(){
     let success = this.alert.create({
       title: 'OPERACION EXITOSA',
-      message: 'OPERACION REALIZADA CON EXITO',
-      buttons: ['ACEPTAR']
+      message: 'Operacion realizada con exito!!',
+      buttons: ['Aceptar']
       
     });
     var mayus = this.myForm.controls['otro'].value;
@@ -171,8 +171,7 @@ export class ModifaparatoPage {
       console.log(res);
       if(res=="exito"){
         success.present();
-        this.navCtrl.push(this.back, {id: obj['id_admin'], filtro: this.aparato['filtro']});  // regresa a la pagina anterior, le envia el id del admin como parametro
-      
+        this.navCtrl.push(this.back, {id: obj['id_admin'], filtro: this.aparato['filtro']});  // regresa a la pagina anterior, le envia el id del admin como parametro 
       }
     }, error=>{
       console.log(error);

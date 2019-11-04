@@ -118,20 +118,20 @@ export class AddClientePage {
 
     let miAlerta = this.alert.create({
       title: 'OPERACION CANCELADA',
-      message: 'LA CONTRASEÑA NO COINCIDE!',
-      buttons: ['ACEPTAR']
+      message: 'La contraseña no coincide!!',
+      buttons: ['Aceptar']
       
     });
     let idRep = this.alert.create({
       title: 'OPERACION CANCELADA',
-      message: 'YA EXISTE ESE USUARIO!',    //alertas
-      buttons: ['ACEPTAR']
+      message: 'Ya existe ese usuario!!',    //alertas
+      buttons: ['Aceptar']
       
     });
     let success = this.alert.create({
       title: 'OPERACION EXITOSA',
-      message: 'AGREGADO CORRECTAMENTE',
-      buttons: ['ACEPTAR']
+      message: 'Agregado correctanmete!!',
+      buttons: ['Aceptar']
       
     });
     
@@ -193,7 +193,7 @@ export class AddClientePage {
       // alerta de error de archivo
       let error_file = this.alert.create({
         title: 'ERROR',
-        message: 'EL ARCHIVO NO SE ENCUANTRA EN LA CARPETA DEL SERVIDOR',
+        message: 'El archivo no se encuentra en la carpeta del servidor!!',
         buttons: ['ACEPTAR']
         
       });

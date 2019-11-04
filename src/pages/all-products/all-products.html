@@ -1,15 +1,54 @@
-<!--
-  Generated template for the AllProductsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-  <ion-navbar>
-    <ion-title>allProducts</ion-title>
+  <ion-navbar color = "primary">
+    <ion-title>Productos</ion-title>
   </ion-navbar>
+  <ion-searchbar placeholder="Buscar producto por nombre" (ionInput)="getItems($event)">
+
+  </ion-searchbar>
 </ion-header>
 
 <ion-content padding>
+  
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-select [(ngModel)]="filtro.val">
+              <ion-option value="0">Todos</ion-option>
+              <ion-option value="1">Activos</ion-option>
+              <ion-option value="2">Inactivos</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        
+        <ion-col>
+     
+        </ion-col>
+        
+        <ion-col>
+     
+        </ion-col>
+        
+        <ion-col>
+          <div text-right>
+            <button ion-button outline icon-start (click)="verFiltro()">
+              <ion-icon name="search"> </ion-icon> Filtrar </button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>          
+  </ion-card>
+
+  <ion-card *ngFor="let product of items" (click)="actionSheet(product)">
+      <ion-card-header color="primary"> 
+        <b>{{ product.nombre }}</b>
+      </ion-card-header>
+                
+      <ion-card-content>
+        <strong>PRECIO:</strong> ${{product.precio_salida}}.00 <br>
+        <strong>DESCRIPCION: </strong> {{product.descripcion}} <br>
+      </ion-card-content>
+    </ion-card>
 
 </ion-content>

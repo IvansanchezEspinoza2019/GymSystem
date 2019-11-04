@@ -44,9 +44,9 @@ export class ListPayPage {
     }
 
     op_cancel = this.alert.create({
-      title: 'Error',
+      title: 'ERROR',
       message: 'No se ha podido eliminar pago correctamente',
-      buttons: ['Ok']
+      buttons: ['OK']
       
     });
 
@@ -68,7 +68,7 @@ export class ListPayPage {
   eliminar(pago){
     let elim = this.alert.create({
       title: 'ADVERTENCIA',
-      message: '¿SEGURO QUE DESEA ELIMINAR PAGO?',
+      message: '¿Seguro que desea ELIMINAR pago?',
       buttons: [
         {
           text: 'Cancelar',

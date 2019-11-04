@@ -83,8 +83,8 @@ export class ModifclientePage {
   saveData(){
     let form_invalido = this.alert.create({
       title: 'OPERACION CANCELADA',
-      message: 'YA SE ENVIARON LOS DATOS MODIFICADOS!',
-      buttons: ['ACEPTAR']
+      message: 'Ya se enviarion los datos modificados!!',
+      buttons: ['Aceptar']
       
     });
 
@@ -94,8 +94,8 @@ export class ModifclientePage {
     else{
       let repetido = this.alert.create({
         title: 'OPERACION CANCELADA',
-        message: 'lOS DATOS SON IGUALES!',
-        buttons: ['ACEPTAR']
+        message: 'No se han modificado datos!!',
+        buttons: ['Aceptar']
         
       });
   
@@ -105,20 +105,20 @@ export class ModifclientePage {
         //alertas
       let miAlerta = this.alert.create({
         title: 'OPERACION CANCELADA',
-        message: 'LA CONTRASEÑA NO COINCIDE!',
-        buttons: ['ACEPTAR']
+        message: 'La contraseña no coincide!!',
+        buttons: ['Aceptar']
         
       });
       let idRep = this.alert.create({
         title: 'OPERACION CANCELADA',
-        message: 'YA EXISTE ESE USUARIO!',    
-        buttons: ['ACEPTAR']
+        message: 'Ya existe ese usuario!!',    
+        buttons: ['Aceptar']
         
       });
       let success = this.alert.create({
         title: 'OPERACION EXITOSA',
-        message: 'AGREGADO CORRECTAMENTE',
-        buttons: ['ACEPTAR']
+        message: 'Agregado correctamente!!',
+        buttons: ['Aceptar']
         
       });
       
@@ -185,8 +185,8 @@ export class ModifclientePage {
       // alerta de error de archivo
       let error_file = this.alert.create({
         title: 'ERROR',
-        message: 'EL ARCHIVO NO SE ENCUANTRA EN LA CARPETA DEL SERVIDOR',
-        buttons: ['ACEPTAR']
+        message: 'El archivo no se encuentra en la carpeta del servidor!!',
+        buttons: ['Aceptar']
         
       });
       

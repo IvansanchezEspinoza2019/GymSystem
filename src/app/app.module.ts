@@ -11,7 +11,7 @@ import { LoginPage } from '../pages/login/login';
 import { CustomerPage } from '../pages/customer/customer';
 
 import { AdminPage } from '../pages/admin/admin';
-import { AddClientePage } from 'c:/Users/acer/Desktop/GymSystem/GymSystem/src/pages/add-cliente/add-cliente';
+import { AddClientePage } from '../pages/add-cliente/add-cliente';
 import { InfClientePage } from '../pages/inf-cliente/inf-cliente';
 import { AllcustomersPage } from '../pages/allcustomers/allcustomers';
 import { ModifclientePage } from '../pages/modifcliente/modifcliente';
@@ -50,6 +50,8 @@ import { Asist_30Page } from '../pages/asist-30/asist-30';
 import { AddProductoPage } from '../pages/add-producto/add-producto';
 import { ModifProductPage } from '../pages/modif-product/modif-product';
 import { AllProductsPage } from '../pages/all-products/all-products';
+import { VentaPage } from '../pages/venta/venta';
+import { AdminProfilePage } from '../pages/admin-profile/admin-profile';
 
 
 
@@ -91,7 +93,10 @@ import { AllProductsPage } from '../pages/all-products/all-products';
     Asist_30Page,
     AddProductoPage,
     ModifProductPage,
-    AllProductsPage
+    AllProductsPage,
+    VentaPage,
+    AdminProfilePage,
+    //AddClientePage,
     
   ],
   
@@ -109,7 +114,7 @@ import { AllProductsPage } from '../pages/all-products/all-products';
     LoginPage,
     CustomerPage,
     AdminPage,
-    AddClientePage,
+    
     InfClientePage,
     AllcustomersPage,
     ModifclientePage,
@@ -140,7 +145,10 @@ import { AllProductsPage } from '../pages/all-products/all-products';
     Asist_30Page,
     AddProductoPage,
     ModifProductPage,
-    AllProductsPage
+    AllProductsPage,
+    VentaPage,
+    AdminProfilePage,
+    AddClientePage
   ],
   providers: [
     StatusBar,

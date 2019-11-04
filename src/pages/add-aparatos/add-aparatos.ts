@@ -112,8 +112,8 @@ export class AddAparatosPage {
   saveData(){
     let miAlerta = this.alert.create({
       title: 'OPERACION CANCELADA',
-      message: 'CAMPO CATEGORIA VACIO!',
-      buttons: ['ACEPTAR']
+      message: 'Campo categoria vacio!!',
+      buttons: ['Aceptar']
       
     });
     if(this.hideOtro==false){   // si agreaga una nueva categoria
@@ -132,8 +132,8 @@ export class AddAparatosPage {
   enviarForm(){
     let success = this.alert.create({
       title: 'OPERACION EXITOSA',
-      message: 'AGREGADO CORRECTAMENTE',
-      buttons: ['ACEPTAR']
+      message: 'Agregado correctamente!!',
+      buttons: ['Aceptar']
       
     });
 

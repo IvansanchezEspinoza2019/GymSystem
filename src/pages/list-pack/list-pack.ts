@@ -47,9 +47,9 @@ export class ListPackPage {
   }
 
   op_cancel = this.alert.create({
-    title: 'Error',
+    title: 'ERROR',
     message: 'No se ha podido eliminar paquete correctamente',
-    buttons: ['Ok']
+    buttons: ['OK']
   });
 
   ionViewDidLoad() {
@@ -147,7 +147,7 @@ presentActionSheetInact(pack) {
     
     let elim = this.alert.create({
       title: 'ADVERTENCIA',
-      message: '¿SEGURO QUE DESEA ELIMINAR PAQUETE?',
+      message: '¿Seguro que desea ELIMINAR paquete?',
       buttons: [
         {
           text: 'Cancelar',
@@ -186,7 +186,7 @@ presentActionSheetInact(pack) {
     
     let elim = this.alert.create({
       title: 'ADVERTENCIA',
-      message: '¿SEGURO QUE DESEA ACTIVAR PAQUETE?',
+      message: '¿Seguro que desea ACTIVAR paquete?',
       buttons: [
         {
           text: 'Cancelar',

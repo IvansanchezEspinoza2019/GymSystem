@@ -105,14 +105,14 @@ onChange(ev: any){
   enviarForm(){
     let success = this.alert.create({
       title: 'OPERACION EXITOSA',
-      message: 'AGREGADO CORRECTAMENTE',
-      buttons: ['ACEPTAR']
+      message: 'Agregado correctamente!!',
+      buttons: ['Aceptar']
       
     });
     let product_rep = this.alert.create({
       title: 'OPERACION CANCELADA',
-      message: 'PRODUCTO REPETIDO',
-      buttons: ['ACEPTAR']
+      message: 'Producto repetido!!',
+      buttons: ['Aceptar']
       
     });
 

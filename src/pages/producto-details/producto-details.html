@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <ion-title>Detalles</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <ion-label color="secondary" align="center"><b>{{product.nombre}}</b></ion-label>    <br>  
+    </ion-card-header>
+    
+    <ion-card-content>
+      <div text-left> <ion-icon name="attach"></ion-icon> <strong >&nbsp; ID: </strong> {{product.id_producto}}</div><br>
+      <div text-left> <ion-icon name="checkmark-circle"></ion-icon> <strong >&nbsp; STATUS: </strong> {{status.inf}} </div><br><br>
+      <div text-left> <ion-icon name="paper"></ion-icon> <strong >&nbsp; DESCRIPCION: </strong> {{product.descripcion}}</div><br>
+      <div text-left> <ion-icon name="cart"></ion-icon> <strong > &nbsp; DISPONIBILIDAD: </strong> {{product.cantidad}}</div><br><br>
+      <div text-left> <ion-icon name="logo-usd"></ion-icon> <strong >&nbsp; PRECIO ENTRADA: </strong> {{product.precio_entrada}}</div><br>
+      <div text-left> <ion-icon name="logo-usd"></ion-icon> <strong >&nbsp; PRECIO SALIDA: </strong> {{product.precio_salida}}</div><br><br>
+      <div text-left> <ion-icon name="contact"></ion-icon> <strong >&nbsp; PROVEEDOR: </strong> {{product.proveedor}}</div><br>
+    </ion-card-content>
+  </ion-card>
+  </ion-content>

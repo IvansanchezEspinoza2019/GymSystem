@@ -24,7 +24,7 @@
   
   </ion-card>
 
-  <ion-card *ngFor="let pack of paquetes">
+  <ion-card *ngFor="let pack of paquetes" (click)="setPack(pack)">
     <ion-card-header><b>{{ pack.nombre }}</b>
     </ion-card-header>
           
@@ -44,7 +44,7 @@
           <ion-list>
 
               <ion-item>
-                <ion-label stack color = "primary">Username: </ion-label>
+                <ion-label stack color = "primary">ID Cliente: </ion-label>
                 <ion-input id="id_usuario" name="id_usuario" formControlName="id_usuario" type="text"></ion-input>
               </ion-item>
               <ion-item *ngIf="myForm.get('id_usuario').errors && myForm.get('id_usuario').dirty">
@@ -54,10 +54,7 @@
 
               <ion-item>
                 <ion-label stack color = "primary">Paquete: </ion-label>
-                <ion-input id="paquete" name="paquete" formControlName="paquete" type="text"></ion-input>
-              </ion-item>
-              <ion-item *ngIf="myForm.get('paquete').errors && myForm.get('paquete').dirty">
-                <p color="danger" ion-text *ngIf="myForm.get('paquete').hasError('required')">Field is required</p>
+                <ion-input readonly id="paquete" name="paquete" formControlName="paquete" type="text"></ion-input>
               </ion-item>
 
               <ion-item>

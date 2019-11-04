@@ -76,14 +76,14 @@ actualizar(){
   //alertas
   success = this.alert.create({
     title: 'OPERACION EXITOSA',
-    message: 'LA OPERACION SE REALIZO CON EXITO',
-    buttons: ['ACEPTAR']
+    message: 'La operación se realizó con éxito!!',
+    buttons: ['Aceptar']
     
   });
   op_cancel = this.alert.create({
     title: 'ERROR',
-    message: 'HUBO PROBLEMAS AL REALIZAR LA OPERACION',
-    buttons: ['ACEPTAR']
+    message: 'Hubo problemas al realizar la operación!!',
+    buttons: ['Aceptar']
     
   });
 

@@ -4,11 +4,8 @@ import {LoginPage} from '../login/login'
 import { AdminPage } from '../admin/admin';
 import { PayPage } from '../pay/pay';
 import { HttpClient }  from '@angular/common/http';
-import { File } from '@ionic-native/file/ngx';
 
-import  pdfMake  from 'pdfmake/build/pdfMake';
-import  pdfFonts  from 'pdfmake/build/vfs_fonts';
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import { VentaPage } from '../venta/venta';
 
 @Component({
   selector: 'page-home',
@@ -21,6 +18,9 @@ export class HomePage {
   loginP = LoginPage;
   admin = AdminPage;
   payPage = PayPage;
+
+  //venta
+  venta = VentaPage;
 
   apiUrl ="http://gymdb/";
 
@@ -41,6 +41,7 @@ export class HomePage {
   login(){
     console.log('contact');
     this.navCtrl.push(this.loginP);
+   // this.navCtrl.push(this.venta,{ id: '1'});
     
   }
 

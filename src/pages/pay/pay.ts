@@ -55,6 +55,23 @@ export class PayPage {
     this.items = this.clientes;
   }
 
+  name = ''
+  price = ''
+  setPack(pack){
+    this.name=pack['nombre'];
+    this.price=pack['precio'];
+    console.log(this.name);
+
+    this.myForm.setValue({
+      id_usuario: '',
+      paquete: this.name.toString(), 
+      modo:  '',
+      monto:  this.price.toString(), 
+    });
+    document.getElementById("paquete").setAttribute('value',this.name.toString());
+    document.getElementById("monto").setAttribute('value',this.price.toString());
+  }
+
   paquete(){
 
     let funcion={

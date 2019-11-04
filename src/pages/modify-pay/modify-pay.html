@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar color= "secondary">
+  <ion-navbar color= "danger">
     <ion-title>Modificar</ion-title>
   </ion-navbar>
 
@@ -24,7 +24,7 @@
   
   </ion-card>
 
-  <ion-card *ngFor="let pack of paquetes" (click)="actionSheet()">
+  <ion-card *ngFor="let pack of paquetes">
     <ion-card-header><b>{{ pack.nombre }}</b>
     </ion-card-header>
           

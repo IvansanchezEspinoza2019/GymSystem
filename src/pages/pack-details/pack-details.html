@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="secondary">
+  <ion-navbar color="primary">
     <ion-title>Detalles</ion-title>
   </ion-navbar>
 </ion-header>
@@ -8,14 +8,14 @@
 
   <ion-card>
     <ion-card-header>
-        <ion-label color="primary" align="center"><b>{{pack.nombre}}</b></ion-label>    <br>  
+        <ion-label color="secondary" align="center"><b>{{pack.nombre}}</b></ion-label>    <br>  
     </ion-card-header>
     <ion-card-content>
-        <div text-left> <strong >ID: </strong> {{pack.id}}</div><br><br>
-        <div text-left> <strong >STATUS: </strong> {{status.inf}} </div><br>
-        <div text-left> <strong >DESCRIPCION: </strong> {{pack.descripcion}}</div><br>
-        <div text-left> <strong >DIAS DE DURACION: </strong> {{pack.duracion}}</div><br>
-        <div text-left> <strong >PRECIO: </strong> {{pack.precio}}</div><br>
+        <div text-left> <ion-icon name="pricetag"></ion-icon> &nbsp; <strong>ID: </strong> {{pack.id}}</div><br><br>
+        <div text-left> <ion-icon name="power"></ion-icon> &nbsp; <strong >STATUS: </strong> {{status.inf}} </div><br>
+        <div text-left> <ion-icon name="clipboard"></ion-icon> &nbsp; <strong >DESCRIPCION: </strong> {{pack.descripcion}}</div><br>
+        <div text-left> <ion-icon name="calendar"></ion-icon> &nbsp; <strong >DIAS DE DURACION: </strong> {{pack.duracion}}</div><br>
+        <div text-left> <ion-icon name="cash"></ion-icon> &nbsp; <strong >PRECIO: </strong> {{pack.precio}}</div><br>
     </ion-card-content>
   </ion-card>
 </ion-content>

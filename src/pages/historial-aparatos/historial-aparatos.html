@@ -13,13 +13,13 @@
 <ion-content padding>
   <ion-item *ngFor="let registro of historial">
       
-    <p><b>ID Admin: </b>  {{ registro.id_admin }}</p>
-    <p><b>Nombre Empleado: </b> {{ registro.Nombre }}</p>
-    <p><b>ID Aparato: </b> {{ registro.id_aparato }}</p>
-    <p><b>Categoria: </b> {{ registro.nombre }}</p>
-    <p><b>Fecha (año/mes/dia): </b> {{ registro.fecha }}</p>
-    <p *ngIf="registro.accion=='1'"><b>Accion: </b> AGREGAR</p>
-    <p *ngIf="registro.accion=='2'"><b>Accion: </b> MODIFICAR</p>
+    <p><b>ID ADMIN: </b>  {{ registro.id_admin }}</p>
+    <p><b>NOMBRE EMPLEADO: </b> {{ registro.Nombre }}</p>
+    <p><b>ID APARATO: </b> {{ registro.id_aparato }}</p>
+    <p><b>CATEGORIA: </b> {{ registro.nombre }}</p>
+    <p><b>FECHA (AÑO/MES/DIA): </b> {{ registro.fecha }}</p>
+    <p *ngIf="registro.accion=='1'"><b>ACCION: </b> AGREGAR</p>
+    <p *ngIf="registro.accion=='2'"><b>ACCION: </b> MODIFICAR</p>
   </ion-item>
 
 </ion-content>

@@ -1,14 +1,14 @@
 webpackJsonp([31],{
 
-/***/ 320:
+/***/ 323:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminPageModule", function() { return AdminPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AllEmployeesPageModule", function() { return AllEmployeesPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__admin__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__all_employees__ = __webpack_require__(53);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AdminPageModule = /** @class */ (function () {
-    function AdminPageModule() {
+var AllEmployeesPageModule = /** @class */ (function () {
+    function AllEmployeesPageModule() {
     }
-    AdminPageModule = __decorate([
+    AllEmployeesPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__admin__["a" /* AdminPage */],
+                __WEBPACK_IMPORTED_MODULE_2__all_employees__["a" /* AllEmployeesPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__admin__["a" /* AdminPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__all_employees__["a" /* AllEmployeesPage */]),
             ],
         })
-    ], AdminPageModule);
-    return AdminPageModule;
+    ], AllEmployeesPageModule);
+    return AllEmployeesPageModule;
 }());
 
-//# sourceMappingURL=admin.module.js.map
+//# sourceMappingURL=all-employees.module.js.map
 
 /***/ })
 

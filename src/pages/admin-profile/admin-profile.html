@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Perfil administrador</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grind>
+    <ion-row>
+      <ion-col>
+
+      </ion-col>
+      <ion-col>
+        <ion-card>
+            <img src="assets/img/admin.png" />
+          <ion-card-header color="primary">
+            <br> <b> INICIASTE SESIÓN COMO: </b> <br> <br>
+          </ion-card-header>
+          <ion-card-content>
+            <div text-left> <strong >NOMBRE: </strong> {{admin.nombre}} &nbsp; {{admin.apellido_p}} &nbsp; {{admin.apellido_m}} &nbsp; </div> <br> 
+            <div text-left> <strong >ID EMPLEADO: </strong> {{admin.id_empleado}} </div> <br> 
+            <div text-left> <strong >INGRESO: </strong> {{admin.fecha_ingreso}} </div> <br> 
+
+            <ion-label color="secondary" align="left"><b>EMPLEO</b></ion-label> <br>
+            <div text-left> <strong >ID PUESTO: </strong> {{admin.id}} </div> <br>
+            <div text-left> <strong >PUESTO: </strong> {{admin.puesto}} </div> <br>
+            <div text-left> <strong >SUELDO: </strong> {{admin.sueldo}} </div> <br>
+
+            <ion-label color="secondary" align="left"><b>DATOS PERSONALES</b></ion-label> <br>
+            <div text-left> <strong >NACIMIENTO: </strong> {{admin.fecha_nacimiento}} </div> <br>
+            <div text-left> <strong >GENERO: </strong> {{admin.genero}} </div> <br> 
+            
+            <ion-label color="secondary" align="left"><b>CONTACTO</b></ion-label> <br>
+            <div text-left> <strong >TELEFONO: </strong> {{admin.telefono}} </div> <br>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+
+      </ion-col>
+    </ion-row>
+  </ion-grind>
+</ion-content>

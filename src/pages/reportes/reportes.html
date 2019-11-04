@@ -26,15 +26,23 @@
       Crear Reporte
      </button>
    </div>
-    <button ion-item (click)="presentActionSheet('0')">
-        <ion-icon name="clipboard" item-start></ion-icon>
-          Pagos
-      </button>
-      <button ion-item (click)="presentActionSheet('1')">
-        <ion-icon name="clipboard" item-start></ion-icon>
-          Asistencia
-      </button>
       
-      
+    <ion-card (click)="presentActionSheet('0')">
+      <ion-card-header color = "primary">
+        <b> <ion-icon name="cash" item-start></ion-icon> &nbsp; PAGOS </b>
+      </ion-card-header>
+      <ion-card-content>
+        <b>DESCRIPCIÓN:</b> LISTA DE PAGOS E INGRESO TOTAL
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card (click)="presentActionSheet('1')">
+      <ion-card-header color = "primary">
+        <b> <ion-icon name="calendar" item-start></ion-icon> &nbsp; ASISTENCIA </b>
+      </ion-card-header>
+      <ion-card-content>
+        <b>DESCRIPCIÓN:</b> RECORD DE ASISTENCIAS
+      </ion-card-content>
+    </ion-card>
 
 </ion-content>

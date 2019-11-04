@@ -1,167 +1,193 @@
-<!--
-  Generated template for the AdminPage page.
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-
 <ion-header>
-  <ion-navbar color=secondary>
+  <ion-toolbar color="secondary">
+    <ion-buttons start>
+    <button ion-button (click)="profile()">
+      <ion-icon name="contact" ></ion-icon>
+    </button>
+    <button ion-button (click)="exit()">
+      <ion-icon name="power" ></ion-icon>
+      </button>
+    </ion-buttons>  
+    
     <ion-title>GYM SYSTEM</ion-title>
-  </ion-navbar>
+  
+  </ion-toolbar>
 </ion-header>
+
 
 <ion-content>
   <ion-grid>
     <ion-row>
-    
+
     <ion-col>
-      <ion-card color=primary>
+      <ion-card>
+          <img src="assets/img/asist2.png" />
         <ion-card-content text-center >
-          Asistencia<br>
-          <button ion-button round color=light clear (click)="asisten()">
-            <ion-icon name="hand"></ion-icon>
-          </button>
-        </ion-card-content>
-      </ion-card>
+          <h1> <strong> Asistencia </strong> </h1> <br> 
+          <ion-list>
+            <button ion-item (click)="asisten()">
+              <ion-icon name="add" item-start></ion-icon>
+              Nuevo
+            </button>
+            <button ion-item (click)="asistenList()">
+              <ion-icon name="list" item-start></ion-icon>
+              Lista
+            </button>
+          </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+
+    <ion-col>
+    
+    <ion-card>
+      <img src="assets/img/client.png" />
+      <ion-card-content text-center>
+        <h1> <strong> Clientes </strong> </h1> <br>    
+      <ion-list>
+        <button ion-item (click)="agregarCLiente()">
+          <ion-icon name="add" item-start></ion-icon>
+          Nuevo
+        </button>
+        <button ion-item (click)= "allCustomers()">
+          <ion-icon name="list" item-start></ion-icon>
+          Lista
+        </button>
+      </ion-list>
+      </ion-card-content>
+    </ion-card>
+
     </ion-col>
+
     
     <ion-col>
 
-      <ion-card color=primary>
-        <ion-card-header text-center>
-          Pagos <br>
-          <ion-icon name="cash"></ion-icon>
-        </ion-card-header>
-  
+    <ion-card >
+      <img src="assets/img/pay.png" />
+      <ion-card-content text-center >
+        <h1> <strong> Pagos </strong>  </h1> <br>
         <ion-list>
           <button ion-item (click)="pay()">
             <ion-icon name="add" item-start></ion-icon>
-            Pagar
+            Nuevo
           </button>
-    
           <button ion-item (click)= "listPay()">
-          <ion-icon name="list" item-start></ion-icon>
-               Lista
+            <ion-icon name="list" item-start></ion-icon>
+              Lista
           </button>
-        
         </ion-list>
+      </ion-card-content>
+    </ion-card>
+    
+    </ion-col>
+
+    <ion-col>
+    
+      <ion-card>
+        <img src="assets/img/packs.png" />
+        <ion-card-content text-center>
+          <h1> <strong> Paquetes </strong>  </h1> <br>
+          <ion-list>
+            <button ion-item (click)="pack()">
+              <ion-icon name="add" item-start></ion-icon>
+              Nuevo
+            </button>
+            
+            <button ion-item (click)= "listPack()">
+              <ion-icon name="list" item-start></ion-icon>
+              Lista
+            </button>
+            
+          </ion-list>
+        </ion-card-content>
       </ion-card>
     </ion-col>
   
   </ion-row>
-</ion-grid>
 
-<ion-grid>
   <ion-row>
-  
-    <ion-col>
-      <ion-card color=primary>
-        <ion-card-header text-center>
-          Clientes <br>
-          <ion-icon name="contact" item-start></ion-icon>
-        </ion-card-header>
-        
-
-        <ion-list>
-          <button ion-item (click)="agregarCLiente()">
-            <ion-icon name="add" item-start></ion-icon>
-              Nuevo
-          </button>
-          <button ion-item (click)= "allCustomers()">
-            <ion-icon name="list" item-start></ion-icon>
-             Lista
-          </button>
-          </ion-list>
-      </ion-card>
-    </ion-col>
-              
-                
-    <ion-col>
-      <ion-card color=primary>
-        <ion-card-content text-center>
-          Tienda<br>
-          <ion-icon name="card"></ion-icon>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <ion-list>
-      <button ion-item (click)="agregarProducto()">
-        <ion-icon name="add" item-start></ion-icon>
-          Nuevo Producto
-      </button>
-      <button ion-item (click)="allProducts()">
-        <ion-icon name="list" item-start></ion-icon>
-         Lista
-      </button>
-      </ion-list>
-    </ion-row>
-  </ion-grid>
-
-  <ion-card color=danger>
-    <ion-card-content text-center>
-      Reportes<br>
-      <ion-icon name="clipboard"></ion-icon>
-    </ion-card-content>
-  </ion-card>
-  
-    <button ion-item (click)="reportes_pag()">
-      <ion-icon name="add" item-start></ion-icon>
-      Nuevo
-    </button>
-
-
-
-  <ion-card color=primary>
-    <ion-card-header text-center>
-      Paquetes <br>
-      <ion-icon name="keypad"></ion-icon>
-    </ion-card-header>
-
-    <ion-list>
-      <button ion-item (click)="pack()">
-        <ion-icon name="add" item-start></ion-icon>
-        Nuevo
-      </button>
-
-      <button ion-item (click)= "listPack()">
-      <ion-icon name="list" item-start></ion-icon>
-           Lista
-      </button>
     
-    </ion-list>
-  </ion-card>
-
-  <ion-card color=primary>
-    <ion-card-content text-center>
-      Inventario<br>
-      <ion-icon name="attach"></ion-icon>
-    </ion-card-content>
-    <ion-list>
-      <button ion-item (click)="agregarAparato()">
-        <ion-icon name="add" item-start></ion-icon>
-          Nuevo
-      </button>
-      <button ion-item (click)= "allAparatos()">
-        <ion-icon name="list" item-start></ion-icon>
-         Lista
-      </button>
-      </ion-list>
-  </ion-card>
-  <ion-card color=danger>
+    <ion-col>
+    <ion-card>
+      <img src="assets/img/employe.png" />
       <ion-card-content text-center>
-        Empleados<br>
-        <ion-icon name="clipboard"></ion-icon>
-      </ion-card-content>
-      <ion-list>
+        <h1> <strong> Empleados </strong>  </h1> <br>
+        <ion-list>
           <button ion-item (click)="agregarEmpleado()">
-            <ion-icon name="add" item-start></ion-icon>
-              Nuevo
+          <ion-icon name="add" item-start></ion-icon>
+            Nuevo
           </button>
           <button ion-item (click)= "allEmpleados()">
             <ion-icon name="list" item-start></ion-icon>
-             Lista
+              Lista
           </button>
-          </ion-list>
+        </ion-list>
+      </ion-card-content>
     </ion-card>
+    
+  </ion-col>
+
+  <ion-col>
+    <ion-card>
+      <img src="assets/img/store.png" />
+      <ion-card-content text-center>
+        <h1> <strong> Tienda </strong>  </h1> <br>
+        <ion-list>
+          <button ion-item (click)="tienda()">
+            <ion-icon name="appstore" item-start></ion-icon>
+            Tienda
+          </button>
+          <button ion-item (click)="agregarProducto()">
+            <ion-icon name="add" item-start></ion-icon>
+            Nuevo
+          </button>
+          <button ion-item (click)="allProducts()">
+          <ion-icon name="list" item-start></ion-icon>
+            Lista
+          </button>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>  
+    </ion-col>
+
+    <ion-col>
+      <ion-card>
+        <img src="assets/img/report.png" />
+        <ion-card-content text-center>
+          <h1> <strong> Reportes </strong>  </h1> <br>
+          <ion-list>
+            <button ion-item (click)="reportes_pag()">
+              <ion-icon name="add" item-start></ion-icon>
+              Nuevo
+            </button>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+        
+      </ion-col>
+
+    <ion-col>
+      <ion-card>
+        <img src="assets/img/inventary.png" />
+        <ion-card-content text-center>
+          <h1> <strong> Inventario </strong>  </h1> <br>
+          <ion-list>
+            <button ion-item (click)="agregarAparato()">
+              <ion-icon name="add" item-start></ion-icon>
+              Nuevo
+            </button>
+            <button ion-item (click)= "allAparatos()">
+              <ion-icon name="list" item-start></ion-icon>
+              Lista
+            </button>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>    
+    </ion-col>
+
+
+
+  </ion-row>
+</ion-grid>
 
 </ion-content> 

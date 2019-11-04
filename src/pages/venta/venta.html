@@ -1,0 +1,162 @@
+<!--
+  Generated template for the VentaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar color="secondary">
+      <ion-title>Tienda</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+    <ion-content class="master">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-card color="success">
+                <form [formGroup]="myForm"  (ngSubmit)="aniadir()" novalidate>
+                    <h2 align="center"><strong>Productos en venta</strong></h2>
+                    <ion-list>
+                        <ion-item>
+                            <ion-label color="primary" icon-start><ion-icon name="list"></ion-icon>Producto:  </ion-label>
+                            <ion-select  formControlName="index_p" (ionChange)="onChange($event)">
+                                <div *ngFor="let tupla of productos; let i = index">
+                                    <ion-option value="{{i}}" >{{tupla.nombre}}
+                                    </ion-option>
+                                   
+                                  </div>
+                            </ion-select>
+                            
+                      </ion-item>
+                      <ion-item *ngIf="myForm.get('index_p').errors && myForm.get('index_p').dirty">
+                          <p color="danger" ion-text *ngIf="myForm.get('index_p').hasError('required')">Field is required</p>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label color="primary" icon-start *ngIf="disponibilidad_p.val == -1"><ion-icon name="logo-buffer"></ion-icon>En existencia: </ion-label>
+                            <ion-label color="primary" icon-start *ngIf="disponibilidad_p.val > 0"><ion-icon name="logo-buffer"></ion-icon>En existencia: {{disponibilidad_p.val}}</ion-label>
+                            <ion-label color="danger" icon-start *ngIf="disponibilidad_p.val == 0"><ion-icon name="logo-buffer"></ion-icon>Producto agotado!!</ion-label>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label color="primary" icon-start *ngIf="disponibilidad_p.precio != -1"><ion-icon name="logo-usd"></ion-icon>Precio unitario: $ {{disponibilidad_p.precio}} MXN</ion-label>
+                            <ion-label color="primary" icon-start *ngIf="disponibilidad_p.precio == -1"><ion-icon name="logo-usd"></ion-icon>Precio unitario: </ion-label>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label stack color = "primary" icon-start><ion-icon name="information-circle"></ion-icon>Cantidad:</ion-label>
+                          <ion-input id="descripcion" type="number" required="true" clearInput=true value="1" formControlName="cantidad"  name ="descripcion"></ion-input>
+                        </ion-item>
+                        <ion-item *ngIf="myForm.get('cantidad').errors && myForm.get('cantidad').dirty">
+                            <p color="danger" ion-text *ngIf="myForm.get('cantidad').hasError('required')">Field is required</p>
+                          </ion-item>
+                          <ion-item *ngIf="myForm.get('cantidad').errors && myForm.get('cantidad').dirty">
+                              <p color="danger" ion-text *ngIf="myForm.get('cantidad').hasError('pattern')">Elejir minimo 1 </p>
+                            </ion-item>
+                                      
+                    </ion-list><br>
+                    <div padding>
+                        <button fill="outline" color="secondary" ion-button block icon-start type="submit" [disabled]="myForm.invalid">
+                            <ion-icon name="cart">   </ion-icon>
+                                Añadir
+                        </button>
+                        
+                      </div>
+                  </form>
+                </ion-card>
+                
+                  <ion-card>
+                      <ion-div>
+                    
+                          <h2 align="center"><strong>Total a pagar: ${{ ticket.total}}</strong></h2>
+                        
+                        <ion-item>
+                          
+                          <ion-label  icon-start color="primary"><ion-icon name="logo-usd"></ion-icon>: </ion-label>
+                          <ion-input  type="number" required="true" clearInput=true  [(ngModel)]="ticket.pago" placeholder="Ingresar dinero a pagar"></ion-input>
+      
+                        </ion-item>
+                        <ion-item>
+                          
+                          <ion-label  icon-start color="primary" ><ion-icon name="cash"></ion-icon>Cambio: $ {{ticket.cambio}} MXN</ion-label>
+                      </ion-item>
+                        <button fill="outline" size="large" color="secondary"  ion-button  icon-start (click)="pagar()" [disabled]="disable_pago">
+                            <ion-icon name="logo-usd"></ion-icon>
+                                Pagar
+                        </button>
+                        <button  size="large" ion-button  icon-start (click)="cancelarCompra()" color="danger" [disabled]="disable_cancelar" fill="outline">
+                          <ion-icon name="trash"></ion-icon>
+                                Cancelar
+                        </button>
+                        
+                        
+                      </ion-div>
+                  </ion-card>
+                    
+  
+  
+                  
+           
+              
+                
+          </ion-col>
+         
+  
+          <ion-col>
+            <ion-card color="light">
+                <p align="center"><strong>TICKET DE COMPRA</strong></p>
+                <p align="left">{{ ticket.fecha }}</p>
+                <ion-row>
+                  <ion-col>
+                     <p><strong> Cantidad</strong></p>
+                  </ion-col>
+                  <ion-col>
+                    <p><strong> Producto</strong></p>
+                  </ion-col>
+                  <ion-col>
+                    <p><strong> Subtotal</strong></p>
+                  </ion-col>
+                  <ion-col>
+                      
+                    </ion-col>
+                </ion-row>
+              <ion-div *ngIf="ticket.activo==1" class="colorb">
+                 
+                  <ion-row *ngFor="let tupla of ticket.productos; let i = index">
+                    <ion-col>
+                      <p>X{{ tupla.cantidad }}</p>
+                  </ion-col>
+                  <ion-col>
+                     <p>{{ tupla.nombre}}</p>
+                  </ion-col>
+                  <ion-col>
+                     <p> {{ tupla.subtotal }}</p>
+                  </ion-col>
+                  <button ion-button clear icon-start (click)="quitar(i)"><ion-icon name="close">Quitar</ion-icon></button>
+                  
+                    </ion-row >
+                    <ion-row >
+                        <ion-col>
+                          
+                      </ion-col>
+                      <ion-col>
+                         
+                      </ion-col>
+                      <ion-col>
+                         <h2><strong>$Total: {{ ticket.total }}</strong></h2>
+                      </ion-col>
+                      <ion-col>
+                         
+                        </ion-col>
+                        </ion-row >
+  
+              </ion-div>
+            </ion-card>
+              
+              
+                
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+       
+   </ion-content>
+        
+    

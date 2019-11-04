@@ -32,27 +32,27 @@ export class AsistenciaPage {
   asist() {
 
     let invalido= this.alerta.create({
-      title: 'Cliente inexistente',
-      message: 'No se ha encontrado registro alguno',
-      buttons: ['Ok']     
+      title: 'ERROR',
+      message: 'Cliente inexistente',
+      buttons: ['OK']     
     });
 
     let inactivo= this.alerta.create({
-      title: 'Cliente inactivo',
-      message: 'No cuentas con un paquete',
-      buttons: ['Ok']     
+      title: 'ERROR',
+      message: 'Cliente inactivo',
+      buttons: ['OK']     
     });
 
     let paquete= this.alerta.create({
-      title: 'Sin pagos',
-      message: 'No se ha comprado un paquete',
-      buttons: ['Ok']     
+      title: 'ERROR',
+      message: 'Cliente no ha comprado un paquete',
+      buttons: ['OK']     
     });
 
     let exito= this.alerta.create({
-      title: 'Acceso permitido',
+      title: 'EXITO',
       message: this.nota,
-      buttons: ['Ok']     
+      buttons: ['OK']     
     });
     
     let funcion = { 

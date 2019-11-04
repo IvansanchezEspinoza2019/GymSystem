@@ -57,14 +57,14 @@ export class AllEmployeesPage {
    //alertas
    success = this.alert.create({
     title: 'OPERACION EXITOSA',
-    message: 'LA OPERACION SE REALIZO CON EXITO',
-    buttons: ['ACEPTAR']
+    message: 'La operación se realizó con éxito!!',
+    buttons: ['Aceptar']
     
   });
   op_cancel = this.alert.create({
     title: 'ERROR',
-    message: 'HUBO PROBLEMAS AL REALIZAR LA OPERACION',
-    buttons: ['ACEPTAR']
+    message: 'Hubo problemas al realizar la operación!!',
+    buttons: ['Aceptar']
     
   });
 
@@ -181,7 +181,7 @@ export class AllEmployeesPage {
   eliminar(empleado){
     let elim = this.alert.create({
       title: 'ADVERTENCIA',
-      message: '¿SEGURO QUE DESEA ELIMINARLO?',
+      message: '¿Seguro que desea eliminarlo?',
       buttons: [
         {
           text: 'Cancelar',
@@ -221,7 +221,7 @@ export class AllEmployeesPage {
   activarEmpleado(empleado){
     let act = this.alert.create({
       title: 'ADVERTENCIA',
-      message: '¿ACTIVAR EMPLEADO?',
+      message: '¿Activar empleado?',
       buttons: [
         {
           text: 'Cancelar',

@@ -227,14 +227,14 @@ export class ModifEmpleadoPage {
   saveData(){
     let miAlerta = this.alert.create({
       title: 'OPERACION CANCELADA',
-      message: 'CAMPO CATEGORIA VACIO!',
-      buttons: ['ACEPTAR']
+      message: 'Campo categoria vacio!!',
+      buttons: ['Aceptar']
       
     });
     let alerta = this.alert.create({
       title: 'OPERACION CANCELADA',
-      message: 'NO SE HA MODIFICADO NADA!',
-      buttons: ['ACEPTAR']
+      message: 'No se han modificado datos!!',
+      buttons: ['Aceptar']
       
     });
     //console.log("1");
@@ -261,31 +261,24 @@ export class ModifEmpleadoPage {
   }
 
   enviarForm(){
-    let form_invalido = this.alert.create({
-      title: 'OPERACION CANCELADA',
-      message: 'YA SE ENVIARON LOS DATOS MODIFICADOS!',
-      buttons: ['ACEPTAR']
-      
-    });
-
   
         //alertas
       let miAlerta = this.alert.create({
         title: 'OPERACION CANCELADA',
-        message: 'LA CONTRASEÑA NO COINCIDE!',
-        buttons: ['ACEPTAR']
+        message: 'La contraseña no coincide!!',
+        buttons: ['Aceptar']
         
       });
       let idRep = this.alert.create({
         title: 'OPERACION CANCELADA',
-        message: 'YA EXISTE ESE USUARIO!',    
-        buttons: ['ACEPTAR']
+        message: 'Ya existe ese usuario!!',    
+        buttons: ['Aceptar']
         
       });
       let success = this.alert.create({
         title: 'OPERACION EXITOSA',
-        message: 'AGREGADO CORRECTAMENTE',
-        buttons: ['ACEPTAR']
+        message: 'Agregado correctamente!!',
+        buttons: ['Aceptar']
         
       });
       
@@ -342,8 +335,8 @@ ver(){
     // alerta de error de archivo
     let error_file = this.alert.create({
       title: 'ERROR',
-      message: 'EL ARCHIVO NO SE ENCUANTRA EN LA CARPETA DEL SERVIDOR',
-      buttons: ['ACEPTAR']
+      message: 'El archivo no se encuentra en la carpeta del servidor!!',
+      buttons: ['Aceptar']
       
     });
     

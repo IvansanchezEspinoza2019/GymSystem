@@ -7,16 +7,16 @@
 <ion-content padding>
   <ion-card>
     
-    <div text-center>
+    <div text-center color="primary">
+      <ion-label stack> <strong> AGREGAR PAQUETE </strong> </ion-label>
       <br>
-      <strong>AGREGAR PAQUETE</strong>
     </div>
 
     <form [formGroup]="myForm"  (ngSubmit)="pack()" novalidate>
       <ion-list>
 
         <ion-item>
-          <ion-label stack color = "primary">Nombre: </ion-label>
+          <ion-label stack color = "primary"> <ion-icon name="walk"></ion-icon> &nbsp; Nombre: </ion-label>
           <ion-input id="nombre" name="nombre" formControlName="nombre" type="text"></ion-input>
         </ion-item>
         <ion-item *ngIf="myForm.get('nombre').errors && myForm.get('nombre').dirty">
@@ -24,7 +24,7 @@
         </ion-item>
 
         <ion-item>
-          <ion-label stack color = "primary">Descripcion: </ion-label>
+          <ion-label stack color = "primary"> <ion-icon name="clipboard"></ion-icon> &nbsp; Descripcion: </ion-label>
           <ion-input id="descripcion" name="descripcion" formControlName="descripcion" type="text"></ion-input>
         </ion-item>
         <ion-item *ngIf="myForm.get('descripcion').errors && myForm.get('descripcion').dirty">
@@ -32,7 +32,7 @@
         </ion-item>
 
         <ion-item>
-          <ion-label stack color = "primary">Precio: </ion-label>
+          <ion-label stack color = "primary"> <ion-icon name="cash"></ion-icon> &nbsp; Precio: </ion-label>
           <ion-input id="precio" name="precio" formControlName="precio" type="text"></ion-input>
         </ion-item>
         <ion-item *ngIf="myForm.get('precio').errors && myForm.get('precio').dirty">
@@ -41,7 +41,7 @@
         </ion-item>
 
         <ion-item>
-          <ion-label stack color = "primary">Duracion: </ion-label>
+          <ion-label stack color = "primary"><ion-icon name="calendar"></ion-icon> &nbsp; Duración: </ion-label>
           <ion-input id="duracion" name="duracion" formControlName="duracion" type="text"></ion-input>
         </ion-item>
         <ion-item *ngIf="myForm.get('duracion').errors && myForm.get('duracion').dirty">
