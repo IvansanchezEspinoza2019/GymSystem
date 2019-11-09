@@ -155,7 +155,7 @@ disponibilid_producto_actual(index: number){
  
   if(this.verifExistensProduct(producto.id_producto,cantidad,sub_total_parcial)==false){  // funcion que verifica ya existe el producto en el ticket y si no existe..
     console.log("no existe el producto");
-    this.ticket.productos.push({'index':index,'id_producto': producto.id_producto,'nombre': producto.nombre,'cantidad': cantidad,'subtotal': sub_total_parcial}); // lo agrega a la compra
+    this.ticket.productos.push({'index':index,'id_producto': producto.id_producto,'nombre': producto.nombre,'cantidad': cantidad, 'subtotal': sub_total_parcial, 'p_c': producto.precio_entrada,'p_v': producto.precio_salida}); // lo agrega a la compra
   }
   else{
     console.log("si existe el producto");
@@ -287,5 +287,19 @@ disponibilid_producto_actual(index: number){
 
       this.http.post(this.apiUrl,JSON.stringify(this.ticket))                                                 //envia los datos
     .subscribe(res=>{console.log(res);exito.present();this.lipiarTicket();this.productos=res['productos']; },error=>{console.log(error);error_op.present();});
+   }
+   /// FIN FUNCION PAGAR ////////
+   onPagoChange(){
+     console.log("hola pinche puta");
+     if( this.ticket.total == 0){
+      this.ticket.cambio=0.0;
+    }
+    else if(this.ticket.pago < this.ticket.total){
+      this.ticket.cambio=0.0;
+    }
+    else{
+      this.ticket.cambio=this.ticket.pago -this.ticket.total;
+    }
+    
    }
 }

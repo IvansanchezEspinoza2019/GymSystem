@@ -51,6 +51,7 @@ export class AllcustomersPage {
 
     // obtiene los datos de las llaves foraneas, y el nombre por sepa
     getElements(cliente){
+      console.log(cliente);
       this.datos_extra={
         'id_cliente': cliente['id_cliente'],
         'id_access': cliente['id_access'],
@@ -60,7 +61,7 @@ export class AllcustomersPage {
        }
       this.http.post(this.apiUrl, JSON.stringify(this.datos_extra))
       .subscribe(res=>{
-        //console.log(res); 
+        console.log(res); 
         this.datos_extra['user']=res[0]['user'];
         this.datos_extra['colonia']=res[1]['user'];
         this.datos_extra['cp']=res[2]['user'];

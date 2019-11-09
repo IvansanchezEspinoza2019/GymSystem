@@ -4,23 +4,14 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule } from '@angular/common/http';
-
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { CustomerPage } from '../pages/customer/customer';
-
 import { AdminPage } from '../pages/admin/admin';
 import { AddClientePage } from '../pages/add-cliente/add-cliente';
 import { InfClientePage } from '../pages/inf-cliente/inf-cliente';
 import { AllcustomersPage } from '../pages/allcustomers/allcustomers';
 import { ModifclientePage } from '../pages/modifcliente/modifcliente';
-
-
-//import { AddClientePage } from '../pages/add-cliente/add-cliente';
-//import { ListcustomersPage } from '../pages/listcustomers/listcustomers';
-//import { InfoClientePage } from '../pages/info-cliente/info-cliente';
-//import { PayPage } from '../pages/pay/pay';
 import { ListPayPage } from '../pages/list-pay/list-pay';
 import { RecibePayPage } from '../pages/recibe-pay/recibe-pay';
 import { AddAparatosPage } from '../pages/add-aparatos/add-aparatos';
@@ -52,13 +43,13 @@ import { ModifProductPage } from '../pages/modif-product/modif-product';
 import { AllProductsPage } from '../pages/all-products/all-products';
 import { VentaPage } from '../pages/venta/venta';
 import { AdminProfilePage } from '../pages/admin-profile/admin-profile';
+import { ProductoDetailsPage } from '../pages/producto-details/producto-details';
 
 
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     LoginPage,
     CustomerPage,
     AdminPage,
@@ -96,7 +87,7 @@ import { AdminProfilePage } from '../pages/admin-profile/admin-profile';
     AllProductsPage,
     VentaPage,
     AdminProfilePage,
-    //AddClientePage,
+    ProductoDetailsPage
     
   ],
   
@@ -110,7 +101,6 @@ import { AdminProfilePage } from '../pages/admin-profile/admin-profile';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     LoginPage,
     CustomerPage,
     AdminPage,
@@ -148,7 +138,8 @@ import { AdminProfilePage } from '../pages/admin-profile/admin-profile';
     AllProductsPage,
     VentaPage,
     AdminProfilePage,
-    AddClientePage
+    AddClientePage,
+    ProductoDetailsPage
   ],
   providers: [
     StatusBar,

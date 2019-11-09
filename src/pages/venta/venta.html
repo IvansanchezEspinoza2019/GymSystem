@@ -71,7 +71,7 @@
                         <ion-item>
                           
                           <ion-label  icon-start color="primary"><ion-icon name="logo-usd"></ion-icon>: </ion-label>
-                          <ion-input  type="number" required="true" clearInput=true  [(ngModel)]="ticket.pago" placeholder="Ingresar dinero a pagar"></ion-input>
+                          <ion-input  type="number" required="true" clearInput=true  [(ngModel)]="ticket.pago" placeholder="Ingresar dinero a pagar" (ionChange)="onPagoChange()"></ion-input>
       
                         </ion-item>
                         <ion-item>

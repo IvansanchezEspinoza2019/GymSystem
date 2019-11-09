@@ -186,7 +186,7 @@ export class ReportesPage {
    var docDefinition = {
      content: [
        {text: 'GymSystem ', style: 'subheader', alignment: 'left', margin: [0,10,0,20]},
-       {text: 'Reporte de asistencias de los últimos '+dias+' ', style: 'header', alignment: 'center', margin: [0,20,0,20]},
+       {text: 'Reporte de asistencias de los últimos '+dias+' dias', style: 'header', alignment: 'center', margin: [0,20,0,20]},
        {text: new Date().toString(), alignment: 'right',margin: [0,20,0,20]},
        {
          layout: 'lightHorizontalLines', // optional
@@ -214,7 +214,106 @@ export class ReportesPage {
   }
    //////////////////////// FIN REPORTE ASISTENCIAS    /////////////////////////////
 
-///////////////////////////////////MENU////////////////////
+   //////////////////////// REPORTE VENTAS   ///////////////////////////////
+
+   getVentas(dias){
+    var sourceData =[];
+    let funcion={
+      'funcion': 'getReporteVenta',
+      'dias': dias
+    }
+    
+    this.http.post(this.apiUrl,JSON.stringify(funcion))
+    .subscribe(res=>{console.log(res);sourceData=res['ventas']; console.log(sourceData); this.createPdfVenta(sourceData,dias)},error=>{console.log(error)});  //obtiene los registros de la base de datos
+    
+    this.presentLoading();
+   }
+
+
+   createPdfVenta(sourceData, dias){
+
+    var bodyData=[];
+    let fecha: string="inicio";
+    let total: number=0.0;
+    let ganancia: number=0.0;
+    let temporal_total: number=0.0;
+    let temporal_ganancia: number=0.0;
+
+    // crea el encabezado de las columnas
+    var dataRow1 = [];
+    dataRow1.push({ text: 'Fecha [YY/MM/DD]', bold: true });
+    dataRow1.push({ text: 'Producto [id]', bold: true });
+    dataRow1.push({ text: 'Cantidad', bold: true });
+    dataRow1.push({ text: 'Precio Compra', bold: true });
+    dataRow1.push({ text: 'Precio Venta', bold: true });
+    dataRow1.push({ text: 'Total', bold: true });
+    dataRow1.push({ text: 'Ganancia', bold: true });
+    bodyData.push(dataRow1);
+
+    fecha = "inicio";
+   
+
+    // recoore la lista 
+    sourceData.forEach(function(sourceRow) {
+      var dataRow = [];
+      if(sourceRow.fecha!=fecha){
+        dataRow.push({text: '[ ' + sourceRow.fecha +' ]', bold: true});
+        fecha = sourceRow.fecha;
+       }
+       else{
+        dataRow.push('');
+       }
+       dataRow.push(sourceRow.nombre +  ' ['+sourceRow.id_producto +']');
+       dataRow.push(sourceRow.cantidad);
+       dataRow.push('$'+ sourceRow.p_c);
+       dataRow.push('$'+sourceRow.p_v);
+
+       temporal_total = parseFloat(sourceRow.p_v) * parseFloat(sourceRow.cantidad);
+       dataRow.push('$'+ temporal_total.toString());
+
+       temporal_ganancia = temporal_total-(parseFloat(sourceRow.cantidad) * parseFloat(sourceRow.p_c));
+       dataRow.push('$'+temporal_ganancia.toString());
+
+       total = total +temporal_total;
+       ganancia = ganancia + temporal_ganancia;
+
+       bodyData.push(dataRow)
+      
+    });
+  var docDefinition = {
+    content: [
+      {text: 'GymSystem ', style: 'subheader', alignment: 'left', margin: [0,10,0,20]},
+      {text: 'Reporte de ventas de los últimos '+dias+' dias', style: 'header', alignment: 'center', margin: [0,20,0,20]},
+      {text: new Date().toString(), alignment: 'right',margin: [0,20,0,20]},
+      {
+        layout: 'lightHorizontalLines', // optional
+        table: {
+          headerRows: 1,
+          body: bodyData
+        }
+      },
+      {text: "Total Vendido:  $"+total.toString(), style: 'subheader',alignment: 'right',margin: [0,50,0,5]},
+      {text: "Ganancia Total:  $"+ganancia.toString(), style: 'subheader',alignment: 'right',margin: [0,5,0,5]}
+      
+    ],
+    styles:{
+      header:{
+        fontSize: 20,
+        bold: true,
+        width: '50%'
+      },
+      subheader:{
+        fontSize: 14,
+        bold: true
+      }
+    }
+  };
+   this.pdf = pdfMake.createPdf(docDefinition);
+   this.dowloadPdf("Reporte_ventas.pdf");
+   }
+   ////////////////////////////////// FIN REPORTE VENTAS  ///////////////////////
+
+///////////////////////////////////     MENU          ////////////////////
   presentActionSheet(tipo) {
   const action = this.action.create({
     title: 'Options',
@@ -230,6 +329,9 @@ export class ReportesPage {
           else if(tipo == '1'){ // tipo 1 = asistencia
             this.getAsistencias("7");
           }
+          else if(tipo =='2'){
+            this.getVentas("7");
+          }
         }
       },
       {
@@ -243,6 +345,9 @@ export class ReportesPage {
           else if(tipo == '1'){ // tipo 1 = asistencia
             this.getAsistencias("15");
           }
+          else if(tipo =='2'){
+            this.getVentas("15");
+          }
         }
       },
       {
@@ -255,6 +360,9 @@ export class ReportesPage {
           }
           else if(tipo == '1'){ // tipo 1 = asistencia
             this.getAsistencias("30");
+          }
+          else if(tipo =='2'){
+            this.getVentas("30");
           }
         }
       },
@@ -272,6 +380,11 @@ export class ReportesPage {
             //this.getAsistencias("15");
             this.hideRango=false;
             this.tipo_reporte='1';
+          }
+          else if(tipo == '2'){ // tipo 2 = ventas
+            //this.getAsistencias("15");
+            this.hideRango=false;
+            this.tipo_reporte='2';
           }
         }
       },{
@@ -316,6 +429,9 @@ verificarFecha(){
  else if(this.tipo_reporte=='1'){  ///tipo asistencias
     this.getAsistenciasRange();
  }
+ else if(this.tipo_reporte=='2'){  ///tipo ventas
+  this.getVentasRange();
+}
  
 
 }
@@ -427,7 +543,7 @@ var bodyData=[];
 ////////////////////// FIN RANGO PAGOS ////////////////////////
 
 
-///////////////////  RANGO ASISTENCIAS  ///////
+///////////////////  RANGO ASISTENCIAS  ///////////////////////////////
 getAsistenciasRange(){
   this.presentLoading();
   let error = this.alert.create({
@@ -512,4 +628,116 @@ getAsistenciasRange(){
     this.pdf = pdfMake.createPdf(docDefinition);
     this.dowloadPdf("Reporte_asistencias"+this.fecha['inicio']+'-'+this.fecha['fin']+".pdf");
   }
+
+
+  ///////////////////////////////// FIN RANGO ASISTENCIAS //////////////////////////////
+  ////////////////////////////////  RANGO VENTAS  ///////////////////////////////////
+getVentasRange(){
+  this.presentLoading();
+  let error = this.alert.create({
+    title: 'OPERACION CANCELADA',
+    message: 'NO SE ENCONTRARON REGISTROS ENTRE ESAS FECHAS',
+    buttons: ['ACEPTAR']
+    
+  });
+  
+  var sourceData =[];
+    
+  this.fecha['funcion']='getReporteVentasRange';
+  this.http.post(this.apiUrl,JSON.stringify(this.fecha))
+  .subscribe(res=>{
+    console.log(res);
+    if(res=="null"){
+        error.present();
+    }else{
+      sourceData=res['ventas'];
+      console.log(sourceData); 
+      this.createPdfVentaRange(sourceData)}    
+    },error=>{console.log(error)});  //obtiene los registros de la base de datos
+  }
+
+  createPdfVentaRange(sourceData){
+
+    var bodyData=[];
+    let fecha: string="inicio";
+    let total: number=0.0;
+    let ganancia: number=0.0;
+    let temporal_total: number=0.0;
+    let temporal_ganancia: number=0.0;
+
+    // crea el encabezado de las columnas
+    var dataRow1 = [];
+    dataRow1.push({ text: 'Fecha [YY/MM/DD]', bold: true });
+    dataRow1.push({ text: 'Producto [id]', bold: true });
+    dataRow1.push({ text: 'Cantidad', bold: true });
+    dataRow1.push({ text: 'Precio Compra', bold: true });
+    dataRow1.push({ text: 'Precio Venta', bold: true });
+    dataRow1.push({ text: 'Total', bold: true });
+    dataRow1.push({ text: 'Ganancia', bold: true });
+    bodyData.push(dataRow1);
+
+    fecha = "inicio";
+   
+
+    // recoore la lista 
+    sourceData.forEach(function(sourceRow) {
+      var dataRow = [];
+      if(sourceRow.fecha!=fecha){
+        dataRow.push({text: '[ ' + sourceRow.fecha +' ]', bold: true});
+        fecha = sourceRow.fecha;
+       }
+       else{
+        dataRow.push('');
+       }
+       dataRow.push(sourceRow.nombre +  ' ['+sourceRow.id_producto +']');
+       dataRow.push(sourceRow.cantidad);
+       dataRow.push('$'+ sourceRow.p_c);
+       dataRow.push('$'+sourceRow.p_v);
+
+       temporal_total = parseFloat(sourceRow.p_v) * parseFloat(sourceRow.cantidad);
+       dataRow.push('$'+ temporal_total.toString());
+
+       temporal_ganancia = temporal_total-(parseFloat(sourceRow.cantidad) * parseFloat(sourceRow.p_c));
+       dataRow.push('$'+temporal_ganancia.toString());
+
+       total = total +temporal_total;
+       ganancia = ganancia + temporal_ganancia;
+
+       bodyData.push(dataRow)
+      
+    });
+  var docDefinition = {
+    content: [
+      {text: 'GymSystem ', style: 'subheader', alignment: 'left', margin: [0,10,0,20]},
+      {text: 'Reporte de ventas de ['+this.fecha['inicio']+']-['+this.fecha['fin']+']', style: 'header', alignment: 'center', margin: [0,20,0,20]},
+      {text: new Date().toString(), alignment: 'right',margin: [0,20,0,20]},
+      {
+        layout: 'lightHorizontalLines', // optional
+        table: {
+          headerRows: 1,
+          body: bodyData
+        }
+      },
+      {text: "Total Vendido:  $"+total.toString(), style: 'subheader',alignment: 'right',margin: [0,50,0,5]},
+      {text: "Ganancia Total:  $"+ganancia.toString(), style: 'subheader',alignment: 'right',margin: [0,5,0,5]}
+      
+    ],
+    styles:{
+      header:{
+        fontSize: 20,
+        bold: true,
+        width: '50%'
+      },
+      subheader:{
+        fontSize: 14,
+        bold: true
+      }
+    }
+  };
+   this.pdf = pdfMake.createPdf(docDefinition);
+   this.dowloadPdf("Reporte_ventas"+this.fecha['inicio']+'-'+this.fecha['fin']+".pdf");
+   }
+
+
+   ////////////////////////////// FIN REPORTE VENTAS  //////////////////////////////
 }
