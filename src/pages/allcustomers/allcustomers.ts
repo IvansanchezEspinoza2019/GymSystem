@@ -50,31 +50,7 @@ export class AllcustomersPage {
     }
 
     // obtiene los datos de las llaves foraneas, y el nombre por sepa
-    getElements(cliente){
-      console.log(cliente);
-      this.datos_extra={
-        'id_cliente': cliente['id_cliente'],
-        'id_access': cliente['id_access'],
-        'id_col': cliente['id_colonia'],
-        'id_cp': cliente['id_cp'],
-        'funcion': 'getForeignDataModif'
-       }
-      this.http.post(this.apiUrl, JSON.stringify(this.datos_extra))
-      .subscribe(res=>{
-        console.log(res); 
-        this.datos_extra['user']=res[0]['user'];
-        this.datos_extra['colonia']=res[1]['user'];
-        this.datos_extra['cp']=res[2]['user'];
-        this.datos_extra['password']=res[3]['user'];
-        this.datos_extra['nombre']=res[4]['user'];
-        this.datos_extra['apellido_p']=res[5]['user'];
-        this.datos_extra['apellido_m']=res[6]['user'];
-       // console.log(JSON.stringify(this.datos_extra));
-      }, error=>{
-        console.log(error);
-      }
-      );
-    }
+   
 
     // obtiene los registros de la base de datos
     actualizar(){
@@ -168,17 +144,8 @@ export class AllcustomersPage {
 
     // funcion de modificar cliente
     modificar(cliente){
-      cliente['colonia_str']=this.datos_extra['colonia'];
-      cliente['cp_str']=this.datos_extra['cp'];
-      cliente['user']=this.datos_extra['user'];
-      cliente['password']=this.datos_extra['password'];
-      cliente['nombre']=this.datos_extra['nombre'];
-      cliente['apellido_p']=this.datos_extra['apellido_p'];
-      cliente['apellido_m']=this.datos_extra['apellido_m'];
-      console.log(JSON.stringify(cliente));
-      
       this.navCtrl.push(this.modif, {cliente : cliente}); // envia los datos para modificarse
-      //this.actualizar();
+      
     }
 
     // funcion de eliminar cliente
@@ -204,7 +171,6 @@ export class AllcustomersPage {
               .subscribe(res =>{
                 console.log(res);
                 if(res=="exito"){
-                    //this.success.present();
                     this.actualizar(); // actualiza los datos
                 }
                 else{
@@ -244,9 +210,7 @@ export class AllcustomersPage {
               .subscribe(res =>{
                 console.log(res);
                 if(res=="exito"){
-                    //this.success.present();
                     this.actualizar();
-                    //this.presentLoading();
                 }
                 else{
                     this.op_cancel.present();
@@ -321,7 +285,6 @@ export class AllcustomersPage {
             handler: () => {
               console.log('activar clicked');
               this.activarCliente(cliente);
-              
             }
           },
           {
@@ -339,64 +302,21 @@ export class AllcustomersPage {
     // menu desplegable
     actionSheet(cliente){
       console.log("action sheet");
-      this.getElements(cliente);
       if(cliente.activo=='0'){ // si el cliente esta inactivo
         this.presentActionSheetInact(cliente);
       }
       else{ // si el cliente esta activo
         this.presentActionSheetAct(cliente);
       }
-      
-      //this.presentLoading();
-      //this.actualizar();   // actualiza los datos 
+
 
     }
     verFiltro(){
-      if(this.filtro.val==this.filtro_aux){
-          console.log("NO hay cambio");
-      }else{
-          this.presentLoading();
-          this.filtro_aux=this.filtro.val;
-          console.log("SI hay cambio");
-          this.initializeItems();     // funcion que inicializa la lista auxiliar segun el caso
+      if(this.filtro.val!=this.filtro_aux){
+        this.presentLoading();
+        this.filtro_aux=this.filtro.val;
+        this.initializeItems();     // funcion que inicializa la lista auxiliar segun el caso
       }
-      
-    }
-    // pasos para el fitro de busqueda
-   /*
-    pasos
-
-
-    1. comprobar si hay cambios de filtro
-    2. si lo hay, 
-      - inicializar lista auxiliar dependiendo del filtro
-      inicializar(){
-          getItems('0'){  // o el valor del filtro '1'
-           this.items = this.items.filter(cliente => {
-          //console.log(JSON.stringify(JSON.stringify(cliente.Nombre)));
-          return  cliente.Activo.includes('0');
-        });
-        }
-      }
-      -mostrar barra de loading
-      -
-      getItems(ev: any) {
-  
-      this.initializeItems(); // inicializa toda la lista dependiendo de que caso es, activo o no
-      console.log(ev.target.value);
-      let val = ev.target.value;
-      if(val!=''){
-         val = ev.target.value.toUpperCase();
-      }
-
-      this.items = this.items.filter(cliente => {
-          console.log(JSON.stringify(JSON.stringify(cliente.Nombre)));
-          return  cliente.Nombre.includes(val);
-        });
-      
-      console.log(JSON.stringify(this.clientes));
     }
     
-
-    */
   }

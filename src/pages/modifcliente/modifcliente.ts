@@ -50,8 +50,8 @@ export class ModifclientePage {
         calle:  [this.cliente['calle'], [Validators.required]],
         numero:  [this.cliente['numero_calle'], [Validators.required]],
         numeroint:  [this.cliente['numero_interior']],
-        colonia:  [this.cliente['colonia_str'], [Validators.required]],
-        cp:  [this.cliente['cp_str'], [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+        colonia:  [this.cliente['colonia'], [Validators.required]],
+        cp:  [this.cliente['codigo'], [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
         password: [this.cliente['password'], [Validators.required, Validators.minLength(5), Validators.maxLength(15)]],
         reppass: [this.cliente['password'],[Validators.required]],
         user: [this.cliente['user'],[Validators.required]]
@@ -71,8 +71,8 @@ export class ModifclientePage {
         "calle": this.cliente['calle'],
         "numero": this.cliente['numero_calle'],
         "numeroint": this.cliente['numero_interior'],
-        "colonia": this.cliente['colonia_str'],
-        "cp":this.cliente['cp_str'],
+        "colonia": this.cliente['colonia'],
+        "cp":this.cliente['codigo'],
         "password": this.cliente['password'],
         "reppass": this.cliente['password'],
         "user": this.cliente['user']

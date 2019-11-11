@@ -1155,7 +1155,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var InfClientePage = /** @class */ (function () {
     function InfClientePage(navCtrl, http, navParams) {
-        var _this = this;
         this.navCtrl = navCtrl;
         this.http = http;
         this.navParams = navParams;
@@ -1163,30 +1162,14 @@ var InfClientePage = /** @class */ (function () {
         this.cuenta = {};
         this.apiUrl = "http://gymdb/";
         this.cliente = this.navParams.get('cliente');
-        this.cuenta = {
-            'id_access': this.cliente['id_access'],
-            'id_col': this.cliente['id_colonia'],
-            'id_cp': this.cliente['id_cp'],
-            'funcion': 'getForeignData'
-        };
-        console.log('cliente');
-        this.http.post(this.apiUrl, JSON.stringify(this.cuenta))
-            .subscribe(function (res) {
-            console.log(res);
-            _this.cuenta['user'] = res[0]['user'];
-            _this.cuenta['colonia'] = res[1]['user'];
-            _this.cuenta['cp'] = res[2]['user'];
-            // console.log(JSON.stringify(this.cuenta));
-        }, function (error) {
-            console.log(error);
-        });
+        console.log(this.cliente);
     }
     InfClientePage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad InfClientePage');
     };
     InfClientePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-inf-cliente',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\inf-cliente\inf-cliente.html"*/'<!--\n  Generated template for the InfClientePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Informacion</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <ion-label color="secondary" align="center"><b>PERFIL</b></ion-label>\n  <img src="http://gymdb/imgs/customers/{{ cliente.foto }}"  width="300" height="300">\n  <ion-card-content>\n    <img >\n    <ion-label *ngIf="cliente.activo==\'1\'" align="center" color="primary"><b>ESTATUS: </b> ACTIVO</ion-label>\n    <ion-label *ngIf="cliente.activo==\'0\'" align="center" color="danger"><b>ESTATUS: </b> INACTIVO</ion-label>\n    <p><b>NOMBRE: </b>  {{ cliente.Nombre }}</p>\n    <p><b>ID: </b> {{ cliente.id_cliente }}</p>\n    <p><b>GENERO: </b> {{ cliente.genero }}</p>\n    <p><b>TELEFONO: </b> {{ cliente.telefono }}</p>\n    <ion-label color="secondary"><b>FORMATO: </b> YYYY-MM-DD</ion-label>\n    <p><b>FECHA NACIMIENTO: </b> {{ cliente.fecha_nacimiento }}</p>\n    <p><b>FECHA INGRESO: </b> {{ cliente.fecha_ingreso }}</p>\n    \n    <ion-label align="center" color="secondary"><b>DIRECCION</b></ion-label>\n    <p><b>CALLE</b> {{ cliente.calle }}</p>\n    <p><b>NUMERO: </b> {{ cliente.numero_calle }}</p>\n    <p *ngIf="cliente.numero_interior!=\'\'"><b>NUMERO INTERIOR </b> {{ cliente.numero_interior }}</p>\n    <p><b>COLONIA: </b> {{ cuenta.colonia }}</p>\n    <p><b>CP: </b> {{ cuenta.cp }}</p>\n\n    <ion-label align="center" color="secondary"><b>CUENTA</b></ion-label>\n    <p><b>USUARIO</b> {{ cuenta.user }}</p>\n\n  </ion-card-content>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\inf-cliente\inf-cliente.html"*/,
+            selector: 'page-inf-cliente',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\inf-cliente\inf-cliente.html"*/'<!--\n  Generated template for the InfClientePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Informacion</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <ion-label color="secondary" align="center"><b>PERFIL</b></ion-label>\n  <img src="http://gymdb/imgs/customers/{{ cliente.foto }}"  width="300" height="300">\n  <ion-card-content>\n    <img >\n    <ion-label *ngIf="cliente.activo==\'1\'" align="center" color="primary"><b>ESTATUS: </b> ACTIVO</ion-label>\n    <ion-label *ngIf="cliente.activo==\'0\'" align="center" color="danger"><b>ESTATUS: </b> INACTIVO</ion-label>\n    <p><b>NOMBRE: </b>  {{ cliente.Nombre }}</p>\n    <p><b>ID: </b> {{ cliente.id_cliente }}</p>\n    <p><b>GENERO: </b> {{ cliente.genero }}</p>\n    <p><b>TELEFONO: </b> {{ cliente.telefono }}</p>\n    <ion-label color="secondary"><b>FORMATO: </b> YYYY-MM-DD</ion-label>\n    <p><b>FECHA NACIMIENTO: </b> {{ cliente.fecha_nacimiento }}</p>\n    <p><b>FECHA INGRESO: </b> {{ cliente.fecha_ingreso }}</p>\n    \n    <ion-label align="center" color="secondary"><b>DIRECCION</b></ion-label>\n    <p><b>CALLE</b> {{ cliente.calle }}</p>\n    <p><b>NUMERO: </b> {{ cliente.numero_calle }}</p>\n    <p *ngIf="cliente.numero_interior!=\'\'"><b>NUMERO INTERIOR </b> {{ cliente.numero_interior }}</p>\n    <p><b>COLONIA: </b> {{ cliente.colonia }}</p>\n    <p><b>CP: </b> {{ cliente.codigo }}</p>\n\n    <ion-label align="center" color="secondary"><b>CUENTA</b></ion-label>\n    <p><b>USUARIO: </b> {{ cliente.user }}</p>\n    <p><b>CONTRASEÑA: </b> {{ cliente.password }}</p>\n\n  </ion-card-content>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\inf-cliente\inf-cliente.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
@@ -1261,8 +1244,8 @@ var ModifclientePage = /** @class */ (function () {
             calle: [this.cliente['calle'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
             numero: [this.cliente['numero_calle'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
             numeroint: [this.cliente['numero_interior']],
-            colonia: [this.cliente['colonia_str'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
-            cp: [this.cliente['cp_str'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern(/^-?(0|[1-9]\d*)?$/)]],
+            colonia: [this.cliente['colonia'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
+            cp: [this.cliente['codigo'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].pattern(/^-?(0|[1-9]\d*)?$/)]],
             password: [this.cliente['password'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].minLength(5), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].maxLength(15)]],
             reppass: [this.cliente['password'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]],
             user: [this.cliente['user'], [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["f" /* Validators */].required]]
@@ -1280,8 +1263,8 @@ var ModifclientePage = /** @class */ (function () {
             "calle": this.cliente['calle'],
             "numero": this.cliente['numero_calle'],
             "numeroint": this.cliente['numero_interior'],
-            "colonia": this.cliente['colonia_str'],
-            "cp": this.cliente['cp_str'],
+            "colonia": this.cliente['colonia'],
+            "cp": this.cliente['codigo'],
             "password": this.cliente['password'],
             "reppass": this.cliente['password'],
             "user": this.cliente['user']
@@ -4509,19 +4492,19 @@ var map = {
 		32
 	],
 	"../pages/all-employees/all-employees.module": [
-		323,
+		324,
 		31
 	],
 	"../pages/all-products/all-products.module": [
-		324,
+		325,
 		30
 	],
 	"../pages/allaparatos/allaparatos.module": [
-		325,
+		323,
 		29
 	],
 	"../pages/allcustomers/allcustomers.module": [
-		329,
+		331,
 		28
 	],
 	"../pages/asist-15/asist-15.module": [
@@ -4537,11 +4520,11 @@ var map = {
 		25
 	],
 	"../pages/asistencia-list/asistencia-list.module": [
-		330,
+		329,
 		24
 	],
 	"../pages/asistencia/asistencia.module": [
-		331,
+		330,
 		23
 	],
 	"../pages/customer-asist/customer-asist.module": [
@@ -4565,31 +4548,31 @@ var map = {
 		18
 	],
 	"../pages/inf-cliente/inf-cliente.module": [
-		337,
+		343,
 		17
 	],
 	"../pages/info-empleado/info-empleado.module": [
-		338,
+		337,
 		16
 	],
 	"../pages/list-pack/list-pack.module": [
-		339,
+		338,
 		15
 	],
 	"../pages/list-pay/list-pay.module": [
-		340,
+		339,
 		14
 	],
 	"../pages/login/login.module": [
-		341,
+		340,
 		13
 	],
 	"../pages/modif-empleado/modif-empleado.module": [
-		342,
+		341,
 		12
 	],
 	"../pages/modif-product/modif-product.module": [
-		343,
+		342,
 		11
 	],
 	"../pages/modifaparato/modifaparato.module": [
@@ -4597,23 +4580,23 @@ var map = {
 		10
 	],
 	"../pages/modifcliente/modifcliente.module": [
-		345,
+		349,
 		9
 	],
 	"../pages/modify-pack/modify-pack.module": [
-		346,
+		345,
 		8
 	],
 	"../pages/modify-pay/modify-pay.module": [
-		347,
+		346,
 		7
 	],
 	"../pages/pack-details/pack-details.module": [
-		348,
+		347,
 		6
 	],
 	"../pages/pack/pack.module": [
-		349,
+		348,
 		5
 	],
 	"../pages/pay/pay.module": [
@@ -4827,33 +4810,33 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/add-producto/add-producto.module#AddProductoPageModule', name: 'AddProductoPage', segment: 'add-producto', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/admin-profile/admin-profile.module#AdminProfilePageModule', name: 'AdminProfilePage', segment: 'admin-profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/admin/admin.module#AdminPageModule', name: 'AdminPage', segment: 'admin', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/allaparatos/allaparatos.module#AllaparatosPageModule', name: 'AllaparatosPage', segment: 'allaparatos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/all-employees/all-employees.module#AllEmployeesPageModule', name: 'AllEmployeesPage', segment: 'all-employees', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/all-products/all-products.module#AllProductsPageModule', name: 'AllProductsPage', segment: 'all-products', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/allaparatos/allaparatos.module#AllaparatosPageModule', name: 'AllaparatosPage', segment: 'allaparatos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/asist-15/asist-15.module#Asist_15PageModule', name: 'Asist_15Page', segment: 'asist-15', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/asist-30/asist-30.module#Asist_30PageModule', name: 'Asist_30Page', segment: 'asist-30', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/asist-7/asist-7.module#Asist_7PageModule', name: 'Asist_7Page', segment: 'asist-7', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/allcustomers/allcustomers.module#AllcustomersPageModule', name: 'AllcustomersPage', segment: 'allcustomers', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/asistencia-list/asistencia-list.module#AsistenciaListPageModule', name: 'AsistenciaListPage', segment: 'asistencia-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/asistencia/asistencia.module#AsistenciaPageModule', name: 'AsistenciaPage', segment: 'asistencia', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/allcustomers/allcustomers.module#AllcustomersPageModule', name: 'AllcustomersPage', segment: 'allcustomers', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/customer-asist/customer-asist.module#CustomerAsistPageModule', name: 'CustomerAsistPage', segment: 'customer-asist', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/customer-pay/customer-pay.module#CustomerPayPageModule', name: 'CustomerPayPage', segment: 'customer-pay', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/customer-recibe/customer-recibe.module#CustomerRecibePageModule', name: 'CustomerRecibePage', segment: 'customer-recibe', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/customer/customer.module#CustomerPageModule', name: 'CustomerPage', segment: 'customer', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/historial-aparatos/historial-aparatos.module#HistorialAparatosPageModule', name: 'HistorialAparatosPage', segment: 'historial-aparatos', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/inf-cliente/inf-cliente.module#InfClientePageModule', name: 'InfClientePage', segment: 'inf-cliente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/info-empleado/info-empleado.module#InfoEmpleadoPageModule', name: 'InfoEmpleadoPage', segment: 'info-empleado', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/list-pack/list-pack.module#ListPackPageModule', name: 'ListPackPage', segment: 'list-pack', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/list-pay/list-pay.module#ListPayPageModule', name: 'ListPayPage', segment: 'list-pay', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/modif-empleado/modif-empleado.module#ModifEmpleadoPageModule', name: 'ModifEmpleadoPage', segment: 'modif-empleado', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/modif-product/modif-product.module#ModifProductPageModule', name: 'ModifProductPage', segment: 'modif-product', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/inf-cliente/inf-cliente.module#InfClientePageModule', name: 'InfClientePage', segment: 'inf-cliente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/modifaparato/modifaparato.module#ModifaparatoPageModule', name: 'ModifaparatoPage', segment: 'modifaparato', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/modifcliente/modifcliente.module#ModifclientePageModule', name: 'ModifclientePage', segment: 'modifcliente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/modify-pack/modify-pack.module#ModifyPackPageModule', name: 'ModifyPackPage', segment: 'modify-pack', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/modify-pay/modify-pay.module#ModifyPayPageModule', name: 'ModifyPayPage', segment: 'modify-pay', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pack-details/pack-details.module#PackDetailsPageModule', name: 'PackDetailsPage', segment: 'pack-details', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pack/pack.module#PackPageModule', name: 'PackPage', segment: 'pack', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/modifcliente/modifcliente.module#ModifclientePageModule', name: 'ModifclientePage', segment: 'modifcliente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pay/pay.module#PayPageModule', name: 'PayPage', segment: 'pay', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/producto-details/producto-details.module#ProductoDetailsPageModule', name: 'ProductoDetailsPage', segment: 'producto-details', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/recibe-pay/recibe-pay.module#RecibePayPageModule', name: 'RecibePayPage', segment: 'recibe-pay', priority: 'low', defaultHistory: [] },
@@ -5154,31 +5137,6 @@ var AllcustomersPage = /** @class */ (function () {
         this.actualizar(); // funcion que obtiene los datos de la base de datos
     }
     // obtiene los datos de las llaves foraneas, y el nombre por sepa
-    AllcustomersPage.prototype.getElements = function (cliente) {
-        var _this = this;
-        console.log(cliente);
-        this.datos_extra = {
-            'id_cliente': cliente['id_cliente'],
-            'id_access': cliente['id_access'],
-            'id_col': cliente['id_colonia'],
-            'id_cp': cliente['id_cp'],
-            'funcion': 'getForeignDataModif'
-        };
-        this.http.post(this.apiUrl, JSON.stringify(this.datos_extra))
-            .subscribe(function (res) {
-            console.log(res);
-            _this.datos_extra['user'] = res[0]['user'];
-            _this.datos_extra['colonia'] = res[1]['user'];
-            _this.datos_extra['cp'] = res[2]['user'];
-            _this.datos_extra['password'] = res[3]['user'];
-            _this.datos_extra['nombre'] = res[4]['user'];
-            _this.datos_extra['apellido_p'] = res[5]['user'];
-            _this.datos_extra['apellido_m'] = res[6]['user'];
-            // console.log(JSON.stringify(this.datos_extra));
-        }, function (error) {
-            console.log(error);
-        });
-    };
     // obtiene los registros de la base de datos
     AllcustomersPage.prototype.actualizar = function () {
         var _this = this;
@@ -5245,16 +5203,7 @@ var AllcustomersPage = /** @class */ (function () {
     };
     // funcion de modificar cliente
     AllcustomersPage.prototype.modificar = function (cliente) {
-        cliente['colonia_str'] = this.datos_extra['colonia'];
-        cliente['cp_str'] = this.datos_extra['cp'];
-        cliente['user'] = this.datos_extra['user'];
-        cliente['password'] = this.datos_extra['password'];
-        cliente['nombre'] = this.datos_extra['nombre'];
-        cliente['apellido_p'] = this.datos_extra['apellido_p'];
-        cliente['apellido_m'] = this.datos_extra['apellido_m'];
-        console.log(JSON.stringify(cliente));
         this.navCtrl.push(this.modif, { cliente: cliente }); // envia los datos para modificarse
-        //this.actualizar();
     };
     // funcion de eliminar cliente
     AllcustomersPage.prototype.eliminar = function (cliente) {
@@ -5280,7 +5229,6 @@ var AllcustomersPage = /** @class */ (function () {
                             .subscribe(function (res) {
                             console.log(res);
                             if (res == "exito") {
-                                //this.success.present();
                                 _this.actualizar(); // actualiza los datos
                             }
                             else {
@@ -5319,9 +5267,7 @@ var AllcustomersPage = /** @class */ (function () {
                             .subscribe(function (res) {
                             console.log(res);
                             if (res == "exito") {
-                                //this.success.present();
                                 _this.actualizar();
-                                //this.presentLoading();
                             }
                             else {
                                 _this.op_cancel.present();
@@ -5411,24 +5357,17 @@ var AllcustomersPage = /** @class */ (function () {
     // menu desplegable
     AllcustomersPage.prototype.actionSheet = function (cliente) {
         console.log("action sheet");
-        this.getElements(cliente);
         if (cliente.activo == '0') {
             this.presentActionSheetInact(cliente);
         }
         else {
             this.presentActionSheetAct(cliente);
         }
-        //this.presentLoading();
-        //this.actualizar();   // actualiza los datos 
     };
     AllcustomersPage.prototype.verFiltro = function () {
-        if (this.filtro.val == this.filtro_aux) {
-            console.log("NO hay cambio");
-        }
-        else {
+        if (this.filtro.val != this.filtro_aux) {
             this.presentLoading();
             this.filtro_aux = this.filtro.val;
-            console.log("SI hay cambio");
             this.initializeItems(); // funcion que inicializa la lista auxiliar segun el caso
         }
     };
@@ -5436,10 +5375,14 @@ var AllcustomersPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'page-allcustomers',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\allcustomers\allcustomers.html"*/'<!--\n  Generated template for the AllcustomersPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header>\n    <ion-navbar color="primary">\n        <ion-title>Clientes</ion-title>\n      </ion-navbar>\n      \n  <ion-searchbar placeholder="buscar" (ionInput)="getItems($event)">\n\n  </ion-searchbar>\n</ion-header>\n\n\n<ion-content padding>\n  <ion-card>\n      <ion-grid>\n          <ion-row>\n            <ion-col>\n              <ion-item>\n                <ion-select [(ngModel)]="filtro.val">\n                  <ion-option value="0">Todos</ion-option>\n                  <ion-option value="1">Activos</ion-option>\n                  <ion-option value="2">Inactivos</ion-option>\n                </ion-select>\n              </ion-item>\n            </ion-col>\n            <ion-col>\n      \n            </ion-col>\n            <ion-col>\n      \n            </ion-col>\n            <ion-col>\n              <div text-right>\n                <button ion-button outline icon-start (click)="verFiltro()">\n                  <ion-icon name="search"> </ion-icon> Filtrar </button>\n              </div>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n  </ion-card>\n  \n     <ion-item *ngFor="let cliente of items" (click)="actionSheet(cliente)">\n          <ion-thumbnail item-start>\n            <img src="http://gymdb/imgs/customers/{{ cliente.foto }}">\n          </ion-thumbnail>\n          <h2 class="colorh2"><b>{{ cliente.Nombre }}</b></h2>\n          <p><b>ID: </b>{{ cliente.id_cliente }}</p>\n          \n          <p align="right" class="bluetext" *ngIf="cliente.activo==\'1\'" color="secondary">ACTIVO</p>\n          <p align="right" class="redtext" *ngIf="cliente.activo==\'0\'" color="danger">INACTIVO</p>\n\n        </ion-item>\n  \n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\allcustomers\allcustomers.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _f || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
     ], AllcustomersPage);
     return AllcustomersPage;
-    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=allcustomers.js.map

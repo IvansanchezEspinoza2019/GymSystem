@@ -24,32 +24,8 @@ export class InfClientePage {
     public navParams: NavParams) {
 
     this.cliente = this.navParams.get('cliente');
-
-    this.cuenta={
-        'id_access': this.cliente['id_access'],
-        'id_col': this.cliente['id_colonia'],
-        'id_cp': this.cliente['id_cp'],
-        'funcion': 'getForeignData'
-    }
-
-    console.log('cliente');
+    console.log(this.cliente);
     
-
-    this.http.post(this.apiUrl, JSON.stringify(this.cuenta))
-    .subscribe(res=>{
-      console.log(res); 
-
-
-      this.cuenta['user']=res[0]['user'];
-      this.cuenta['colonia']=res[1]['user'];
-      this.cuenta['cp']=res[2]['user'];
-
-     // console.log(JSON.stringify(this.cuenta));
-    }, error=>{
-      console.log(error);
-    }
-    );
-
   }
 
   ionViewDidLoad() {

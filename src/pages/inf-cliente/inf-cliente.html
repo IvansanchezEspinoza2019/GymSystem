@@ -29,11 +29,12 @@
     <p><b>CALLE</b> {{ cliente.calle }}</p>
     <p><b>NUMERO: </b> {{ cliente.numero_calle }}</p>
     <p *ngIf="cliente.numero_interior!=''"><b>NUMERO INTERIOR </b> {{ cliente.numero_interior }}</p>
-    <p><b>COLONIA: </b> {{ cuenta.colonia }}</p>
-    <p><b>CP: </b> {{ cuenta.cp }}</p>
+    <p><b>COLONIA: </b> {{ cliente.colonia }}</p>
+    <p><b>CP: </b> {{ cliente.codigo }}</p>
 
     <ion-label align="center" color="secondary"><b>CUENTA</b></ion-label>
-    <p><b>USUARIO</b> {{ cuenta.user }}</p>
+    <p><b>USUARIO: </b> {{ cliente.user }}</p>
+    <p><b>CONTRASEÑA: </b> {{ cliente.password }}</p>
 
   </ion-card-content>
 
