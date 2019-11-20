@@ -59,14 +59,14 @@ export class ModifyPayPage {
 
       this.myForm = this.cl.group({
         id_usuario: [this.pago['id_cliente'], [Validators.required]],
-        paquete: [this.pago['id_paquete'], [Validators.required]],
+        paquete: [this.pago['id'], [Validators.required]],
         modo:  [this.pago['modo'], [Validators.required]],
         monto:  [this.pago['monto'], [Validators.required]]
       });
 
       this.comprobar={
         "id_usuario": this.pago['id_cliente'],
-        "paquete": this.pago['id_paquete'],
+        "paquete": this.pago['id'],
         "modo": this.pago['modo'],
         "monto": this.pago['monto']
       }

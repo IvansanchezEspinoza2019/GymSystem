@@ -15,23 +15,22 @@
         <br>
         <ion-label color="primary" align="left">CLIENTE</ion-label>  
         <div text-left> <strong >ID: </strong> {{pago.id_cliente}} </div><br>
-        <div text-left> <strong >NOMBRE: </strong> {{info_cliente.nombre }} {{info_cliente.apellido_p }} 
-          {{info_cliente.apellido_m }}</div><br>
-          <div text-left> <strong >TELEFONO: </strong> {{info_cliente.telefono}}</div>
+        <div text-left> <strong >NOMBRE: </strong> {{pago.name}} </div><br>
+          <div text-left> <strong >TELEFONO: </strong> {{pago.telefono}}</div>
         <br>
-        <div text-left> <strong >CALLE: </strong> {{info_cliente.calle}}</div><br>
-        <div text-left> <strong >NUMERO: </strong> {{info_cliente.numero_calle}}</div><br>
-        <div text-left> <strong >NUMERO INTERIOR: </strong> {{info_cliente.numero_interior}}</div><br>
-        <div text-left> <strong >COLONIA: </strong> {{cuenta.colonia}}</div><br>
-        <div text-left> <strong >CP: </strong> {{cuenta.cp}}</div><br>
+        <div text-left> <strong >CALLE: </strong> {{pago.calle}}</div><br>
+        <div text-left> <strong >NUMERO: </strong> {{pago.numero_calle}}</div><br>
+        <div text-left> <strong >NUMERO INTERIOR: </strong> {{pago.numero_interior}}</div><br>
+        <div text-left> <strong >COLONIA: </strong> {{pago.nombre}}</div><br>
+        <div text-left> <strong >CP: </strong> {{pago.codigo}}</div><br>
         <br>
         <ion-label color="primary" align="left">PAGO</ion-label> 
-        <div text-left> <strong >CONCEPTO: </strong> {{info_paquete.nombre}} </div><br>
-        <div text-left> <strong >DESCRIPCION: </strong> {{info_paquete.descripcion}} </div>
+        <div text-left> <strong >CONCEPTO: </strong> {{pago.pack}} </div><br>
+        <div text-left> <strong >DESCRIPCION: </strong> {{pago.duracion}} </div>
         <ion-label color="danger" align="left"> <strong >VENCIMIENTO: </strong> {{pago.fecha_vencimiento}} </ion-label><br>
         <br><br>
         <ion-label color="primary" align="right">RESUMEN</ion-label> 
-        <div text-right> <strong >TOTAL A PAGAR: </strong> ${{info_paquete.precio}}.00 </div>
+        <div text-right> <strong >TOTAL A PAGAR: </strong> ${{pago.precio}}.00 </div>
         <ion-label color="danger" align="right">{{nota.info}}</ion-label> 
         <div text-right> <strong >MONTO PAGADO: </strong> ${{pago.monto}}.00 </div><br>
         
