@@ -16,7 +16,8 @@
     <p><b>ID ADMIN: </b>  {{ registro.id_admin }}</p>
     <p><b>NOMBRE EMPLEADO: </b> {{ registro.Nombre }}</p>
     <p><b>ID APARATO: </b> {{ registro.id_aparato }}</p>
-    <p><b>CATEGORIA: </b> {{ registro.nombre }}</p>
+    <p><b>NOMBRE: </b> {{ registro.nombre }}</p>
+    <p><b>DESCRIPCION: </b> {{ registro.descripcion }}</p>
     <p><b>FECHA (AÑO/MES/DIA): </b> {{ registro.fecha }}</p>
     <p *ngIf="registro.accion=='1'"><b>ACCION: </b> AGREGAR</p>
     <p *ngIf="registro.accion=='2'"><b>ACCION: </b> MODIFICAR</p>

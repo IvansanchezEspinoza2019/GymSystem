@@ -277,7 +277,7 @@ export class ModifEmpleadoPage {
       });
       let success = this.alert.create({
         title: 'OPERACION EXITOSA',
-        message: 'Agregado correctamente!!',
+        message: 'Modificado correctamente!!',
         buttons: ['Aceptar']
         
       });
