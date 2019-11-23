@@ -695,6 +695,53 @@ var AddEmpleadoPage = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminProfilePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(5);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AdminProfilePage = /** @class */ (function () {
+    function AdminProfilePage(navCtrl, http, navParams) {
+        this.navCtrl = navCtrl;
+        this.http = http;
+        this.navParams = navParams;
+        this.admin = {};
+        this.admin = this.navParams.get('admin');
+        console.log(this.admin);
+    }
+    AdminProfilePage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad AdminProfilePage');
+    };
+    AdminProfilePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-admin-profile',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\admin-profile\admin-profile.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Perfil administrador</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-grind>\n    <ion-row>\n      <ion-col>\n\n      </ion-col>\n      <ion-col>\n        <ion-card>\n            <img src="assets/img/admin.png" />\n          <ion-card-header color="primary">\n            <br> <b> INICIASTE SESIÓN COMO: </b> <br> <br>\n          </ion-card-header>\n          <ion-card-content>\n            <div text-left> <strong >NOMBRE: </strong> {{admin.nombre}} &nbsp; {{admin.apellido_p}} &nbsp; {{admin.apellido_m}} &nbsp; </div> <br> \n            <div text-left> <strong >ID EMPLEADO: </strong> {{admin.id_empleado}} </div> <br> \n            <div text-left> <strong >INGRESO: </strong> {{admin.fecha_ingreso}} </div> <br> \n\n            <ion-label color="secondary" align="left"><b>EMPLEO</b></ion-label> <br>\n            <div text-left> <strong >ID PUESTO: </strong> {{admin.id}} </div> <br>\n            <div text-left> <strong >PUESTO: </strong> {{admin.puesto}} </div> <br>\n            <div text-left> <strong >SUELDO: </strong> {{admin.sueldo}} </div> <br>\n\n            <ion-label color="secondary" align="left"><b>DATOS PERSONALES</b></ion-label> <br>\n            <div text-left> <strong >NACIMIENTO: </strong> {{admin.fecha_nacimiento}} </div> <br>\n            <div text-left> <strong >GENERO: </strong> {{admin.genero}} </div> <br> \n            \n            <ion-label color="secondary" align="left"><b>CONTACTO</b></ion-label> <br>\n            <div text-left> <strong >TELEFONO: </strong> {{admin.telefono}} </div> <br>\n          </ion-card-content>\n        </ion-card>\n      </ion-col>\n      <ion-col>\n\n      </ion-col>\n    </ion-row>\n  </ion-grind>\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\admin-profile\admin-profile.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
+    ], AdminProfilePage);
+    return AdminProfilePage;
+}());
+
+//# sourceMappingURL=admin-profile.js.map
+
+/***/ }),
+
+/***/ 115:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddProductoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
@@ -866,53 +913,6 @@ var AddProductoPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 115:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminProfilePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(5);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var AdminProfilePage = /** @class */ (function () {
-    function AdminProfilePage(navCtrl, http, navParams) {
-        this.navCtrl = navCtrl;
-        this.http = http;
-        this.navParams = navParams;
-        this.admin = {};
-        this.admin = this.navParams.get('admin');
-        console.log(this.admin);
-    }
-    AdminProfilePage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad AdminProfilePage');
-    };
-    AdminProfilePage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-admin-profile',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\admin-profile\admin-profile.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Perfil administrador</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-grind>\n    <ion-row>\n      <ion-col>\n\n      </ion-col>\n      <ion-col>\n        <ion-card>\n            <img src="assets/img/admin.png" />\n          <ion-card-header color="primary">\n            <br> <b> INICIASTE SESIÓN COMO: </b> <br> <br>\n          </ion-card-header>\n          <ion-card-content>\n            <div text-left> <strong >NOMBRE: </strong> {{admin.nombre}} &nbsp; {{admin.apellido_p}} &nbsp; {{admin.apellido_m}} &nbsp; </div> <br> \n            <div text-left> <strong >ID EMPLEADO: </strong> {{admin.id_empleado}} </div> <br> \n            <div text-left> <strong >INGRESO: </strong> {{admin.fecha_ingreso}} </div> <br> \n\n            <ion-label color="secondary" align="left"><b>EMPLEO</b></ion-label> <br>\n            <div text-left> <strong >ID PUESTO: </strong> {{admin.id}} </div> <br>\n            <div text-left> <strong >PUESTO: </strong> {{admin.puesto}} </div> <br>\n            <div text-left> <strong >SUELDO: </strong> {{admin.sueldo}} </div> <br>\n\n            <ion-label color="secondary" align="left"><b>DATOS PERSONALES</b></ion-label> <br>\n            <div text-left> <strong >NACIMIENTO: </strong> {{admin.fecha_nacimiento}} </div> <br>\n            <div text-left> <strong >GENERO: </strong> {{admin.genero}} </div> <br> \n            \n            <ion-label color="secondary" align="left"><b>CONTACTO</b></ion-label> <br>\n            <div text-left> <strong >TELEFONO: </strong> {{admin.telefono}} </div> <br>\n          </ion-card-content>\n        </ion-card>\n      </ion-col>\n      <ion-col>\n\n      </ion-col>\n    </ion-row>\n  </ion-grind>\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\admin-profile\admin-profile.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
-    ], AdminProfilePage);
-    return AdminProfilePage;
-}());
-
-//# sourceMappingURL=admin-profile.js.map
-
-/***/ }),
-
 /***/ 116:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -933,12 +933,12 @@ var AdminProfilePage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__asistencia_asistencia__ = __webpack_require__(128);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pay_pay__ = __webpack_require__(129);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__reportes_reportes__ = __webpack_require__(130);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__add_producto_add_producto__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__add_producto_add_producto__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__modif_product_modif_product__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__all_products_all_products__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__asistencia_list_asistencia_list__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__login_login__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__admin_profile_admin_profile__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__admin_profile_admin_profile__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__venta_venta__ = __webpack_require__(139);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2146,8 +2146,13 @@ var ModifyPackPage = /** @class */ (function () {
                 buttons: ['OK']
             });
             var obj = JSON.parse(JSON.stringify(this.myForm.value));
-            obj['funcion'] = 'addCambioPack';
             obj['id'] = this.pack['id'];
+            if (JSON.stringify(this.comprobar['nombre']) == JSON.stringify(this.myForm.value['nombre'].toUpperCase())) {
+                obj['funcion'] = 'addCambioPack';
+            }
+            if (JSON.stringify(this.comprobar['nombre']) != JSON.stringify(this.myForm.value['nombre'].toUpperCase())) {
+                obj['funcion'] = 'addCambioPack2';
+            }
             for (var i in obj) {
                 if (i == "duracion" || i == "precio" || i == "funcion") {
                 }
@@ -4427,11 +4432,11 @@ var map = {
 		35
 	],
 	"../pages/add-producto/add-producto.module": [
-		320,
+		321,
 		34
 	],
 	"../pages/admin-profile/admin-profile.module": [
-		321,
+		320,
 		33
 	],
 	"../pages/admin/admin.module": [
@@ -4443,19 +4448,19 @@ var map = {
 		31
 	],
 	"../pages/all-products/all-products.module": [
-		328,
+		324,
 		30
 	],
 	"../pages/allaparatos/allaparatos.module": [
-		324,
+		325,
 		29
 	],
 	"../pages/allcustomers/allcustomers.module": [
-		326,
+		328,
 		28
 	],
 	"../pages/asist-15/asist-15.module": [
-		325,
+		326,
 		27
 	],
 	"../pages/asist-30/asist-30.module": [
@@ -4463,19 +4468,19 @@ var map = {
 		26
 	],
 	"../pages/asist-7/asist-7.module": [
-		329,
+		330,
 		25
 	],
 	"../pages/asistencia-list/asistencia-list.module": [
-		330,
+		329,
 		24
 	],
 	"../pages/asistencia/asistencia.module": [
-		332,
+		331,
 		23
 	],
 	"../pages/customer-asist/customer-asist.module": [
-		331,
+		332,
 		22
 	],
 	"../pages/customer-pay/customer-pay.module": [
@@ -4491,35 +4496,35 @@ var map = {
 		19
 	],
 	"../pages/historial-aparatos/historial-aparatos.module": [
-		336,
+		346,
 		18
 	],
 	"../pages/inf-cliente/inf-cliente.module": [
-		337,
+		336,
 		17
 	],
 	"../pages/info-empleado/info-empleado.module": [
-		338,
+		337,
 		16
 	],
 	"../pages/list-pack/list-pack.module": [
-		339,
+		338,
 		15
 	],
 	"../pages/list-pay/list-pay.module": [
-		340,
+		339,
 		14
 	],
 	"../pages/login/login.module": [
-		341,
+		340,
 		13
 	],
 	"../pages/modif-empleado/modif-empleado.module": [
-		346,
+		341,
 		12
 	],
 	"../pages/modif-product/modif-product.module": [
-		342,
+		350,
 		11
 	],
 	"../pages/modifaparato/modifaparato.module": [
@@ -4527,11 +4532,11 @@ var map = {
 		10
 	],
 	"../pages/modifcliente/modifcliente.module": [
-		354,
+		344,
 		9
 	],
 	"../pages/modify-pack/modify-pack.module": [
-		344,
+		342,
 		8
 	],
 	"../pages/modify-pay/modify-pay.module": [
@@ -4543,7 +4548,7 @@ var map = {
 		6
 	],
 	"../pages/pack/pack.module": [
-		353,
+		348,
 		5
 	],
 	"../pages/pay/pay.module": [
@@ -4551,15 +4556,15 @@ var map = {
 		4
 	],
 	"../pages/producto-details/producto-details.module": [
-		348,
+		351,
 		3
 	],
 	"../pages/recibe-pay/recibe-pay.module": [
-		351,
+		354,
 		2
 	],
 	"../pages/reportes/reportes.module": [
-		350,
+		353,
 		1
 	],
 	"../pages/venta/venta.module": [
@@ -4642,11 +4647,11 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__pages_asist_15_asist_15__ = __webpack_require__(137);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__pages_asist_7_asist_7__ = __webpack_require__(136);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__pages_asist_30_asist_30__ = __webpack_require__(138);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pages_add_producto_add_producto__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pages_add_producto_add_producto__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__pages_modif_product_modif_product__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__pages_all_products_all_products__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__pages_venta_venta__ = __webpack_require__(139);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__pages_admin_profile_admin_profile__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__pages_admin_profile_admin_profile__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__pages_producto_details_producto_details__ = __webpack_require__(131);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -4754,41 +4759,41 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/add-aparatos/add-aparatos.module#AddAparatosPageModule', name: 'AddAparatosPage', segment: 'add-aparatos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/add-cliente/add-cliente.module#AddClientePageModule', name: 'AddClientePage', segment: 'add-cliente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/add-empleado/add-empleado.module#AddEmpleadoPageModule', name: 'AddEmpleadoPage', segment: 'add-empleado', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/add-producto/add-producto.module#AddProductoPageModule', name: 'AddProductoPage', segment: 'add-producto', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/admin-profile/admin-profile.module#AdminProfilePageModule', name: 'AdminProfilePage', segment: 'admin-profile', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/add-producto/add-producto.module#AddProductoPageModule', name: 'AddProductoPage', segment: 'add-producto', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/admin/admin.module#AdminPageModule', name: 'AdminPage', segment: 'admin', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/all-employees/all-employees.module#AllEmployeesPageModule', name: 'AllEmployeesPage', segment: 'all-employees', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/all-products/all-products.module#AllProductsPageModule', name: 'AllProductsPage', segment: 'all-products', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/allaparatos/allaparatos.module#AllaparatosPageModule', name: 'AllaparatosPage', segment: 'allaparatos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/asist-15/asist-15.module#Asist_15PageModule', name: 'Asist_15Page', segment: 'asist-15', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/allcustomers/allcustomers.module#AllcustomersPageModule', name: 'AllcustomersPage', segment: 'allcustomers', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/asist-30/asist-30.module#Asist_30PageModule', name: 'Asist_30Page', segment: 'asist-30', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/all-products/all-products.module#AllProductsPageModule', name: 'AllProductsPage', segment: 'all-products', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/asist-7/asist-7.module#Asist_7PageModule', name: 'Asist_7Page', segment: 'asist-7', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/allcustomers/allcustomers.module#AllcustomersPageModule', name: 'AllcustomersPage', segment: 'allcustomers', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/asistencia-list/asistencia-list.module#AsistenciaListPageModule', name: 'AsistenciaListPage', segment: 'asistencia-list', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/customer-asist/customer-asist.module#CustomerAsistPageModule', name: 'CustomerAsistPage', segment: 'customer-asist', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/asist-7/asist-7.module#Asist_7PageModule', name: 'Asist_7Page', segment: 'asist-7', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/asistencia/asistencia.module#AsistenciaPageModule', name: 'AsistenciaPage', segment: 'asistencia', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/customer-asist/customer-asist.module#CustomerAsistPageModule', name: 'CustomerAsistPage', segment: 'customer-asist', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/customer-pay/customer-pay.module#CustomerPayPageModule', name: 'CustomerPayPage', segment: 'customer-pay', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/customer-recibe/customer-recibe.module#CustomerRecibePageModule', name: 'CustomerRecibePage', segment: 'customer-recibe', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/customer/customer.module#CustomerPageModule', name: 'CustomerPage', segment: 'customer', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/historial-aparatos/historial-aparatos.module#HistorialAparatosPageModule', name: 'HistorialAparatosPage', segment: 'historial-aparatos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/inf-cliente/inf-cliente.module#InfClientePageModule', name: 'InfClientePage', segment: 'inf-cliente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/info-empleado/info-empleado.module#InfoEmpleadoPageModule', name: 'InfoEmpleadoPage', segment: 'info-empleado', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/list-pack/list-pack.module#ListPackPageModule', name: 'ListPackPage', segment: 'list-pack', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/list-pay/list-pay.module#ListPayPageModule', name: 'ListPayPage', segment: 'list-pay', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/modif-product/modif-product.module#ModifProductPageModule', name: 'ModifProductPage', segment: 'modif-product', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/modifaparato/modifaparato.module#ModifaparatoPageModule', name: 'ModifaparatoPage', segment: 'modifaparato', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/modify-pack/modify-pack.module#ModifyPackPageModule', name: 'ModifyPackPage', segment: 'modify-pack', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/modify-pay/modify-pay.module#ModifyPayPageModule', name: 'ModifyPayPage', segment: 'modify-pay', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/modif-empleado/modif-empleado.module#ModifEmpleadoPageModule', name: 'ModifEmpleadoPage', segment: 'modif-empleado', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/modify-pack/modify-pack.module#ModifyPackPageModule', name: 'ModifyPackPage', segment: 'modify-pack', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/modifaparato/modifaparato.module#ModifaparatoPageModule', name: 'ModifaparatoPage', segment: 'modifaparato', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/modifcliente/modifcliente.module#ModifclientePageModule', name: 'ModifclientePage', segment: 'modifcliente', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/modify-pay/modify-pay.module#ModifyPayPageModule', name: 'ModifyPayPage', segment: 'modify-pay', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/historial-aparatos/historial-aparatos.module#HistorialAparatosPageModule', name: 'HistorialAparatosPage', segment: 'historial-aparatos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pack-details/pack-details.module#PackDetailsPageModule', name: 'PackDetailsPage', segment: 'pack-details', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/producto-details/producto-details.module#ProductoDetailsPageModule', name: 'ProductoDetailsPage', segment: 'producto-details', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/pay/pay.module#PayPageModule', name: 'PayPage', segment: 'pay', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/reportes/reportes.module#ReportesPageModule', name: 'ReportesPage', segment: 'reportes', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/recibe-pay/recibe-pay.module#RecibePayPageModule', name: 'RecibePayPage', segment: 'recibe-pay', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/venta/venta.module#VentaPageModule', name: 'VentaPage', segment: 'venta', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pack/pack.module#PackPageModule', name: 'PackPage', segment: 'pack', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/modifcliente/modifcliente.module#ModifclientePageModule', name: 'ModifclientePage', segment: 'modifcliente', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/pay/pay.module#PayPageModule', name: 'PayPage', segment: 'pay', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/modif-product/modif-product.module#ModifProductPageModule', name: 'ModifProductPage', segment: 'modif-product', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/producto-details/producto-details.module#ProductoDetailsPageModule', name: 'ProductoDetailsPage', segment: 'producto-details', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/venta/venta.module#VentaPageModule', name: 'VentaPage', segment: 'venta', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/reportes/reportes.module#ReportesPageModule', name: 'ReportesPage', segment: 'reportes', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/recibe-pay/recibe-pay.module#RecibePayPageModule', name: 'RecibePayPage', segment: 'recibe-pay', priority: 'low', defaultHistory: [] }
                     ]
                 }),
             ],

@@ -53,6 +53,7 @@ export class ModifyPackPage {
   edit(){
     if(JSON.stringify(this.comprobar) != JSON.stringify(this.myForm.value))
     {
+      
       let paqueteDuracion = this.alert.create({
         title: 'DURACION INVALIDA',
         message: 'La duracion maxima es de 365 dias',
@@ -72,8 +73,16 @@ export class ModifyPackPage {
       });
 
       var obj = JSON.parse(JSON.stringify(this.myForm.value));
-      obj['funcion']='addCambioPack';
+      
       obj['id']= this.pack['id'];
+
+      if(JSON.stringify(this.comprobar['nombre']) == JSON.stringify(this.myForm.value['nombre'].toUpperCase())){
+        obj['funcion']='addCambioPack';
+      }
+
+      if(JSON.stringify(this.comprobar['nombre']) != JSON.stringify(this.myForm.value['nombre'].toUpperCase())){ //En caso que se requiera modificar el nombre
+        obj['funcion']='addCambioPack2';
+      }
 
       for (var i in obj) {
         if(i=="duracion" || i=="precio" || i=="funcion"){
@@ -100,7 +109,6 @@ export class ModifyPackPage {
       else if(res=="Paquete Exitoso"){ 
         paqueteEditado.present();
         
-
         if(this.myForm.valid){
             console.log("form enviado");
             this.myForm.reset();
