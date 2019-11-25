@@ -144,6 +144,7 @@ export class AllcustomersPage {
 
     // funcion de modificar cliente
     modificar(cliente){
+      this.navCtrl.pop();
       this.navCtrl.push(this.modif, {cliente : cliente}); // envia los datos para modificarse
       
     }
@@ -236,6 +237,7 @@ export class AllcustomersPage {
             role: 'detalles',
             handler: () => {
               console.log('Detalles clicked');
+              
               this.navCtrl.push(this.infocliente, {cliente : cliente});
             }
           },
@@ -276,6 +278,7 @@ export class AllcustomersPage {
             role: 'detalles',
             handler: () => {
               console.log('Detalles clicked');
+              
               this.navCtrl.push(this.infocliente, {cliente : cliente});
             }
           },

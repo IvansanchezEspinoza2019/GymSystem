@@ -58,14 +58,17 @@ cliente = {}
   }
 
   logout(){
+    
     this.navCtrl.push(this.login);
   }
   
   pagos(){
+    
     this.navCtrl.push(this.pay, {cliente : this.cliente});
   }
 
   asistencias(){
+    
     this.navCtrl.push(this.asist, {cliente : this.cliente});
   }
   

@@ -26,14 +26,17 @@ export class CustomerAsistPage {
   }
 
   reportSemana() {
+    
     this.navCtrl.push(this.semana, { cliente : this.cliente});
   }
 
   reportSemanas() {
+    
     this.navCtrl.push(this.semanas, { cliente : this.cliente});
   }
 
   reportMes() {
+    
     this.navCtrl.push(this.mes, { cliente : this.cliente});
   }
 

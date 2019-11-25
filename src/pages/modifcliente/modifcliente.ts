@@ -154,6 +154,7 @@ export class ModifclientePage {
                 this.myForm.reset();
                 this.dir['path']='stock.png';
                 this.cliente['id']='';
+                this.navCtrl.pop();
                 this.navCtrl.push(this.all);
               }
             }

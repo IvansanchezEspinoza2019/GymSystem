@@ -116,6 +116,7 @@ crearCopia(){
       console.log(res);
       if(res=="exito"){
         success.present();
+        this.navCtrl.pop();
         this.navCtrl.push(this.all);
       }
       else if(res=="product_rep"){

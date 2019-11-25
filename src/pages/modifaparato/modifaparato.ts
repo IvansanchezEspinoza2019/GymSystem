@@ -171,7 +171,9 @@ export class ModifaparatoPage {
       console.log(res);
       if(res=="exito"){
         success.present();
+        this.navCtrl.pop();
         this.navCtrl.push(this.back, {id: obj['id_admin'], filtro: this.aparato['filtro']});  // regresa a la pagina anterior, le envia el id del admin como parametro 
+        
       }
     }, error=>{
       console.log(error);

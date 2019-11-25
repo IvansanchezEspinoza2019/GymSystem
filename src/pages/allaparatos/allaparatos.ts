@@ -175,9 +175,11 @@ loader.present();
           role: 'modificar',
           handler: () => {
             console.log('modificar clicked');
-            //
+            
             aparato['filtro']=this.filtro.val;
+            this.navCtrl.pop()
             this.navCtrl.push(this.modificar, {aparato: aparato, id: this.id_empleado});
+            
           }
         },
         {

@@ -143,12 +143,14 @@ export class AllProductsPage {
           role: 'detalles',
           handler: () => {
             console.log(product);
+            
             this.navCtrl.push(this.detail_product, {producto : product});
           }
         },{
           text: 'Editar',
           role: 'editar',
           handler: () => {
+            this.navCtrl.pop();
             this.navCtrl.push(this.modif_product, { producto : product});
           }
         },{
@@ -212,6 +214,16 @@ export class AllProductsPage {
     const action = this.actionsheet.create({
       title: 'Opciones de Pago',
       buttons: [
+        {
+          text: 'Ver Detalles',
+          role: 'detalles',
+          handler : ()=>{
+            console.log(product);
+            
+            this.navCtrl.push(this.detail_product, {producto : product});
+
+          }
+        },
         {
           text: 'Activar',
           role: 'activar',

@@ -149,7 +149,11 @@ export class ReportesPage {
     }
     
     this.http.post(this.apiUrl,JSON.stringify(funcion))
-    .subscribe(res=>{console.log(res);sourceData=res['asistencias']; console.log(sourceData); this.createPdfAsistencia(sourceData,dias)},error=>{console.log(error)});  //obtiene los registros de la base de datos
+    .subscribe(res=>{console.log(res);sourceData=res['asistencias']; console.log(sourceData); 
+    this.createPdfAsistencia(sourceData,dias);
+    //console.log(JSON.stringify(sourceData));
+  },
+    error=>{console.log(error)});  //obtiene los registros de la base de datos
     
     this.presentLoading();
   }
@@ -439,8 +443,8 @@ verificarFecha(){
 crear(){
   let error = this.alert.create({
     title: 'OPERACION CANCELADA',
-    message: 'FALTAN ENTRADAS',
-    buttons: ['ACEPTAR']
+    message: 'Faltan entradas!!',
+    buttons: ['Aceptar']
     
   });
   if(this.verifData()==0){

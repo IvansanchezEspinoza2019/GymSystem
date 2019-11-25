@@ -196,6 +196,7 @@ export class ModifyPayPage {
           if(this.myForm.valid){
               console.log("form enviado");
               this.myForm.reset();
+              this.navCtrl.pop();
               this.navCtrl.push(this.list);
           }
         }

@@ -115,6 +115,7 @@ export class AdminPage {
 }
 
   logout(){
+    
     this.navCtrl.push(this.login);
   }
 

@@ -32,4 +32,5 @@ export class InfClientePage {
     console.log('ionViewDidLoad InfClientePage');
   }
 
+ 
 }

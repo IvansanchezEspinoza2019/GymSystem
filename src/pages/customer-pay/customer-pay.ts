@@ -68,6 +68,7 @@ export class CustomerPayPage {
   }
 
   recibo(pago) {
+    
     this.navCtrl.push(this.recibe, {pago : pago, cliente : this.cliente});
   }
 

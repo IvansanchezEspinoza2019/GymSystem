@@ -172,7 +172,7 @@ export class AllEmployeesPage {
     empleado['password']=this.datos_extra['password'];
     
     console.log(JSON.stringify(empleado));
-    
+    this.navCtrl.pop(); //NUEVO
     this.navCtrl.push(this.modif, {empleado : empleado}); // envia los datos para modificarse
     //this.actualizar();
   }
@@ -269,6 +269,7 @@ export class AllEmployeesPage {
             console.log('Detalles clicked');
             empleado['user']=this.datos_extra['user'];
             empleado['password']=this.datos_extra['password'];
+            
             this.navCtrl.push(this.info_empleado, {empleado : empleado});
           }
         },
@@ -303,6 +304,7 @@ export class AllEmployeesPage {
             console.log('Detalles clicked');
             empleado['user']=this.datos_extra['user'];
             empleado['password']=this.datos_extra['password'];
+            
             this.navCtrl.push(this.info_empleado, {empleado : empleado});
           }
         },

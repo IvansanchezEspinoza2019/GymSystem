@@ -101,6 +101,7 @@ export class ListPackPage {
           role: 'editar',
           handler: () => {
             console.log('Archive clicked');
+            this.navCtrl.pop();
             this.navCtrl.push(this.editar, {pack : pack});
           }
         },{

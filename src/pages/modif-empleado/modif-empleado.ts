@@ -311,6 +311,7 @@ export class ModifEmpleadoPage {
               if(this.myForm.valid){
                 console.log("form enviado");
                 success.present();
+                this.navCtrl.pop();
                 this.navCtrl.push(this.all);
               }
             }

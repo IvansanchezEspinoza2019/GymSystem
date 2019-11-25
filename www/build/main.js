@@ -4,194 +4,6 @@ webpackJsonp([38],{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddAparatosPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(5);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-/**
- * Generated class for the AddAparatosPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var AddAparatosPage = /** @class */ (function () {
-    function AddAparatosPage(navCtrl, cl, http, alert, navParams) {
-        this.navCtrl = navCtrl;
-        this.cl = cl;
-        this.http = http;
-        this.alert = alert;
-        this.navParams = navParams;
-        this.datos = [];
-        this.hideCategoria = true;
-        this.hideOtro = true;
-        this.apiUrl = "http://gymdb/"; // servidor
-        this.dat = {
-            'id': '0',
-            'nombre': 'OTRO'
-        };
-        this.id_admin = {};
-        this.myForm = this.cl.group({
-            categoria: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]],
-            otro: [''],
-            descripcion: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]],
-            estado: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]],
-        });
-        this.obtenerCat(); //obtiene categorias
-        this.id_admin = this.navParams.get('id');
-        console.log("ID EMPLEADO");
-        console.log(this.id_admin);
-    }
-    AddAparatosPage.prototype.validar = function () {
-        if (this.datos.length > 1) {
-            // console.log(this.datos.length);
-            this.hideCategoria = false;
-            this.hideOtro = true;
-        }
-        else {
-            this.hideOtro = false;
-            this.hideCategoria = true;
-            this.myForm.controls['categoria'].setValue('0');
-        }
-    };
-    AddAparatosPage.prototype.obtenerCat = function () {
-        var _this = this;
-        var funcion = {
-            'funcion': 'getCategoria'
-        };
-        this.http.post(this.apiUrl, JSON.stringify(funcion))
-            .subscribe(function (res) {
-            console.log(res);
-            _this.datos = res['categoria'];
-            _this.datos.push(_this.dat);
-            console.log(_this.datos.length);
-            _this.validar();
-            console.log(JSON.stringify(_this.datos));
-        }, function (error) {
-            console.log(error);
-        });
-    };
-    AddAparatosPage.prototype.actualizar_admin_aparato = function (id_aparato) {
-        var funcion = {
-            'funcion': 'updateAdminAparato',
-            'accion': '1'
-        };
-        funcion['id_aparato'] = id_aparato;
-        funcion['id_admin'] = this.id_admin;
-        console.log("Funcion");
-        console.log(JSON.stringify(funcion));
-        this.http.post(this.apiUrl, JSON.stringify(funcion))
-            .subscribe(function (res) {
-            console.log(res);
-        }, function (error) {
-            console.log(error);
-        });
-    };
-    AddAparatosPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad AddAparatosPage');
-    };
-    AddAparatosPage.prototype.onChange = function (ev) {
-        console.log(ev);
-        if (ev == 0) {
-            this.hideOtro = false; // hace vicible un input
-        }
-        else {
-            this.hideOtro = true; // lo esconde
-        }
-    };
-    AddAparatosPage.prototype.saveData = function () {
-        var miAlerta = this.alert.create({
-            title: 'OPERACION CANCELADA',
-            message: 'Campo categoria vacio!!',
-            buttons: ['Aceptar']
-        });
-        if (this.hideOtro == false) {
-            if (this.myForm.controls['otro'].value == '') {
-                miAlerta.present();
-                return;
-            }
-            else {
-                this.enviarForm(); //envia formulario
-                return;
-            }
-        }
-        this.enviarForm(); // envia formulario
-    };
-    AddAparatosPage.prototype.enviarForm = function () {
-        var _this = this;
-        var success = this.alert.create({
-            title: 'OPERACION EXITOSA',
-            message: 'Agregado correctamente!!',
-            buttons: ['Aceptar']
-        });
-        var mayus = this.myForm.controls['otro'].value;
-        var desc = this.myForm.controls['descripcion'].value;
-        if (mayus != null) {
-            mayus = mayus.toUpperCase();
-            this.myForm.controls['otro'].setValue(mayus); // covierte a mayuscula la categoria
-        }
-        if (desc != null) {
-            desc = desc.toUpperCase();
-            this.myForm.controls['descripcion'].setValue(desc); // covierte a mayuscula la categoria
-        }
-        console.log((this.myForm.value));
-        var obj = JSON.parse(JSON.stringify(this.myForm.value));
-        obj['funcion'] = 'addMaquina';
-        obj['id_admin'] = this.id_admin;
-        obj['accion'] = '1'; //'1' es la accion de agregar
-        console.log(obj);
-        this.http.post(this.apiUrl, JSON.stringify(obj))
-            .subscribe(function (res) {
-            console.log("res del server");
-            console.log(res);
-            if (res == "exito") {
-                success.present();
-                _this.reiniciarForm();
-                //this.actualizar_admin_aparato(res['id_aparato']);
-            }
-        }, function (error) {
-            console.log(error);
-        });
-    };
-    // reinicia formulario
-    AddAparatosPage.prototype.reiniciarForm = function () {
-        this.myForm.reset();
-        this.obtenerCat();
-    };
-    AddAparatosPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-add-aparatos',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\add-aparatos\add-aparatos.html"*/'<!--\n  Generated template for the AddAparatosPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="secondary">\n    <ion-title>Agregar Aparato</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <ion-card text-center classss="Datos">\n        \n          <ion-card-content>\n          <h2><strong >Registro</strong></h2>\n          <br>\n          <br><br>\n          \n          <form [formGroup]="myForm"  (ngSubmit)="saveData()" novalidate>\n              <ion-list>\n                  <ion-item [hidden]="hideCategoria">\n                      <ion-label color="primary" icon-start><ion-icon name="pricetag"></ion-icon>Categoria:  </ion-label>\n                      <ion-select  id="categoria" name="categoria" formControlName="categoria" (ionChange)="onChange($event)">\n                        <div *ngFor="let tupla of datos">\n                          <ion-option value="{{tupla.id}}">{{tupla.nombre}}\n                          </ion-option>\n                        </div>\n                      </ion-select>\n                </ion-item>\n                <ion-item *ngIf="myForm.get(\'categoria\').errors && myForm.get(\'categoria\').dirty">\n                    <p color="danger" ion-text *ngIf="myForm.get(\'categoria\').hasError(\'required\')">Field is required</p>\n                 </ion-item>\n                 <ion-item [hidden]="hideOtro">\n                  <ion-label stack color = "primary" icon-start><ion-icon name="pricetag"></ion-icon>Categoria:</ion-label>\n                  <ion-input id="otro" type="text" formControlName="otro"  name ="otro"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label stack color = "primary" icon-start><ion-icon name="information-circle"></ion-icon>Descripcion:</ion-label>\n                  <ion-input id="descripcion" type="text" formControlName="descripcion"  name ="descripcion"></ion-input>\n                </ion-item>\n                <ion-item *ngIf="myForm.get(\'descripcion\').errors && myForm.get(\'descripcion\').dirty">\n                    <p color="danger" ion-text *ngIf="myForm.get(\'descripcion\').hasError(\'required\')">Field is required</p>\n                  </ion-item>\n                  <ion-item>\n                      <ion-label color="primary" icon-start><ion-icon name="git-pull-request"></ion-icon>Estado:  </ion-label>\n                      <ion-select id="estado" name="estado" formControlName="estado" >\n                          <ion-option value="1">En funcionamiento</ion-option >\n                            <ion-option value="2">En Mantenimiento</ion-option >\n                              <ion-option value="3">Fuera de Servicio</ion-option >\n                      </ion-select>\n                </ion-item>\n                <ion-item *ngIf="myForm.get(\'estado\').errors && myForm.get(\'estado\').dirty">\n                    <p color="danger" ion-text *ngIf="myForm.get(\'estado\').hasError(\'required\')">Field is required</p>\n                  </ion-item>\n                                \n              </ion-list><br>\n              <div padding>\n                  <button ion-button icon-start block type="submit" [disabled]="myForm.invalid">\n                      <ion-icon name="archive">   </ion-icon>\n                          Guardar\n                  </button>\n                </div>\n            </form> \n\n        </ion-card-content>\n\n      </ion-card>\n    </ion-col>\n    \n  </ion-row>\n  </ion-grid>\n  \n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\add-aparatos\add-aparatos.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
-    ], AddAparatosPage);
-    return AddAparatosPage;
-}());
-
-//# sourceMappingURL=add-aparatos.js.map
-
-/***/ }),
-
-/***/ 112:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddClientePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(8);
@@ -415,6 +227,194 @@ var AddClientePage = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=add-cliente.js.map
+
+/***/ }),
+
+/***/ 112:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddAparatosPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(5);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+/**
+ * Generated class for the AddAparatosPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var AddAparatosPage = /** @class */ (function () {
+    function AddAparatosPage(navCtrl, cl, http, alert, navParams) {
+        this.navCtrl = navCtrl;
+        this.cl = cl;
+        this.http = http;
+        this.alert = alert;
+        this.navParams = navParams;
+        this.datos = [];
+        this.hideCategoria = true;
+        this.hideOtro = true;
+        this.apiUrl = "http://gymdb/"; // servidor
+        this.dat = {
+            'id': '0',
+            'nombre': 'OTRO'
+        };
+        this.id_admin = {};
+        this.myForm = this.cl.group({
+            categoria: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]],
+            otro: [''],
+            descripcion: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]],
+            estado: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]],
+        });
+        this.obtenerCat(); //obtiene categorias
+        this.id_admin = this.navParams.get('id');
+        console.log("ID EMPLEADO");
+        console.log(this.id_admin);
+    }
+    AddAparatosPage.prototype.validar = function () {
+        if (this.datos.length > 1) {
+            // console.log(this.datos.length);
+            this.hideCategoria = false;
+            this.hideOtro = true;
+        }
+        else {
+            this.hideOtro = false;
+            this.hideCategoria = true;
+            this.myForm.controls['categoria'].setValue('0');
+        }
+    };
+    AddAparatosPage.prototype.obtenerCat = function () {
+        var _this = this;
+        var funcion = {
+            'funcion': 'getCategoria'
+        };
+        this.http.post(this.apiUrl, JSON.stringify(funcion))
+            .subscribe(function (res) {
+            console.log(res);
+            _this.datos = res['categoria'];
+            _this.datos.push(_this.dat);
+            console.log(_this.datos.length);
+            _this.validar();
+            console.log(JSON.stringify(_this.datos));
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    AddAparatosPage.prototype.actualizar_admin_aparato = function (id_aparato) {
+        var funcion = {
+            'funcion': 'updateAdminAparato',
+            'accion': '1'
+        };
+        funcion['id_aparato'] = id_aparato;
+        funcion['id_admin'] = this.id_admin;
+        console.log("Funcion");
+        console.log(JSON.stringify(funcion));
+        this.http.post(this.apiUrl, JSON.stringify(funcion))
+            .subscribe(function (res) {
+            console.log(res);
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    AddAparatosPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad AddAparatosPage');
+    };
+    AddAparatosPage.prototype.onChange = function (ev) {
+        console.log(ev);
+        if (ev == 0) {
+            this.hideOtro = false; // hace vicible un input
+        }
+        else {
+            this.hideOtro = true; // lo esconde
+        }
+    };
+    AddAparatosPage.prototype.saveData = function () {
+        var miAlerta = this.alert.create({
+            title: 'OPERACION CANCELADA',
+            message: 'Campo categoria vacio!!',
+            buttons: ['Aceptar']
+        });
+        if (this.hideOtro == false) {
+            if (this.myForm.controls['otro'].value == '') {
+                miAlerta.present();
+                return;
+            }
+            else {
+                this.enviarForm(); //envia formulario
+                return;
+            }
+        }
+        this.enviarForm(); // envia formulario
+    };
+    AddAparatosPage.prototype.enviarForm = function () {
+        var _this = this;
+        var success = this.alert.create({
+            title: 'OPERACION EXITOSA',
+            message: 'Agregado correctamente!!',
+            buttons: ['Aceptar']
+        });
+        var mayus = this.myForm.controls['otro'].value;
+        var desc = this.myForm.controls['descripcion'].value;
+        if (mayus != null) {
+            mayus = mayus.toUpperCase();
+            this.myForm.controls['otro'].setValue(mayus); // covierte a mayuscula la categoria
+        }
+        if (desc != null) {
+            desc = desc.toUpperCase();
+            this.myForm.controls['descripcion'].setValue(desc); // covierte a mayuscula la categoria
+        }
+        console.log((this.myForm.value));
+        var obj = JSON.parse(JSON.stringify(this.myForm.value));
+        obj['funcion'] = 'addMaquina';
+        obj['id_admin'] = this.id_admin;
+        obj['accion'] = '1'; //'1' es la accion de agregar
+        console.log(obj);
+        this.http.post(this.apiUrl, JSON.stringify(obj))
+            .subscribe(function (res) {
+            console.log("res del server");
+            console.log(res);
+            if (res == "exito") {
+                success.present();
+                _this.reiniciarForm();
+                //this.actualizar_admin_aparato(res['id_aparato']);
+            }
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    // reinicia formulario
+    AddAparatosPage.prototype.reiniciarForm = function () {
+        this.myForm.reset();
+        this.obtenerCat();
+    };
+    AddAparatosPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-add-aparatos',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\add-aparatos\add-aparatos.html"*/'<!--\n  Generated template for the AddAparatosPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="secondary">\n    <ion-title>Agregar Aparato</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <ion-card text-center classss="Datos">\n        \n          <ion-card-content>\n          <h2><strong >Registro</strong></h2>\n          <br>\n          <br><br>\n          \n          <form [formGroup]="myForm"  (ngSubmit)="saveData()" novalidate>\n              <ion-list>\n                  <ion-item [hidden]="hideCategoria">\n                      <ion-label color="primary" icon-start><ion-icon name="pricetag"></ion-icon>Categoria:  </ion-label>\n                      <ion-select  id="categoria" name="categoria" formControlName="categoria" (ionChange)="onChange($event)">\n                        <div *ngFor="let tupla of datos">\n                          <ion-option value="{{tupla.id}}">{{tupla.nombre}}\n                          </ion-option>\n                        </div>\n                      </ion-select>\n                </ion-item>\n                <ion-item *ngIf="myForm.get(\'categoria\').errors && myForm.get(\'categoria\').dirty">\n                    <p color="danger" ion-text *ngIf="myForm.get(\'categoria\').hasError(\'required\')">Field is required</p>\n                 </ion-item>\n                 <ion-item [hidden]="hideOtro">\n                  <ion-label stack color = "primary" icon-start><ion-icon name="pricetag"></ion-icon>Categoria:</ion-label>\n                  <ion-input id="otro" type="text" formControlName="otro"  name ="otro"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label stack color = "primary" icon-start><ion-icon name="information-circle"></ion-icon>Descripcion:</ion-label>\n                  <ion-input id="descripcion" type="text" formControlName="descripcion"  name ="descripcion"></ion-input>\n                </ion-item>\n                <ion-item *ngIf="myForm.get(\'descripcion\').errors && myForm.get(\'descripcion\').dirty">\n                    <p color="danger" ion-text *ngIf="myForm.get(\'descripcion\').hasError(\'required\')">Field is required</p>\n                  </ion-item>\n                  <ion-item>\n                      <ion-label color="primary" icon-start><ion-icon name="git-pull-request"></ion-icon>Estado:  </ion-label>\n                      <ion-select id="estado" name="estado" formControlName="estado" >\n                          <ion-option value="1">En funcionamiento</ion-option >\n                            <ion-option value="2">En Mantenimiento</ion-option >\n                              <ion-option value="3">Fuera de Servicio</ion-option >\n                      </ion-select>\n                </ion-item>\n                <ion-item *ngIf="myForm.get(\'estado\').errors && myForm.get(\'estado\').dirty">\n                    <p color="danger" ion-text *ngIf="myForm.get(\'estado\').hasError(\'required\')">Field is required</p>\n                  </ion-item>\n                                \n              </ion-list><br>\n              <div padding>\n                  <button ion-button icon-start block type="submit" [disabled]="myForm.invalid">\n                      <ion-icon name="archive">   </ion-icon>\n                          Guardar\n                  </button>\n                </div>\n            </form> \n\n        </ion-card-content>\n\n      </ion-card>\n    </ion-col>\n    \n  </ion-row>\n  </ion-grid>\n  \n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\add-aparatos\add-aparatos.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
+    ], AddAparatosPage);
+    return AddAparatosPage;
+}());
+
+//# sourceMappingURL=add-aparatos.js.map
 
 /***/ }),
 
@@ -921,9 +921,9 @@ var AddProductoPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__add_cliente_add_cliente__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__add_cliente_add_cliente__ = __webpack_require__(111);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__allcustomers_allcustomers__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__add_aparatos_add_aparatos__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__add_aparatos_add_aparatos__ = __webpack_require__(112);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__allaparatos_allaparatos__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__add_empleado_add_empleado__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__list_pay_list_pay__ = __webpack_require__(55);
@@ -1169,7 +1169,7 @@ var InfClientePage = /** @class */ (function () {
     };
     InfClientePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-inf-cliente',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\inf-cliente\inf-cliente.html"*/'<!--\n  Generated template for the InfClientePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Informacion</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <ion-label color="secondary" align="center"><b>PERFIL</b></ion-label>\n  <img src="http://gymdb/imgs/customers/{{ cliente.foto }}"  width="300" height="300">\n  <ion-card-content>\n    <img >\n    <ion-label *ngIf="cliente.activo==\'1\'" align="center" color="primary"><b>ESTATUS: </b> ACTIVO</ion-label>\n    <ion-label *ngIf="cliente.activo==\'0\'" align="center" color="danger"><b>ESTATUS: </b> INACTIVO</ion-label>\n    <p><b>NOMBRE: </b>  {{ cliente.Nombre }}</p>\n    <p><b>ID: </b> {{ cliente.id_cliente }}</p>\n    <p><b>GENERO: </b> {{ cliente.genero }}</p>\n    <p><b>TELEFONO: </b> {{ cliente.telefono }}</p>\n    <ion-label color="secondary"><b>FORMATO: </b> YYYY-MM-DD</ion-label>\n    <p><b>FECHA NACIMIENTO: </b> {{ cliente.fecha_nacimiento }}</p>\n    <p><b>FECHA INGRESO: </b> {{ cliente.fecha_ingreso }}</p>\n    \n    <ion-label align="center" color="secondary"><b>DIRECCION</b></ion-label>\n    <p><b>CALLE</b> {{ cliente.calle }}</p>\n    <p><b>NUMERO: </b> {{ cliente.numero_calle }}</p>\n    <p *ngIf="cliente.numero_interior!=\'\'"><b>NUMERO INTERIOR </b> {{ cliente.numero_interior }}</p>\n    <p><b>COLONIA: </b> {{ cliente.colonia }}</p>\n    <p><b>CP: </b> {{ cliente.codigo }}</p>\n\n    <ion-label align="center" color="secondary"><b>CUENTA</b></ion-label>\n    <p><b>USUARIO: </b> {{ cliente.user }}</p>\n    <p><b>CONTRASEÑA: </b> {{ cliente.password }}</p>\n\n  </ion-card-content>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\inf-cliente\inf-cliente.html"*/,
+            selector: 'page-inf-cliente',template:/*ion-inline-start:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\inf-cliente\inf-cliente.html"*/'<!--\n  Generated template for the InfClientePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="primary" >\n    <ion-title>Informacion</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <ion-label color="secondary" align="center"><b>PERFIL</b></ion-label>\n  <img src="http://gymdb/imgs/customers/{{ cliente.foto }}"  width="300" height="300">\n  <ion-card-content>\n    <img >\n    <ion-label *ngIf="cliente.activo==\'1\'" align="center" color="primary"><b>ESTATUS: </b> ACTIVO</ion-label>\n    <ion-label *ngIf="cliente.activo==\'0\'" align="center" color="danger"><b>ESTATUS: </b> INACTIVO</ion-label>\n    <p><b>NOMBRE: </b>  {{ cliente.Nombre }}</p>\n    <p><b>ID: </b> {{ cliente.id_cliente }}</p>\n    <p><b>GENERO: </b> {{ cliente.genero }}</p>\n    <p><b>TELEFONO: </b> {{ cliente.telefono }}</p>\n    <ion-label color="secondary"><b>FORMATO: </b> YYYY-MM-DD</ion-label>\n    <p><b>FECHA NACIMIENTO: </b> {{ cliente.fecha_nacimiento }}</p>\n    <p><b>FECHA INGRESO: </b> {{ cliente.fecha_ingreso }}</p>\n    \n    <ion-label align="center" color="secondary"><b>DIRECCION</b></ion-label>\n    <p><b>CALLE</b> {{ cliente.calle }}</p>\n    <p><b>NUMERO: </b> {{ cliente.numero_calle }}</p>\n    <p *ngIf="cliente.numero_interior!=\'\'"><b>NUMERO INTERIOR </b> {{ cliente.numero_interior }}</p>\n    <p><b>COLONIA: </b> {{ cliente.colonia }}</p>\n    <p><b>CP: </b> {{ cliente.codigo }}</p>\n\n    <ion-label align="center" color="secondary"><b>CUENTA</b></ion-label>\n    <p><b>USUARIO: </b> {{ cliente.user }}</p>\n    <p><b>CONTRASEÑA: </b> {{ cliente.password }}</p>\n\n  </ion-card-content>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\acer\Desktop\GymSystem\GymSystem\src\pages\inf-cliente\inf-cliente.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
@@ -1331,6 +1331,7 @@ var ModifclientePage = /** @class */ (function () {
                                 _this.myForm.reset();
                                 _this.dir['path'] = 'stock.png';
                                 _this.cliente['id'] = '';
+                                _this.navCtrl.pop();
                                 _this.navCtrl.push(_this.all);
                             }
                         }
@@ -1571,6 +1572,7 @@ var ModifaparatoPage = /** @class */ (function () {
             console.log(res);
             if (res == "exito") {
                 success.present();
+                _this.navCtrl.pop();
                 _this.navCtrl.push(_this.back, { id: obj['id_admin'], filtro: _this.aparato['filtro'] }); // regresa a la pagina anterior, le envia el id del admin como parametro 
             }
         }, function (error) {
@@ -1873,6 +1875,7 @@ var ModifyPayPage = /** @class */ (function () {
                     if (_this.myForm.valid) {
                         console.log("form enviado");
                         _this.myForm.reset();
+                        _this.navCtrl.pop();
                         _this.navCtrl.push(_this.list);
                     }
                 }
@@ -2174,6 +2177,7 @@ var ModifyPackPage = /** @class */ (function () {
                     if (_this.myForm.valid) {
                         console.log("form enviado");
                         _this.myForm.reset();
+                        _this.navCtrl.pop();
                         _this.navCtrl.push(_this.list);
                     }
                 }
@@ -2543,6 +2547,7 @@ var ModifEmpleadoPage = /** @class */ (function () {
                     if (_this.myForm.valid) {
                         console.log("form enviado");
                         success.present();
+                        _this.navCtrl.pop();
                         _this.navCtrl.push(_this.all);
                     }
                 }
@@ -3051,7 +3056,13 @@ var ReportesPage = /** @class */ (function () {
             'dias': dias
         };
         this.http.post(this.apiUrl, JSON.stringify(funcion))
-            .subscribe(function (res) { console.log(res); sourceData = res['asistencias']; console.log(sourceData); _this.createPdfAsistencia(sourceData, dias); }, function (error) { console.log(error); }); //obtiene los registros de la base de datos
+            .subscribe(function (res) {
+            console.log(res);
+            sourceData = res['asistencias'];
+            console.log(sourceData);
+            _this.createPdfAsistencia(sourceData, dias);
+            //console.log(JSON.stringify(sourceData));
+        }, function (error) { console.log(error); }); //obtiene los registros de la base de datos
         this.presentLoading();
     };
     ReportesPage.prototype.createPdfAsistencia = function (sourceData, dias) {
@@ -4420,11 +4431,11 @@ webpackEmptyAsyncContext.id = 150;
 
 var map = {
 	"../pages/add-aparatos/add-aparatos.module": [
-		317,
+		318,
 		37
 	],
 	"../pages/add-cliente/add-cliente.module": [
-		318,
+		317,
 		36
 	],
 	"../pages/add-empleado/add-empleado.module": [
@@ -4456,23 +4467,23 @@ var map = {
 		29
 	],
 	"../pages/allcustomers/allcustomers.module": [
-		328,
+		326,
 		28
 	],
 	"../pages/asist-15/asist-15.module": [
-		326,
+		327,
 		27
 	],
 	"../pages/asist-30/asist-30.module": [
-		327,
+		328,
 		26
 	],
 	"../pages/asist-7/asist-7.module": [
-		330,
+		329,
 		25
 	],
 	"../pages/asistencia-list/asistencia-list.module": [
-		329,
+		330,
 		24
 	],
 	"../pages/asistencia/asistencia.module": [
@@ -4496,19 +4507,19 @@ var map = {
 		19
 	],
 	"../pages/historial-aparatos/historial-aparatos.module": [
-		346,
+		336,
 		18
 	],
 	"../pages/inf-cliente/inf-cliente.module": [
-		336,
+		337,
 		17
 	],
 	"../pages/info-empleado/info-empleado.module": [
-		337,
+		338,
 		16
 	],
 	"../pages/list-pack/list-pack.module": [
-		338,
+		340,
 		15
 	],
 	"../pages/list-pay/list-pay.module": [
@@ -4516,19 +4527,19 @@ var map = {
 		14
 	],
 	"../pages/login/login.module": [
-		340,
+		341,
 		13
 	],
 	"../pages/modif-empleado/modif-empleado.module": [
-		341,
+		342,
 		12
 	],
 	"../pages/modif-product/modif-product.module": [
-		350,
+		343,
 		11
 	],
 	"../pages/modifaparato/modifaparato.module": [
-		343,
+		345,
 		10
 	],
 	"../pages/modifcliente/modifcliente.module": [
@@ -4536,39 +4547,39 @@ var map = {
 		9
 	],
 	"../pages/modify-pack/modify-pack.module": [
-		342,
+		346,
 		8
 	],
 	"../pages/modify-pay/modify-pay.module": [
-		345,
+		347,
 		7
 	],
 	"../pages/pack-details/pack-details.module": [
-		347,
+		348,
 		6
 	],
 	"../pages/pack/pack.module": [
-		348,
+		349,
 		5
 	],
 	"../pages/pay/pay.module": [
-		349,
+		351,
 		4
 	],
 	"../pages/producto-details/producto-details.module": [
-		351,
+		350,
 		3
 	],
 	"../pages/recibe-pay/recibe-pay.module": [
-		354,
+		353,
 		2
 	],
 	"../pages/reportes/reportes.module": [
-		353,
+		352,
 		1
 	],
 	"../pages/venta/venta.module": [
-		352,
+		354,
 		0
 	]
 };
@@ -4617,13 +4628,13 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_login_login__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_customer_customer__ = __webpack_require__(132);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_admin_admin__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_add_cliente_add_cliente__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_add_cliente_add_cliente__ = __webpack_require__(111);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_inf_cliente_inf_cliente__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_allcustomers_allcustomers__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_modifcliente_modifcliente__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_list_pay_list_pay__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_recibe_pay_recibe_pay__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_add_aparatos_add_aparatos__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_add_aparatos_add_aparatos__ = __webpack_require__(112);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_allaparatos_allaparatos__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_modifaparato_modifaparato__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_add_empleado_add_empleado__ = __webpack_require__(113);
@@ -4756,8 +4767,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["b" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* MyApp */], {}, {
                     links: [
-                        { loadChildren: '../pages/add-aparatos/add-aparatos.module#AddAparatosPageModule', name: 'AddAparatosPage', segment: 'add-aparatos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/add-cliente/add-cliente.module#AddClientePageModule', name: 'AddClientePage', segment: 'add-cliente', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/add-aparatos/add-aparatos.module#AddAparatosPageModule', name: 'AddAparatosPage', segment: 'add-aparatos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/add-empleado/add-empleado.module#AddEmpleadoPageModule', name: 'AddEmpleadoPage', segment: 'add-empleado', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/admin-profile/admin-profile.module#AdminProfilePageModule', name: 'AdminProfilePage', segment: 'admin-profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/add-producto/add-producto.module#AddProductoPageModule', name: 'AddProductoPage', segment: 'add-producto', priority: 'low', defaultHistory: [] },
@@ -4765,35 +4776,35 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/all-employees/all-employees.module#AllEmployeesPageModule', name: 'AllEmployeesPage', segment: 'all-employees', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/all-products/all-products.module#AllProductsPageModule', name: 'AllProductsPage', segment: 'all-products', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/allaparatos/allaparatos.module#AllaparatosPageModule', name: 'AllaparatosPage', segment: 'allaparatos', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/allcustomers/allcustomers.module#AllcustomersPageModule', name: 'AllcustomersPage', segment: 'allcustomers', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/asist-15/asist-15.module#Asist_15PageModule', name: 'Asist_15Page', segment: 'asist-15', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/asist-30/asist-30.module#Asist_30PageModule', name: 'Asist_30Page', segment: 'asist-30', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/allcustomers/allcustomers.module#AllcustomersPageModule', name: 'AllcustomersPage', segment: 'allcustomers', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/asistencia-list/asistencia-list.module#AsistenciaListPageModule', name: 'AsistenciaListPage', segment: 'asistencia-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/asist-7/asist-7.module#Asist_7PageModule', name: 'Asist_7Page', segment: 'asist-7', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/asistencia-list/asistencia-list.module#AsistenciaListPageModule', name: 'AsistenciaListPage', segment: 'asistencia-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/asistencia/asistencia.module#AsistenciaPageModule', name: 'AsistenciaPage', segment: 'asistencia', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/customer-asist/customer-asist.module#CustomerAsistPageModule', name: 'CustomerAsistPage', segment: 'customer-asist', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/customer-pay/customer-pay.module#CustomerPayPageModule', name: 'CustomerPayPage', segment: 'customer-pay', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/customer-recibe/customer-recibe.module#CustomerRecibePageModule', name: 'CustomerRecibePage', segment: 'customer-recibe', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/customer/customer.module#CustomerPageModule', name: 'CustomerPage', segment: 'customer', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/historial-aparatos/historial-aparatos.module#HistorialAparatosPageModule', name: 'HistorialAparatosPage', segment: 'historial-aparatos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/inf-cliente/inf-cliente.module#InfClientePageModule', name: 'InfClientePage', segment: 'inf-cliente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/info-empleado/info-empleado.module#InfoEmpleadoPageModule', name: 'InfoEmpleadoPage', segment: 'info-empleado', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/list-pack/list-pack.module#ListPackPageModule', name: 'ListPackPage', segment: 'list-pack', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/list-pay/list-pay.module#ListPayPageModule', name: 'ListPayPage', segment: 'list-pay', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/list-pack/list-pack.module#ListPackPageModule', name: 'ListPackPage', segment: 'list-pack', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/modif-empleado/modif-empleado.module#ModifEmpleadoPageModule', name: 'ModifEmpleadoPage', segment: 'modif-empleado', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/modify-pack/modify-pack.module#ModifyPackPageModule', name: 'ModifyPackPage', segment: 'modify-pack', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/modifaparato/modifaparato.module#ModifaparatoPageModule', name: 'ModifaparatoPage', segment: 'modifaparato', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/modif-product/modif-product.module#ModifProductPageModule', name: 'ModifProductPage', segment: 'modif-product', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/modifcliente/modifcliente.module#ModifclientePageModule', name: 'ModifclientePage', segment: 'modifcliente', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/modifaparato/modifaparato.module#ModifaparatoPageModule', name: 'ModifaparatoPage', segment: 'modifaparato', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/modify-pack/modify-pack.module#ModifyPackPageModule', name: 'ModifyPackPage', segment: 'modify-pack', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/modify-pay/modify-pay.module#ModifyPayPageModule', name: 'ModifyPayPage', segment: 'modify-pay', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/historial-aparatos/historial-aparatos.module#HistorialAparatosPageModule', name: 'HistorialAparatosPage', segment: 'historial-aparatos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pack-details/pack-details.module#PackDetailsPageModule', name: 'PackDetailsPage', segment: 'pack-details', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pack/pack.module#PackPageModule', name: 'PackPage', segment: 'pack', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/pay/pay.module#PayPageModule', name: 'PayPage', segment: 'pay', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/modif-product/modif-product.module#ModifProductPageModule', name: 'ModifProductPage', segment: 'modif-product', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/producto-details/producto-details.module#ProductoDetailsPageModule', name: 'ProductoDetailsPage', segment: 'producto-details', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/venta/venta.module#VentaPageModule', name: 'VentaPage', segment: 'venta', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/pay/pay.module#PayPageModule', name: 'PayPage', segment: 'pay', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/reportes/reportes.module#ReportesPageModule', name: 'ReportesPage', segment: 'reportes', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/recibe-pay/recibe-pay.module#RecibePayPageModule', name: 'RecibePayPage', segment: 'recibe-pay', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/recibe-pay/recibe-pay.module#RecibePayPageModule', name: 'RecibePayPage', segment: 'recibe-pay', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/venta/venta.module#VentaPageModule', name: 'VentaPage', segment: 'venta', priority: 'low', defaultHistory: [] }
                     ]
                 }),
             ],
@@ -5155,6 +5166,7 @@ var AllcustomersPage = /** @class */ (function () {
     };
     // funcion de modificar cliente
     AllcustomersPage.prototype.modificar = function (cliente) {
+        this.navCtrl.pop();
         this.navCtrl.push(this.modif, { cliente: cliente }); // envia los datos para modificarse
     };
     // funcion de eliminar cliente
@@ -5508,8 +5520,8 @@ var AllaparatosPage = /** @class */ (function () {
                     role: 'modificar',
                     handler: function () {
                         console.log('modificar clicked');
-                        //
                         aparato['filtro'] = _this.filtro.val;
+                        _this.navCtrl.pop();
                         _this.navCtrl.push(_this.modificar, { aparato: aparato, id: _this.id_empleado });
                     }
                 },
@@ -5665,6 +5677,7 @@ var ListPayPage = /** @class */ (function () {
                     role: 'editar',
                     handler: function () {
                         console.log('Archive clicked');
+                        _this.navCtrl.pop();
                         _this.navCtrl.push(_this.modify, { pago: pago });
                     }
                 }, {
@@ -5817,6 +5830,7 @@ var ListPackPage = /** @class */ (function () {
                     role: 'editar',
                     handler: function () {
                         console.log('Archive clicked');
+                        _this.navCtrl.pop();
                         _this.navCtrl.push(_this.editar, { pack: pack });
                     }
                 }, {
@@ -6167,6 +6181,7 @@ var AllEmployeesPage = /** @class */ (function () {
         empleado['user'] = this.datos_extra['user'];
         empleado['password'] = this.datos_extra['password'];
         console.log(JSON.stringify(empleado));
+        this.navCtrl.pop(); //NUEVO
         this.navCtrl.push(this.modif, { empleado: empleado }); // envia los datos para modificarse
         //this.actualizar();
     };
@@ -6549,6 +6564,7 @@ var ModifProductPage = /** @class */ (function () {
                 console.log(res);
                 if (res == "exito") {
                     success_1.present();
+                    _this.navCtrl.pop();
                     _this.navCtrl.push(_this.all);
                 }
                 else if (res == "product_rep") {
@@ -6713,6 +6729,7 @@ var AllProductsPage = /** @class */ (function () {
                     text: 'Editar',
                     role: 'editar',
                     handler: function () {
+                        _this.navCtrl.pop();
                         _this.navCtrl.push(_this.modif_product, { producto: product });
                     }
                 }, {
@@ -6774,6 +6791,14 @@ var AllProductsPage = /** @class */ (function () {
         var action = this.actionsheet.create({
             title: 'Opciones de Pago',
             buttons: [
+                {
+                    text: 'Ver Detalles',
+                    role: 'detalles',
+                    handler: function () {
+                        console.log(product);
+                        _this.navCtrl.push(_this.detail_product, { producto: product });
+                    }
+                },
                 {
                     text: 'Activar',
                     role: 'activar',
